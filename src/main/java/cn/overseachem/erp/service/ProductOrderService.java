@@ -79,27 +79,37 @@ public class ProductOrderService {
         return orderMapper.getCompletedAmountByProductNum(productNum);
     }
 
-    public String getColorId(String productNum){
+    public String getColorId(String productNum) {
         return orderMapper.getColorIdByProductNum(productNum);
     }
 
-    public ProductOrder getOrderByNum(String productNum){
+    public ProductOrder getOrderByNum(String productNum) {
         return orderMapper.selectByPrimaryKey(productNum);
     }
 
-    public List<ProductOrderSpec> getSpecsByNum(String productNum){
+    public List<ProductOrderSpec> getSpecsByNum(String productNum) {
         ProductOrderSpecExample e = new ProductOrderSpecExample();
         e.createCriteria().andFkProductNumEqualTo(productNum);
         return specMapper.selectByExample(e);
     }
 
-    public Boolean checkAudition(){
+    public Boolean isChecked(String productNum) {
         ProductOrderExample e = new ProductOrderExample();
-        e.createCriteria().andApproverIdIsNotNull().andReceiverIdIsNotNull();
+        e.createCriteria().andApproverIdIsNotNull().andReceiverIdIsNotNull().andProductNumEqualTo(productNum);
         List<ProductOrder> orderList = orderMapper.selectByExample(e);
-        if(orderList != null && orderList.size()>0)
+        if (orderList != null && orderList.size() > 0)
             return true;
         else
             return false;
+    }
+
+    public Boolean isBegin(String productNum) {
+        ProductOrderSpecExample e = new ProductOrderSpecExample();
+        e.createCriteria().andFkProductNumEqualTo(productNum).andStateCodeGreaterThan(-1);
+        if(specMapper.countByExample(e)>0){
+            return true;
+        }else{
+            return false;
+        }
     }
 }

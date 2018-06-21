@@ -54,7 +54,8 @@ public class ProductOrderController {
         System.out.println(order.toString());
         List<ProductOrderSpec> specs = productOrderService.getSpecsByNum(productNum);
 
-        Boolean isChecked = productOrderService.checkAudition();
+        Boolean isChecked = productOrderService.isChecked(productNum);
+        Boolean isBegin = productOrderService.isBegin(productNum);
 
         ArrayList<ProductOrderSpecDtlGrid> grids = new ArrayList<ProductOrderSpecDtlGrid>();
         for (ProductOrderSpec s : specs
@@ -69,7 +70,7 @@ public class ProductOrderController {
         ProductOrderDtlGrid productOrderDtlGrid = new ProductOrderDtlGrid(order.getFkPurchaseNum(),
                 colorService.getNameById(productOrderService.getColorId(order.getProductNum())),
                 order.getMachineNum(),order.getProductNum(),isChecked,userService.getNameById(order.getApproverId()),
-                userService.getNameById(order.getReceiverId()));
+                userService.getNameById(order.getReceiverId()),isBegin);
         System.out.println(productOrderDtlGrid.toString());
 
         ProductCraft productCraft = productCraftService.getByColorId(productOrderService.getColorId(order.getProductNum()));

@@ -20,6 +20,9 @@
 
 <body>
 
+<nav class="navbar navbar-default top-navbar" role="navigation" th:include="nav_bar::top-nav"></nav>
+<nav class="navbar-default navbar-side" role="navigation" th:include="nav_bar::side-nav"></nav>
+
 <div id="page-wrapper">
     <div class="header">
         <h1 class="page-header">
@@ -104,7 +107,7 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <btn class="btn btn-sm btn-info pull-right" id="search" style="width: 60px">
+                                    <btn class="btn btn-sm btn-info pull-right" id="search" style="width: 60px" onclick="search()">
                                         查询
                                     </btn>
                                 </td>

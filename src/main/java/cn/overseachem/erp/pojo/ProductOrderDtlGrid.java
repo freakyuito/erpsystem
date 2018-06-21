@@ -11,6 +11,18 @@ public class ProductOrderDtlGrid {
     private Boolean checked;
     private String approvorName;
     private String receiverName;
+    private Boolean begin;
+
+    public ProductOrderDtlGrid(String purchaseNum, String colorName, Integer machineNum, String productNum, Boolean checked, String approvorName, String receiverName, Boolean isBegin) {
+        this.purchaseNum = purchaseNum;
+        this.colorName = colorName;
+        this.machineNum = machineNum;
+        this.productNum = productNum;
+        this.checked = checked;
+        this.approvorName = approvorName;
+        this.receiverName = receiverName;
+        this.begin = isBegin;
+    }
 
     @Override
     public String toString() {
@@ -81,14 +93,11 @@ public class ProductOrderDtlGrid {
         this.receiverName = receiverName;
     }
 
-    public ProductOrderDtlGrid(String purchaseNum, String colorName, Integer machineNum, String productNum, Boolean isChecked, String approvorName, String receiverName) {
+    public Boolean getBegin() {
+        return begin;
+    }
 
-        this.purchaseNum = purchaseNum;
-        this.colorName = colorName;
-        this.machineNum = machineNum;
-        this.productNum = productNum;
-        this.checked = isChecked;
-        this.approvorName = approvorName;
-        this.receiverName = receiverName;
+    public void setBegin(Boolean begin) {
+        begin = begin;
     }
 }

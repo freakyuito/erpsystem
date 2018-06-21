@@ -17,6 +17,10 @@
 </head>
 
 <body>
+
+<nav class="navbar navbar-default top-navbar" role="navigation" th:include="nav_bar::top-nav"></nav>
+<nav class="navbar-default navbar-side" role="navigation" th:include="nav_bar::side-nav"></nav>
+
 <div id="wrapper">
 
     <div id="page-wrapper">
@@ -57,7 +61,7 @@
                             <tr>
                                 <td style="text-align: center">
                                     <a th:href="@{/market/purchase_order/2dtl(purchaseNum=${productOrderDtlGrid.purchaseNum})}"
-                                    th:text="${productOrderDtlGrid.purchaseNum}">
+                                       th:text="${productOrderDtlGrid.purchaseNum}">
                                     </a>
                                 </td>
                                 <td style="text-align: center">
@@ -97,20 +101,65 @@
                                 </tr>
                                 </thead>
                                 <tbody id="table-body">
-                                <tr th:each="spec,iterStat : ${productOrderSpecGrids}">
+                                <tr th:each="spec,iterStat : ${productOrderSpecGrids}" th:if="${spec.stateCode} == 1" style="background-color: lightgreen">
                                     <td th:text="${iterStat.index+1}" style="text-align: center">Onions</td>
                                     <td th:text="${spec.patternName}" style="text-align: center">Onions</td>
                                     <td th:text="${spec.length}" style="text-align: center">2.41</td>
                                     <td th:text="${spec.width}" style="text-align: center">2.41</td>
                                     <td th:text="${spec.thickness}" style="text-align: center">2.41</td>
-                                    <td th:text="|${spec.completedAmount}/${spec.requiredAmount}" style="text-align: center">2.41</td>
+                                    <td th:text="|${spec.completedAmount}/${spec.requiredAmount}"
+                                        style="text-align: center">2.41
+                                    </td>
                                     <td th:text="${spec.estimateWeight}" style="text-align: center">2.41</td>
                                     <td th:text="${spec.batchNum}" style="text-align: center">2.41</td>
                                     <td style="text-align: center" th:if="${productOrderDtlGrid.checked}">
-                                        <btn></btn>
+                                        <btn class="btn btn-warning">暂停</btn>
                                     </td>
-                                    <td id="total-price" style="text-align: center" th:if="${productOrderDtlGrid.checked}">
+                                    <td id="total-price" style="text-align: center"
+                                        th:if="${productOrderDtlGrid.checked}">
+                                        <a>装箱单</a>
+                                        <a>质检单</a>
+                                    </td>
+                                </tr>
 
+                                <tr th:each="spec,iterStat : ${productOrderSpecGrids}" th:if="${spec.stateCode} == 0" style="background-color: orange">
+                                    <td th:text="${iterStat.index+1}" style="text-align: center">Onions</td>
+                                    <td th:text="${spec.patternName}" style="text-align: center">Onions</td>
+                                    <td th:text="${spec.length}" style="text-align: center">2.41</td>
+                                    <td th:text="${spec.width}" style="text-align: center">2.41</td>
+                                    <td th:text="${spec.thickness}" style="text-align: center">2.41</td>
+                                    <td th:text="|${spec.completedAmount}/${spec.requiredAmount}"
+                                        style="text-align: center">2.41
+                                    </td>
+                                    <td th:text="${spec.estimateWeight}" style="text-align: center">2.41</td>
+                                    <td th:text="${spec.batchNum}" style="text-align: center">2.41</td>
+                                    <td style="text-align: center" th:if="${productOrderDtlGrid.checked}">
+                                        <btn class="btn btn-success">继续</btn>
+                                    </td>
+                                    <td id="total-price" style="text-align: center"
+                                        th:if="${productOrderDtlGrid.checked}">
+                                        <a>装箱单</a>
+                                        <a>质检单</a>
+                                    </td>
+                                </tr>
+                                <tr th:each="spec,iterStat : ${productOrderSpecGrids}" th:if="${spec.stateCode} == -1" style="background-color: ghostwhite">
+                                    <td th:text="${iterStat.index+1}" style="text-align: center">Onions</td>
+                                    <td th:text="${spec.patternName}" style="text-align: center">Onions</td>
+                                    <td th:text="${spec.length}" style="text-align: center">2.41</td>
+                                    <td th:text="${spec.width}" style="text-align: center">2.41</td>
+                                    <td th:text="${spec.thickness}" style="text-align: center">2.41</td>
+                                    <td th:text="|${spec.completedAmount}/${spec.requiredAmount}"
+                                        style="text-align: center">2.41
+                                    </td>
+                                    <td th:text="${spec.estimateWeight}" style="text-align: center">2.41</td>
+                                    <td th:text="${spec.batchNum}" style="text-align: center">2.41</td>
+                                    <td style="text-align: center" th:if="${productOrderDtlGrid.checked}">
+                                        <btn class="btn btn-primary">开始</btn>
+                                    </td>
+                                    <td id="total-price" style="text-align: center"
+                                        th:if="${productOrderDtlGrid.checked}">
+                                        <a>装箱单</a>
+                                        <a>质检单</a>
                                     </td>
                                 </tr>
                                 </tbody>
@@ -141,9 +190,12 @@
                                 <tbody>
                                 <tr>
                                     <td style="text-align: center" th:text="${plateCraftDtlGrid.colorName}">V28蓝色</td>
-                                    <td style="text-align: center" th:text="${plateCraftDtlGrid.meteringPumpRevs}">22转</td>
-                                    <td style="text-align: center" th:text="${plateCraftDtlGrid.masterBatchRevs}">22转</td>
-                                    <td style="text-align: center" th:text="${plateCraftDtlGrid.masterBatchBrand}">22转</td>
+                                    <td style="text-align: center" th:text="${plateCraftDtlGrid.meteringPumpRevs}">22转
+                                    </td>
+                                    <td style="text-align: center" th:text="${plateCraftDtlGrid.masterBatchRevs}">22转
+                                    </td>
+                                    <td style="text-align: center" th:text="${plateCraftDtlGrid.masterBatchBrand}">22转
+                                    </td>
                                     <td style="text-align: center" th:text="${plateCraftDtlGrid.membraneName}">22转</td>
                                     <td style="text-align: center" th:text="${plateCraftDtlGrid.embossingName}">22转</td>
                                 </tr>
@@ -191,11 +243,11 @@
                                     </td>
                                     <td style="text-align: center">
 
-                                        <button class="btn btn-primary btn-sm" data-toggle="modal"
-                                                data-target="#myModal_supervisor"><i class="fa fa-edit "></i>署名
+                                        <button th:if="!${productOrderDtlGrid.begin}" class="btn btn-primary btn-sm" data-toggle="modal"
+                                                data-target="#myModal_sign"><i class="fa fa-edit "></i>署名
                                         </button>
                                         <!-- 模态框（Modal） -->
-                                        <div class="modal fade" id="myModal_supervisor" tabindex="-1" role="dialog"
+                                        <div class="modal fade" id="myModal_sign" tabindex="-1" role="dialog"
                                              aria-labelledby="myModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
@@ -204,7 +256,7 @@
                                                                 aria-hidden="true">
                                                             &times;
                                                         </button>
-                                                        <h4 class="modal-title" id="myModalLabel_supervisor">
+                                                        <h4 class="modal-title" id="myModalLabel_sign">
                                                             确认署名吗</h4>
                                                     </div>
                                                     <div class="modal-body" th:text="|署名人为：|"></div>
@@ -212,7 +264,38 @@
                                                         <button type="button" class="btn btn-default"
                                                                 data-dismiss="modal">关闭
                                                         </button>
-                                                        <button type="button" id="sign-confirm" class="btn btn-primary">确认</button>
+                                                        <button type="button" id="sign-confirm" class="btn btn-primary">
+                                                            确认
+                                                        </button>
+                                                    </div>
+                                                </div><!-- /.modal-content -->
+                                            </div><!-- /.modal -->
+                                        </div>
+
+                                        <button th:if="${productOrderDtlGrid.begin}" class="btn btn-primary btn-sm" data-toggle="modal"
+                                                data-target="#myModal_selection"><i class="fa fa-edit "></i>选择机台和几张
+                                        </button>
+                                        <!-- 模态框（Modal） -->
+                                        <div class="modal fade" id="myModal_selection" tabindex="-1" role="dialog"
+                                             aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                                aria-hidden="true">
+                                                            &times;
+                                                        </button>
+                                                        <h4 class="modal-title" id="myModalLabel_selection">
+                                                            确认署名吗</h4>
+                                                    </div>
+                                                    <div class="modal-body"></div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default"
+                                                                data-dismiss="modal">关闭
+                                                        </button>
+                                                        <button type="button" id="selection-confirm" class="btn btn-primary">
+                                                            确认
+                                                        </button>
                                                     </div>
                                                 </div><!-- /.modal-content -->
                                             </div><!-- /.modal -->
