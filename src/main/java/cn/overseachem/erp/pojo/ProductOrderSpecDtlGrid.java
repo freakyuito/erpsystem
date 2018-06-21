@@ -4,34 +4,37 @@ package cn.overseachem.erp.pojo;
  * Created by Zhihui_Shen on 2018/6/19.
  */
 public class ProductOrderSpecDtlGrid {
-    private String colorName;
+    private String patternName;
     private Integer length;
     private Integer width;
     private Float thickness;
     private Integer completedAmount;
-    private Integer requireAmount;
+    private Integer requiredAmount;
     private Float estimateWeight;
     private String batchNum;
     private Integer stateCode;
 
-    public ProductOrderSpecDtlGrid(String colorName, Integer length, Integer width, Float thickness, Integer completedAmount, Integer requireAmount, Float estimateWeight, String batchNum, Integer stateCode) {
-        this.colorName = colorName;
-        this.length = length;
-        this.width = width;
-        this.thickness = thickness;
-        this.completedAmount = completedAmount;
-        this.requireAmount = requireAmount;
-        this.estimateWeight = estimateWeight;
-        this.batchNum = batchNum;
-        this.stateCode = stateCode;
+    @Override
+    public String toString() {
+        return "ProductOrderSpecDtlGrid{" +
+                "patternName='" + patternName + '\'' +
+                ", length=" + length +
+                ", width=" + width +
+                ", thickness=" + thickness +
+                ", completedAmount=" + completedAmount +
+                ", requiredAmount=" + requiredAmount +
+                ", estimateWeight=" + estimateWeight +
+                ", batchNum='" + batchNum + '\'' +
+                ", stateCode=" + stateCode +
+                '}';
     }
 
-    public String getColorName() {
-        return colorName;
+    public String getPatternName() {
+        return patternName;
     }
 
-    public void setColorName(String colorName) {
-        this.colorName = colorName;
+    public void setPatternName(String patternName) {
+        this.patternName = patternName;
     }
 
     public Integer getLength() {
@@ -66,12 +69,12 @@ public class ProductOrderSpecDtlGrid {
         this.completedAmount = completedAmount;
     }
 
-    public Integer getRequireAmount() {
-        return requireAmount;
+    public Integer getRequiredAmount() {
+        return requiredAmount;
     }
 
-    public void setRequireAmount(Integer requireAmount) {
-        this.requireAmount = requireAmount;
+    public void setRequiredAmount(Integer requiredAmount) {
+        this.requiredAmount = requiredAmount;
     }
 
     public Float getEstimateWeight() {
@@ -95,6 +98,19 @@ public class ProductOrderSpecDtlGrid {
     }
 
     public void setStateCode(Integer stateCode) {
+        this.stateCode = stateCode;
+    }
+
+    public ProductOrderSpecDtlGrid(String patternName, Integer length, Integer width, Float thickness, Integer completedAmount, Integer requiredAmount, Float estimateWeight, String batchNum, Integer stateCode) {
+
+        this.patternName = patternName;
+        this.length = length;
+        this.width = width;
+        this.thickness = thickness;
+        this.completedAmount = completedAmount;
+        this.requiredAmount = requiredAmount;
+        this.estimateWeight = estimateWeight;
+        this.batchNum = batchNum;
         this.stateCode = stateCode;
     }
 }

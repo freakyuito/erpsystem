@@ -12,15 +12,15 @@ function search() {
         scheduleTime: scheduleTime
     }, function (res) {
         if (res != null) {
-            var i = 0;
             $("#table-body").empty();
             $.each(res, function (index, obj) {
+                var link = obj.productNum.replace(/#/,'%23')
                 $("#table-body").append(
                     '<tr>' +
                     '<td style="text-align: center">' + (index + 1) + '</td>' +
                     '<td style="text-align: center"><a href="/market/purchase_order/2dtl?purchaseNum=' + obj.purchaseNum + '">' + obj.purchaseNum + '</a></td>' +
                     '<td style="text-align: center">' + obj.colorName + '</td>' +
-                    '<td style="text-align: center"><a href="/product/product_order/2dtl?productNum=' + obj.productNum + '">' + obj.productNum + '</a></td>' +
+                    '<td style="text-align: center"><a href="/product/product_order/2dtl?productNum=' + link + '">' + obj.productNum + '</a></td>' +
                     '<td style="text-align: center">' + obj.machineNum + '</td>' +
                     '<td style="text-align: center">' + obj.completedAmount + '/' + obj.totalAmount + '</td>' +
                     '<td style="text-align: center">' + obj.estimateWeight + '</td>' +

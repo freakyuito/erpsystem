@@ -275,11 +275,10 @@
   </update>
 
   <select id="groupByColorIdWithPurchaseNum" parameterType="String" resultMap="BaseResultMap">
-  select purchase_order_spec.* from purchase_order_spec inner join purchase_order
-  on fk_purchase_num = purchase_num where purchase_num = #{purchaseNum} group by color_id;
+    select purchase_order_spec.* from purchase_order_spec inner join purchase_order
+    on fk_purchase_num = purchase_num where purchase_num = #{purchaseNum} group by color_id
   </select>
   <select id="selectSpecsByPurchaseNumAndColorId" resultMap="BaseResultMap">
-  SELECT * FROM purchase_order_spec WHERE fk_purchase_num = #{purchaseNum} AND color_id = #{colorId};
+    SELECT * FROM purchase_order_spec WHERE fk_purchase_num = #{purchaseNum} AND color_id = #{colorId};
   </select>
-
 </mapper>

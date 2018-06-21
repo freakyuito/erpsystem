@@ -8,18 +8,21 @@ public class ProductOrderDtlGrid {
     private String colorName;
     private Integer machineNum;
     private String productNum;
-    private Boolean isChecked;
+    private Boolean checked;
     private String approvorName;
     private String receiverName;
 
-    public ProductOrderDtlGrid(String purchaseNum, String colorName, Integer machineNum, String productNum, Boolean isChecked, String approvorName, String receiverName) {
-        this.purchaseNum = purchaseNum;
-        this.colorName = colorName;
-        this.machineNum = machineNum;
-        this.productNum = productNum;
-        this.isChecked = isChecked;
-        this.approvorName = approvorName;
-        this.receiverName = receiverName;
+    @Override
+    public String toString() {
+        return "ProductOrderDtlGrid{" +
+                "purchaseNum='" + purchaseNum + '\'' +
+                ", colorName='" + colorName + '\'' +
+                ", machineNum=" + machineNum +
+                ", productNum='" + productNum + '\'' +
+                ", isChecked=" + checked +
+                ", approvorName='" + approvorName + '\'' +
+                ", receiverName='" + receiverName + '\'' +
+                '}';
     }
 
     public String getPurchaseNum() {
@@ -30,12 +33,12 @@ public class ProductOrderDtlGrid {
         this.purchaseNum = purchaseNum;
     }
 
-    public String getPatternName() {
+    public String getColorName() {
         return colorName;
     }
 
-    public void setPatternName(String patternName) {
-        this.colorName = patternName;
+    public void setColorName(String colorName) {
+        this.colorName = colorName;
     }
 
     public Integer getMachineNum() {
@@ -55,11 +58,11 @@ public class ProductOrderDtlGrid {
     }
 
     public Boolean getChecked() {
-        return isChecked;
+        return checked;
     }
 
     public void setChecked(Boolean checked) {
-        isChecked = checked;
+        checked = checked;
     }
 
     public String getApprovorName() {
@@ -78,16 +81,14 @@ public class ProductOrderDtlGrid {
         this.receiverName = receiverName;
     }
 
-    @Override
-    public String toString() {
-        return "ProductOrderDtlGrid{" +
-                "purchaseNum='" + purchaseNum + '\'' +
-                ", colorName='" + colorName + '\'' +
-                ", machineNum=" + machineNum +
-                ", productNum='" + productNum + '\'' +
-                ", isChecked=" + isChecked +
-                ", approvorName='" + approvorName + '\'' +
-                ", receiverName='" + receiverName + '\'' +
-                '}';
+    public ProductOrderDtlGrid(String purchaseNum, String colorName, Integer machineNum, String productNum, Boolean isChecked, String approvorName, String receiverName) {
+
+        this.purchaseNum = purchaseNum;
+        this.colorName = colorName;
+        this.machineNum = machineNum;
+        this.productNum = productNum;
+        this.checked = isChecked;
+        this.approvorName = approvorName;
+        this.receiverName = receiverName;
     }
 }

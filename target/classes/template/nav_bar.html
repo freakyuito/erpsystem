@@ -236,30 +236,88 @@
             <ul class="nav" id="main-menu">
 
                 <li>
-                    <a href="#"><i class="fa fa-dashboard"></i> 主页</a>
-                </li>
-
-                <li>
-                    <a href="#"><i class="fa fa-sitemap"></i> 销售部门<span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-sitemap"></i> 销售部<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
                             <a href="#">板材销售<span class="fa arrow"></span></a>
                             <ul class="nav nav-third-level">
                                 <li>
-                                    <a href='/market/purchase_order/2lst' th:if="${#strings.contains(session.userAuthorities,'BX')}
-                                                        or ${#strings.contains(session.userAuthorities,'BXZ')}
-                                                        or ${#strings.contains(session.userAuthorities,'BS')}
-                                                        or ${#strings.contains(session.userAuthorities,'BZ')}
-                                                        or ${#strings.contains(session.userAuthorities,'BSF')}
-                                                        or ${#strings.contains(session.userAuthorities,'BSZ')}">板材订单</a>
+                                    <a href="/market/purchase_order/2lst">板材订单管理</a>
                                 </li>
                                 <li>
-                                    <a href="#">样品单</a>
+                                    <a href="#">板材样品单管理</a>
+                                </li>
+                                <li>
+                                    <a href="#">板材客户管理</a>
+                                </li>
+                                <li>
+                                    <a href="#">板材对账单汇总</a>
+                                </li>
+                                <li>
+                                    <a href="#">板材送货单汇总</a>
                                 </li>
                             </ul>
+
+                        </li>
+                        <li>
+                            <a href="#">箱包销售<span class="fa arrow"></span></a>
+                            <ul class="nav nav-third-level">
+                                <li>
+                                    <a href="#">箱包采购部</a>
+                                </li>
+                                <li>
+                                    <a href="#">箱包订单管理</a>
+                                </li>
+                            </ul>
+
                         </li>
                     </ul>
                 </li>
+                <li>
+                    <a href="#"><i class="glyphicon glyphicon-wrench"></i> 生产部<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="#">板材生产<span class="fa arrow"></span></a>
+                            <ul class="nav nav-third-level">
+                                <li>
+                                    <a href="/product/product_order/2lst">生产指令单管理</a>
+                                </li>
+                                <li>
+                                    <a href="#">生产工艺管理</a>
+                                </li>
+                                <li>
+                                    <a href="#">装箱单记录汇总</a>
+                                </li>
+                                <li>
+                                    <a href="#">入库单记录汇总</a>
+                                </li>
+                                <li>
+                                    <a href="#">质量检测记录汇总</a>
+                                </li>
+                            </ul>
+
+                        </li>
+                        <li>
+                            <a href="#">箱包生产<span class="fa arrow"></span></a>
+                            <ul class="nav nav-third-level">
+                                <li>
+                                    <a href="#">箱包吸塑车间</a>
+                                </li>
+                                <li>
+                                    <a href="#">箱包流水线</a>
+                                </li>
+                                <li>
+                                    <a href="#">箱包内饰</a>
+                                </li>
+                                <li>
+                                    <a href="#">箱包仓库</a>
+                                </li>
+                            </ul>
+
+                        </li>
+                    </ul>
+                </li>
+
 
             </ul>
 

@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.overseachem.erp.mapper.ProductCraftMapper" >
+  <resultMap id="BaseResultMap" type="cn.overseachem.erp.pojo.ProductCraft" >
+    <id column="color_id" property="colorId" jdbcType="CHAR" />
+    <result column="sheet_machine_id" property="sheetMachineId" jdbcType="CHAR" />
+    <result column="sheet_thickness" property="sheetThickness" jdbcType="REAL" />
+    <result column="sheet_meteringPump_revs" property="sheetMeteringpumpRevs" jdbcType="VARCHAR" />
+    <result column="sheet_material_name" property="sheetMaterialName" jdbcType="VARCHAR" />
+    <result column="sheet_masterBatch_brand" property="sheetMasterbatchBrand" jdbcType="VARCHAR" />
+    <result column="sheet_masterBatch_revs" property="sheetMasterbatchRevs" jdbcType="VARCHAR" />
+    <result column="sheet_masterBatch_proportion" property="sheetMasterbatchProportion" jdbcType="VARCHAR" />
+    <result column="sheet_antiSticking_brand" property="sheetAntistickingBrand" jdbcType="VARCHAR" />
+    <result column="sheet_antiSticking_revs" property="sheetAntistickingRevs" jdbcType="VARCHAR" />
+    <result column="sheet_antiStatic_brand" property="sheetAntistaticBrand" jdbcType="VARCHAR" />
+    <result column="sheet_antiStatic_revs" property="sheetAntistaticRevs" jdbcType="VARCHAR" />
+    <result column="plate_machine_id" property="plateMachineId" jdbcType="CHAR" />
+    <result column="plate_meteringPump_revs" property="plateMeteringpumpRevs" jdbcType="VARCHAR" />
+    <result column="plate_material_name1" property="plateMaterialName1" jdbcType="VARCHAR" />
+    <result column="plate_material_name2" property="plateMaterialName2" jdbcType="VARCHAR" />
+    <result column="plate_material_name3" property="plateMaterialName3" jdbcType="VARCHAR" />
+    <result column="plate_material_name4" property="plateMaterialName4" jdbcType="VARCHAR" />
+    <result column="plate_masterBatch_revs" property="plateMasterbatchRevs" jdbcType="VARCHAR" />
+    <result column="plate_masterBatch_brand" property="plateMasterbatchBrand" jdbcType="VARCHAR" />
+    <result column="plate_masterBatch_proportion" property="plateMasterbatchProportion" jdbcType="VARCHAR" />
+    <result column="plate_membrane_name" property="plateMembraneName" jdbcType="VARCHAR" />
+    <result column="plate_embossing_name" property="plateEmbossingName" jdbcType="VARCHAR" />
+    <result column="fk_operationRecords_id" property="fkOperationrecordsId" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    color_id, sheet_machine_id, sheet_thickness, sheet_meteringPump_revs, sheet_material_name, 
+    sheet_masterBatch_brand, sheet_masterBatch_revs, sheet_masterBatch_proportion, sheet_antiSticking_brand, 
+    sheet_antiSticking_revs, sheet_antiStatic_brand, sheet_antiStatic_revs, plate_machine_id, 
+    plate_meteringPump_revs, plate_material_name1, plate_material_name2, plate_material_name3, 
+    plate_material_name4, plate_masterBatch_revs, plate_masterBatch_brand, plate_masterBatch_proportion, 
+    plate_membrane_name, plate_embossing_name, fk_operationRecords_id, remark
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.overseachem.erp.pojo.ProductCraftExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from product_craft
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from product_craft
+    where color_id = #{colorId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from product_craft
+    where color_id = #{colorId,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="cn.overseachem.erp.pojo.ProductCraftExample" >
+    delete from product_craft
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="cn.overseachem.erp.pojo.ProductCraft" >
+    insert into product_craft (color_id, sheet_machine_id, sheet_thickness, 
+      sheet_meteringPump_revs, sheet_material_name, 
+      sheet_masterBatch_brand, sheet_masterBatch_revs, 
+      sheet_masterBatch_proportion, sheet_antiSticking_brand, 
+      sheet_antiSticking_revs, sheet_antiStatic_brand, 
+      sheet_antiStatic_revs, plate_machine_id, plate_meteringPump_revs, 
+      plate_material_name1, plate_material_name2, 
+      plate_material_name3, plate_material_name4, 
+      plate_masterBatch_revs, plate_masterBatch_brand, 
+      plate_masterBatch_proportion, plate_membrane_name, 
+      plate_embossing_name, fk_operationRecords_id, 
+      remark)
+    values (#{colorId,jdbcType=CHAR}, #{sheetMachineId,jdbcType=CHAR}, #{sheetThickness,jdbcType=REAL}, 
+      #{sheetMeteringpumpRevs,jdbcType=VARCHAR}, #{sheetMaterialName,jdbcType=VARCHAR}, 
+      #{sheetMasterbatchBrand,jdbcType=VARCHAR}, #{sheetMasterbatchRevs,jdbcType=VARCHAR}, 
+      #{sheetMasterbatchProportion,jdbcType=VARCHAR}, #{sheetAntistickingBrand,jdbcType=VARCHAR}, 
+      #{sheetAntistickingRevs,jdbcType=VARCHAR}, #{sheetAntistaticBrand,jdbcType=VARCHAR}, 
+      #{sheetAntistaticRevs,jdbcType=VARCHAR}, #{plateMachineId,jdbcType=CHAR}, #{plateMeteringpumpRevs,jdbcType=VARCHAR}, 
+      #{plateMaterialName1,jdbcType=VARCHAR}, #{plateMaterialName2,jdbcType=VARCHAR}, 
+      #{plateMaterialName3,jdbcType=VARCHAR}, #{plateMaterialName4,jdbcType=VARCHAR}, 
+      #{plateMasterbatchRevs,jdbcType=VARCHAR}, #{plateMasterbatchBrand,jdbcType=VARCHAR}, 
+      #{plateMasterbatchProportion,jdbcType=VARCHAR}, #{plateMembraneName,jdbcType=VARCHAR}, 
+      #{plateEmbossingName,jdbcType=VARCHAR}, #{fkOperationrecordsId,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.overseachem.erp.pojo.ProductCraft" >
+    insert into product_craft
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="colorId != null" >
+        color_id,
+      </if>
+      <if test="sheetMachineId != null" >
+        sheet_machine_id,
+      </if>
+      <if test="sheetThickness != null" >
+        sheet_thickness,
+      </if>
+      <if test="sheetMeteringpumpRevs != null" >
+        sheet_meteringPump_revs,
+      </if>
+      <if test="sheetMaterialName != null" >
+        sheet_material_name,
+      </if>
+      <if test="sheetMasterbatchBrand != null" >
+        sheet_masterBatch_brand,
+      </if>
+      <if test="sheetMasterbatchRevs != null" >
+        sheet_masterBatch_revs,
+      </if>
+      <if test="sheetMasterbatchProportion != null" >
+        sheet_masterBatch_proportion,
+      </if>
+      <if test="sheetAntistickingBrand != null" >
+        sheet_antiSticking_brand,
+      </if>
+      <if test="sheetAntistickingRevs != null" >
+        sheet_antiSticking_revs,
+      </if>
+      <if test="sheetAntistaticBrand != null" >
+        sheet_antiStatic_brand,
+      </if>
+      <if test="sheetAntistaticRevs != null" >
+        sheet_antiStatic_revs,
+      </if>
+      <if test="plateMachineId != null" >
+        plate_machine_id,
+      </if>
+      <if test="plateMeteringpumpRevs != null" >
+        plate_meteringPump_revs,
+      </if>
+      <if test="plateMaterialName1 != null" >
+        plate_material_name1,
+      </if>
+      <if test="plateMaterialName2 != null" >
+        plate_material_name2,
+      </if>
+      <if test="plateMaterialName3 != null" >
+        plate_material_name3,
+      </if>
+      <if test="plateMaterialName4 != null" >
+        plate_material_name4,
+      </if>
+      <if test="plateMasterbatchRevs != null" >
+        plate_masterBatch_revs,
+      </if>
+      <if test="plateMasterbatchBrand != null" >
+        plate_masterBatch_brand,
+      </if>
+      <if test="plateMasterbatchProportion != null" >
+        plate_masterBatch_proportion,
+      </if>
+      <if test="plateMembraneName != null" >
+        plate_membrane_name,
+      </if>
+      <if test="plateEmbossingName != null" >
+        plate_embossing_name,
+      </if>
+      <if test="fkOperationrecordsId != null" >
+        fk_operationRecords_id,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="colorId != null" >
+        #{colorId,jdbcType=CHAR},
+      </if>
+      <if test="sheetMachineId != null" >
+        #{sheetMachineId,jdbcType=CHAR},
+      </if>
+      <if test="sheetThickness != null" >
+        #{sheetThickness,jdbcType=REAL},
+      </if>
+      <if test="sheetMeteringpumpRevs != null" >
+        #{sheetMeteringpumpRevs,jdbcType=VARCHAR},
+      </if>
+      <if test="sheetMaterialName != null" >
+        #{sheetMaterialName,jdbcType=VARCHAR},
+      </if>
+      <if test="sheetMasterbatchBrand != null" >
+        #{sheetMasterbatchBrand,jdbcType=VARCHAR},
+      </if>
+      <if test="sheetMasterbatchRevs != null" >
+        #{sheetMasterbatchRevs,jdbcType=VARCHAR},
+      </if>
+      <if test="sheetMasterbatchProportion != null" >
+        #{sheetMasterbatchProportion,jdbcType=VARCHAR},
+      </if>
+      <if test="sheetAntistickingBrand != null" >
+        #{sheetAntistickingBrand,jdbcType=VARCHAR},
+      </if>
+      <if test="sheetAntistickingRevs != null" >
+        #{sheetAntistickingRevs,jdbcType=VARCHAR},
+      </if>
+      <if test="sheetAntistaticBrand != null" >
+        #{sheetAntistaticBrand,jdbcType=VARCHAR},
+      </if>
+      <if test="sheetAntistaticRevs != null" >
+        #{sheetAntistaticRevs,jdbcType=VARCHAR},
+      </if>
+      <if test="plateMachineId != null" >
+        #{plateMachineId,jdbcType=CHAR},
+      </if>
+      <if test="plateMeteringpumpRevs != null" >
+        #{plateMeteringpumpRevs,jdbcType=VARCHAR},
+      </if>
+      <if test="plateMaterialName1 != null" >
+        #{plateMaterialName1,jdbcType=VARCHAR},
+      </if>
+      <if test="plateMaterialName2 != null" >
+        #{plateMaterialName2,jdbcType=VARCHAR},
+      </if>
+      <if test="plateMaterialName3 != null" >
+        #{plateMaterialName3,jdbcType=VARCHAR},
+      </if>
+      <if test="plateMaterialName4 != null" >
+        #{plateMaterialName4,jdbcType=VARCHAR},
+      </if>
+      <if test="plateMasterbatchRevs != null" >
+        #{plateMasterbatchRevs,jdbcType=VARCHAR},
+      </if>
+      <if test="plateMasterbatchBrand != null" >
+        #{plateMasterbatchBrand,jdbcType=VARCHAR},
+      </if>
+      <if test="plateMasterbatchProportion != null" >
+        #{plateMasterbatchProportion,jdbcType=VARCHAR},
+      </if>
+      <if test="plateMembraneName != null" >
+        #{plateMembraneName,jdbcType=VARCHAR},
+      </if>
+      <if test="plateEmbossingName != null" >
+        #{plateEmbossingName,jdbcType=VARCHAR},
+      </if>
+      <if test="fkOperationrecordsId != null" >
+        #{fkOperationrecordsId,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="cn.overseachem.erp.pojo.ProductCraftExample" resultType="java.lang.Integer" >
+    select count(*) from product_craft
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update product_craft
+    <set >
+      <if test="record.colorId != null" >
+        color_id = #{record.colorId,jdbcType=CHAR},
+      </if>
+      <if test="record.sheetMachineId != null" >
+        sheet_machine_id = #{record.sheetMachineId,jdbcType=CHAR},
+      </if>
+      <if test="record.sheetThickness != null" >
+        sheet_thickness = #{record.sheetThickness,jdbcType=REAL},
+      </if>
+      <if test="record.sheetMeteringpumpRevs != null" >
+        sheet_meteringPump_revs = #{record.sheetMeteringpumpRevs,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sheetMaterialName != null" >
+        sheet_material_name = #{record.sheetMaterialName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sheetMasterbatchBrand != null" >
+        sheet_masterBatch_brand = #{record.sheetMasterbatchBrand,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sheetMasterbatchRevs != null" >
+        sheet_masterBatch_revs = #{record.sheetMasterbatchRevs,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sheetMasterbatchProportion != null" >
+        sheet_masterBatch_proportion = #{record.sheetMasterbatchProportion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sheetAntistickingBrand != null" >
+        sheet_antiSticking_brand = #{record.sheetAntistickingBrand,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sheetAntistickingRevs != null" >
+        sheet_antiSticking_revs = #{record.sheetAntistickingRevs,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sheetAntistaticBrand != null" >
+        sheet_antiStatic_brand = #{record.sheetAntistaticBrand,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sheetAntistaticRevs != null" >
+        sheet_antiStatic_revs = #{record.sheetAntistaticRevs,jdbcType=VARCHAR},
+      </if>
+      <if test="record.plateMachineId != null" >
+        plate_machine_id = #{record.plateMachineId,jdbcType=CHAR},
+      </if>
+      <if test="record.plateMeteringpumpRevs != null" >
+        plate_meteringPump_revs = #{record.plateMeteringpumpRevs,jdbcType=VARCHAR},
+      </if>
+      <if test="record.plateMaterialName1 != null" >
+        plate_material_name1 = #{record.plateMaterialName1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.plateMaterialName2 != null" >
+        plate_material_name2 = #{record.plateMaterialName2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.plateMaterialName3 != null" >
+        plate_material_name3 = #{record.plateMaterialName3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.plateMaterialName4 != null" >
+        plate_material_name4 = #{record.plateMaterialName4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.plateMasterbatchRevs != null" >
+        plate_masterBatch_revs = #{record.plateMasterbatchRevs,jdbcType=VARCHAR},
+      </if>
+      <if test="record.plateMasterbatchBrand != null" >
+        plate_masterBatch_brand = #{record.plateMasterbatchBrand,jdbcType=VARCHAR},
+      </if>
+      <if test="record.plateMasterbatchProportion != null" >
+        plate_masterBatch_proportion = #{record.plateMasterbatchProportion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.plateMembraneName != null" >
+        plate_membrane_name = #{record.plateMembraneName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.plateEmbossingName != null" >
+        plate_embossing_name = #{record.plateEmbossingName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fkOperationrecordsId != null" >
+        fk_operationRecords_id = #{record.fkOperationrecordsId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark != null" >
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update product_craft
+    set color_id = #{record.colorId,jdbcType=CHAR},
+      sheet_machine_id = #{record.sheetMachineId,jdbcType=CHAR},
+      sheet_thickness = #{record.sheetThickness,jdbcType=REAL},
+      sheet_meteringPump_revs = #{record.sheetMeteringpumpRevs,jdbcType=VARCHAR},
+      sheet_material_name = #{record.sheetMaterialName,jdbcType=VARCHAR},
+      sheet_masterBatch_brand = #{record.sheetMasterbatchBrand,jdbcType=VARCHAR},
+      sheet_masterBatch_revs = #{record.sheetMasterbatchRevs,jdbcType=VARCHAR},
+      sheet_masterBatch_proportion = #{record.sheetMasterbatchProportion,jdbcType=VARCHAR},
+      sheet_antiSticking_brand = #{record.sheetAntistickingBrand,jdbcType=VARCHAR},
+      sheet_antiSticking_revs = #{record.sheetAntistickingRevs,jdbcType=VARCHAR},
+      sheet_antiStatic_brand = #{record.sheetAntistaticBrand,jdbcType=VARCHAR},
+      sheet_antiStatic_revs = #{record.sheetAntistaticRevs,jdbcType=VARCHAR},
+      plate_machine_id = #{record.plateMachineId,jdbcType=CHAR},
+      plate_meteringPump_revs = #{record.plateMeteringpumpRevs,jdbcType=VARCHAR},
+      plate_material_name1 = #{record.plateMaterialName1,jdbcType=VARCHAR},
+      plate_material_name2 = #{record.plateMaterialName2,jdbcType=VARCHAR},
+      plate_material_name3 = #{record.plateMaterialName3,jdbcType=VARCHAR},
+      plate_material_name4 = #{record.plateMaterialName4,jdbcType=VARCHAR},
+      plate_masterBatch_revs = #{record.plateMasterbatchRevs,jdbcType=VARCHAR},
+      plate_masterBatch_brand = #{record.plateMasterbatchBrand,jdbcType=VARCHAR},
+      plate_masterBatch_proportion = #{record.plateMasterbatchProportion,jdbcType=VARCHAR},
+      plate_membrane_name = #{record.plateMembraneName,jdbcType=VARCHAR},
+      plate_embossing_name = #{record.plateEmbossingName,jdbcType=VARCHAR},
+      fk_operationRecords_id = #{record.fkOperationrecordsId,jdbcType=VARCHAR},
+      remark = #{record.remark,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.overseachem.erp.pojo.ProductCraft" >
+    update product_craft
+    <set >
+      <if test="sheetMachineId != null" >
+        sheet_machine_id = #{sheetMachineId,jdbcType=CHAR},
+      </if>
+      <if test="sheetThickness != null" >
+        sheet_thickness = #{sheetThickness,jdbcType=REAL},
+      </if>
+      <if test="sheetMeteringpumpRevs != null" >
+        sheet_meteringPump_revs = #{sheetMeteringpumpRevs,jdbcType=VARCHAR},
+      </if>
+      <if test="sheetMaterialName != null" >
+        sheet_material_name = #{sheetMaterialName,jdbcType=VARCHAR},
+      </if>
+      <if test="sheetMasterbatchBrand != null" >
+        sheet_masterBatch_brand = #{sheetMasterbatchBrand,jdbcType=VARCHAR},
+      </if>
+      <if test="sheetMasterbatchRevs != null" >
+        sheet_masterBatch_revs = #{sheetMasterbatchRevs,jdbcType=VARCHAR},
+      </if>
+      <if test="sheetMasterbatchProportion != null" >
+        sheet_masterBatch_proportion = #{sheetMasterbatchProportion,jdbcType=VARCHAR},
+      </if>
+      <if test="sheetAntistickingBrand != null" >
+        sheet_antiSticking_brand = #{sheetAntistickingBrand,jdbcType=VARCHAR},
+      </if>
+      <if test="sheetAntistickingRevs != null" >
+        sheet_antiSticking_revs = #{sheetAntistickingRevs,jdbcType=VARCHAR},
+      </if>
+      <if test="sheetAntistaticBrand != null" >
+        sheet_antiStatic_brand = #{sheetAntistaticBrand,jdbcType=VARCHAR},
+      </if>
+      <if test="sheetAntistaticRevs != null" >
+        sheet_antiStatic_revs = #{sheetAntistaticRevs,jdbcType=VARCHAR},
+      </if>
+      <if test="plateMachineId != null" >
+        plate_machine_id = #{plateMachineId,jdbcType=CHAR},
+      </if>
+      <if test="plateMeteringpumpRevs != null" >
+        plate_meteringPump_revs = #{plateMeteringpumpRevs,jdbcType=VARCHAR},
+      </if>
+      <if test="plateMaterialName1 != null" >
+        plate_material_name1 = #{plateMaterialName1,jdbcType=VARCHAR},
+      </if>
+      <if test="plateMaterialName2 != null" >
+        plate_material_name2 = #{plateMaterialName2,jdbcType=VARCHAR},
+      </if>
+      <if test="plateMaterialName3 != null" >
+        plate_material_name3 = #{plateMaterialName3,jdbcType=VARCHAR},
+      </if>
+      <if test="plateMaterialName4 != null" >
+        plate_material_name4 = #{plateMaterialName4,jdbcType=VARCHAR},
+      </if>
+      <if test="plateMasterbatchRevs != null" >
+        plate_masterBatch_revs = #{plateMasterbatchRevs,jdbcType=VARCHAR},
+      </if>
+      <if test="plateMasterbatchBrand != null" >
+        plate_masterBatch_brand = #{plateMasterbatchBrand,jdbcType=VARCHAR},
+      </if>
+      <if test="plateMasterbatchProportion != null" >
+        plate_masterBatch_proportion = #{plateMasterbatchProportion,jdbcType=VARCHAR},
+      </if>
+      <if test="plateMembraneName != null" >
+        plate_membrane_name = #{plateMembraneName,jdbcType=VARCHAR},
+      </if>
+      <if test="plateEmbossingName != null" >
+        plate_embossing_name = #{plateEmbossingName,jdbcType=VARCHAR},
+      </if>
+      <if test="fkOperationrecordsId != null" >
+        fk_operationRecords_id = #{fkOperationrecordsId,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where color_id = #{colorId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.overseachem.erp.pojo.ProductCraft" >
+    update product_craft
+    set sheet_machine_id = #{sheetMachineId,jdbcType=CHAR},
+      sheet_thickness = #{sheetThickness,jdbcType=REAL},
+      sheet_meteringPump_revs = #{sheetMeteringpumpRevs,jdbcType=VARCHAR},
+      sheet_material_name = #{sheetMaterialName,jdbcType=VARCHAR},
+      sheet_masterBatch_brand = #{sheetMasterbatchBrand,jdbcType=VARCHAR},
+      sheet_masterBatch_revs = #{sheetMasterbatchRevs,jdbcType=VARCHAR},
+      sheet_masterBatch_proportion = #{sheetMasterbatchProportion,jdbcType=VARCHAR},
+      sheet_antiSticking_brand = #{sheetAntistickingBrand,jdbcType=VARCHAR},
+      sheet_antiSticking_revs = #{sheetAntistickingRevs,jdbcType=VARCHAR},
+      sheet_antiStatic_brand = #{sheetAntistaticBrand,jdbcType=VARCHAR},
+      sheet_antiStatic_revs = #{sheetAntistaticRevs,jdbcType=VARCHAR},
+      plate_machine_id = #{plateMachineId,jdbcType=CHAR},
+      plate_meteringPump_revs = #{plateMeteringpumpRevs,jdbcType=VARCHAR},
+      plate_material_name1 = #{plateMaterialName1,jdbcType=VARCHAR},
+      plate_material_name2 = #{plateMaterialName2,jdbcType=VARCHAR},
+      plate_material_name3 = #{plateMaterialName3,jdbcType=VARCHAR},
+      plate_material_name4 = #{plateMaterialName4,jdbcType=VARCHAR},
+      plate_masterBatch_revs = #{plateMasterbatchRevs,jdbcType=VARCHAR},
+      plate_masterBatch_brand = #{plateMasterbatchBrand,jdbcType=VARCHAR},
+      plate_masterBatch_proportion = #{plateMasterbatchProportion,jdbcType=VARCHAR},
+      plate_membrane_name = #{plateMembraneName,jdbcType=VARCHAR},
+      plate_embossing_name = #{plateEmbossingName,jdbcType=VARCHAR},
+      fk_operationRecords_id = #{fkOperationrecordsId,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where color_id = #{colorId,jdbcType=CHAR}
+  </update>
+</mapper>

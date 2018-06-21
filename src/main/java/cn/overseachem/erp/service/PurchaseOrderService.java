@@ -190,7 +190,7 @@ public class PurchaseOrderService {
     }
 
     public PurchaseOrderSpec getById(Integer id){
-        return specMapper.se
+        return specMapper.selectByPrimaryKey(id);
     }
 
 }

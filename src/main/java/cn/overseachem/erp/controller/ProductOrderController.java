@@ -34,6 +34,8 @@ public class ProductOrderController {
     private PatternService patternService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private ProductCraftService productCraftService;
 
     @RequestMapping("/2lst")
     public String listPage() {
@@ -46,10 +48,10 @@ public class ProductOrderController {
     }
 
     @RequestMapping("/2dtl")
-    public void detailPage(@RequestParam(value = "productNum") String productNum, Model model) {
+    public String detailPage(@RequestParam(value = "productNum") String productNum, Model model) {
         System.out.println(productNum);
         ProductOrder order = productOrderService.getOrderByNum(productNum);
-        System.out.println(order);
+        System.out.println(order.toString());
         List<ProductOrderSpec> specs = productOrderService.getSpecsByNum(productNum);
 
         Boolean isChecked = productOrderService.checkAudition();
@@ -57,10 +59,10 @@ public class ProductOrderController {
         ArrayList<ProductOrderSpecDtlGrid> grids = new ArrayList<ProductOrderSpecDtlGrid>();
         for (ProductOrderSpec s : specs
                 ) {
-            PurchaseOrderSpec purchaseOrderSpec = purchaseOrderService.get(s.getFkBatchNum());
-            grids.add(new ProductOrderSpecDtlGrid(patternService.getNameById(purchaseOrderSpec.getFkPatternId()),
+            PurchaseOrderSpec purchaseOrderSpec = purchaseOrderService.getById(s.getFkPurchaseSpecId());
+            grids.add(new ProductOrderSpecDtlGrid(patternService.getNameById(purchaseOrderSpec.getPatternId()),
                     purchaseOrderSpec.getLength(),purchaseOrderSpec.getWidth(),purchaseOrderSpec.getThickness(),
-                    s.getCompletedAmount(),purchaseOrderSpec.getRequireAmount(),0f,s.getFkBatchNum(),
+                    s.getCompletedAmount(),purchaseOrderSpec.getRequiredAmount(),0f,s.getBatchNum(),
                     s.getStateCode()
             ));
         }
@@ -69,8 +71,14 @@ public class ProductOrderController {
                 order.getMachineNum(),order.getProductNum(),isChecked,userService.getNameById(order.getApproverId()),
                 userService.getNameById(order.getReceiverId()));
         System.out.println(productOrderDtlGrid.toString());
+
+        ProductCraft productCraft = productCraftService.getByColorId(productOrderService.getColorId(order.getProductNum()));
+        PlateCraftDtlGrid plateCraftDtlGrid = new PlateCraftDtlGrid(colorService.getNameById(productCraft.getColorId()),productCraft.getPlateMeteringpumpRevs(),productCraft.getPlateMasterbatchRevs(),
+                productCraft.getPlateMasterbatchBrand(),productCraft.getPlateMembraneName(),productCraft.getPlateEmbossingName());
+
         model.addAttribute("productOrderDtlGrid", productOrderDtlGrid);
         model.addAttribute("productOrderSpecGrids", grids);
+        model.addAttribute("plateCraftDtlGrid",plateCraftDtlGrid);
         return "/product/plate/product_order/dtl";
     }
 
