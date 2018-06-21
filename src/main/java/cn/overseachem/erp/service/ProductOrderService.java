@@ -1,0 +1,105 @@
+package cn.overseachem.erp.service;
+
+
+import cn.overseachem.erp.mapper.*;
+import cn.overseachem.erp.pojo.*;
+import cn.overseachem.erp.utils.AjaxReturn;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+
+/**
+ * Created by Zhihui_Shen on 2018/6/4.
+ */
+@Component
+public class ProductOrderService {
+
+    @Autowired
+    private ProductOrderMapper orderMapper;
+    @Autowired
+    private ProductOrderSpecMapper specMapper;
+
+    public List<ProductOrder> getByCriteria(String purchaseNum, String productNum, String scheduleTime) throws ParseException {
+        ProductOrderExample e = new ProductOrderExample();
+        if (purchaseNum == null) {
+            if (productNum == null) {
+                if (scheduleTime == null) {
+                    e.createCriteria();
+                } else {
+                    e.createCriteria().andScheduleBeginTimeEqualTo(new SimpleDateFormat("yyyy-MM-dd").parse(scheduleTime));
+                }
+            } else {
+                if (scheduleTime == null) {
+                    e.createCriteria().andProductNumLike("%" + productNum + "%");
+                } else {
+                    e.createCriteria().andScheduleBeginTimeEqualTo(new SimpleDateFormat("yyyy-MM-dd").parse(scheduleTime))
+                            .andProductNumLike("%" + productNum + "%");
+                }
+            }
+        } else {
+            if (productNum == null) {
+                if (scheduleTime == null) {
+                    e.createCriteria().andFkPurchaseNumLike("%" + purchaseNum + "%");
+                } else {
+                    e.createCriteria().andFkPurchaseNumLike("%" + purchaseNum + "%").andScheduleBeginTimeEqualTo(new SimpleDateFormat("yyyy-MM-dd").parse(scheduleTime));
+                }
+            } else {
+                if (scheduleTime == null) {
+                    e.createCriteria().andFkPurchaseNumLike("%" + purchaseNum + "%").andProductNumLike("%" + productNum + "%");
+                } else {
+                    e.createCriteria().andFkPurchaseNumLike("%" + purchaseNum + "%").andProductNumLike("%" + productNum + "%").andScheduleBeginTimeEqualTo(new SimpleDateFormat("yyyy-MM-dd").parse(scheduleTime));
+                }
+            }
+        }
+        return orderMapper.selectByExample(e);
+    }
+
+    public void insertOrder(ProductOrder target) {
+        orderMapper.insert(target);
+    }
+
+    public String generateProductNum(String purchaseNum, String colorCode) {
+        return purchaseNum + "#" + colorCode;
+    }
+
+    public void insertSpec(ProductOrderSpec target) {
+        specMapper.insert(target);
+    }
+
+    public Integer getTotalAmount(String productNum) {
+        return orderMapper.getTotalAmountByProductNum(productNum);
+    }
+
+    public Integer getCompletedAmount(String productNum) {
+        return orderMapper.getCompletedAmountByProductNum(productNum);
+    }
+
+    public String getColorId(String productNum){
+        return orderMapper.getColorIdByProductNum(productNum);
+    }
+
+    public ProductOrder getOrderByNum(String productNum){
+        return orderMapper.selectByPrimaryKey(productNum);
+    }
+
+    public List<ProductOrderSpec> getSpecsByNum(String productNum){
+        ProductOrderSpecExample e = new ProductOrderSpecExample();
+        e.createCriteria().andFkProductNumEqualTo(productNum);
+        return specMapper.selectByExample(e);
+    }
+
+    public Boolean checkAudition(){
+        ProductOrderExample e = new ProductOrderExample();
+        e.createCriteria().andApproverIdIsNotNull().andReceiverIdIsNotNull();
+        List<ProductOrder> orderList = orderMapper.selectByExample(e);
+        if(orderList != null && orderList.size()>0)
+            return true;
+        else
+            return false;
+    }
+}

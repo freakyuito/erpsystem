@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.overseachem.erp.mapper.ProductOrderMapper" >
+  <resultMap id="BaseResultMap" type="cn.overseachem.erp.pojo.ProductOrder" >
+    <id column="product_num" property="productNum" jdbcType="VARCHAR" />
+    <result column="fk_purchase_num" property="fkPurchaseNum" jdbcType="VARCHAR" />
+    <result column="machine_num" property="machineNum" jdbcType="INTEGER" />
+    <result column="receiver_id" property="receiverId" jdbcType="INTEGER" />
+    <result column="generate_time" property="generateTime" jdbcType="DATE" />
+    <result column="schedule_begin_time" property="scheduleBeginTime" jdbcType="TIMESTAMP" />
+    <result column="schedule_finish_time" property="scheduleFinishTime" jdbcType="TIMESTAMP" />
+    <result column="approver_id" property="approverId" jdbcType="INTEGER" />
+    <result column="fk_operation_records_id" property="fkOperationRecordsId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    product_num, fk_purchase_num, machine_num, receiver_id, generate_time, schedule_begin_time, 
+    schedule_finish_time, approver_id, fk_operation_records_id
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.overseachem.erp.pojo.ProductOrderExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from product_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from product_order
+    where product_num = #{productNum,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from product_order
+    where product_num = #{productNum,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="cn.overseachem.erp.pojo.ProductOrderExample" >
+    delete from product_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="cn.overseachem.erp.pojo.ProductOrder" >
+    insert into product_order (product_num, fk_purchase_num, machine_num, 
+      receiver_id, generate_time, schedule_begin_time, 
+      schedule_finish_time, approver_id, fk_operation_records_id
+      )
+    values (#{productNum,jdbcType=VARCHAR}, #{fkPurchaseNum,jdbcType=VARCHAR}, #{machineNum,jdbcType=INTEGER}, 
+      #{receiverId,jdbcType=INTEGER}, #{generateTime,jdbcType=DATE}, #{scheduleBeginTime,jdbcType=TIMESTAMP}, 
+      #{scheduleFinishTime,jdbcType=TIMESTAMP}, #{approverId,jdbcType=INTEGER}, #{fkOperationRecordsId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.overseachem.erp.pojo.ProductOrder" >
+    insert into product_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="productNum != null" >
+        product_num,
+      </if>
+      <if test="fkPurchaseNum != null" >
+        fk_purchase_num,
+      </if>
+      <if test="machineNum != null" >
+        machine_num,
+      </if>
+      <if test="receiverId != null" >
+        receiver_id,
+      </if>
+      <if test="generateTime != null" >
+        generate_time,
+      </if>
+      <if test="scheduleBeginTime != null" >
+        schedule_begin_time,
+      </if>
+      <if test="scheduleFinishTime != null" >
+        schedule_finish_time,
+      </if>
+      <if test="approverId != null" >
+        approver_id,
+      </if>
+      <if test="fkOperationRecordsId != null" >
+        fk_operation_records_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="productNum != null" >
+        #{productNum,jdbcType=VARCHAR},
+      </if>
+      <if test="fkPurchaseNum != null" >
+        #{fkPurchaseNum,jdbcType=VARCHAR},
+      </if>
+      <if test="machineNum != null" >
+        #{machineNum,jdbcType=INTEGER},
+      </if>
+      <if test="receiverId != null" >
+        #{receiverId,jdbcType=INTEGER},
+      </if>
+      <if test="generateTime != null" >
+        #{generateTime,jdbcType=DATE},
+      </if>
+      <if test="scheduleBeginTime != null" >
+        #{scheduleBeginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="scheduleFinishTime != null" >
+        #{scheduleFinishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="approverId != null" >
+        #{approverId,jdbcType=INTEGER},
+      </if>
+      <if test="fkOperationRecordsId != null" >
+        #{fkOperationRecordsId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="cn.overseachem.erp.pojo.ProductOrderExample" resultType="java.lang.Integer" >
+    select count(*) from product_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update product_order
+    <set >
+      <if test="record.productNum != null" >
+        product_num = #{record.productNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fkPurchaseNum != null" >
+        fk_purchase_num = #{record.fkPurchaseNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.machineNum != null" >
+        machine_num = #{record.machineNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.receiverId != null" >
+        receiver_id = #{record.receiverId,jdbcType=INTEGER},
+      </if>
+      <if test="record.generateTime != null" >
+        generate_time = #{record.generateTime,jdbcType=DATE},
+      </if>
+      <if test="record.scheduleBeginTime != null" >
+        schedule_begin_time = #{record.scheduleBeginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.scheduleFinishTime != null" >
+        schedule_finish_time = #{record.scheduleFinishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.approverId != null" >
+        approver_id = #{record.approverId,jdbcType=INTEGER},
+      </if>
+      <if test="record.fkOperationRecordsId != null" >
+        fk_operation_records_id = #{record.fkOperationRecordsId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update product_order
+    set product_num = #{record.productNum,jdbcType=VARCHAR},
+      fk_purchase_num = #{record.fkPurchaseNum,jdbcType=VARCHAR},
+      machine_num = #{record.machineNum,jdbcType=INTEGER},
+      receiver_id = #{record.receiverId,jdbcType=INTEGER},
+      generate_time = #{record.generateTime,jdbcType=DATE},
+      schedule_begin_time = #{record.scheduleBeginTime,jdbcType=TIMESTAMP},
+      schedule_finish_time = #{record.scheduleFinishTime,jdbcType=TIMESTAMP},
+      approver_id = #{record.approverId,jdbcType=INTEGER},
+      fk_operation_records_id = #{record.fkOperationRecordsId,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.overseachem.erp.pojo.ProductOrder" >
+    update product_order
+    <set >
+      <if test="fkPurchaseNum != null" >
+        fk_purchase_num = #{fkPurchaseNum,jdbcType=VARCHAR},
+      </if>
+      <if test="machineNum != null" >
+        machine_num = #{machineNum,jdbcType=INTEGER},
+      </if>
+      <if test="receiverId != null" >
+        receiver_id = #{receiverId,jdbcType=INTEGER},
+      </if>
+      <if test="generateTime != null" >
+        generate_time = #{generateTime,jdbcType=DATE},
+      </if>
+      <if test="scheduleBeginTime != null" >
+        schedule_begin_time = #{scheduleBeginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="scheduleFinishTime != null" >
+        schedule_finish_time = #{scheduleFinishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="approverId != null" >
+        approver_id = #{approverId,jdbcType=INTEGER},
+      </if>
+      <if test="fkOperationRecordsId != null" >
+        fk_operation_records_id = #{fkOperationRecordsId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where product_num = #{productNum,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.overseachem.erp.pojo.ProductOrder" >
+    update product_order
+    set fk_purchase_num = #{fkPurchaseNum,jdbcType=VARCHAR},
+      machine_num = #{machineNum,jdbcType=INTEGER},
+      receiver_id = #{receiverId,jdbcType=INTEGER},
+      generate_time = #{generateTime,jdbcType=DATE},
+      schedule_begin_time = #{scheduleBeginTime,jdbcType=TIMESTAMP},
+      schedule_finish_time = #{scheduleFinishTime,jdbcType=TIMESTAMP},
+      approver_id = #{approverId,jdbcType=INTEGER},
+      fk_operation_records_id = #{fkOperationRecordsId,jdbcType=VARCHAR}
+    where product_num = #{productNum,jdbcType=VARCHAR}
+  </update>
+
+  <select id="getTotalAmountByProductNum" parameterType="String" resultType="Integer">
+  SELECT SUM(purchase_order_spec.required_amount)
+  FROM purchase_order_spec INNER JOIN product_order_spec
+  ON purchase_order_spec.spec_id = product_order_spec.fk_purchase_spec_id
+  WHERE product_order_spec.fk_product_num = #{VALUE}
+  </select>
+  <select id="getCompletedAmountByProductNum" parameterType="String" resultType="Integer">
+  SELECT SUM(product_order_spec.completed_amount)
+  FROM purchase_order_spec INNER JOIN product_order_spec
+  ON purchase_order_spec.spec_id = product_order_spec.fk_purchase_spec_id
+  WHERE product_order_spec.fk_product_num = #{VALUE}
+  </select>
+  <select id="getColorIdByProductNum" parameterType="String" resultType="String">
+  SELECT purchase_order_spec.color_id
+  FROM purchase_order_spec JOIN product_order_spec
+  ON purchase_order_spec.spec_id = product_order_spec.fk_purchase_spec_id
+  WHERE product_order_spec.fk_product_num = #{VALUE}
+  GROUP BY purchase_order_spec.color_id
+  </select>
+
+</mapper>

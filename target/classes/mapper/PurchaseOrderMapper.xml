@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.overseachem.erp.mapper.PurchaseOrderMapper" >
+  <resultMap id="BaseResultMap" type="cn.overseachem.erp.pojo.PurchaseOrder" >
+    <id column="purchase_num" property="purchaseNum" jdbcType="VARCHAR" />
+    <result column="customer_id" property="customerId" jdbcType="INTEGER" />
+    <result column="purchase_time" property="purchaseTime" jdbcType="DATE" />
+    <result column="deliver_time" property="deliverTime" jdbcType="DATE" />
+    <result column="supervisor_id" property="supervisorId" jdbcType="INTEGER" />
+    <result column="salesman_id" property="salesmanId" jdbcType="INTEGER" />
+    <result column="producer_id" property="producerId" jdbcType="INTEGER" />
+    <result column="maker_id" property="makerId" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="validity_code" property="validityCode" jdbcType="BIT" />
+    <result column="fk_operation_records_id" property="fkOperationRecordsId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    purchase_num, customer_id, purchase_time, deliver_time, supervisor_id, salesman_id, 
+    producer_id, maker_id, remark, validity_code, fk_operation_records_id
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.overseachem.erp.pojo.PurchaseOrderExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from purchase_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from purchase_order
+    where purchase_num = #{purchaseNum,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from purchase_order
+    where purchase_num = #{purchaseNum,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="cn.overseachem.erp.pojo.PurchaseOrderExample" >
+    delete from purchase_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="cn.overseachem.erp.pojo.PurchaseOrder" >
+    insert into purchase_order (purchase_num, customer_id, purchase_time, 
+      deliver_time, supervisor_id, salesman_id, 
+      producer_id, maker_id, remark, 
+      validity_code, fk_operation_records_id)
+    values (#{purchaseNum,jdbcType=VARCHAR}, #{customerId,jdbcType=INTEGER}, #{purchaseTime,jdbcType=DATE}, 
+      #{deliverTime,jdbcType=DATE}, #{supervisorId,jdbcType=INTEGER}, #{salesmanId,jdbcType=INTEGER}, 
+      #{producerId,jdbcType=INTEGER}, #{makerId,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, 
+      #{validityCode,jdbcType=BIT}, #{fkOperationRecordsId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.overseachem.erp.pojo.PurchaseOrder" >
+    insert into purchase_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="purchaseNum != null" >
+        purchase_num,
+      </if>
+      <if test="customerId != null" >
+        customer_id,
+      </if>
+      <if test="purchaseTime != null" >
+        purchase_time,
+      </if>
+      <if test="deliverTime != null" >
+        deliver_time,
+      </if>
+      <if test="supervisorId != null" >
+        supervisor_id,
+      </if>
+      <if test="salesmanId != null" >
+        salesman_id,
+      </if>
+      <if test="producerId != null" >
+        producer_id,
+      </if>
+      <if test="makerId != null" >
+        maker_id,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="validityCode != null" >
+        validity_code,
+      </if>
+      <if test="fkOperationRecordsId != null" >
+        fk_operation_records_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="purchaseNum != null" >
+        #{purchaseNum,jdbcType=VARCHAR},
+      </if>
+      <if test="customerId != null" >
+        #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="purchaseTime != null" >
+        #{purchaseTime,jdbcType=DATE},
+      </if>
+      <if test="deliverTime != null" >
+        #{deliverTime,jdbcType=DATE},
+      </if>
+      <if test="supervisorId != null" >
+        #{supervisorId,jdbcType=INTEGER},
+      </if>
+      <if test="salesmanId != null" >
+        #{salesmanId,jdbcType=INTEGER},
+      </if>
+      <if test="producerId != null" >
+        #{producerId,jdbcType=INTEGER},
+      </if>
+      <if test="makerId != null" >
+        #{makerId,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="validityCode != null" >
+        #{validityCode,jdbcType=BIT},
+      </if>
+      <if test="fkOperationRecordsId != null" >
+        #{fkOperationRecordsId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="cn.overseachem.erp.pojo.PurchaseOrderExample" resultType="java.lang.Integer" >
+    select count(*) from purchase_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update purchase_order
+    <set >
+      <if test="record.purchaseNum != null" >
+        purchase_num = #{record.purchaseNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.customerId != null" >
+        customer_id = #{record.customerId,jdbcType=INTEGER},
+      </if>
+      <if test="record.purchaseTime != null" >
+        purchase_time = #{record.purchaseTime,jdbcType=DATE},
+      </if>
+      <if test="record.deliverTime != null" >
+        deliver_time = #{record.deliverTime,jdbcType=DATE},
+      </if>
+      <if test="record.supervisorId != null" >
+        supervisor_id = #{record.supervisorId,jdbcType=INTEGER},
+      </if>
+      <if test="record.salesmanId != null" >
+        salesman_id = #{record.salesmanId,jdbcType=INTEGER},
+      </if>
+      <if test="record.producerId != null" >
+        producer_id = #{record.producerId,jdbcType=INTEGER},
+      </if>
+      <if test="record.makerId != null" >
+        maker_id = #{record.makerId,jdbcType=INTEGER},
+      </if>
+      <if test="record.remark != null" >
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.validityCode != null" >
+        validity_code = #{record.validityCode,jdbcType=BIT},
+      </if>
+      <if test="record.fkOperationRecordsId != null" >
+        fk_operation_records_id = #{record.fkOperationRecordsId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update purchase_order
+    set purchase_num = #{record.purchaseNum,jdbcType=VARCHAR},
+      customer_id = #{record.customerId,jdbcType=INTEGER},
+      purchase_time = #{record.purchaseTime,jdbcType=DATE},
+      deliver_time = #{record.deliverTime,jdbcType=DATE},
+      supervisor_id = #{record.supervisorId,jdbcType=INTEGER},
+      salesman_id = #{record.salesmanId,jdbcType=INTEGER},
+      producer_id = #{record.producerId,jdbcType=INTEGER},
+      maker_id = #{record.makerId,jdbcType=INTEGER},
+      remark = #{record.remark,jdbcType=VARCHAR},
+      validity_code = #{record.validityCode,jdbcType=BIT},
+      fk_operation_records_id = #{record.fkOperationRecordsId,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.overseachem.erp.pojo.PurchaseOrder" >
+    update purchase_order
+    <set >
+      <if test="customerId != null" >
+        customer_id = #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="purchaseTime != null" >
+        purchase_time = #{purchaseTime,jdbcType=DATE},
+      </if>
+      <if test="deliverTime != null" >
+        deliver_time = #{deliverTime,jdbcType=DATE},
+      </if>
+      <if test="supervisorId != null" >
+        supervisor_id = #{supervisorId,jdbcType=INTEGER},
+      </if>
+      <if test="salesmanId != null" >
+        salesman_id = #{salesmanId,jdbcType=INTEGER},
+      </if>
+      <if test="producerId != null" >
+        producer_id = #{producerId,jdbcType=INTEGER},
+      </if>
+      <if test="makerId != null" >
+        maker_id = #{makerId,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="validityCode != null" >
+        validity_code = #{validityCode,jdbcType=BIT},
+      </if>
+      <if test="fkOperationRecordsId != null" >
+        fk_operation_records_id = #{fkOperationRecordsId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where purchase_num = #{purchaseNum,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.overseachem.erp.pojo.PurchaseOrder" >
+    update purchase_order
+    set customer_id = #{customerId,jdbcType=INTEGER},
+      purchase_time = #{purchaseTime,jdbcType=DATE},
+      deliver_time = #{deliverTime,jdbcType=DATE},
+      supervisor_id = #{supervisorId,jdbcType=INTEGER},
+      salesman_id = #{salesmanId,jdbcType=INTEGER},
+      producer_id = #{producerId,jdbcType=INTEGER},
+      maker_id = #{makerId,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      validity_code = #{validityCode,jdbcType=BIT},
+      fk_operation_records_id = #{fkOperationRecordsId,jdbcType=VARCHAR}
+    where purchase_num = #{purchaseNum,jdbcType=VARCHAR}
+  </update>
+</mapper>

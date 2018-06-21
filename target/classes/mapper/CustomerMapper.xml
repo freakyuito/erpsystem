@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.overseachem.erp.mapper.CustomerMapper" >
+  <resultMap id="BaseResultMap" type="cn.overseachem.erp.pojo.Customer" >
+    <id column="customer_id" property="customerId" jdbcType="INTEGER" />
+    <result column="abbreviation" property="abbreviation" jdbcType="VARCHAR" />
+    <result column="full_name" property="fullName" jdbcType="VARCHAR" />
+    <result column="company_address" property="companyAddress" jdbcType="VARCHAR" />
+    <result column="telephone_num" property="telephoneNum" jdbcType="VARCHAR" />
+    <result column="fax_num" property="faxNum" jdbcType="VARCHAR" />
+    <result column="deposit_bank" property="depositBank" jdbcType="VARCHAR" />
+    <result column="account_no" property="accountNo" jdbcType="INTEGER" />
+    <result column="tax_num" property="taxNum" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    customer_id, abbreviation, full_name, company_address, telephone_num, fax_num, deposit_bank, 
+    account_no, tax_num
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.overseachem.erp.pojo.CustomerExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from customer
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from customer
+    where customer_id = #{customerId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from customer
+    where customer_id = #{customerId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="cn.overseachem.erp.pojo.CustomerExample" >
+    delete from customer
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="cn.overseachem.erp.pojo.Customer" >
+    insert into customer (customer_id, abbreviation, full_name, 
+      company_address, telephone_num, fax_num, 
+      deposit_bank, account_no, tax_num
+      )
+    values (#{customerId,jdbcType=INTEGER}, #{abbreviation,jdbcType=VARCHAR}, #{fullName,jdbcType=VARCHAR}, 
+      #{companyAddress,jdbcType=VARCHAR}, #{telephoneNum,jdbcType=VARCHAR}, #{faxNum,jdbcType=VARCHAR}, 
+      #{depositBank,jdbcType=VARCHAR}, #{accountNo,jdbcType=INTEGER}, #{taxNum,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.overseachem.erp.pojo.Customer" >
+    insert into customer
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="customerId != null" >
+        customer_id,
+      </if>
+      <if test="abbreviation != null" >
+        abbreviation,
+      </if>
+      <if test="fullName != null" >
+        full_name,
+      </if>
+      <if test="companyAddress != null" >
+        company_address,
+      </if>
+      <if test="telephoneNum != null" >
+        telephone_num,
+      </if>
+      <if test="faxNum != null" >
+        fax_num,
+      </if>
+      <if test="depositBank != null" >
+        deposit_bank,
+      </if>
+      <if test="accountNo != null" >
+        account_no,
+      </if>
+      <if test="taxNum != null" >
+        tax_num,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="customerId != null" >
+        #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="abbreviation != null" >
+        #{abbreviation,jdbcType=VARCHAR},
+      </if>
+      <if test="fullName != null" >
+        #{fullName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyAddress != null" >
+        #{companyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="telephoneNum != null" >
+        #{telephoneNum,jdbcType=VARCHAR},
+      </if>
+      <if test="faxNum != null" >
+        #{faxNum,jdbcType=VARCHAR},
+      </if>
+      <if test="depositBank != null" >
+        #{depositBank,jdbcType=VARCHAR},
+      </if>
+      <if test="accountNo != null" >
+        #{accountNo,jdbcType=INTEGER},
+      </if>
+      <if test="taxNum != null" >
+        #{taxNum,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="cn.overseachem.erp.pojo.CustomerExample" resultType="java.lang.Integer" >
+    select count(*) from customer
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update customer
+    <set >
+      <if test="record.customerId != null" >
+        customer_id = #{record.customerId,jdbcType=INTEGER},
+      </if>
+      <if test="record.abbreviation != null" >
+        abbreviation = #{record.abbreviation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fullName != null" >
+        full_name = #{record.fullName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyAddress != null" >
+        company_address = #{record.companyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.telephoneNum != null" >
+        telephone_num = #{record.telephoneNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.faxNum != null" >
+        fax_num = #{record.faxNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.depositBank != null" >
+        deposit_bank = #{record.depositBank,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accountNo != null" >
+        account_no = #{record.accountNo,jdbcType=INTEGER},
+      </if>
+      <if test="record.taxNum != null" >
+        tax_num = #{record.taxNum,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update customer
+    set customer_id = #{record.customerId,jdbcType=INTEGER},
+      abbreviation = #{record.abbreviation,jdbcType=VARCHAR},
+      full_name = #{record.fullName,jdbcType=VARCHAR},
+      company_address = #{record.companyAddress,jdbcType=VARCHAR},
+      telephone_num = #{record.telephoneNum,jdbcType=VARCHAR},
+      fax_num = #{record.faxNum,jdbcType=VARCHAR},
+      deposit_bank = #{record.depositBank,jdbcType=VARCHAR},
+      account_no = #{record.accountNo,jdbcType=INTEGER},
+      tax_num = #{record.taxNum,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.overseachem.erp.pojo.Customer" >
+    update customer
+    <set >
+      <if test="abbreviation != null" >
+        abbreviation = #{abbreviation,jdbcType=VARCHAR},
+      </if>
+      <if test="fullName != null" >
+        full_name = #{fullName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyAddress != null" >
+        company_address = #{companyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="telephoneNum != null" >
+        telephone_num = #{telephoneNum,jdbcType=VARCHAR},
+      </if>
+      <if test="faxNum != null" >
+        fax_num = #{faxNum,jdbcType=VARCHAR},
+      </if>
+      <if test="depositBank != null" >
+        deposit_bank = #{depositBank,jdbcType=VARCHAR},
+      </if>
+      <if test="accountNo != null" >
+        account_no = #{accountNo,jdbcType=INTEGER},
+      </if>
+      <if test="taxNum != null" >
+        tax_num = #{taxNum,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where customer_id = #{customerId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.overseachem.erp.pojo.Customer" >
+    update customer
+    set abbreviation = #{abbreviation,jdbcType=VARCHAR},
+      full_name = #{fullName,jdbcType=VARCHAR},
+      company_address = #{companyAddress,jdbcType=VARCHAR},
+      telephone_num = #{telephoneNum,jdbcType=VARCHAR},
+      fax_num = #{faxNum,jdbcType=VARCHAR},
+      deposit_bank = #{depositBank,jdbcType=VARCHAR},
+      account_no = #{accountNo,jdbcType=INTEGER},
+      tax_num = #{taxNum,jdbcType=VARCHAR}
+    where customer_id = #{customerId,jdbcType=INTEGER}
+  </update>
+</mapper>

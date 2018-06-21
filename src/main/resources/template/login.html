@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Bootstrap Login Form Template</title>
+
+    <script th:src="@{/js/jquery-3.3.1.js}"></script>
+
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}" />
+    <script th:src="@{/bootstrap/js/bootstrap.js}"></script>
+
+    <link rel="stylesheet" th:href="@{/css/font-awesome.css}"/>
+    <link rel="stylesheet" th:href="@{/css/form-elements.css}"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+
+    <script th:src="@{/js/jquery.backstretch.js}"></script>
+
+</head>
+
+<body>
+
+<!-- Top content -->
+<div class="top-content">
+
+    <div class="inner-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2 text">
+                    <h1><strong>上海吉虞实业</strong>.Corp</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3 form-box">
+                    <div class="form-top">
+                        <div class="form-top-left">
+                            <h3>登陆页面</h3>
+                            <p>输入用户名及密码以登陆:</p>
+                        </div>
+                        <div class="form-top-right">
+                            <i class="fa fa-key"></i>
+                        </div>
+                    </div>
+                    <div class="form-bottom">
+                        <form id="login-form" role="form" action="" method="post" class="login-form">
+                            <div class="form-group">
+                                <label class="sr-only" for="form-username">用户名</label>
+                                <input type="text" name="form-username" placeholder="用户名..." class="form-username form-control" id="form-username"/>
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="form-password">密码</label>
+                                <input type="password" name="form-password" placeholder="密码..." class="form-password form-control" id="form-password"/>
+                            </div>
+                            <button id="submit" type="button" class="btn">登入</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+<script>
+    $(function () {
+
+        $.backstretch("/img/backgrounds/1.jpg");
+
+        $('.login-form input[type="text"], .login-form input[type="password"], .login-form textarea').on('focus', function() {
+            $(this).removeClass('input-error');
+        });
+
+        $('.login-form').on('submit', function(e) {
+
+            $(this).find('input[type="text"], input[type="password"], textarea').each(function(){
+                if( $(this).val() == "" ) {
+                    e.preventDefault();
+                    $(this).addClass('input-error');
+                }
+                else {
+                    $(this).removeClass('input-error');
+                }
+            });
+
+        });
+
+        $("#submit").on("click", function () {
+            $.post('/login/getLoginResult', $("#login-form").serialize(), function (res) {
+                if (!res) {
+                    alert(res.content);
+                    if (res.content == '密码错误') {
+                        $("#password-hint").append("密码错误");
+                    }
+                    if (res.content == '用户名错误') {
+                        $("#username-hint").append("用户名错误");
+                    }
+                } else {
+                    location.href='/all/index/2index';
+                }
+            })
+        })
+    })
+</script>
+</html>
+
+
+<!--<!DOCTYPE html>-->
+<!--<html xmlns="http://www.w3.org/1999/xhtml"-->
+      <!--xmlns:th="http://www.thymeleaf.org">-->
+
+<!--<head>-->
+    <!--<meta charset="utf-8"/>-->
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge"/>-->
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0"/>-->
+
+    <!--<title>登陆</title>-->
+    <!--&lt;!&ndash; Bootstrap Styles&ndash;&gt;-->
+    <!--<script th:src="@{/js/jquery-3.3.1.js}"></script>-->
+    <!--<link th:href="@{/bootstrap/css/bootstrap.css}" rel="stylesheet"></link>-->
+    <!--<script th:src="@{/bootstrap/js/bootstrap.js}"></script>-->
+
+    <!--<script th:src="@{/font-awesome/css/font-awesome.min.css}"></script>-->
+    <!--<script th:src="@{/css/form-elements.css}"></script>-->
+    <!--<script th:src="@{/css/style.css}"></script>-->
+
+    <!--<script th:src="@{/js/jquery.backstretch.min.js}"></script>-->
+    <!--<script th:src="@{/js/scripts.js}"></script>-->
+<!--</head>-->
+
+<!--<body>-->
+<!--&lt;!&ndash; Top content &ndash;&gt;-->
+<!--<div class="top-content">-->
+
+    <!--<div class="inner-bg">-->
+        <!--<div class="container">-->
+            <!--<div class="row">-->
+                <!--<div class="col-sm-8 col-sm-offset-2 text">-->
+                    <!--<h1><strong>上海吉虞实业有限公司</strong></h1>-->
+                    <!--&lt;!&ndash;<div class="description">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<p>&ndash;&gt;-->
+                    <!--&lt;!&ndash;This is a free responsive login form made with Bootstrap.&ndash;&gt;-->
+                    <!--&lt;!&ndash;Download it on <a href="#"><strong>AZMIND</strong></a>, customize and use it as you like!&ndash;&gt;-->
+                    <!--&lt;!&ndash;</p>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="row">-->
+                <!--<div class="col-sm-6 col-sm-offset-3 form-box">-->
+                    <!--<div class="form-bottom">-->
+                        <!--<form id="target" role="form" action="" method="post" class="login-form">-->
+                            <!--<div class="form-group">-->
+                                <!--<label class="sr-only" for="form-username">用户名</label>-->
+                                <!--<input type="text" name="form-username" placeholder="用户名..."-->
+                                       <!--class="form-username form-control" id="form-username"/>-->
+                                <!--<small id="username-hint"></small>-->
+                            <!--</div>-->
+                            <!--<div class="form-group">-->
+                                <!--<label class="sr-only" for="form-password">密码</label>-->
+                                <!--<input type="password" name="form-password" placeholder="密码..."-->
+                                       <!--class="form-password form-control" id="form-password"/>-->
+                                <!--<small id="password-hint"></small>-->
+                            <!--</div>-->
+                            <!--<button id="submit" type="button" class="btn">登入</button>-->
+                        <!--</form>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+
+<!--</div>-->
+
+<!--</body>-->
+
+<!--</html>-->

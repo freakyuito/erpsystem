@@ -1,0 +1,231 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Home Page</title>
+
+    <link th:href="@{/css/custom-styles.css}" rel="stylesheet"/>
+    <link th:href="@{/css/font-awesome.css}" rel="stylesheet"/>
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/bootstrap-datepicker/css/bootstrap-datetimepicker.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/css/custom-styles.css}" rel="stylesheet"/>
+    <link th:href="@{/css/font-awesome.css}" rel="stylesheet"/>
+    <link th:href="@{/bootstrap-select2/css/select2.min.css}" rel="stylesheet" />
+
+</head>
+
+<body>
+
+<!--<nav class="navbar navbar-default top-navbar" role="navigation" th:include="nav_bar::top-nav"></nav>-->
+<!--<nav class="navbar-default navbar-side" role="navigation" th:include="nav_bar::side-nav"></nav>-->
+
+<div id="page-wrapper">
+    <div class="header">
+        <h1 class="page-header">
+            板材订单管理
+            <small>新增板材订单</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#">主页</a></li>
+            <li><a href="#">销售部门</a></li>
+            <li class="active">板材销售</li>
+        </ol>
+    </div>
+
+    <div id="page-inner">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                基础信息
+            </div>
+            <div class="panel-body">
+                <table class="table table-condensed">
+                    <thead>
+                    <tr>
+                        <th style="text-align: center">订单号</th>
+                        <th style="text-align: center">客户名称</th>
+                        <th style="text-align: center">订货日期</th>
+                        <th style="text-align: center">交货日期</th>
+                        <th style="text-align: center">合同号</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td style="text-align: center">
+                            <input class="form-control input-sm" id="purchase-num" oninput="checkPurchaseNum($(this).val(),$(this).next())" onblur="checkPurchaseNum($(this).val(),$(this).next())"/>
+                            <small style="color: red" id="purchase-num-hint"></small>
+                        </td>
+                        <td style="text-align: center">
+                            <select class="form-control customer" id="customer-name">
+                            </select>
+                        </td>
+                        <td style="text-align: center">
+                            <div class="form-group">
+                                <div class="input-group date form_date" data-date=""
+                                     data-date-format="yyyy-MM-dd" data-link-field="dtp_input1"
+                                     data-link-format="yyyy-mm-dd">
+                                    <input  class="form-control" size="16" type="text" th:value="${#dates.format(new java.util.Date().getTime(), 'yyyy-MM-dd')}" readonly="readonly"/>
+                                    <span class="input-group-addon"><span
+                                            class="glyphicon glyphicon-remove"></span></span>
+                                </div>
+                                <input type="hidden" id="dtp_input1" th:value="${#dates.format(new java.util.Date().getTime(), 'yyyy-MM-dd')}"/><br/>
+                            </div>
+                        </td>
+                        <td style="text-align: center">
+                            <div class="form-group">
+                                <div class="input-group date form_date" data-date=""
+                                     data-date-format="yyyy-MM-dd" data-link-field="dtp_input2"
+                                     data-link-format="yyyy-mm-dd">
+                                    <input class="form-control" size="16" type="text" th:value="${#dates.format(new java.util.Date().getTime(), 'yyyy-MM-dd')}" readonly="readonly"/>
+                                    <span class="input-group-addon"><span
+                                            class="glyphicon glyphicon-remove"></span></span>
+                                </div>
+                                <input type="hidden" id="dtp_input2" th:value="${#dates.format(new java.util.Date().getTime(), 'yyyy-MM-dd')}"/><br/>
+                            </div>
+                        </td>
+                        <td style="text-align: center">
+                            <input id="contract-id" class="form-control input-sm" oninput="checkContractId($(this).val(),$(this).next())" onblur="checkPurchaseNum($(this).val(),$(this).next())"/>
+                            <small id="contract-id-hint" style="color: red"></small>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                详细信息
+                <button class="btn btn-primary btn-sm" id="add-spec">添加</button>
+                <small style="color: red" id="spec-hint"></small>
+                <label style="padding-left: 650px">备注</label>
+                <input id="remark" maxlength="100" class="form-control pull-right input-sm" style="width: 200px" placeholder="请填写备注"/>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-hover table-condensed" id="dataTables-example">
+                        <thead>
+                        <tr>
+                            <th style="text-align: center;width: 50px">序号</th>
+                            <th style="text-align: center;width: 150px">纹路</th>
+                            <th style="text-align: center;width: 150px">颜色</th>
+                            <th style="text-align: center">长(mm)</th>
+                            <th style="text-align: center">宽(mm)</th>
+                            <th style="text-align: center">厚(mm)</th>
+                            <th style="text-align: center">数量（张）</th>
+                            <th style="text-align: center">单价(元/kg)</th>
+                            <th style="text-align: center">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody id="table-body">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <div class="col-lg-2">
+                                    <label>导入合同</label>
+                                    <input id="contract-file" type="file"/>
+                                </div>
+                            </td>
+                            <td>
+
+                                <button class="btn btn-primary pull-right" data-toggle="modal"
+                                        data-target="#myModal_submit"><i class="fa fa-upload "></i>提交
+                                </button>
+                                <!-- 模态框（Modal） -->
+                                <div class="modal fade" id="myModal_submit" tabindex="-1" role="dialog"
+                                     aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-hidden="true">
+                                                    &times;
+                                                </button>
+                                                <h4 class="modal-title" id="myModalLabel_submit">
+                                                    提交表单</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                确认提交吗？
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default"
+                                                        data-dismiss="modal">关闭
+                                                </button>
+                                                <button id="submit" class="btn btn-primary">提交</button>
+                                                <input id="maker-id" type="hidden" th:value="${session.userId}"/>
+                                            </div>
+                                        </div><!-- /.modal-content -->
+                                    </div><!-- /.modal -->
+                                </div>
+
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" th:src="@{/js/jquery-3.3.1.js}" charset="UTF-8"></script>
+<script type="text/javascript" th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/jquery.metisMenu.js}"></script>
+<script th:src="@{/js/custom-scripts.js}"></script>
+<script type="text/javascript" th:src="@{/bootstrap-datepicker/js/bootstrap-datetimepicker.js}"
+        charset="UTF-8"></script>
+<script type="text/javascript" th:src="@{/bootstrap-datepicker/js/locales/bootstrap-datetimepicker.zh-CN.js}"
+        charset="UTF-8"></script>
+<script th:src="@{/bootstrap-select2/js/select2.min.js}"></script>
+<script type="text/javascript" th:src="@{/page-js/market_plate_purchase_order_add.js}"></script>
+
+<script th:include="nav_bar::nav-script"></script>
+<script type="text/javascript">
+    $('.form_datetime').datetimepicker({
+        //language:  'fr',
+        weekStart: 1,
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        forceParse: 0,
+        showMeridian: 1
+    });
+    $('.form_date').datetimepicker({
+        language: 'zh-CN',
+        weekStart: 1,
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        minView: 2,
+        forceParse: 0
+    });
+    $('.form_time').datetimepicker({
+        language: 'zh-CN',
+        weekStart: 1,
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 1,
+        minView: 0,
+        maxView: 1,
+        forceParse: 0
+    });
+</script>
+</body>
+</html>

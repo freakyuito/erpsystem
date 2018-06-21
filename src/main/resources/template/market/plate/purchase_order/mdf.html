@@ -1,0 +1,211 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Home Page</title>
+
+    <link th:href="@{/css/custom-styles.css}" rel="stylesheet"/>
+    <link th:href="@{/css/font-awesome.css}" rel="stylesheet"/>
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/bootstrap-datepicker/css/bootstrap-datetimepicker.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/bootstrap3-editable/css/bootstrap-editable.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/css/custom-styles.css}" rel="stylesheet"/>
+    <link th:href="@{/css/font-awesome.css}" rel="stylesheet"/>
+</head>
+
+<body>
+
+<!--<nav class="navbar navbar-default top-navbar" role="navigation" th:include="nav_bar::top-nav"></nav>-->
+<!--<nav class="navbar-default navbar-side" role="navigation" th:include="nav_bar::side-nav"></nav>-->
+
+<div id="page-wrapper">
+    <div class="header">
+        <h1 class="page-header">
+            板材订单管理
+            <small>板材订单明细</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#">主页</a></li>
+            <li><a href="#">销售部门</a></li>
+            <li class="active">板材销售</li>
+        </ol>
+    </div>
+
+    <div id="page-inner">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                基础信息
+            </div>
+            <div class="panel-body">
+                <table class="table table-condensed">
+                    <thead>
+                    <tr>
+                        <th style="text-align: center">订单号</th>
+                        <th style="text-align: center">客户名称</th>
+                        <th style="text-align: center">订货日期</th>
+                        <th style="text-align: center">交货日期</th>
+                        <th style="text-align: center">合同号</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td id="purchase-num" th:text="${purchaseOrderGrid.purchaseNum}" style="text-align: center"></td>
+                        <td th:text="${purchaseOrderGrid.customerName}" style="text-align: center"></td>
+                        <td th:text="${purchaseOrderGrid.purchaseTime}" style="text-align: center"></td>
+                        <td th:text="${purchaseOrderGrid.deliverTime}" style="text-align: center"></td>
+                        <td th:text="${purchaseOrderGrid.contractId}" style="text-align: center"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">产品规格明细</div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover table-condensed" id="dataTables-example">
+                        <thead>
+                        <tr>
+                            <th style="text-align: center">序号</th>
+                            <th style="text-align: center">品名</th>
+                            <th style="text-align: center">颜色</th>
+                            <th style="text-align: center">长（mm）</th>
+                            <th style="text-align: center">宽（mm）</th>
+                            <th style="text-align: center">厚（mm）</th>
+                            <th style="text-align: center">数量（张）</th>
+                            <th style="text-align: center">进度</th>
+                            <th style="text-align: center">估重（kg）</th>
+                            <th style="text-align: center">重量（kg）</th>
+                            <th style="text-align: center">单价（元/kg)</th>
+                            <th style="text-align: center">金额（元）</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="spec,iterStat : ${purchaseOrderSpecGrids}">
+                            <td th:text="${iterStat.index+1}" style="text-align: center"></td>
+                            <td th:text="${spec.patternName}" style="text-align: center">Onions</td>
+                            <td th:text="${spec.colorName}" style="text-align: center">2.41</td>
+                            <td th:text="${spec.length}" style="text-align: center">2.41</td>
+                            <td th:text="${spec.width}" style="text-align: center">2.41</td>
+                            <td th:text="${spec.thickness}" style="text-align: center">2.41</td>
+                            <td style="text-align: center">
+                                <label data-type="text" data-title="Enter username" class="amount" th:text="${spec.amount}" onchange="summation()">
+                                    2.41
+                                </label>
+                            </td>
+                            <td id="process" th:text="${spec.process}" style="text-align: center">2.41</td>
+                            <td id="estimate-weight" th:text="${spec.estimateWeight}" style="text-align: center">2.41</td>
+                            <td id="weight" th:text="${spec.weight}" style="text-align: center">2.41</td>
+                            <td style="text-align: center">
+                                <label data-type="text" data-title="Enter username" class="price" th:text="${spec.price}" onchange="summation()">
+                                    2.41
+                                </label>
+                            </td>
+                            <td id="total-price" th:text="${spec.totalPrice}" style="text-align: center">2.41</td>
+                        </tr>
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <th style="text-align: center" colspan="6">合计</th>
+                            <th id="total-amount" style="text-align: center"></th>
+                            <th id="total-process" style="text-align: center"></th>
+                            <th id="total-estimate" style="text-align: center"></th>
+                            <th id="total-weight" style="text-align: center"></th>
+                            <th style="text-align: center"></th>
+                            <th id="sum-price" style="text-align: center"></th>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+            <div class="panel-footer">
+
+                <button class="btn btn-sm btn-primary pull-right" data-toggle="modal"
+                        data-target="#myModal_cancel"><i class="fa fa-stop "></i>确认修改
+                </button>
+                <!-- 模态框（Modal） -->
+                <div class="modal fade" id="myModal_cancel" tabindex="-1" role="dialog"
+                     aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"
+                                        aria-hidden="true">
+                                    &times;
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel_cancel">
+                                    申请修改请求</h4>
+                            </div>
+                            <div class="modal-body">
+                                请填写修改原因：
+                                <input class="form-control" id="obsolate-reason"/>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default"
+                                        data-dismiss="modal">关闭
+                                </button>
+                                <button type="button" class="btn btn-danger" id="obsolate">提交申请</button>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal -->
+                </div>
+                <label th:text="|备注:${purchaseOrderGrid.remark}|">备注：xxxxxxxxxxxx</label>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript" th:src="@{/js/jquery-3.3.1.js}" charset="UTF-8"></script>
+<script type="text/javascript" th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/jquery.metisMenu.js}"></script>
+<script th:src="@{/js/custom-scripts.js}"></script>
+<script type="text/javascript" th:src="@{/bootstrap3-editable/js/bootstrap-editable.js}"
+        charset="UTF-8"></script>
+<script type="text/javascript" th:src="@{/bootstrap-datepicker/js/bootstrap-datetimepicker.js}"
+        charset="UTF-8"></script>
+<script type="text/javascript" th:src="@{/bootstrap-datepicker/js/locales/bootstrap-datetimepicker.zh-CN.js}"
+        charset="UTF-8"></script>
+<script type="text/javascript" th:src="@{/page-js/market_plate_purchase_order_mdf.js}"></script>
+
+<!--<script th:include="nav_bar::nav-script"></script>-->
+<script type="text/javascript">
+    $('.form_datetime').datetimepicker({
+        //language:  'fr',
+        weekStart: 1,
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        forceParse: 0,
+        showMeridian: 1
+    });
+    $('.form_date').datetimepicker({
+        language: 'zh-CN',
+        weekStart: 1,
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        minView: 2,
+        forceParse: 0
+    });
+    $('.form_time').datetimepicker({
+        language: 'zh-CN',
+        weekStart: 1,
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 1,
+        minView: 0,
+        maxView: 1,
+        forceParse: 0
+    });
+</script>
+</body>
+</html>

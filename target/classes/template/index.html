@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Home Page</title>
+
+    <script th:src="@{/js/jquery-3.3.1.js}"></script>
+    <script th:src="@{/js/jquery.metisMenu.js}"></script>
+
+    <link th:href="@{/bootstrap/css/bootstrap.css}" rel="stylesheet"/>
+    <script th:src="@{/bootstrap/js/bootstrap.js}"></script>
+
+    <link th:href="@{/css/custom-styles.css}" rel="stylesheet"/>
+    <script th:src="@{/js/custom-scripts.js}"></script>
+
+    <link th:href="@{/css/font-awesome.css}" rel="stylesheet"/>
+
+</head>
+
+<body>
+
+<div id="wrapper">
+    <nav class="navbar navbar-default top-navbar" role="navigation" th:include="nav_bar::top-nav"></nav>
+    <nav class="navbar-default navbar-side" role="navigation" th:include="nav_bar::side-nav"></nav>
+
+    <div id="page-wrapper">
+        <div class="header">
+            <h1 class="page-header">
+                Empty Page
+                <small>Create new page.</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Empty</a></li>
+                <li class="active">Data</li>
+            </ol>
+
+        </div>
+    </div>
+</div>
+</body>
+<script th:include="nav_bar::nav-script"></script>
+</html>
