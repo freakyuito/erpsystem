@@ -4,7 +4,7 @@ package cn.overseachem.erp.pojo;
  * Created by Zhihui_Shen on 2018/6/19.
  */
 public class ProductOrderSpecDtlGrid {
-    private String patternName;
+    private String colorName;
     private Integer length;
     private Integer width;
     private Float thickness;
@@ -14,10 +14,14 @@ public class ProductOrderSpecDtlGrid {
     private String batchNum;
     private Integer stateCode;
 
+    public String getColorName() {
+        return colorName;
+    }
+
     @Override
     public String toString() {
         return "ProductOrderSpecDtlGrid{" +
-                "patternName='" + patternName + '\'' +
+                "colorName='" + colorName + '\'' +
                 ", length=" + length +
                 ", width=" + width +
                 ", thickness=" + thickness +
@@ -29,12 +33,20 @@ public class ProductOrderSpecDtlGrid {
                 '}';
     }
 
-    public String getPatternName() {
-        return patternName;
+    public void setColorName(String colorName) {
+        this.colorName = colorName;
     }
 
-    public void setPatternName(String patternName) {
-        this.patternName = patternName;
+    public ProductOrderSpecDtlGrid(String colorName, Integer length, Integer width, Float thickness, Integer completedAmount, Integer requiredAmount, Float estimateWeight, String batchNum, Integer stateCode) {
+        this.colorName = colorName;
+        this.length = length;
+        this.width = width;
+        this.thickness = thickness;
+        this.completedAmount = completedAmount;
+        this.requiredAmount = requiredAmount;
+        this.estimateWeight = estimateWeight;
+        this.batchNum = batchNum;
+        this.stateCode = stateCode;
     }
 
     public Integer getLength() {
@@ -98,19 +110,6 @@ public class ProductOrderSpecDtlGrid {
     }
 
     public void setStateCode(Integer stateCode) {
-        this.stateCode = stateCode;
-    }
-
-    public ProductOrderSpecDtlGrid(String patternName, Integer length, Integer width, Float thickness, Integer completedAmount, Integer requiredAmount, Float estimateWeight, String batchNum, Integer stateCode) {
-
-        this.patternName = patternName;
-        this.length = length;
-        this.width = width;
-        this.thickness = thickness;
-        this.completedAmount = completedAmount;
-        this.requiredAmount = requiredAmount;
-        this.estimateWeight = estimateWeight;
-        this.batchNum = batchNum;
         this.stateCode = stateCode;
     }
 }

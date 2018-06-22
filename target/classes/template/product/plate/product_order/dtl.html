@@ -52,7 +52,7 @@
                             <thead>
                             <tr>
                                 <th style="text-align: center">订单号</th>
-                                <th style="text-align: center">颜色</th>
+                                <th style="text-align: center">品名</th>
                                 <th style="text-align: center">机台</th>
                                 <th style="text-align: center">指令单号</th>
                             </tr>
@@ -60,18 +60,18 @@
                             <tbody>
                             <tr>
                                 <td style="text-align: center">
-                                    <label th:href="@{/market/purchase_order/2dtl(purchaseNum=${productOrderDtlGrid.purchaseNum})}"
+                                    <small th:href="@{/market/purchase_order/2dtl(purchaseNum=${productOrderDtlGrid.purchaseNum})}"
                                        th:text="${productOrderDtlGrid.purchaseNum}">
-                                    </label>
+                                    </small>
                                 </td>
                                 <td style="text-align: center">
-                                    <label th:text="${productOrderDtlGrid.colorName}"></label>
+                                    <small th:text="${productOrderDtlGrid.patternName}"></small>
                                 </td>
                                 <td style="text-align: center">
-                                    <label th:text="${productOrderDtlGrid.machineNum}"></label>
+                                    <small th:text="|${productOrderDtlGrid.machineNum}号机|"></small>
                                 </td>
                                 <td style="text-align: center">
-                                    <label id="product-num" th:text="${productOrderDtlGrid.productNum}"></label>
+                                    <small id="product-num" th:text="${productOrderDtlGrid.productNum}"></small>
                                 </td>
                             </tr>
                             </tbody>
@@ -89,21 +89,22 @@
                                 <thead>
                                 <tr>
                                     <th style="text-align: center">序号</th>
-                                    <th style="text-align: center">纹路</th>
+                                    <th style="text-align: center">颜色</th>
                                     <th style="text-align: center">长(mm)</th>
                                     <th style="text-align: center">宽(mm)</th>
                                     <th style="text-align: center">高(mm)</th>
                                     <th style="text-align: center">进度</th>
                                     <th style="text-align: center">估重/kg</th>
                                     <th style="text-align: center">批号</th>
+                                    <!--<th style="text-align: center" th:if="${productOrderDtlGrid.checked}" style="background-color: green">操作</th>-->
                                     <th style="text-align: center" th:if="${productOrderDtlGrid.checked}">操作</th>
                                     <th style="text-align: center" th:if="${productOrderDtlGrid.checked}">附属单</th>
                                 </tr>
                                 </thead>
                                 <tbody id="table-body">
-                                <tr th:each="spec,iterStat : ${productOrderSpecGrids}" th:class="(${spec.stateCode}==-1)? 'bg-default':((${spec.stateCode}==0)? 'bg-danger' : 'bg-success')">
+                                <tr th:each="spec,iterStat : ${productOrderSpecGrids}" th:style="(${spec.stateCode}==-1)? 'background-color:#F5F5F5':((${spec.stateCode}==0)? 'background-color:#FF3333' : 'background-color:#00FF00')">
                                     <td th:text="${iterStat.index+1}" style="text-align: center">Onions</td>
-                                    <td th:text="${spec.patternName}" style="text-align: center">Onions</td>
+                                    <th th:text="${spec.colorName}" style="text-align: center;">Onions</th>
                                     <td th:text="${spec.length}" style="text-align: center">2.41</td>
                                     <td th:text="${spec.width}" style="text-align: center">2.41</td>
                                     <td th:text="${spec.thickness}" style="text-align: center">2.41</td>
@@ -119,7 +120,7 @@
                                     </td>
                                     <td id="total-price" style="text-align: center"
                                         th:if="${productOrderDtlGrid.checked}">
-                                        <a>装箱单</a>
+                                        <a th:href="@{/product/packing_form/2dtl}">装箱单</a>
                                         <a>质检单</a>
                                     </td>
                                 </tr>
@@ -150,7 +151,7 @@
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td style="text-align: center" th:text="${plateCraftDtlGrid.colorName}">V28蓝色</td>
+                                    <th style="text-align: center" ><a th:text="${plateCraftDtlGrid.colorName}">V28蓝色</a></th>
                                     <td style="text-align: center" th:text="${plateCraftDtlGrid.meteringPumpRevs}">22转
                                     </td>
                                     <td style="text-align: center" th:text="${plateCraftDtlGrid.masterBatchRevs}">22转
@@ -249,7 +250,31 @@
                                                         <h4 class="modal-title" id="myModalLabel_selection">
                                                             确认署名吗</h4>
                                                     </div>
-                                                    <div class="modal-body"></div>
+                                                    <div class="modal-body">
+                                                        <div>
+                                                            <div class="form-group col-sm-6">
+                                                                <label>机长选择：</label>
+                                                                <select class="form-control" id="captain-name">
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group col-sm-6">
+                                                                <label>机台选择：</label>
+                                                                <select class="form-control" id="machine-num">
+                                                                    <option value="1">1 号机</option>
+                                                                    <option value="2">2 号机</option>
+                                                                    <option value="3">3 号机</option>
+                                                                    <option value="4">4 号机</option>
+                                                                    <option value="5">5 号机</option>
+                                                                    <option value="6">6 号机</option>
+                                                                    <option value="7">7 号机</option>
+                                                                    <option value="7">8 号机</option>
+                                                                    <option value="7">9 号机</option>
+                                                                    <option value="7">10 号机</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-default"
                                                                 data-dismiss="modal">关闭

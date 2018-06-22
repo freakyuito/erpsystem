@@ -219,7 +219,7 @@ $(function () {
         info["purchaseTime"] = purchaseTime;
         info["deliverTime"] = deliverTime;
         info["remark"] = remark;
-        info["makerId"] = makerId;
+        info["makerId"] = 3;
         info["contractId"] = contractId;
 
         for (var index in patternList) {

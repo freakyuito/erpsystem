@@ -5,7 +5,7 @@ package cn.overseachem.erp.pojo;
  */
 public class ProductOrderDtlGrid {
     private String purchaseNum;
-    private String colorName;
+    private String patternName;
     private Integer machineNum;
     private String productNum;
     private Boolean checked;
@@ -13,28 +13,29 @@ public class ProductOrderDtlGrid {
     private String receiverName;
     private Boolean begin;
 
-    public ProductOrderDtlGrid(String purchaseNum, String colorName, Integer machineNum, String productNum, Boolean checked, String approvorName, String receiverName, Boolean isBegin) {
+    @Override
+    public String toString() {
+        return "ProductOrderDtlGrid{" +
+                "purchaseNum='" + purchaseNum + '\'' +
+                ", patternName='" + patternName + '\'' +
+                ", machineNum=" + machineNum +
+                ", productNum='" + productNum + '\'' +
+                ", checked=" + checked +
+                ", approvorName='" + approvorName + '\'' +
+                ", receiverName='" + receiverName + '\'' +
+                ", begin=" + begin +
+                '}';
+    }
+
+    public ProductOrderDtlGrid(String purchaseNum, String patternName, Integer machineNum, String productNum, Boolean checked, String approvorName, String receiverName, Boolean begin) {
         this.purchaseNum = purchaseNum;
-        this.colorName = colorName;
+        this.patternName = patternName;
         this.machineNum = machineNum;
         this.productNum = productNum;
         this.checked = checked;
         this.approvorName = approvorName;
         this.receiverName = receiverName;
-        this.begin = isBegin;
-    }
-
-    @Override
-    public String toString() {
-        return "ProductOrderDtlGrid{" +
-                "purchaseNum='" + purchaseNum + '\'' +
-                ", colorName='" + colorName + '\'' +
-                ", machineNum=" + machineNum +
-                ", productNum='" + productNum + '\'' +
-                ", isChecked=" + checked +
-                ", approvorName='" + approvorName + '\'' +
-                ", receiverName='" + receiverName + '\'' +
-                '}';
+        this.begin = begin;
     }
 
     public String getPurchaseNum() {
@@ -45,12 +46,12 @@ public class ProductOrderDtlGrid {
         this.purchaseNum = purchaseNum;
     }
 
-    public String getColorName() {
-        return colorName;
+    public String getPatternName() {
+        return patternName;
     }
 
-    public void setColorName(String colorName) {
-        this.colorName = colorName;
+    public void setPatternName(String patternName) {
+        this.patternName = patternName;
     }
 
     public Integer getMachineNum() {
@@ -74,7 +75,7 @@ public class ProductOrderDtlGrid {
     }
 
     public void setChecked(Boolean checked) {
-        checked = checked;
+        this.checked = checked;
     }
 
     public String getApprovorName() {
@@ -98,6 +99,6 @@ public class ProductOrderDtlGrid {
     }
 
     public void setBegin(Boolean begin) {
-        begin = begin;
+        this.begin = begin;
     }
 }

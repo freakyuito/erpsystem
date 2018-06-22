@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class ProductOrderLstGrid {
     private String purchaseNum;
-    private String colorName;
+    private String patternName;
     private String productNum;
     private Integer machineNum;
     private Integer completedAmount;
@@ -13,9 +13,28 @@ public class ProductOrderLstGrid {
     private String scheduleBeginTime;
     private String scheduleFinishTime;
 
-    public ProductOrderLstGrid(String purchaseNum, String colorName, String productNum, Integer machineNum, Integer completedAmount, Integer totalAmount, Float estimateWeight, String scheduleBeginTime, String scheduleFinishTime) {
+    public String getPurchaseNum() {
+        return purchaseNum;
+    }
+
+    @Override
+    public String toString() {
+        return "ProductOrderLstGrid{" +
+                "purchaseNum='" + purchaseNum + '\'' +
+                ", patternName='" + patternName + '\'' +
+                ", productNum='" + productNum + '\'' +
+                ", machineNum=" + machineNum +
+                ", completedAmount=" + completedAmount +
+                ", totalAmount=" + totalAmount +
+                ", estimateWeight=" + estimateWeight +
+                ", scheduleBeginTime='" + scheduleBeginTime + '\'' +
+                ", scheduleFinishTime='" + scheduleFinishTime + '\'' +
+                '}';
+    }
+
+    public ProductOrderLstGrid(String purchaseNum, String patternName, String productNum, Integer machineNum, Integer completedAmount, Integer totalAmount, Float estimateWeight, String scheduleBeginTime, String scheduleFinishTime) {
         this.purchaseNum = purchaseNum;
-        this.colorName = colorName;
+        this.patternName = patternName;
         this.productNum = productNum;
         this.machineNum = machineNum;
         this.completedAmount = completedAmount;
@@ -25,20 +44,16 @@ public class ProductOrderLstGrid {
         this.scheduleFinishTime = scheduleFinishTime;
     }
 
-    public String getPurchaseNum() {
-        return purchaseNum;
-    }
-
     public void setPurchaseNum(String purchaseNum) {
         this.purchaseNum = purchaseNum;
     }
 
-    public String getColorName() {
-        return colorName;
+    public String getPatternName() {
+        return patternName;
     }
 
-    public void setColorName(String colorName) {
-        this.colorName = colorName;
+    public void setPatternName(String patternName) {
+        this.patternName = patternName;
     }
 
     public String getProductNum() {
@@ -64,7 +79,6 @@ public class ProductOrderLstGrid {
     public void setCompletedAmount(Integer completedAmount) {
         this.completedAmount = completedAmount;
     }
-
 
     public Integer getTotalAmount() {
         return totalAmount;
@@ -96,20 +110,5 @@ public class ProductOrderLstGrid {
 
     public void setScheduleFinishTime(String scheduleFinishTime) {
         this.scheduleFinishTime = scheduleFinishTime;
-    }
-
-    @Override
-    public String toString() {
-        return "ProductOrderLstGrid{" +
-                "purchaseNum='" + purchaseNum + '\'' +
-                ", colorName='" + colorName + '\'' +
-                ", productNum='" + productNum + '\'' +
-                ", machineNum=" + machineNum +
-                ", completedAmount=" + completedAmount +
-                ", totalAmount=" + totalAmount +
-                ", estimateWeight=" + estimateWeight +
-                ", scheduleBeginTime='" + scheduleBeginTime + '\'' +
-                ", scheduleFinishTime='" + scheduleFinishTime + '\'' +
-                '}';
     }
 }

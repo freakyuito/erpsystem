@@ -58,4 +58,10 @@ public class UserService {
         }
         return null;
     }
+
+    public List<User> getAllCaptain() {
+        UserExample e = new UserExample();
+        e.createCriteria().andFkAuthoritiesIdLike("%" + "BC" + "%").andFkAuthoritiesIdNotLike("%" + "BCP" + "%").andFkAuthoritiesIdNotLike("%" + "BCJ" + "%");
+        return userMapper.selectByExample(e);
+    }
 }

@@ -83,6 +83,10 @@ public class ProductOrderService {
         return orderMapper.getColorIdByProductNum(productNum);
     }
 
+    public String getPatternId(String productNum) {
+        return orderMapper.getPatternIdByProductNum(productNum);
+    }
+
     public ProductOrder getOrderByNum(String productNum) {
         return orderMapper.selectByPrimaryKey(productNum);
     }

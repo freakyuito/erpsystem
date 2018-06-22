@@ -19,7 +19,7 @@ function search() {
                     '<tr>' +
                     '<td style="text-align: center">' + (index + 1) + '</td>' +
                     '<td style="text-align: center"><a href="/market/purchase_order/2dtl?purchaseNum=' + obj.purchaseNum + '">' + obj.purchaseNum + '</a></td>' +
-                    '<td style="text-align: center">' + obj.colorName + '</td>' +
+                    '<td style="text-align: center">' + obj.patternName + '</td>' +
                     '<td style="text-align: center"><a href="/product/product_order/2dtl?productNum=' + link + '">' + obj.productNum + '</a></td>' +
                     '<td style="text-align: center">' + obj.machineNum + '</td>' +
                     '<td style="text-align: center">' + obj.completedAmount + '/' + obj.totalAmount + '</td>' +

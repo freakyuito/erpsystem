@@ -36,4 +36,6 @@ public interface ProductOrderMapper {
     Integer getCompletedAmountByProductNum(String productNum);
 
     String getColorIdByProductNum(String productNum);
+
+    String getPatternIdByProductNum(String productNum);
 }

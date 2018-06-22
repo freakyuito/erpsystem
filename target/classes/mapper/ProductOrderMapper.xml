@@ -293,5 +293,12 @@
   WHERE product_order_spec.fk_product_num = #{VALUE}
   GROUP BY purchase_order_spec.color_id
   </select>
+  <select id="getPatternIdByProductNum" parameterType="String" resultType="String">
+    SELECT purchase_order_spec.pattern_id
+    FROM purchase_order_spec JOIN product_order_spec
+    ON purchase_order_spec.spec_id = product_order_spec.fk_purchase_spec_id
+    WHERE product_order_spec.fk_product_num = #{VALUE}
+    GROUP BY purchase_order_spec.pattern_id
+  </select>
 
 </mapper>

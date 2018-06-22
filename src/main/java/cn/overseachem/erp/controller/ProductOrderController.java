@@ -61,25 +61,25 @@ public class ProductOrderController {
         for (ProductOrderSpec s : specs
                 ) {
             PurchaseOrderSpec purchaseOrderSpec = purchaseOrderService.getById(s.getFkPurchaseSpecId());
-            grids.add(new ProductOrderSpecDtlGrid(patternService.getNameById(purchaseOrderSpec.getPatternId()),
-                    purchaseOrderSpec.getLength(),purchaseOrderSpec.getWidth(),purchaseOrderSpec.getThickness(),
-                    s.getCompletedAmount(),purchaseOrderSpec.getRequiredAmount(),0f,s.getBatchNum(),
+            grids.add(new ProductOrderSpecDtlGrid(colorService.getNameById(purchaseOrderSpec.getColorId()) + " " + purchaseOrderSpec.getColorId(),
+                    purchaseOrderSpec.getLength(), purchaseOrderSpec.getWidth(), purchaseOrderSpec.getThickness(),
+                    s.getCompletedAmount(), purchaseOrderSpec.getRequiredAmount(), 0f, s.getBatchNum(),
                     s.getStateCode()
             ));
         }
         ProductOrderDtlGrid productOrderDtlGrid = new ProductOrderDtlGrid(order.getFkPurchaseNum(),
-                colorService.getNameById(productOrderService.getColorId(order.getProductNum())),
-                order.getMachineNum(),order.getProductNum(),isChecked,userService.getNameById(order.getApproverId()),
-                userService.getNameById(order.getReceiverId()),isBegin);
+                patternService.getNameById(productOrderService.getPatternId(order.getProductNum())),
+                order.getMachineNum(), order.getProductNum(), isChecked, userService.getNameById(order.getApproverId()),
+                userService.getNameById(order.getReceiverId()), isBegin);
         System.out.println(productOrderDtlGrid.toString());
 
         ProductCraft productCraft = productCraftService.getByColorId(productOrderService.getColorId(order.getProductNum()));
-        PlateCraftDtlGrid plateCraftDtlGrid = new PlateCraftDtlGrid(colorService.getNameById(productCraft.getColorId()),productCraft.getPlateMeteringpumpRevs(),productCraft.getPlateMasterbatchRevs(),
-                productCraft.getPlateMasterbatchBrand(),productCraft.getPlateMembraneName(),productCraft.getPlateEmbossingName());
+        PlateCraftDtlGrid plateCraftDtlGrid = new PlateCraftDtlGrid(colorService.getNameById(productCraft.getColorId()) + " " + productCraft.getColorId(), productCraft.getPlateMeteringpumpRevs(), productCraft.getPlateMasterbatchRevs(),
+                productCraft.getPlateMasterbatchBrand(), productCraft.getPlateMembraneName(), productCraft.getPlateEmbossingName());
 
         model.addAttribute("productOrderDtlGrid", productOrderDtlGrid);
         model.addAttribute("productOrderSpecGrids", grids);
-        model.addAttribute("plateCraftDtlGrid",plateCraftDtlGrid);
+        model.addAttribute("plateCraftDtlGrid", plateCraftDtlGrid);
         return "/product/plate/product_order/dtl";
     }
 
@@ -107,28 +107,35 @@ public class ProductOrderController {
     }
 
     private ProductOrderLstGrid generateLstGrid(ProductOrder target) {
-        String colorId = productOrderService.getColorId(target.getProductNum());
+        String patternId = productOrderService.getPatternId(target.getProductNum());
         Integer totalAmount = productOrderService.getTotalAmount(target.getProductNum());
         Integer completedAmount = productOrderService.getCompletedAmount(target.getProductNum());
         String scheduleBeginTime = null;
         String scheduleEndTime = null;
-        if(target.getScheduleBeginTime() !=null)
+        if (target.getScheduleBeginTime() != null)
             scheduleBeginTime = new SimpleDateFormat("yyyy-MM-dd").format(target.getScheduleBeginTime());
-        if(target.getScheduleFinishTime() != null)
+        if (target.getScheduleFinishTime() != null)
             scheduleEndTime = new SimpleDateFormat("yyyy-MM-dd").format(target.getScheduleFinishTime());
-        return new ProductOrderLstGrid(target.getFkPurchaseNum(),colorService.getNameById(colorId),target.getProductNum(),
-                target.getMachineNum(),completedAmount,totalAmount,0f,
-                scheduleBeginTime,scheduleEndTime);
+        return new ProductOrderLstGrid(target.getFkPurchaseNum(), patternService.getNameById(patternId), target.getProductNum(),
+                target.getMachineNum(), completedAmount, totalAmount, 0f,
+                scheduleBeginTime, scheduleEndTime);
     }
 
     @RequestMapping("/set_state_code")
     @ResponseBody
-    public void setStateCode(Integer curState,String batchNum){
-        switch (curState){
-            case -1:productOrderService.setStateCode(1,batchNum);break;
-            case 0:productOrderService.setStateCode(1,batchNum);break;
-            case 1:productOrderService.setStateCode(0,batchNum);break;
-            default:break;
+    public void setStateCode(Integer curState, String batchNum) {
+        switch (curState) {
+            case -1:
+                productOrderService.setStateCode(1, batchNum);
+                break;
+            case 0:
+                productOrderService.setStateCode(1, batchNum);
+                break;
+            case 1:
+                productOrderService.setStateCode(0, batchNum);
+                break;
+            default:
+                break;
         }
     }
 }
