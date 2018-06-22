@@ -120,4 +120,15 @@ public class ProductOrderController {
                 target.getMachineNum(),completedAmount,totalAmount,0f,
                 scheduleBeginTime,scheduleEndTime);
     }
+
+    @RequestMapping("/set_state_code")
+    @ResponseBody
+    public void setStateCode(Integer curState,String batchNum){
+        switch (curState){
+            case -1:productOrderService.setStateCode(1,batchNum);break;
+            case 0:productOrderService.setStateCode(1,batchNum);break;
+            case 1:productOrderService.setStateCode(0,batchNum);break;
+            default:break;
+        }
+    }
 }

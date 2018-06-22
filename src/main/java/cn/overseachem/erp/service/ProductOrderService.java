@@ -106,10 +106,17 @@ public class ProductOrderService {
     public Boolean isBegin(String productNum) {
         ProductOrderSpecExample e = new ProductOrderSpecExample();
         e.createCriteria().andFkProductNumEqualTo(productNum).andStateCodeGreaterThan(-1);
-        if(specMapper.countByExample(e)>0){
+        if (specMapper.countByExample(e) > 0) {
             return true;
-        }else{
+        } else {
             return false;
         }
+    }
+
+    public void setStateCode(Integer stateCode, String batchNum) {
+        System.out.println("set_state_code_batchnum=" + batchNum);
+        ProductOrderSpec spec = specMapper.selectByPrimaryKey(batchNum);
+        spec.setStateCode(stateCode);
+        specMapper.updateByPrimaryKey(spec);
     }
 }

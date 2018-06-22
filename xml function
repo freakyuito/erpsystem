@@ -1,0 +1,7 @@
+<select id="countInMonth" resultType="Integer">
+    SELECT COUNT(*) FROM product_order_spec
+    INNER JOIN product_order
+    ON product_order.product_num = product_order_spec.fk_product_num
+    WHERE product_order.generate_time
+    BETWEEN #{monthBegin} AND #{monthEnd}
+  </select>

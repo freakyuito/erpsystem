@@ -208,7 +208,6 @@
       fk_purchase_spec_id = #{fkPurchaseSpecId,jdbcType=INTEGER}
     where batch_num = #{batchNum,jdbcType=VARCHAR}
   </update>
-  
   <select id="countInMonth" resultType="Integer">
     SELECT COUNT(*) FROM product_order_spec
     INNER JOIN product_order

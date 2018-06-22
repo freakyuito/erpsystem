@@ -60,18 +60,18 @@
                             <tbody>
                             <tr>
                                 <td style="text-align: center">
-                                    <a th:href="@{/market/purchase_order/2dtl(purchaseNum=${productOrderDtlGrid.purchaseNum})}"
+                                    <label th:href="@{/market/purchase_order/2dtl(purchaseNum=${productOrderDtlGrid.purchaseNum})}"
                                        th:text="${productOrderDtlGrid.purchaseNum}">
-                                    </a>
+                                    </label>
                                 </td>
                                 <td style="text-align: center">
-                                    <a th:text="${productOrderDtlGrid.colorName}"></a>
+                                    <label th:text="${productOrderDtlGrid.colorName}"></label>
                                 </td>
                                 <td style="text-align: center">
-                                    <a th:text="${productOrderDtlGrid.machineNum}"></a>
+                                    <label th:text="${productOrderDtlGrid.machineNum}"></label>
                                 </td>
                                 <td style="text-align: center">
-                                    <a th:text="${productOrderDtlGrid.productNum}"></a>
+                                    <label id="product-num" th:text="${productOrderDtlGrid.productNum}"></label>
                                 </td>
                             </tr>
                             </tbody>
@@ -101,7 +101,7 @@
                                 </tr>
                                 </thead>
                                 <tbody id="table-body">
-                                <tr th:each="spec,iterStat : ${productOrderSpecGrids}" th:if="${spec.stateCode} == 1" style="background-color: lightgreen">
+                                <tr th:each="spec,iterStat : ${productOrderSpecGrids}" th:class="(${spec.stateCode}==-1)? 'bg-default':((${spec.stateCode}==0)? 'bg-danger' : 'bg-success')">
                                     <td th:text="${iterStat.index+1}" style="text-align: center">Onions</td>
                                     <td th:text="${spec.patternName}" style="text-align: center">Onions</td>
                                     <td th:text="${spec.length}" style="text-align: center">2.41</td>
@@ -111,50 +111,11 @@
                                         style="text-align: center">2.41
                                     </td>
                                     <td th:text="${spec.estimateWeight}" style="text-align: center">2.41</td>
-                                    <td th:text="${spec.batchNum}" style="text-align: center">2.41</td>
+                                    <td id="batch-num" th:text="${spec.batchNum}" style="text-align: center">2.41</td>
                                     <td style="text-align: center" th:if="${productOrderDtlGrid.checked}">
-                                        <btn class="btn btn-warning">暂停</btn>
-                                    </td>
-                                    <td id="total-price" style="text-align: center"
-                                        th:if="${productOrderDtlGrid.checked}">
-                                        <a>装箱单</a>
-                                        <a>质检单</a>
-                                    </td>
-                                </tr>
-
-                                <tr th:each="spec,iterStat : ${productOrderSpecGrids}" th:if="${spec.stateCode} == 0" style="background-color: orange">
-                                    <td th:text="${iterStat.index+1}" style="text-align: center">Onions</td>
-                                    <td th:text="${spec.patternName}" style="text-align: center">Onions</td>
-                                    <td th:text="${spec.length}" style="text-align: center">2.41</td>
-                                    <td th:text="${spec.width}" style="text-align: center">2.41</td>
-                                    <td th:text="${spec.thickness}" style="text-align: center">2.41</td>
-                                    <td th:text="|${spec.completedAmount}/${spec.requiredAmount}"
-                                        style="text-align: center">2.41
-                                    </td>
-                                    <td th:text="${spec.estimateWeight}" style="text-align: center">2.41</td>
-                                    <td th:text="${spec.batchNum}" style="text-align: center">2.41</td>
-                                    <td style="text-align: center" th:if="${productOrderDtlGrid.checked}">
-                                        <btn class="btn btn-success">继续</btn>
-                                    </td>
-                                    <td id="total-price" style="text-align: center"
-                                        th:if="${productOrderDtlGrid.checked}">
-                                        <a>装箱单</a>
-                                        <a>质检单</a>
-                                    </td>
-                                </tr>
-                                <tr th:each="spec,iterStat : ${productOrderSpecGrids}" th:if="${spec.stateCode} == -1" style="background-color: ghostwhite">
-                                    <td th:text="${iterStat.index+1}" style="text-align: center">Onions</td>
-                                    <td th:text="${spec.patternName}" style="text-align: center">Onions</td>
-                                    <td th:text="${spec.length}" style="text-align: center">2.41</td>
-                                    <td th:text="${spec.width}" style="text-align: center">2.41</td>
-                                    <td th:text="${spec.thickness}" style="text-align: center">2.41</td>
-                                    <td th:text="|${spec.completedAmount}/${spec.requiredAmount}"
-                                        style="text-align: center">2.41
-                                    </td>
-                                    <td th:text="${spec.estimateWeight}" style="text-align: center">2.41</td>
-                                    <td th:text="${spec.batchNum}" style="text-align: center">2.41</td>
-                                    <td style="text-align: center" th:if="${productOrderDtlGrid.checked}">
-                                        <btn class="btn btn-primary">开始</btn>
+                                        <btn class="btn btn-info" th:if="${spec.stateCode}==-1" onclick="setStateCode(-1,$(this).parent().parent().find('#batch-num').eq(0).text())">开始</btn>
+                                        <btn class="btn btn-success" th:if="${spec.stateCode}==0" onclick="setStateCode(0,$(this).parent().parent().find('#batch-num').eq(0).text())">继续</btn>
+                                        <btn class="btn btn-warning" th:if="${spec.stateCode}==1" onclick="setStateCode(1,$(this).parent().parent().find('#batch-num').eq(0).text())">暂停</btn>
                                     </td>
                                     <td id="total-price" style="text-align: center"
                                         th:if="${productOrderDtlGrid.checked}">
@@ -273,7 +234,7 @@
                                         </div>
 
                                         <button th:if="${productOrderDtlGrid.begin}" class="btn btn-primary btn-sm" data-toggle="modal"
-                                                data-target="#myModal_selection"><i class="fa fa-edit "></i>选择机台和几张
+                                                data-target="#myModal_selection"><i class="fa fa-edit "></i>选择机台和机长
                                         </button>
                                         <!-- 模态框（Modal） -->
                                         <div class="modal fade" id="myModal_selection" tabindex="-1" role="dialog"
@@ -384,4 +345,5 @@
 <script type="text/javascript" th:src="@{/bootstrap-datepicker/js/locales/bootstrap-datetimepicker.zh-CN.js}"
         charset="UTF-8"></script>
 <script th:src="@{/bootstrap-select2/js/select2.min.js}"></script>
+<script type="text/javascript" th:src="@{/page-js/product_plate_product_order_dtl.js}"></script>
 </html>
