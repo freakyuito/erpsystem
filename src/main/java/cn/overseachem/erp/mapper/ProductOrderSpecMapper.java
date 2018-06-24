@@ -3,9 +3,11 @@ package cn.overseachem.erp.mapper;
 import cn.overseachem.erp.pojo.ProductOrderSpec;
 import cn.overseachem.erp.pojo.ProductOrderSpecExample;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public interface ProductOrderSpecMapper {
     int countByExample(ProductOrderSpecExample example);
 

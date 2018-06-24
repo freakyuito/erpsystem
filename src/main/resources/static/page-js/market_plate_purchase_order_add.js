@@ -1,4 +1,11 @@
 $(function () {
+    var patternList, colorList;
+    $.post('/universal/pattern/get_all', {}, function (res) {
+        patternList = res;
+    })
+    $.post('/universal/color/get_all', {}, function (res) {
+        colorList = res;
+    })
     $.post('/universal/customer/get_all', {}, function (res) {
         var s = $(".customer");
         $.each(res, function (index, obj) {
@@ -7,12 +14,23 @@ $(function () {
     })
     $("#add-spec").on('click', function () {
         $("#spec-hint").empty();
+        var $table = $('#table-body');
+        var $lastRow = $("#table-body>tr:last-child");
+        var patternVal, colorVal, lengthVal, widthVal, thicknessVal, amountVal;
+        if ($table.children().length > 0) {
+            // patternVal = $lastRow.find('select.pattern').last().children('option:selected').val();
+            // colorVal = $lastRow.find('select.color;last').children('option:selected').val();
+            lengthVal = $("#table-body>tr:last-child input.length").val();
+            widthVal = $("#table-body>tr:last-child input.width").val();
+            thicknessVal = $("#table-body>tr:last-child input.thickness").val();
+            amountVal = $("#table-body>tr:last-child input.amount").val();
+        }
         $("#table-body").append(
             '<tr class="information">' +
             '                            <td style="text-align: center" id="index">' + ($("#table-body").children().length + 1) + '</td>' +
             '                            <td style="text-align: center">' +
             '                                <div class="form-group-sm">' +
-            '                                    <select class="form-control" id="pattern">' +
+            '                                    <select class="form-control pattern">' +
             '                                    </select>' +
             '                                </div>' +
             '                            </td>' +
@@ -22,63 +40,66 @@ $(function () {
             '                                    </select>' +
             '                                </div>' +
             '                            </td>' +
-            '                            <td style="text-align: center">' +
+            '                            <td style="text-align: center" >' +
             '<div class="form-group-sm"> ' +
-            '<input type="number" onblur="checkLength($(this).val(),$(this).next())" class="form-control input-sm length" style="text-align: center"/>' +
+            '<input type="number" onblur="checkLength($(this).val(),$(this).next())" class="form-control input-sm length" style="text-align: center" value="' + lengthVal + '"/>' +
             '<small class="hint" style="color: red"></small>' +
             '                               </div>' +
             '                            </td>' +
             '                            <td style="text-align: center">' +
             '<div class="form-group-sm"> ' +
-            '<input type="number" onblur="checkWidth($(this).val(),$(this).next())" class="form-control input-sm width" style="text-align: center"/>' +
+            '<input type="number" onblur="checkWidth($(this).val(),$(this).next())" class="form-control input-sm width" style="text-align: center" value="' + widthVal + '"/>' +
             '<small class="hint" style="color: red"></small>' +
             '                               </div>' +
             '                            </td>' +
             '                            <td style="text-align: center">' +
             '<div class="form-group-sm"> ' +
-            '<input type="number" onblur="checkThickness($(this).val(),$(this).next())" class="form-control input-sm thickness" style="text-align: center"/>' +
+            '<input type="number" onblur="checkThickness($(this).val(),$(this).next())" class="form-control input-sm thickness" style="text-align: center" value="' + thicknessVal + '"/>' +
             '<small class="hint" style="color: red"></small>' +
             '                               </div>' +
             '                            </td>' +
             '                            <td style="text-align: center">' +
-            '<div class="form-group-sm"> ' +
-            '<input type="number" onblur="checkAmount($(this).val(),$(this).next())" class="form-control input-sm amount" style="text-align: center"/>' +
+            '<div class="form-group-sm">' +
+            '<input type="number" onblur="checkAmount($(this).val(),$(this).next())" class="form-control input-sm amount" style="text-align: center" value="' + amountVal + '"/>' +
             '<small class="hint" style="color: red"></small>' +
-            '                               </div>' +
-            '                            </td>' +
-            '                            <td style="text-align: center">' +
-            '<div class="form-group-sm"> ' +
-            '<input type="number" onblur="checkPrice($(this).val(),$(this).next())" class="form-control input-sm price" style="text-align: center"/>' +
-            '<small class="hint" style="color: red"></small>' +
-            '                               </div>' +
-            '                            </td>' +
+            '</div>' +
+            '</td>' +
+            // '                            <td style="text-align: center">' +
+            // '<div class="form-group-sm"> ' +
+            // '<input type="number" onblur="checkPrice($(this).val(),$(this).next())" class="form-control input-sm price" style="text-align: center"/>' +
+            // '<small class="hint" style="color: red"></small>' +
+            // '                               </div>' +
+            // '                            </td>' +
             '                            <td style="text-align: center">' +
             '                                <button class="btn btn-danger btn-sm remove">删除</button>' +
             '                            </td>' +
             '                        </tr>'
         );
-        $.post('/universal/pattern/get_all', {}, function (res) {
-            var s = $("#table-body").children().eq($("#table-body").children().length - 1).find("#pattern");
-            $.each(res, function (index, obj) {
-                s.append('<option value="' + obj.patternId + '">' + obj.patternName + obj.patternId + '</option>')
-            })
+
+        var $patternSelect = $("#table-body:last-child").find("select.pattern");
+        $.each(patternList, function (index, obj) {
+            $patternSelect.append('<option value="' + obj.patternId + '">' + obj.patternName + obj.patternId + '</option>')
         })
-        $.post('/universal/color/get_all', {}, function (res) {
-            var s = $("#table-body").children().eq($("#table-body").children().length - 1).find("select.color").first();
-            $.each(res, function (index, obj) {
-                s.append('<option value="' + obj.colorId + '">' + obj.colorId + obj.colorName + '</option>')
-            })
-            s.trigger('change');
-            s.select2();
+        $("#table-body>tr:last-child select.pattern").children('option:selected').val(patternVal);
+
+        var $colorSelect = $("#table-body:last-child").find("select.color");
+        $.each(colorList, function (index, obj) {
+            $colorSelect.append('<option value="' + obj.colorId + '">' + obj.colorId + obj.colorName + '</option>')
         })
+        $colorSelect.trigger('change');
+        $colorSelect.select2();
+        $("#table-body>tr:last-child select.color").children('option:selected').val(colorVal);
+
         $("button.remove").on("click", function () {
             $(this).parent().parent().remove();
             $("td#index").each(function (index) {
                 $(this).empty();
                 $(this).append(index + 1);
             })
-            if ($(".information").length == 0)
+            if ($(".information").length == 0) {
+                $('#spec-hint').empty();
                 $("#spec-hint").append('至少添加一项条目');
+            }
         })
     })
     $("#submit").on("click", function () {
@@ -110,6 +131,7 @@ $(function () {
         }
 
         if ($(".information").length == 0) {
+            $('#spec-hint').empty();
             $("#spec-hint").append('至少添加一项条目');
             stop = true;
         }
@@ -162,7 +184,7 @@ $(function () {
             if (v == "") {
                 stop = true;
             } else {
-                if (v > 3 || v < 1) {
+                if (v > 4 || v < 1) {
                     stop = true;
                 } else {
                     if (!/^[0-9](.[0-9])?$/.test(v)) {
@@ -191,23 +213,23 @@ $(function () {
                 }
             }
         })
-        $(".price").each(function (index) {
-            var v = $(this).val();
-            if (v == "") {
-                stop = true;
-            } else {
-                if (v > 30 || v < 1) {
-                    stop = true;
-                } else {
-                    if (!/^[0-9]+(.[0-9])?$/.test(v)) {
-                        stop = true;
-                        alert('price error');
-                    } else {
-                        priceList.push(v);
-                    }
-                }
-            }
-        })
+        // $(".price").each(function (index) {
+        //     var v = $(this).val();
+        //     if (v == "") {
+        //         stop = true;
+        //     } else {
+        //         if (v > 30 || v < 1) {
+        //             stop = true;
+        //         } else {
+        //             if (!/^[0-9]+(.[0-9])?$/.test(v)) {
+        //                 stop = true;
+        //                 alert('price error');
+        //             } else {
+        //                 priceList.push(v);
+        //             }
+        //         }
+        //     }
+        // })
         if (stop) {
             alert('内容有不合法项，请检查后提交');
             return false;
@@ -220,7 +242,7 @@ $(function () {
         info["deliverTime"] = deliverTime;
         info["remark"] = remark;
         info["makerId"] = 3;
-        info["contractId"] = contractId;
+        // info["contractId"] = contractId;
 
         for (var index in patternList) {
             info["pattern_" + index] = patternList[index];
@@ -240,24 +262,25 @@ $(function () {
         for (var index in amountList) {
             info["amount_" + index] = amountList[index];
         }
-        for (var index in priceList) {
-            info["price_" + index] = priceList[index];
-        }
+        // for (var index in priceList) {
+        //     info["price_" + index] = priceList[index];
+        // }
         $.post('/market/purchase_order/insert_order', info, function (res1) {
             if (res1.status) {
-                if (contractFiles.length > 0) {
-                    var reader = new FileReader();//新建一个FileReader
-                    reader.readAsText(contractFiles[0], "UTF-8");//读取文件
-                    reader.onload = function (evt) { //读取完文件之后会回来这里
-                        var fileString = evt.target.result;
-                        info["contractFile"] = fileString;
-                    }
-                }
-                $.post('/universal/contract/insert_contract', info, function (res2) {
-                    if (res2.status) {
-                        location.href = '/market/purchase_order/2lst';
-                    }
-                })
+                location.href = '/market/purchase_order/2lst';
+                // if (contractFiles.length > 0) {
+                //     var reader = new FileReader();//新建一个FileReader
+                //     reader.readAsText(contractFiles[0], "UTF-8");//读取文件
+                //     reader.onload = function (evt) { //读取完文件之后会回来这里
+                //         var fileString = evt.target.result;
+                //         info["contractFile"] = fileString;
+                //     }
+                // }
+                // $.post('/universal/contract/insert_contract', info, function (res2) {
+                //     if (res2.status) {
+                //         location.href = '/market/purchase_order/2lst';
+                //     }
+                // })
             } else {
                 alert(res1.content);
             }
@@ -300,8 +323,8 @@ function checkThickness(val, hint) {
     if (val == "") {
         hint.append('数据不能为空');
     } else {
-        if (val > 3 || val < 1) {
-            hint.append('数值应介于1-3之间');
+        if (val > 4 || val < 1) {
+            hint.append('数值应介于1-4之间');
         } else {
             if (!/^[0-9](.[0-9])?$/.test(val)) {
                 hint.append('数值应为一位小数');

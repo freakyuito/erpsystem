@@ -138,4 +138,10 @@ public class ProductOrderController {
                 break;
         }
     }
+
+    @RequestMapping("/sign")
+    @ResponseBody
+    public void sign(String approverName, String receiverName, String machineNum, String productNum) {
+        productOrderService.sign(userService.getIdByRealName(approverName), userService.getIdByRealName(receiverName), Integer.parseInt(machineNum), productNum);
+    }
 }

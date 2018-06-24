@@ -217,12 +217,14 @@
                     <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-user">
+                    <input id="user-name" type="hidden" value="姚峰"/>
                     <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
                     </li>
                     <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                     </li>
                     <li class="divider"></li>
-                    <li id="logout"><a href="#" th:text="${session.userName} + ' 退出登陆'"><i class="fa fa-sign-out fa-fw"></i></a>
+                    <li id="logout"><a href="#" th:text="${session.userName} + ' 退出登陆'"><i
+                            class="fa fa-sign-out fa-fw"></i></a>
                     </li>
                 </ul>
                 <!-- /.dropdown-user -->
@@ -234,7 +236,9 @@
     <nav class="navbar-default navbar-side" role="navigation" th:fragment="side-nav">
         <div class="sidebar-collapse">
             <ul class="nav" id="main-menu">
-
+                <li>
+                    <a href="#"><i class="fa fa-sitemap"></i> 主页<span class="fa arrow"></span></a>
+                </li>
                 <li>
                     <a href="#"><i class="fa fa-sitemap"></i> 销售部<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
@@ -329,8 +333,8 @@
 </body>
 <script th:fragment="nav-script">
     $(function () {
-        $("#logout").on("click",function () {
-            location.href='/login/2login';
+        $("#logout").on("click", function () {
+            location.href = '/login/2login';
         })
     })
 </script>

@@ -50,7 +50,7 @@ public class UserService {
         return null;
     }
 
-    public Integer getIdByName(String name) {
+    public Integer getIdByUserName(String name) {
         if (name != null) {
             UserExample e = new UserExample();
             e.createCriteria().andUserNameEqualTo(name);
@@ -59,9 +59,24 @@ public class UserService {
         return null;
     }
 
+    public Integer getIdByRealName(String realName){
+        if (realName != null) {
+            UserExample e = new UserExample();
+            e.createCriteria().andRealNameEqualTo(realName);
+            return userMapper.selectByExample(e).get(0).getUserId();
+        }
+        return null;
+    }
+
     public List<User> getAllCaptain() {
         UserExample e = new UserExample();
         e.createCriteria().andFkAuthoritiesIdLike("%" + "BC" + "%").andFkAuthoritiesIdNotLike("%" + "BCP" + "%").andFkAuthoritiesIdNotLike("%" + "BCJ" + "%");
+        return userMapper.selectByExample(e);
+    }
+
+    public List<User> getAll(){
+        UserExample e = new UserExample();
+        e.createCriteria();
         return userMapper.selectByExample(e);
     }
 }

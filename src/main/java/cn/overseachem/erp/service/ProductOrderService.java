@@ -123,4 +123,14 @@ public class ProductOrderService {
         spec.setStateCode(stateCode);
         specMapper.updateByPrimaryKey(spec);
     }
+
+    public void sign(Integer approverId, Integer receiverId, Integer machineNum, String productNum) {
+        System.out.println(approverId);
+        ProductOrder o = orderMapper.selectByPrimaryKey(productNum);
+        o.setApproverId(approverId);
+        o.setReceiverId(receiverId);
+        o.setMachineNum(machineNum);
+        o.setProductNum(productNum);
+        orderMapper.updateByPrimaryKey(o);
+    }
 }

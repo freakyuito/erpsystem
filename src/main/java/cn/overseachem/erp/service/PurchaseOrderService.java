@@ -9,6 +9,7 @@ import cn.overseachem.erp.pojo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -121,8 +122,11 @@ public class PurchaseOrderService {
         String last = format.format(ca.getTime());
 
         Integer count = productOrderSpecMapper.countInMonth(first, last);
-        String batchNum = first.substring(2, 4) + first.substring(5, 7) + count;
-        System.out.println("batch num is " + batchNum);
+
+        DecimalFormat df=new DecimalFormat("000");
+        String str =df.format(count);
+
+        String batchNum = first.substring(2, 4) + first.substring(5, 7) + str;
         return batchNum;
     }
 

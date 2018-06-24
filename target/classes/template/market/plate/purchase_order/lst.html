@@ -90,7 +90,7 @@
                                     <input type="hidden" id="dtp_input1" value=""/><br/>
                                 </td>
                                 <td>
-                                    <btn class="btn btn-sm btn-info pull-right" id="search" style="width: 60px">
+                                    <btn class="btn btn-sm btn-info pull-right" id="search" style="width: 60px" onclick="search()">
                                         查询
                                     </btn>
                                 </td>
@@ -107,18 +107,18 @@
                 <div class="panel-body">
                     <div class="table-responsive">
                         <table id="table" class="table table-condensed table-bordered">
-                            <thead>
+                            <thead style="display:block;overflow-y: scroll;">
                             <tr>
-                                <th style="text-align: center">序号</th>
-                                <th style="text-align: center">客户名</th>
-                                <th style="text-align: center">订单号</th>
-                                <th style="text-align: center">订单进度</th>
-                                <th style="text-align: center">订货日期</th>
-                                <th style="text-align: center">交货日期</th>
-                                <th style="text-align: center">备注</th>
+                                <th style="text-align: center;width: 150px">序号</th>
+                                <th style="text-align: center;width: 250px">客户名</th>
+                                <th style="text-align: center;width: 250px">订单号</th>
+                                <th style="text-align: center;width: 250px">订单进度</th>
+                                <th style="text-align: center;width: 250px">订货日期</th>
+                                <th style="text-align: center;width: 250px">交货日期</th>
+                                <th style="text-align: center;width: 250px">备注</th>
                             </tr>
                             </thead>
-                            <tbody id="table-body">
+                            <tbody id="table-body" style="display:block; max-height:500px;overflow-y: scroll;">
                             </tbody>
                         </table>
                     </div>

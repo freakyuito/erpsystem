@@ -116,8 +116,8 @@ public class PurchaseOrderController {
         ArrayList<PurchaseOrderSpecGrid> grids = new ArrayList<PurchaseOrderSpecGrid>();
         for (PurchaseOrderSpec s : specs
                 ) {
-            grids.add(new PurchaseOrderSpecGrid(patternService.getNameById(s.getPatternId()) + s.getPatternId(),
-                    colorService.getNameById(s.getColorId()) + s.getColorId(), s.getLength(), s.getWidth(), s.getThickness()
+            grids.add(new PurchaseOrderSpecGrid(patternService.getNameById(s.getPatternId()) + "  " + s.getPatternId(),
+                    colorService.getNameById(s.getColorId()) + "  " + s.getColorId(), s.getLength(), s.getWidth(), s.getThickness()
                     , s.getRequiredAmount(), "0/" + s.getRequiredAmount(), 0f, 0f, s.getPrice(),
                     s.getRequiredAmount() * s.getPrice()));
         }
@@ -173,7 +173,7 @@ public class PurchaseOrderController {
             String width = request.getParameter("width_" + i);
             String thickness = request.getParameter("thickness_" + i);
             String amount = request.getParameter("amount_" + i);
-            String price = request.getParameter("price_" + i);
+//            String price = request.getParameter("price_" + i);
 
             PurchaseOrderSpec spec = new PurchaseOrderSpec();
             spec.setColorId(color);
@@ -182,7 +182,7 @@ public class PurchaseOrderController {
             spec.setWidth(Integer.parseInt(width));
             spec.setThickness(Float.parseFloat(thickness));
             spec.setRequiredAmount(Integer.parseInt(amount));
-            spec.setPrice(Float.parseFloat(price));
+//            spec.setPrice(Float.parseFloat(price));
             spec.setFkPurchaseNum(purchaseNum);
             specs.add(spec);
 
@@ -205,32 +205,50 @@ public class PurchaseOrderController {
     @RequestMapping("/sign")
     @ResponseBody
     public void sign(String userName, String purchaseNum) {
-        Integer userId = userService.getIdByName(userName);
+        Integer userId = userService.getIdByRealName(userName);
         String userAuth = userService.getAuthoritiesById(userId);
         purchaseOrderService.sign(userId, userAuth, purchaseNum);
         if (purchaseOrderService.checkAudition(purchaseNum)) {
+            System.out.println("purchase checked!starting generate product order");
             PurchaseOrder purchaseOrder = purchaseOrderService.getOrderByPurchaseNum(purchaseNum);
-//        List<PurchaseOrderSpec> purchaseOrderSpecList = purchaseOrderService.getSpecsByPurchaseNum(purchaseNum);
+//          List<PurchaseOrderSpec> purchaseOrderSpecList = purchaseOrderService.getSpecsByPurchaseNum(purchaseNum);
             List<PurchaseOrderSpec> groupSpecList = purchaseOrderService.groupByColorId(purchaseNum);
+
+            ArrayList<ProductOrder> orderArrayList = new ArrayList<ProductOrder>();
+            ArrayList<ProductOrderSpec> orderSpecArrayList = new ArrayList<ProductOrderSpec>();
+
+            Integer batchNum = Integer.parseInt(purchaseOrderService.generateBatchNum()) + 1;
             for (PurchaseOrderSpec s : groupSpecList
                     ) {
                 ProductOrder productOrder = new ProductOrder();
                 productOrder.setGenerateTime(new Date());
                 productOrder.setFkPurchaseNum(purchaseNum);
                 productOrder.setProductNum(productOrderService.generateProductNum(purchaseNum, s.getColorId()));
+                System.out.println("generate product order:" + productOrder.toString());
 
                 List<PurchaseOrderSpec> newList = purchaseOrderService.getByPurchaseNumAndColorId(purchaseNum, s.getColorId());
                 for (PurchaseOrderSpec n : newList
                         ) {
                     ProductOrderSpec productOrderSpec = new ProductOrderSpec();
                     productOrderSpec.setCompletedAmount(0);
-                    productOrderSpec.setBatchNum(purchaseOrderService.generateBatchNum());
+                    productOrderSpec.setBatchNum("JY " + batchNum);
                     productOrderSpec.setFkProductNum(productOrder.getProductNum());
                     productOrderSpec.setStateCode(-1);
                     productOrderSpec.setFkPurchaseSpecId(n.getSpecId());
-                    productOrderService.insertSpec(productOrderSpec);
+                    batchNum++;
+                    System.out.println("generate product order spec:" + productOrderSpec.toString());
+                    orderSpecArrayList.add(productOrderSpec);
                 }
-                productOrderService.insertOrder(productOrder);
+                orderArrayList.add(productOrder);
+            }
+
+            for (ProductOrderSpec s : orderSpecArrayList
+                    ) {
+                productOrderService.insertSpec(s);
+            }
+            for (ProductOrder s : orderArrayList
+                    ) {
+                productOrderService.insertOrder(s);
             }
         } else {
 

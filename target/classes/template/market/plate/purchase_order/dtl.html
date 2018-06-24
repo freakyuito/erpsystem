@@ -48,7 +48,7 @@
                         <th style="text-align: center">客户名称</th>
                         <th style="text-align: center">订货日期</th>
                         <th style="text-align: center">交货日期</th>
-                        <th style="text-align: center">合同号</th>
+                        <!--<th style="text-align: center">合同号</th>-->
                     </tr>
                     </thead>
                     <tbody>
@@ -57,7 +57,7 @@
                         <td th:text="${purchaseOrderGrid.customerName}" style="text-align: center"></td>
                         <td th:text="${purchaseOrderGrid.purchaseTime}" style="text-align: center"></td>
                         <td th:text="${purchaseOrderGrid.deliverTime}" style="text-align: center"></td>
-                        <td th:text="${purchaseOrderGrid.contractId}" style="text-align: center"></td>
+                        <!--<td th:text="${purchaseOrderGrid.contractId}" style="text-align: center"></td>-->
                     </tr>
                     </tbody>
                 </table>
@@ -81,8 +81,8 @@
                             <th style="text-align: center">进度</th>
                             <th style="text-align: center">估重（kg）</th>
                             <th style="text-align: center">重量（kg）</th>
-                            <th style="text-align: center">单价（元/kg)</th>
-                            <th style="text-align: center">金额（元）</th>
+                            <!--<th style="text-align: center">单价（元/kg)</th>-->
+                            <!--<th style="text-align: center">金额（元）</th>-->
                         </tr>
                         </thead>
                         <tbody>
@@ -97,8 +97,8 @@
                             <td id="process" th:text="${spec.process}" style="text-align: center">2.41</td>
                             <td id="estimate-weight" th:text="${spec.estimateWeight}" style="text-align: center">2.41</td>
                             <td id="weight" th:text="${spec.weight}" style="text-align: center">2.41</td>
-                            <td th:text="${spec.price}" style="text-align: center">2.41</td>
-                            <td id="total-price" th:text="${spec.totalPrice}" style="text-align: center">2.41</td>
+                            <!--<td th:text="${spec.price}" style="text-align: center">2.41</td>-->
+                            <!--<td id="total-price" th:text="${spec.totalPrice}" style="text-align: center">2.41</td>-->
                         </tr>
                         </tbody>
                         <tfoot>
@@ -108,8 +108,8 @@
                             <th id="total-process" style="text-align: center"></th>
                             <th id="total-estimate" style="text-align: center"></th>
                             <th id="total-weight" style="text-align: center"></th>
-                            <th style="text-align: center"></th>
-                            <th id="sum-price" style="text-align: center"></th>
+                            <!--<th style="text-align: center"></th>-->
+                            <!--<th id="sum-price" style="text-align: center"></th>-->
                         </tr>
                         </tfoot>
                     </table>
@@ -210,7 +210,9 @@
                                                 <h4 class="modal-title" id="myModalLabel_supervisor">
                                                     确认署名吗</h4>
                                             </div>
-                                            <div class="modal-body" th:text="|署名人为：${purchaseOrderGrid.salesmanName}|"></div>
+                                            <div class="modal-body">
+                                                <label>署名人为：$('#user-name').val()</label>
+                                            </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-default"
                                                         data-dismiss="modal">关闭

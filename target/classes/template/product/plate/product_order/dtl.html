@@ -206,35 +206,6 @@
                                     <td style="text-align: center">
 
                                         <button th:if="!${productOrderDtlGrid.begin}" class="btn btn-primary btn-sm" data-toggle="modal"
-                                                data-target="#myModal_sign"><i class="fa fa-edit "></i>署名
-                                        </button>
-                                        <!-- 模态框（Modal） -->
-                                        <div class="modal fade" id="myModal_sign" tabindex="-1" role="dialog"
-                                             aria-labelledby="myModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <button type="button" class="close" data-dismiss="modal"
-                                                                aria-hidden="true">
-                                                            &times;
-                                                        </button>
-                                                        <h4 class="modal-title" id="myModalLabel_sign">
-                                                            确认署名吗</h4>
-                                                    </div>
-                                                    <div class="modal-body" th:text="|署名人为：|"></div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-default"
-                                                                data-dismiss="modal">关闭
-                                                        </button>
-                                                        <button type="button" id="sign-confirm" class="btn btn-primary">
-                                                            确认
-                                                        </button>
-                                                    </div>
-                                                </div><!-- /.modal-content -->
-                                            </div><!-- /.modal -->
-                                        </div>
-
-                                        <button th:if="${productOrderDtlGrid.begin}" class="btn btn-primary btn-sm" data-toggle="modal"
                                                 data-target="#myModal_selection"><i class="fa fa-edit "></i>选择机台和机长
                                         </button>
                                         <!-- 模态框（Modal） -->
@@ -254,7 +225,7 @@
                                                         <div>
                                                             <div class="form-group col-sm-6">
                                                                 <label>机长选择：</label>
-                                                                <select class="form-control" id="captain-name">
+                                                                <select class="form-control" id="receiver-name">
                                                                 </select>
                                                             </div>
                                                             <div class="form-group col-sm-6">
@@ -279,7 +250,7 @@
                                                         <button type="button" class="btn btn-default"
                                                                 data-dismiss="modal">关闭
                                                         </button>
-                                                        <button type="button" id="selection-confirm" class="btn btn-primary">
+                                                        <button type="button" id="selection-confirm" class="btn btn-primary" onclick="sign()">
                                                             确认
                                                         </button>
                                                     </div>

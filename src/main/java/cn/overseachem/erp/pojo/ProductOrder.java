@@ -85,6 +85,21 @@ public class ProductOrder {
         this.approverId = approverId;
     }
 
+    @Override
+    public String toString() {
+        return "ProductOrder{" +
+                "productNum='" + productNum + '\'' +
+                ", fkPurchaseNum='" + fkPurchaseNum + '\'' +
+                ", machineNum=" + machineNum +
+                ", receiverId=" + receiverId +
+                ", generateTime=" + generateTime +
+                ", scheduleBeginTime=" + scheduleBeginTime +
+                ", scheduleFinishTime=" + scheduleFinishTime +
+                ", approverId=" + approverId +
+                ", fkOperationRecordsId='" + fkOperationRecordsId + '\'' +
+                '}';
+    }
+
     public String getFkOperationRecordsId() {
         return fkOperationRecordsId;
     }

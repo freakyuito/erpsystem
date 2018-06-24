@@ -244,32 +244,23 @@
                 <div class="col-lg-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal_addSpec">
-                                <i class="fa fa-plus "></i>
+                            <button class="btn btn-primary btn-sm" id="add-waste" onclick="addWaste()">
+                                <i class="fa fa-plus ">添加条目</i>
                             </button>
-                            <tr>
-                                <th style="text-align:center">废品记录</th>
-                            </tr>
+                            废品记录
                         </div>
                         <div class="panel-body">
                             <div class="col-lg-12">
                                 <div class="table-responsive">
-                                    <table class="table table-bordered  table-condensed">
+                                    <table class="table table-condensed">
                                         <thead>
                                         <tr>
                                             <th style="width: 100px;text-align:center">废品名</th>
                                             <th style="width: 100px;text-align:center">废品量/kg</th>
+                                            <th style="width: 50px;text-align:center">操作</th>
                                         </tr>
                                         </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td style="text-align: center">
-                                                <input class="form-control input-sm"/>
-                                            </td>
-                                            <td style="text-align: center">
-                                                <input class="form-control input-sm"/>
-                                            </td>
-                                        </tr>
+                                        <tbody id="tbody-waste">
                                         </tbody>
                                     </table>
                                 </div>
@@ -279,32 +270,23 @@
 
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal_addSpec">
-                                <i class="fa fa-plus "></i>
+                            <button class="btn btn-primary btn-sm" onclick="addInventory()">
+                                <i class="fa fa-plus ">添加条目</i>
                             </button>
-                            <tr>
-                                <th style="text-align:center">库存记录</th>
-                            </tr>
+                            库存记录
                         </div>
                         <div class="panel-body">
                             <div class="col-lg-12">
                                 <div class="table-responsive">
-                                    <table class="table table-bordered  table-condensed">
+                                    <table class="table table-condensed">
                                         <thead>
                                         <tr>
                                             <th style="width: 100px;text-align:center">数量/张</th>
                                             <th style="width: 100px;text-align:center">重量/kg</th>
+                                            <th style="width: 50px;text-align:center">操作</th>
                                         </tr>
                                         </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td style="text-align: center">
-                                                <input class="form-control input-sm"/>
-                                            </td>
-                                            <td style="text-align: center">
-                                                <input class="form-control input-sm"/>
-                                            </td>
-                                        </tr>
+                                        <tbody id="tbody-inventory">
                                         </tbody>
                                     </table>
                                 </div>
@@ -450,6 +432,6 @@
 <script type="text/javascript" th:src="@{/bootstrap-datepicker/js/locales/bootstrap-datetimepicker.zh-CN.js}"
         charset="UTF-8"></script>
 <script th:src="@{/bootstrap-select2/js/select2.min.js}"></script>
-<script type="text/javascript" th:src="@{/page-js/product_plate_product_order_dtl.js}"></script>
+<script type="text/javascript" th:src="@{/page-js/product_plate_packing_form_dtl.js}"></script>
 </body>
 </html>

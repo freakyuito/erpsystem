@@ -14,7 +14,7 @@
     <link th:href="@{/bootstrap-datepicker/css/bootstrap-datetimepicker.css}" rel="stylesheet" media="screen"/>
     <link th:href="@{/css/custom-styles.css}" rel="stylesheet"/>
     <link th:href="@{/css/font-awesome.css}" rel="stylesheet"/>
-    <link th:href="@{/bootstrap-select2/css/select2.min.css}" rel="stylesheet" />
+    <link th:href="@{/bootstrap-select2/css/select2.min.css}" rel="stylesheet"/>
 
 </head>
 
@@ -49,13 +49,15 @@
                         <th style="text-align: center">客户名称</th>
                         <th style="text-align: center">订货日期</th>
                         <th style="text-align: center">交货日期</th>
-                        <th style="text-align: center">合同号</th>
+                        <!--<th style="text-align: center">合同号</th>-->
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
                         <td style="text-align: center">
-                            <input class="form-control input-sm" id="purchase-num" oninput="checkPurchaseNum($(this).val(),$(this).next())" onblur="checkPurchaseNum($(this).val(),$(this).next())"/>
+                            <input class="form-control input-sm" id="purchase-num"
+                                   oninput="checkPurchaseNum($(this).val(),$(this).next())"
+                                   onblur="checkPurchaseNum($(this).val(),$(this).next())"/>
                             <small style="color: red" id="purchase-num-hint"></small>
                         </td>
                         <td style="text-align: center">
@@ -67,11 +69,14 @@
                                 <div class="input-group date form_date" data-date=""
                                      data-date-format="yyyy-MM-dd" data-link-field="dtp_input1"
                                      data-link-format="yyyy-mm-dd">
-                                    <input  class="form-control" size="16" type="text" th:value="${#dates.format(new java.util.Date().getTime(), 'yyyy-MM-dd')}" readonly="readonly"/>
+                                    <input class="form-control" size="16" type="text"
+                                           th:value="${#dates.format(new java.util.Date().getTime(), 'yyyy-MM-dd')}"
+                                           readonly="readonly"/>
                                     <span class="input-group-addon"><span
                                             class="glyphicon glyphicon-remove"></span></span>
                                 </div>
-                                <input type="hidden" id="dtp_input1" th:value="${#dates.format(new java.util.Date().getTime(), 'yyyy-MM-dd')}"/><br/>
+                                <input type="hidden" id="dtp_input1"
+                                       th:value="${#dates.format(new java.util.Date().getTime(), 'yyyy-MM-dd')}"/><br/>
                             </div>
                         </td>
                         <td style="text-align: center">
@@ -79,17 +84,20 @@
                                 <div class="input-group date form_date" data-date=""
                                      data-date-format="yyyy-MM-dd" data-link-field="dtp_input2"
                                      data-link-format="yyyy-mm-dd">
-                                    <input class="form-control" size="16" type="text" th:value="${#dates.format(new java.util.Date().getTime(), 'yyyy-MM-dd')}" readonly="readonly"/>
+                                    <input class="form-control" size="16" type="text"
+                                           th:value="${#dates.format(new java.util.Date().getTime(), 'yyyy-MM-dd')}"
+                                           readonly="readonly"/>
                                     <span class="input-group-addon"><span
                                             class="glyphicon glyphicon-remove"></span></span>
                                 </div>
-                                <input type="hidden" id="dtp_input2" th:value="${#dates.format(new java.util.Date().getTime(), 'yyyy-MM-dd')}"/><br/>
+                                <input type="hidden" id="dtp_input2"
+                                       th:value="${#dates.format(new java.util.Date().getTime(), 'yyyy-MM-dd')}"/><br/>
                             </div>
                         </td>
-                        <td style="text-align: center">
-                            <input id="contract-id" class="form-control input-sm" oninput="checkContractId($(this).val(),$(this).next())" onblur="checkPurchaseNum($(this).val(),$(this).next())"/>
-                            <small id="contract-id-hint" style="color: red"></small>
-                        </td>
+                        <!--<td style="text-align: center">-->
+                        <!--<input id="contract-id" class="form-control input-sm" oninput="checkContractId($(this).val(),$(this).next())" onblur="checkPurchaseNum($(this).val(),$(this).next())"/>-->
+                        <!--<small id="contract-id-hint" style="color: red"></small>-->
+                        <!--</td>-->
                     </tr>
                     </tbody>
                 </table>
@@ -102,7 +110,8 @@
                 <button class="btn btn-primary btn-sm" id="add-spec">添加</button>
                 <small style="color: red" id="spec-hint"></small>
                 <label style="padding-left: 650px">备注</label>
-                <input id="remark" maxlength="100" class="form-control pull-right input-sm" style="width: 200px" placeholder="请填写备注"/>
+                <input id="remark" maxlength="100" class="form-control pull-right input-sm" style="width: 200px"
+                       placeholder="请填写备注"/>
             </div>
             <div class="panel-body">
                 <div class="table-responsive">
@@ -116,7 +125,7 @@
                             <th style="text-align: center">宽(mm)</th>
                             <th style="text-align: center">厚(mm)</th>
                             <th style="text-align: center">数量（张）</th>
-                            <th style="text-align: center">单价(元/kg)</th>
+                            <!--<th style="text-align: center">单价(元/kg)</th>-->
                             <th style="text-align: center">操作</th>
                         </tr>
                         </thead>
@@ -134,12 +143,12 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td>
-                                <div class="col-lg-2">
-                                    <label>导入合同</label>
-                                    <input id="contract-file" type="file"/>
-                                </div>
-                            </td>
+                            <!--<td>-->
+                            <!--<div class="col-lg-2">-->
+                            <!--<label>导入合同</label>-->
+                            <!--<input id="contract-file" type="file"/>-->
+                            <!--</div>-->
+                            <!--</td>-->
                             <td>
 
                                 <button class="btn btn-primary pull-right" data-toggle="modal"

@@ -32,4 +32,10 @@ public class UserController {
         }
         return captains;
     }
+
+    @RequestMapping("/get_all")
+    @ResponseBody
+    public List<User> getAll(){
+        return userService.getAll();
+    }
 }

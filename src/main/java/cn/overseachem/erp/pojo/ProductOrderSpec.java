@@ -50,4 +50,15 @@ public class ProductOrderSpec {
     public void setFkPurchaseSpecId(Integer fkPurchaseSpecId) {
         this.fkPurchaseSpecId = fkPurchaseSpecId;
     }
+
+    @Override
+    public String toString() {
+        return "ProductOrderSpec{" +
+                "batchNum='" + batchNum + '\'' +
+                ", fkProductNum='" + fkProductNum + '\'' +
+                ", stateCode=" + stateCode +
+                ", completedAmount=" + completedAmount +
+                ", fkPurchaseSpecId=" + fkPurchaseSpecId +
+                '}';
+    }
 }

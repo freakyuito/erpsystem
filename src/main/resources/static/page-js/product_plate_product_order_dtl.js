@@ -3,18 +3,34 @@ $(function () {
 })
 
 function setStateCode(curState, batchNum) {
-    var link = $('#product-num').text().replace(/#/, '%23');
     $.post('/product/product_order/set_state_code', {curState: curState, batchNum: batchNum}, function () {
+        var link = $('#product-num').text().replace(/#/, '%23');
         location.href = '/product/product_order/2dtl?productNum=' + link;
     })
 }
 
 function getAllCaptain() {
-    var capatinSelector = $('#captain-name');
+    var capatinSelector = $('#receiver-name');
     capatinSelector.empty();
     $.post('/common/user/get_captain', {}, function (res) {
         $.each(res, function (index, obj) {
             capatinSelector.append('<option value="' + obj + '">' + obj + '</option>')
         })
+    })
+}
+
+function sign() {
+    var approverName = $('#user-name').val();
+    var receiverName = $("#receiver-name").children('option:selected').val();
+    var machineNum = $("#machine-num").children('option:selected').val();
+    var productNum = $('#product-num').text();
+    $.post('/product/product_order/sign', {
+        approverName: approverName,
+        receiverName: receiverName,
+        machineNum: machineNum,
+        productNum: productNum
+    }, function () {
+        var link = $('#product-num').text().replace(/#/, '%23');
+        location.href = '/product/product_order/2dtl?productNum=' + link;
     })
 }
