@@ -114,15 +114,16 @@
                                     <td th:text="${spec.estimateWeight}" style="text-align: center">2.41</td>
                                     <td id="batch-num" th:text="${spec.batchNum}" style="text-align: center">2.41</td>
                                     <td style="text-align: center" th:if="${productOrderDtlGrid.checked}">
-                                        <btn class="btn btn-info" th:if="${spec.stateCode}==-1" onclick="setStateCode(-1,$(this).parent().parent().find('#batch-num').eq(0).text())">开始</btn>
+                                        <btn class="btn btn-info" th:if="${spec.stateCode}==-1" onclick="setStateCode(-1,$(this).parent().parent().find('#batch-num').eq(0).text());
+                                        insertPackingForm($(this).parent().parent().find('#batch-num').eq(0).text())">开始</btn>
                                         <btn class="btn btn-success" th:if="${spec.stateCode}==0" onclick="setStateCode(0,$(this).parent().parent().find('#batch-num').eq(0).text())">继续</btn>
                                         <btn class="btn btn-warning" th:if="${spec.stateCode}==1" onclick="setStateCode(1,$(this).parent().parent().find('#batch-num').eq(0).text())">暂停</btn>
                                     </td>
-                                    <td id="total-price" style="text-align: center"
-                                        th:if="${productOrderDtlGrid.checked}">
+                                    <td id="total-price" style="text-align: center" th:if="${spec.stateCode}!=-1">
                                         <a th:href="@{/product/packing_form/2dtl}">装箱单</a>
                                         <a>质检单</a>
                                     </td>
+                                    <td id="total-price" style="text-align: center" th:if="${spec.stateCode}==-1"></td>
                                 </tr>
                                 </tbody>
                             </table>

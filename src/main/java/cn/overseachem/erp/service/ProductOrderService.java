@@ -133,4 +133,8 @@ public class ProductOrderService {
         o.setProductNum(productNum);
         orderMapper.updateByPrimaryKey(o);
     }
+
+    public Integer getPurchaseSpecIdAmountByBatchNum(String batchNum){
+        return specMapper.selectByPrimaryKey(batchNum).getFkPurchaseSpecId();
+    }
 }

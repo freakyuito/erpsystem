@@ -34,3 +34,9 @@ function sign() {
         location.href = '/product/product_order/2dtl?productNum=' + link;
     })
 }
+
+function insertPackingForm(batchNum) {
+    $.post('/product/packing_form/insert_packing_form',{batchNum:batchNum},function () {
+
+    })
+}

@@ -1,5 +1,4 @@
 $(function () {
-    setWeighingData('1806001','1','15','18.5');
 })
 
 function addWaste() {
@@ -50,3 +49,10 @@ function setWeighingData(batchNum,index,quantity,weight) {
     $.post('/product/packing_form/set_weighing_data',{batchNum:batchNum,index:index,quantity:quantity,weight:weight},function () {
     })
 }
+
+function generateWeighingList(batchNum,bundleNum) {
+    $.post('/product/packing_form/generate_weighing_list',{batchNum:batchNum,bundleNum:bundleNum},function () {
+        
+    })
+}
+
