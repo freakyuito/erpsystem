@@ -2,7 +2,6 @@ package cn.overseachem.erp.service;
 
 
 import cn.overseachem.erp.mapper.PackingFormMapper;
-import cn.overseachem.erp.mapper.UserMapper;
 import cn.overseachem.erp.pojo.*;
 import com.alibaba.fastjson.JSON;
 import com.google.gson.JsonArray;
@@ -12,7 +11,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Zhihui_Shen on 2018/6/4.
@@ -23,11 +21,14 @@ public class PackingFormService {
     @Autowired
     private PackingFormMapper mapper;
 
-    public void generateWeighingList(String packingNum, Integer amount) {
-        ArrayList<PackingFormWeighingList> arrayList = new ArrayList<PackingFormWeighingList>();
+    public void generateWeighingList(String packingNum, Integer requiredAmount, Integer bundleNum) {
+        ArrayList<PackingFormDataItem> arrayList = new ArrayList<PackingFormDataItem>();
 
-        for (int i = 0; i < amount; i++) {
-            arrayList.add(new PackingFormWeighingList(i + 1 + "", "15", "0"));
+        for (int i = 0; i < requiredAmount / bundleNum; i++) {
+            arrayList.add(new PackingFormDataItem(i + 1 + "", bundleNum.toString(), "0"));
+        }
+        if (requiredAmount % bundleNum != 0) {
+            arrayList.add(new PackingFormDataItem(requiredAmount / bundleNum + 1 + "", requiredAmount % bundleNum + "", "0"));
         }
         String result = JSON.toJSONString(arrayList);
         PackingFormWithBLOBs packingFormWithBLOBs = mapper.selectByPrimaryKey(packingNum);
@@ -41,25 +42,26 @@ public class PackingFormService {
 
     public void setWeighingData(String packingNum, String index, String quantity, String weight) {
         String original = getWeighingList(packingNum);
-        ArrayList<PackingFormWeighingList> arrayList = new ArrayList<PackingFormWeighingList>();
+        ArrayList<PackingFormDataItem> arrayList = new ArrayList<PackingFormDataItem>();
         JsonArray jsonArray = new JsonParser().parse(original).getAsJsonArray();
         for (int i = 0; i < jsonArray.size(); i++) {
-            arrayList.add(new PackingFormWeighingList(jsonArray.get(i).getAsJsonObject().get("index").getAsString(), jsonArray.get(i).getAsJsonObject().get("quantity").getAsString(),
-                    jsonArray.get(i).getAsJsonObject().get("weight").getAsString()));
+            arrayList.add(new PackingFormDataItem(jsonArray.get(i).getAsJsonObject().get("index").getAsString(), jsonArray.get(i).getAsJsonObject().get("key").getAsString(),
+                    jsonArray.get(i).getAsJsonObject().get("value").getAsString()));
         }
 
-        for (PackingFormWeighingList s : arrayList
+        for (PackingFormDataItem s : arrayList
                 ) {
             if (s.getIndex().equals(index)) {
                 s.setIndex(index);
-                s.setQuantity(quantity);
-                s.setWeight(weight);
+                s.setKey(quantity);
+                s.setValue(weight);
+                System.out.println(s.toString());
             }
-            System.out.println(s.toString());
         }
         String result = JSON.toJSONString(arrayList);
         PackingFormWithBLOBs packingFormWithBLOBs = mapper.selectByPrimaryKey(packingNum);
         packingFormWithBLOBs.setWeighingList(result);
+
         mapper.updateByPrimaryKeyWithBLOBs(packingFormWithBLOBs);
     }
 
@@ -72,7 +74,7 @@ public class PackingFormService {
         return null;
     }
 
-    public Integer countByBatchNum(String batchNum){
+    public Integer countByBatchNum(String batchNum) {
         PackingFormExample e = new PackingFormExample();
         e.createCriteria().andFkBatchNumEqualTo(batchNum);
         return mapper.countByExample(e);

@@ -76,19 +76,17 @@ $(function () {
             '                        </tr>'
         );
 
-        var $patternSelect = $("#table-body:last-child").find("select.pattern");
+        var $patternSelect = $("#table-body>tr:last-child select.pattern");
         $.each(patternList, function (index, obj) {
-            $patternSelect.append('<option value="' + obj.patternId + '">' + obj.patternName + obj.patternId + '</option>')
+            $patternSelect.append('<option value="' + obj.patternId + '">' + obj.patternName + obj.patternId + '</option>');
         })
-        $("#table-body>tr:last-child select.pattern").children('option:selected').val(patternVal);
 
-        var $colorSelect = $("#table-body:last-child").find("select.color");
+        var $colorSelect = $("#table-body>tr:last-child select.color");
         $.each(colorList, function (index, obj) {
-            $colorSelect.append('<option value="' + obj.colorId + '">' + obj.colorId + obj.colorName + '</option>')
+            $colorSelect.append('<option value="' + obj.colorId + '">' + obj.colorId + obj.colorName + '</option>');
         })
         $colorSelect.trigger('change');
         $colorSelect.select2();
-        $("#table-body>tr:last-child select.color").children('option:selected').val(colorVal);
 
         $("button.remove").on("click", function () {
             $(this).parent().parent().remove();
@@ -136,11 +134,11 @@ $(function () {
             stop = true;
         }
 
-        $("select#pattern").each(function () {
+        $("select.pattern").each(function () {
             var v = $(this).children("option:selected").val();
             patternList.push(v);
         })
-        $(".color").each(function () {
+        $("select.color").each(function () {
             var v = $(this).children("option:selected").val();
             colorList.push(v);
         })
@@ -267,7 +265,7 @@ $(function () {
         // }
         $.post('/market/purchase_order/insert_order', info, function (res1) {
             if (res1.status) {
-                location.href = '/market/purchase_order/2lst';
+                // location.href = '/market/purchase_order/2lst';
                 // if (contractFiles.length > 0) {
                 //     var reader = new FileReader();//新建一个FileReader
                 //     reader.readAsText(contractFiles[0], "UTF-8");//读取文件

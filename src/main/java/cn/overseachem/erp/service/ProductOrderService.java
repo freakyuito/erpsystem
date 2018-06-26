@@ -23,6 +23,8 @@ public class ProductOrderService {
     private ProductOrderMapper orderMapper;
     @Autowired
     private ProductOrderSpecMapper specMapper;
+    @Autowired
+    private PurchaseOrderSpecMapper purchaseOrderSpecMapper;
 
     public List<ProductOrder> getByCriteria(String purchaseNum, String productNum, String scheduleTime) throws ParseException {
         ProductOrderExample e = new ProductOrderExample();
@@ -134,7 +136,21 @@ public class ProductOrderService {
         orderMapper.updateByPrimaryKey(o);
     }
 
-    public Integer getPurchaseSpecIdAmountByBatchNum(String batchNum){
+    public Integer getPurchaseSpecRequiredAmountByBatchNum(String batchNum){
+        return specMapper.selectByPrimaryKey(batchNum).getFkPurchaseSpecId();
+    }
+
+    public String getPurchaseNumByBatchNum(String batchNum){
+        String productNum = specMapper.selectByPrimaryKey(batchNum).getFkProductNum();
+        return orderMapper.selectByPrimaryKey(productNum).getFkPurchaseNum();
+    }
+
+    public String getColorIdByBatchNum(String batchNum){
+        Integer specId = specMapper.selectByPrimaryKey(batchNum).getFkPurchaseSpecId();
+        return purchaseOrderSpecMapper.selectByPrimaryKey(specId).getColorId();
+    }
+
+    public Integer getPurchaseSpecIdByBatchNum(String batchNum){
         return specMapper.selectByPrimaryKey(batchNum).getFkPurchaseSpecId();
     }
 }

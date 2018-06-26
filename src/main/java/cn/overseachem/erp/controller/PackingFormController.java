@@ -1,15 +1,16 @@
 package cn.overseachem.erp.controller;
 
-import cn.overseachem.erp.pojo.PackingFormWeighingList;
-import cn.overseachem.erp.pojo.User;
+import cn.overseachem.erp.pojo.PackingFormDataItem;
+import cn.overseachem.erp.pojo.PackingFormDtlGrid;
+import cn.overseachem.erp.pojo.PurchaseOrderSpec;
+import cn.overseachem.erp.service.ColorService;
 import cn.overseachem.erp.service.PackingFormService;
 import cn.overseachem.erp.service.ProductOrderService;
 import cn.overseachem.erp.service.PurchaseOrderService;
-import cn.overseachem.erp.service.UserService;
-import cn.overseachem.erp.utils.String2Json;
 import com.google.gson.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -31,37 +32,51 @@ public class PackingFormController {
     private ProductOrderService productOrderService;
     @Autowired
     private PurchaseOrderService purchaseOrderService;
+    @Autowired
+    private ColorService colorService;
 
     @RequestMapping("/2dtl")
-    public String detailPage() {
+    public String detailPage(String batchNum, Model model) {
+        PackingFormDtlGrid grid = new PackingFormDtlGrid();
+        PurchaseOrderSpec purchaseOrderSpec = purchaseOrderService.getSpecById(productOrderService.getPurchaseSpecIdByBatchNum(batchNum));
+        String purchaseNum = purchaseOrderSpec.getFkPurchaseNum();
+        String colorName = colorService.getNameById(purchaseOrderSpec.getColorId());
+        String size = "" + purchaseOrderSpec.getLength() + "*" + purchaseOrderSpec.getWidth() + "*" + purchaseOrderSpec.getThickness();
+        String packingNum = packingFormService.getPackingNumByBatchNum(batchNum);
+        grid.setBatchNum(batchNum);
+        grid.setColorName(colorName);
+        grid.setPackingNum(packingNum);
+        grid.setPurchaseNum(purchaseNum);
+        grid.setSize(size);
+        model.addAttribute("packingFormDtlGrid", grid);
         return "/product/plate/packing_form/dtl";
     }
 
     @RequestMapping("/get_weighing_list")
     @ResponseBody
-    public List<PackingFormWeighingList> sendWeighingData(String batchNum) {
-        ArrayList<PackingFormWeighingList> arrayList = new ArrayList<PackingFormWeighingList>();
-        JsonArray jsonArray = new JsonParser().parse(packingFormService.getWeighingList(batchNum)).getAsJsonArray();
+    public List<PackingFormDataItem> getWeighingList(String packingNum) {
+        ArrayList<PackingFormDataItem> arrayList = new ArrayList<PackingFormDataItem>();
+        JsonArray jsonArray = new JsonParser().parse(packingFormService.getWeighingList(packingNum)).getAsJsonArray();
         for (int i = 0; i < jsonArray.size(); i++) {
-            arrayList.add(new PackingFormWeighingList(jsonArray.get(i).getAsJsonObject().get("index").getAsString(), jsonArray.get(i).getAsJsonObject().get("quantity").getAsString(),
-                    jsonArray.get(i).getAsJsonObject().get("weight").getAsString()));
+            arrayList.add(new PackingFormDataItem(jsonArray.get(i).getAsJsonObject().get("index").getAsString(), jsonArray.get(i).getAsJsonObject().get("key").getAsString(),
+                    jsonArray.get(i).getAsJsonObject().get("value").getAsString()));
         }
         return arrayList;
     }
 
     @RequestMapping("/set_weighing_data")
     @ResponseBody
-    public void setWeighingData(String batchNum, String index, String quantity, String weight) {
-        packingFormService.setWeighingData(batchNum, index, quantity, weight);
+    public void setWeighingData(String packingNum, String index, String quantity, String weight) {
+        packingFormService.setWeighingData(packingNum, index, quantity, weight);
     }
 
     @RequestMapping("/generate_weighing_list")
     @ResponseBody
     public void generateWeighingList(String batchNum, String bundleNum) {
         String packingNum = packingFormService.getPackingNumByBatchNum(batchNum);
-        Integer purchaseSpecId = productOrderService.getPurchaseSpecIdAmountByBatchNum(batchNum);
-        Integer amount = purchaseOrderService.getById(purchaseSpecId).getRequiredAmount();
-        packingFormService.generateWeighingList(packingNum, amount / Integer.parseInt(bundleNum));
+        Integer purchaseSpecId = productOrderService.getPurchaseSpecRequiredAmountByBatchNum(batchNum);
+        Integer requiredAmount = purchaseOrderService.getSpecById(purchaseSpecId).getRequiredAmount();
+        packingFormService.generateWeighingList(packingNum, requiredAmount, Integer.parseInt(bundleNum));
     }
 
     @RequestMapping("/insert_packing_form")

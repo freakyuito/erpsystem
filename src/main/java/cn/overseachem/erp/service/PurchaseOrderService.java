@@ -193,8 +193,9 @@ public class PurchaseOrderService {
         return specMapper.selectSpecsByPurchaseNumAndColorId(purchaseNum, colorId);
     }
 
-    public PurchaseOrderSpec getById(Integer id){
+    public PurchaseOrderSpec getSpecById(Integer id){
         return specMapper.selectByPrimaryKey(id);
     }
+
 
 }

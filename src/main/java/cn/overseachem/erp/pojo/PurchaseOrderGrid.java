@@ -31,6 +31,19 @@ public class PurchaseOrderGrid {
         this.makerName = makerName;
     }
 
+    public PurchaseOrderGrid(String purchaseNum, String customerName, String purchaseTime, String deliverTime, Boolean validityCode, String remark, String supervisorName, String salesmanName, String producerName, String makerName) {
+        this.purchaseNum = purchaseNum;
+        this.customerName = customerName;
+        this.purchaseTime = purchaseTime;
+        this.deliverTime = deliverTime;
+        this.validityCode = validityCode;
+        this.remark = remark;
+        this.supervisorName = supervisorName;
+        this.salesmanName = salesmanName;
+        this.producerName = producerName;
+        this.makerName = makerName;
+    }
+
     public String getPurchaseNum() {
         return purchaseNum;
     }

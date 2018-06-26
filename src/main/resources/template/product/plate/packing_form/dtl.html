@@ -10,6 +10,7 @@
     <link th:href="@{/css/font-awesome.css}" rel="stylesheet"/>
     <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
     <link th:href="@{/bootstrap-datepicker/css/bootstrap-datetimepicker.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/bootstrap3-editable/css/bootstrap-editable.css}" rel="stylesheet" media="screen"/>
     <link th:href="@{/css/custom-styles.css}" rel="stylesheet"/>
     <link th:href="@{/css/font-awesome.css}" rel="stylesheet"/>
     <link th:href="@{/bootstrap-select2/css/select2.min.css}" rel="stylesheet"/>
@@ -59,11 +60,16 @@
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td style="text-align: center">JY18008</td>
-                                    <td style="text-align: center">大飞欧</td>
-                                    <td style="text-align: center">2018-04-22</td>
-                                    <td style="text-align: center">2018-05-05</td>
-                                    <td style="text-align: center">Z000001</td>
+                                    <td style="text-align: center" th:text="${packingFormDtlGrid.purchaseNum}">JY18008
+                                    </td>
+                                    <td style="text-align: center" th:text="${packingFormDtlGrid.colorName}">大飞欧</td>
+                                    <td style="text-align: center" id="batch-num"
+                                        th:text="${packingFormDtlGrid.batchNum}">2018-04-22
+                                    </td>
+                                    <td style="text-align: center" th:text="${packingFormDtlGrid.size}">2018-05-05</td>
+                                    <td style="text-align: center" id="packing-num"
+                                        th:text="${packingFormDtlGrid.packingNum}">Z000001
+                                    </td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -85,155 +91,8 @@
                                         <th style="width: 110px;text-align:center">重量/kg</th>
                                     </tr>
                                     </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td style="width: 50px;text-align:center">1</td>
-                                        <td style="width: 110px;text-align: center">
-                                            <div class="form-group-sm">
-                                                <select class="form-control">
-                                                    <option>10</option>
-                                                    <option>15</option>
-                                                    <option>20</option>
-                                                </select>
-                                            </div>
-                                        </td>
-                                        <td style="width: 110px;text-align: center">
-                                            <input class="form-control input-sm"/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width: 50px;text-align:center">2</td>
-                                        <td style="width: 100px;text-align: center"></td>
-                                        <td style="text-align: center">
-                                            <input class="form-control input-sm"/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width: 50px;text-align:center">3</td>
-                                        <td style="width: 100px;text-align: center"></td>
-                                        <td style="text-align: center">
-                                            <input class="form-control input-sm"/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width: 50px;text-align:center">4</td>
-                                        <td style="width: 100px;text-align: center"></td>
-                                        <td style="text-align: center">
-                                            <input class="form-control input-sm"/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width: 50px;text-align:center">5</td>
-                                        <td style="width: 100px;text-align: center"></td>
-                                        <td style="text-align: center">
-                                            <input class="form-control input-sm"/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width: 50px;text-align:center">6</td>
-                                        <td style="width: 100px;text-align: center"></td>
-                                        <td style="text-align: center">
-                                            <input class="form-control input-sm"/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width: 50px;text-align:center">7</td>
-                                        <td style="width: 100px;text-align: center"></td>
-                                        <td style="text-align: center">
-                                            <input class="form-control input-sm"/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width: 50px;text-align:center">8</td>
-                                        <td style="width: 100px;text-align: center"></td>
-                                        <td style="text-align: center">
-                                            <input class="form-control input-sm"/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width: 50px;text-align:center">9</td>
-                                        <td style="width: 100px;text-align: center"></td>
-                                        <td style="text-align: center">
-                                            <input class="form-control input-sm"/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width: 50px;text-align:center">10</td>
-                                        <td style="width: 100px;text-align: center"></td>
-                                        <td style="text-align: center">
-                                            <input class="form-control input-sm"/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width: 50px;text-align:center">11</td>
-                                        <td style="width: 100px;text-align: center"></td>
-                                        <td style="text-align: center">
-                                            <input class="form-control input-sm"/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width: 50px;text-align:center">12</td>
-                                        <td style="width: 100px;text-align: center"></td>
-                                        <td style="text-align: center">
-                                            <input class="form-control input-sm"/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width: 50px;text-align:center">13</td>
-                                        <td style="width: 100px;text-align: center"></td>
-                                        <td style="text-align: center">
-                                            <input class="form-control input-sm"/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width: 50px;text-align:center">14</td>
-                                        <td style="width: 100px;text-align: center"></td>
-                                        <td style="text-align: center">
-                                            <input class="form-control input-sm"/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width: 50px;text-align:center">15</td>
-                                        <td style="width: 100px;text-align: center"></td>
-                                        <td style="text-align: center">
-                                            <input class="form-control input-sm"/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width: 50px;text-align:center">16</td>
-                                        <td style="width: 100px;text-align: center"></td>
-                                        <td style="text-align: center">
-                                            <input class="form-control input-sm"/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width: 50px;text-align:center">17</td>
-                                        <td style="width: 100px;text-align: center"></td>
-                                        <td style="text-align: center">
-                                            <input class="form-control input-sm"/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width: 50px;text-align:center">18</td>
-                                        <td style="width: 100px;text-align: center"></td>
-                                        <td style="text-align: center">
-                                            <input class="form-control input-sm"/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width: 50px;text-align:center">19</td>
-                                        <td style="width: 100px;text-align: center"></td>
-                                        <td style="text-align: center">
-                                            <input class="form-control input-sm"/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width: 50px;text-align:center">20</td>
-                                        <td style="width: 100px;text-align: center"></td>
-                                        <td style="text-align: center">
-                                            <input class="form-control input-sm"/>
-                                        </td>
-                                    </tr>
+                                    <tbody id="tbody-weighing">
+
                                     </tbody>
                                 </table>
                             </div>
@@ -430,6 +289,8 @@
 <script type="text/javascript" th:src="@{/bootstrap-datepicker/js/bootstrap-datetimepicker.js}"
         charset="UTF-8"></script>
 <script type="text/javascript" th:src="@{/bootstrap-datepicker/js/locales/bootstrap-datetimepicker.zh-CN.js}"
+        charset="UTF-8"></script>
+<script type="text/javascript" th:src="@{/bootstrap3-editable/js/bootstrap-editable.js}"
         charset="UTF-8"></script>
 <script th:src="@{/bootstrap-select2/js/select2.min.js}"></script>
 <script type="text/javascript" th:src="@{/page-js/product_plate_packing_form_dtl.js}"></script>

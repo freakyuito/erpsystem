@@ -99,8 +99,7 @@ public class PurchaseOrderController {
         PurchaseOrderGrid purchaseOrderGrid = new PurchaseOrderGrid(order.getPurchaseNum(),
                 customerService.getNameById(order.getCustomerId()),
                 new SimpleDateFormat("yyyy-MM-dd").format(order.getPurchaseTime()),
-                new SimpleDateFormat("yyyy-MM-dd").format(order.getDeliverTime()),
-                contracts.get(0).getContractId(), order.getValidityCode(), order.getRemark(), userService.getNameById(order.getSupervisorId())
+                new SimpleDateFormat("yyyy-MM-dd").format(order.getDeliverTime()), order.getValidityCode(), order.getRemark(), userService.getNameById(order.getSupervisorId())
                 , userService.getNameById(order.getSalesmanId()), userService.getNameById(order.getProducerId()), userService.getNameById(order.getMakerId()));
         model.addAttribute("purchaseOrderGrid", purchaseOrderGrid);
         model.addAttribute("purchaseOrderSpecGrids", grids);
@@ -124,8 +123,7 @@ public class PurchaseOrderController {
         PurchaseOrderGrid purchaseOrderGrid = new PurchaseOrderGrid(order.getPurchaseNum(),
                 customerService.getNameById(order.getCustomerId()),
                 new SimpleDateFormat("yyyy-MM-dd").format(order.getPurchaseTime()),
-                new SimpleDateFormat("yyyy-MM-dd").format(order.getDeliverTime()),
-                contracts.get(0).getContractId(), order.getValidityCode(), order.getRemark(), userService.getNameById(order.getSupervisorId())
+                new SimpleDateFormat("yyyy-MM-dd").format(order.getDeliverTime()), order.getValidityCode(), order.getRemark(), userService.getNameById(order.getSupervisorId())
                 , userService.getNameById(order.getSalesmanId()), userService.getNameById(order.getProducerId()), userService.getNameById(order.getMakerId()));
         model.addAttribute("purchaseOrderGrid", purchaseOrderGrid);
         model.addAttribute("purchaseOrderSpecGrids", grids);
@@ -182,7 +180,7 @@ public class PurchaseOrderController {
             spec.setWidth(Integer.parseInt(width));
             spec.setThickness(Float.parseFloat(thickness));
             spec.setRequiredAmount(Integer.parseInt(amount));
-//            spec.setPrice(Float.parseFloat(price));
+            spec.setPrice(Float.parseFloat("0"));
             spec.setFkPurchaseNum(purchaseNum);
             specs.add(spec);
 

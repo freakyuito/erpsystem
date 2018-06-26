@@ -60,7 +60,7 @@ public class ProductOrderController {
         ArrayList<ProductOrderSpecDtlGrid> grids = new ArrayList<ProductOrderSpecDtlGrid>();
         for (ProductOrderSpec s : specs
                 ) {
-            PurchaseOrderSpec purchaseOrderSpec = purchaseOrderService.getById(s.getFkPurchaseSpecId());
+            PurchaseOrderSpec purchaseOrderSpec = purchaseOrderService.getSpecById(s.getFkPurchaseSpecId());
             grids.add(new ProductOrderSpecDtlGrid(colorService.getNameById(purchaseOrderSpec.getColorId()) + " " + purchaseOrderSpec.getColorId(),
                     purchaseOrderSpec.getLength(), purchaseOrderSpec.getWidth(), purchaseOrderSpec.getThickness(),
                     s.getCompletedAmount(), purchaseOrderSpec.getRequiredAmount(), 0f, s.getBatchNum(),

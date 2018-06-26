@@ -120,7 +120,7 @@
                                         <btn class="btn btn-warning" th:if="${spec.stateCode}==1" onclick="setStateCode(1,$(this).parent().parent().find('#batch-num').eq(0).text())">暂停</btn>
                                     </td>
                                     <td id="total-price" style="text-align: center" th:if="${spec.stateCode}!=-1">
-                                        <a th:href="@{/product/packing_form/2dtl}">装箱单</a>
+                                        <a th:href="@{/product/packing_form/2dtl(batchNum=${spec.batchNum})}">装箱单</a>
                                         <a>质检单</a>
                                     </td>
                                     <td id="total-price" style="text-align: center" th:if="${spec.stateCode}==-1"></td>
