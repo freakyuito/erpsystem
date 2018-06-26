@@ -7,7 +7,8 @@ import cn.overseachem.erp.service.ColorService;
 import cn.overseachem.erp.service.PackingFormService;
 import cn.overseachem.erp.service.ProductOrderService;
 import cn.overseachem.erp.service.PurchaseOrderService;
-import com.google.gson.*;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -48,6 +49,7 @@ public class PackingFormController {
         grid.setPackingNum(packingNum);
         grid.setPurchaseNum(purchaseNum);
         grid.setSize(size);
+        grid.setWeighingListEmpty(packingFormService.isWeighingListEmpty(packingNum));
         model.addAttribute("packingFormDtlGrid", grid);
         return "/product/plate/packing_form/dtl";
     }
@@ -55,13 +57,19 @@ public class PackingFormController {
     @RequestMapping("/get_weighing_list")
     @ResponseBody
     public List<PackingFormDataItem> getWeighingList(String packingNum) {
-        ArrayList<PackingFormDataItem> arrayList = new ArrayList<PackingFormDataItem>();
-        JsonArray jsonArray = new JsonParser().parse(packingFormService.getWeighingList(packingNum)).getAsJsonArray();
-        for (int i = 0; i < jsonArray.size(); i++) {
-            arrayList.add(new PackingFormDataItem(jsonArray.get(i).getAsJsonObject().get("index").getAsString(), jsonArray.get(i).getAsJsonObject().get("key").getAsString(),
-                    jsonArray.get(i).getAsJsonObject().get("value").getAsString()));
-        }
-        return arrayList;
+        return packingFormService.getWeighingList(packingNum);
+    }
+
+    @RequestMapping("/get_waste_list")
+    @ResponseBody
+    public List<PackingFormDataItem> getWasteList(String packingNum){
+        return packingFormService.getWasteList(packingNum);
+    }
+
+    @RequestMapping("/get_inventory_list")
+    @ResponseBody
+    public List<PackingFormDataItem> getInventoryList(String packingNum){
+        return packingFormService.getInventoryList(packingNum);
     }
 
     @RequestMapping("/set_weighing_data")
@@ -70,13 +78,30 @@ public class PackingFormController {
         packingFormService.setWeighingData(packingNum, index, quantity, weight);
     }
 
+    @RequestMapping("/set_waste_data")
+    @ResponseBody
+    public void setWasteData(String packingNum, String index, String quantity, String weight) {
+        packingFormService.setWasteData(packingNum, index, quantity, weight);
+    }
+
+    @RequestMapping("/set_inventory_data")
+    @ResponseBody
+    public void setInventoryData(String packingNum, String index, String quantity, String weight) {
+        packingFormService.setInventoryData(packingNum, index, quantity, weight);
+    }
+
     @RequestMapping("/generate_weighing_list")
     @ResponseBody
     public void generateWeighingList(String batchNum, String bundleNum) {
         String packingNum = packingFormService.getPackingNumByBatchNum(batchNum);
-        Integer purchaseSpecId = productOrderService.getPurchaseSpecRequiredAmountByBatchNum(batchNum);
-        Integer requiredAmount = purchaseOrderService.getSpecById(purchaseSpecId).getRequiredAmount();
-        packingFormService.generateWeighingList(packingNum, requiredAmount, Integer.parseInt(bundleNum));
+        if (packingFormService.isWeighingListEmpty(packingNum)) {
+            System.out.println("generating weighing list");
+            Integer purchaseSpecId = productOrderService.getPurchaseSpecRequiredAmountByBatchNum(batchNum);
+            Integer requiredAmount = purchaseOrderService.getSpecById(purchaseSpecId).getRequiredAmount();
+            packingFormService.generateWeighingList(packingNum, requiredAmount, Integer.parseInt(bundleNum));
+        } else {
+            System.out.println("no need to generate weighing list");
+        }
     }
 
     @RequestMapping("/insert_packing_form")
@@ -92,5 +117,6 @@ public class PackingFormController {
             packingFormService.insertPackingForm(batchNum, packingNum);
         }
     }
+
 
 }

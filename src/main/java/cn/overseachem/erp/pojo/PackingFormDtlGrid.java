@@ -8,9 +8,46 @@ public class PackingFormDtlGrid {
     private String batchNum;
     private String size;
     private String packingNum;
-    private ArrayList<PackingFormDataItem> weighingList = new ArrayList<PackingFormDataItem>();
-    private ArrayList<PackingFormDataItem> wasteList = new ArrayList<PackingFormDataItem>();
-    private ArrayList<PackingFormDataItem> inventoryList = new ArrayList<PackingFormDataItem>();
+    private Boolean weighingListEmpty;
+
+    public PackingFormDtlGrid(String purchaseNum, String colorName, String batchNum, String size, String packingNum, Boolean weighingListEmpty) {
+        this.purchaseNum = purchaseNum;
+        this.colorName = colorName;
+        this.batchNum = batchNum;
+        this.size = size;
+        this.packingNum = packingNum;
+        this.weighingListEmpty = weighingListEmpty;
+    }
+
+    public Boolean getWeighingListEmpty() {
+        return weighingListEmpty;
+    }
+
+    public void setWeighingListEmpty(Boolean weighingListEmpty) {
+        this.weighingListEmpty = weighingListEmpty;
+    }
+
+    public PackingFormDtlGrid() {
+    }
+
+    public PackingFormDtlGrid(String purchaseNum, String colorName, String batchNum, String size, String packingNum) {
+        this.purchaseNum = purchaseNum;
+        this.colorName = colorName;
+        this.batchNum = batchNum;
+        this.size = size;
+        this.packingNum = packingNum;
+    }
+
+    @Override
+    public String toString() {
+        return "PackingFormDtlGrid{" +
+                "purchaseNum='" + purchaseNum + '\'' +
+                ", colorName='" + colorName + '\'' +
+                ", batchNum='" + batchNum + '\'' +
+                ", size='" + size + '\'' +
+                ", packingNum='" + packingNum + '\'' +
+                '}';
+    }
 
     public String getPurchaseNum() {
         return purchaseNum;
@@ -50,29 +87,5 @@ public class PackingFormDtlGrid {
 
     public void setPackingNum(String packingNum) {
         this.packingNum = packingNum;
-    }
-
-    public ArrayList<PackingFormDataItem> getWeighingList() {
-        return weighingList;
-    }
-
-    public void setWeighingList(ArrayList<PackingFormDataItem> weighingList) {
-        this.weighingList = weighingList;
-    }
-
-    public ArrayList<PackingFormDataItem> getWasteList() {
-        return wasteList;
-    }
-
-    public void setWasteList(ArrayList<PackingFormDataItem> wasteList) {
-        this.wasteList = wasteList;
-    }
-
-    public ArrayList<PackingFormDataItem> getInventoryList() {
-        return inventoryList;
-    }
-
-    public void setInventoryList(ArrayList<PackingFormDataItem> inventoryList) {
-        this.inventoryList = inventoryList;
     }
 }
