@@ -6,45 +6,65 @@ $(function () {
 
 function addWaste() {
     $('#tbody-waste').append('<tr>\n' +
-        '                                            <td style="text-align: center">\n' +
-        '                                                <input class="form-control input-sm"/>\n' +
-        '                                            </td>\n' +
-        '                                            <td style="text-align: center">\n' +
-        '                                                <input class="form-control input-sm"/>\n' +
-        '                                            </td>\n' +
-        '                                            <td style="text-align: center">\n' +
-        '                                                <button class="btn btn-danger btn-sm" onclick="removeWaste($(this))">删除</button>\n' +
-        '                                            </td>\n' +
-        '                                        </tr>');
+        '<td style="text-align: center" class="index"></td>' +
+    '                                            <td style="text-align: center">\n' +
+    '                                                <input class="form-control input-sm waste-name"/>\n' +
+    '                                            </td>\n' +
+    '                                            <td style="text-align: center">\n' +
+    '                                                <input class="form-control input-sm waste-weight"/>\n' +
+    '                                            </td>\n' +
+    '                                            <td style="text-align: center">\n' +
+    '                                                <button class="btn btn-danger btn-sm" onclick="removeWaste($(this))">删除</button>\n' +
+    '                                            </td>\n' +
+    '                                        </tr>'
+)
+    ;
+    $("#tbody-waste .index").each(function (index) {
+        $(this).empty();
+        $(this).append(index + 1);
+    })
 }
 
 function removeWaste(self) {
     $(self).parent().parent().remove();
+    $("#tbody-waste .index").each(function (index) {
+        $(this).empty();
+        $(this).append(index + 1);
+    })
 }
 
 w
 
 function addInventory() {
     $('#tbody-inventory').append('<tr>\n' +
+        '<td style="text-align: center" class="index"></td>' +
         '                                            <td style="text-align: center">\n' +
-        '                                                <input class="form-control input-sm"/>\n' +
+        '                                                <input class="form-control input-sm quantity"/>\n' +
         '                                            </td>\n' +
         '                                            <td style="text-align: center">\n' +
-        '                                                <input class="form-control input-sm"/>\n' +
+        '                                                <input class="form-control input-sm weight"/>\n' +
         '                                            </td>\n' +
         '                                            <td style="text-align: center">\n' +
-        '                                                <button class="btn btn-danger btn-sm" onclick="removeWaste($(this))">删除</button>\n' +
+        '                                                <button class="btn btn-danger btn-sm" onclick="removeInventory($(this))">删除</button>\n' +
         '                                            </td>\n' +
         '                                        </tr>');
+    $("#tbody-inventory .index").each(function (index) {
+        $(this).empty();
+        $(this).append(index + 1);
+    })
 }
 
 function removeInventory(self) {
     $(self).parent().parent().remove();
+    $("#tbody-inventory .index").each(function (index) {
+        $(this).empty();
+        $(this).append(index + 1);
+    })
 }
 
 function getWeighingList(packingNum) {
     $.post('/product/packing_form/get_weighing_list', {packingNum: packingNum}, function (res) {
-        if(res !=null){
+        if (res != null) {
             $('#tbody-weighing').empty();
             $.each(res, function (index, obj) {
                 $('#tbody-weighing').append('<tr>\n' +
@@ -76,8 +96,9 @@ function setWeighingData(packingNum, index, quantity, weight) {
 }
 
 function generateWeighingList(batchNum, bundleNum) {
-    $.post('/product/packing_form/generate_weighing_list', {batchNum: batchNum, bundleNum: bundleNum}, function () {
-        location='/product/packing_form/2dtl?batchNum=' + batchNum;
-    })
+    console.log(bundleNum);
+    // $.post('/product/packing_form/generate_weighing_list', {batchNum: batchNum, bundleNum: bundleNum}, function () {
+    //     location = '/product/packing_form/2dtl?batchNum=' + batchNum;
+    // })
 }
 

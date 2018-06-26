@@ -100,7 +100,7 @@ $(function () {
             }
         })
     })
-    $("#submit").on("click", function () {
+    $("#submit-confirm").on("click", function () {
         var stop = false;
         var purchaseNum = $("#purchase-num").val();
         var customerName = $("#customer-name").val();
@@ -263,9 +263,13 @@ $(function () {
         // for (var index in priceList) {
         //     info["price_" + index] = priceList[index];
         // }
+        $('#submit').remove();
+        $('#submit-confirm').remove();
+        $('#modal-body').empty();
+        $('#modal-body').append('数据提交中，请勿关闭页面');
         $.post('/market/purchase_order/insert_order', info, function (res1) {
             if (res1.status) {
-                // location.href = '/market/purchase_order/2lst';
+                location.href = '/market/purchase_order/2lst';
                 // if (contractFiles.length > 0) {
                 //     var reader = new FileReader();//新建一个FileReader
                 //     reader.readAsText(contractFiles[0], "UTF-8");//读取文件

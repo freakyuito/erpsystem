@@ -151,7 +151,7 @@
                             <!--</td>-->
                             <td>
 
-                                <button class="btn btn-primary pull-right" data-toggle="modal"
+                                <button id="submit" class="btn btn-primary pull-right" data-toggle="modal"
                                         data-target="#myModal_submit"><i class="fa fa-upload "></i>提交
                                 </button>
                                 <!-- 模态框（Modal） -->
@@ -167,14 +167,14 @@
                                                 <h4 class="modal-title" id="myModalLabel_submit">
                                                     提交表单</h4>
                                             </div>
-                                            <div class="modal-body">
+                                            <div class="modal-body" id="modal-body">
                                                 确认提交吗？
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-default"
                                                         data-dismiss="modal">关闭
                                                 </button>
-                                                <button id="submit" class="btn btn-primary">提交</button>
+                                                <button id="submit-confirm" class="btn btn-primary">提交</button>
                                                 <input id="maker-id" type="hidden" th:value="${session.userId}"/>
                                             </div>
                                         </div><!-- /.modal-content -->

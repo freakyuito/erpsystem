@@ -51,7 +51,7 @@ $("#sign-confirm").on('click', function () {
     var userName = $("#user-name").val();
     var purchaseNum = $("#purchase-num").text();
     $.post('/market/purchase_order/sign', {userName: userName, purchaseNum: purchaseNum}, function (res) {
-        location.href='/market/purchase_order/2dtl?purchaseNum='+purchaseNum;
+        location.href='/market/purchase_order/2lst';
     })
 })
 
