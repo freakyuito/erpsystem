@@ -7,14 +7,17 @@ import cn.overseachem.erp.service.ColorService;
 import cn.overseachem.erp.service.PackingFormService;
 import cn.overseachem.erp.service.ProductOrderService;
 import cn.overseachem.erp.service.PurchaseOrderService;
+import cn.overseachem.erp.utils.AjaxReturn;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -62,13 +65,13 @@ public class PackingFormController {
 
     @RequestMapping("/get_waste_list")
     @ResponseBody
-    public List<PackingFormDataItem> getWasteList(String packingNum){
+    public List<PackingFormDataItem> getWasteList(String packingNum) {
         return packingFormService.getWasteList(packingNum);
     }
 
     @RequestMapping("/get_inventory_list")
     @ResponseBody
-    public List<PackingFormDataItem> getInventoryList(String packingNum){
+    public List<PackingFormDataItem> getInventoryList(String packingNum) {
         return packingFormService.getInventoryList(packingNum);
     }
 
@@ -116,6 +119,50 @@ public class PackingFormController {
             String packingNum = "Z" + str;
             packingFormService.insertPackingForm(batchNum, packingNum);
         }
+    }
+
+    @RequestMapping("/set_waste_list")
+    @ResponseBody
+    public void setWasteList(HttpServletRequest request) {
+        String packingNum = request.getParameter("packingNum");
+        ArrayList<PackingFormDataItem> items = new ArrayList<PackingFormDataItem>();
+        int count = 1;
+        for (int i = 0; ; i++) {
+            String index = request.getParameter("index_" + i);
+            if (index == null) break;
+            String key = request.getParameter("key_" + i);
+            String value = request.getParameter("value_" + i);
+            PackingFormDataItem item = new PackingFormDataItem(count + "", key, value);
+            if (key.equals("") && value.equals("")) {
+
+            } else {
+                items.add(item);
+                count++;
+            }
+            System.out.println("controller-set waste list:" + item.toString());
+        }
+        packingFormService.setWasteList(packingNum, items);
+    }
+
+    @RequestMapping("/set_inventory_list")
+    @ResponseBody
+    public void setInventoryList(HttpServletRequest request) {
+        String packingNum = request.getParameter("packingNum");
+        ArrayList<PackingFormDataItem> items = new ArrayList<PackingFormDataItem>();
+        int count = 1;
+        for (int i = 0; ; i++) {
+            String index = request.getParameter("index_" + i);
+            if (index == null) break;
+            String key = request.getParameter("key_" + i);
+            String value = request.getParameter("value_" + i);
+            if (key.equals("") && value.equals("")) {
+
+            } else {
+                items.add(new PackingFormDataItem(count + "", key, value));
+                count++;
+            }
+        }
+        packingFormService.setInventoryList(packingNum, items);
     }
 
 

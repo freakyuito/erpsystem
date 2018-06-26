@@ -50,7 +50,7 @@ public class PackingFormService {
         return str2List(mapper.selectByPrimaryKey(packingNum).getInventoryList());
     }
 
-    public List<PackingFormDataItem> str2List(String jsonStr){
+    public List<PackingFormDataItem> str2List(String jsonStr) {
         ArrayList<PackingFormDataItem> arrayList = new ArrayList<PackingFormDataItem>();
         JSONArray jsonArray = JSONArray.parseArray(jsonStr);
         if (jsonArray != null) {
@@ -60,7 +60,7 @@ public class PackingFormService {
                         jsonObject.getString("value")));
             }
             return arrayList;
-        }else{
+        } else {
             return null;
         }
     }
@@ -85,40 +85,88 @@ public class PackingFormService {
     }
 
     public void setWasteData(String packingNum, String index, String quantity, String weight) {
+        String origin = mapper.selectByPrimaryKey(packingNum).getWasteList();
+        if (origin != null) {
+            List<PackingFormDataItem> arrayList = str2List(origin);
 
-        List<PackingFormDataItem> arrayList = str2List(mapper.selectByPrimaryKey(packingNum).getWasteList());
-
-        for (PackingFormDataItem s : arrayList
-                ) {
-            if (s.getIndex().equals(index)) {
-                s.setIndex(index);
-                s.setKey(quantity);
-                s.setValue(weight);
+            int count = 0;
+            for (PackingFormDataItem s : arrayList
+                    ) {
+                if (s.getIndex().equals(index)) {
+                    s.setIndex(index);
+                    s.setKey(quantity);
+                    s.setValue(weight);
+                    count++;
+                }
             }
-        }
-        String result = JSON.toJSONString(arrayList);
-        PackingFormWithBLOBs packingFormWithBLOBs = mapper.selectByPrimaryKey(packingNum);
-        packingFormWithBLOBs.setWasteList(result);
+            if (count == 0) {
+                arrayList.add(new PackingFormDataItem(index, quantity, weight));
+            }
 
-        mapper.updateByPrimaryKeyWithBLOBs(packingFormWithBLOBs);
+            String result = JSON.toJSONString(arrayList);
+            PackingFormWithBLOBs packingFormWithBLOBs = mapper.selectByPrimaryKey(packingNum);
+            packingFormWithBLOBs.setWasteList(result);
+            mapper.updateByPrimaryKeyWithBLOBs(packingFormWithBLOBs);
+        } else {
+            ArrayList<PackingFormDataItem> arrayList = new ArrayList<PackingFormDataItem>();
+
+            arrayList.add(new PackingFormDataItem(index, quantity, weight));
+            String result = JSON.toJSONString(arrayList);
+            PackingFormWithBLOBs packingFormWithBLOBs = mapper.selectByPrimaryKey(packingNum);
+            packingFormWithBLOBs.setWasteList(result);
+            mapper.updateByPrimaryKeyWithBLOBs(packingFormWithBLOBs);
+        }
+
     }
 
     public void setInventoryData(String packingNum, String index, String quantity, String weight) {
 
-        List<PackingFormDataItem> arrayList = str2List(mapper.selectByPrimaryKey(packingNum).getInventoryList());
+        String origin = mapper.selectByPrimaryKey(packingNum).getInventoryList();
+        if (origin != null) {
+            List<PackingFormDataItem> arrayList = str2List(origin);
 
-        for (PackingFormDataItem s : arrayList
-                ) {
-            if (s.getIndex().equals(index)) {
-                s.setIndex(index);
-                s.setKey(quantity);
-                s.setValue(weight);
+            int count = 0;
+            for (PackingFormDataItem s : arrayList
+                    ) {
+                if (s.getIndex().equals(index)) {
+                    s.setIndex(index);
+                    s.setKey(quantity);
+                    s.setValue(weight);
+                    count++;
+                }
             }
+            if (count == 0) {
+                arrayList.add(new PackingFormDataItem(index, quantity, weight));
+            }
+
+            String result = JSON.toJSONString(arrayList);
+            PackingFormWithBLOBs packingFormWithBLOBs = mapper.selectByPrimaryKey(packingNum);
+            packingFormWithBLOBs.setInventoryList(result);
+            mapper.updateByPrimaryKeyWithBLOBs(packingFormWithBLOBs);
+        } else {
+            ArrayList<PackingFormDataItem> arrayList = new ArrayList<PackingFormDataItem>();
+
+            arrayList.add(new PackingFormDataItem(index, quantity, weight));
+            String result = JSON.toJSONString(arrayList);
+            PackingFormWithBLOBs packingFormWithBLOBs = mapper.selectByPrimaryKey(packingNum);
+            packingFormWithBLOBs.setInventoryList(result);
+            mapper.updateByPrimaryKeyWithBLOBs(packingFormWithBLOBs);
         }
-        String result = JSON.toJSONString(arrayList);
+
+    }
+
+    public void setWasteList(String packingNum,List<PackingFormDataItem> items){
+        String result = JSON.toJSONString(items);
+        PackingFormWithBLOBs packingFormWithBLOBs = mapper.selectByPrimaryKey(packingNum);
+        packingFormWithBLOBs.setWasteList(result);
+        mapper.updateByPrimaryKeyWithBLOBs(packingFormWithBLOBs);
+        System.out.println("set waste list:" + result);
+    }
+
+    public void setInventoryList(String packingNum, List<PackingFormDataItem> items) {
+        String result = JSON.toJSONString(items);
         PackingFormWithBLOBs packingFormWithBLOBs = mapper.selectByPrimaryKey(packingNum);
         packingFormWithBLOBs.setInventoryList(result);
-
         mapper.updateByPrimaryKeyWithBLOBs(packingFormWithBLOBs);
     }
 

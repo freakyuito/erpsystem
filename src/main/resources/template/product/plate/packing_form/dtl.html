@@ -118,7 +118,8 @@
                                                             data-dismiss="modal">关闭
                                                     </button>
                                                     <button type="button" class="btn btn-primary" onclick="generateWeighingList($('#batch-num').text(),
-                                                    $('#bundle-select').children('option:selected').val())">确认</button>
+                                                    $('#bundle-select').children('option:selected').val())">确认
+                                                    </button>
                                                 </div>
                                             </div>
                                             <!-- /.modal-content -->
@@ -141,7 +142,14 @@
                                     </tr>
                                     </thead>
                                     <tbody id="tbody-weighing">
-
+                                    <!--<tr>-->
+                                        <!--<td class="index" style="width: 50px;text-align:center"></td>-->
+                                        <!--<td class="quantity" style="width: 110px;text-align: center"></td>-->
+                                        <!--<td class="weight" style="width: 110px;text-align: center">-->
+                                            <!--<input value="" class="form-control input-sm"-->
+                                                   <!--onblur="setWeighingData()$(this).parent().attr('class','bg-success')"/>-->
+                                        <!--</td>-->
+                                    <!--</tr>-->
                                     </tbody>
                                 </table>
                             </div>
@@ -170,6 +178,7 @@
                                         </tr>
                                         </thead>
                                         <tbody id="tbody-waste">
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -197,6 +206,21 @@
                                         </tr>
                                         </thead>
                                         <tbody id="tbody-inventory">
+                                        <tr>
+                                            <td style="text-align: center" class="index">1</td>
+                                            <td style="text-align: center">
+                                                <input class="form-control input-sm quantity"
+                                                       onblur="setInventoryData($('#packing-num').text(),$(this).parent().parent().find('.index').eq(0).text(),$(this).val(),$(this).parent().parent().find('.weight').eq(0).val())"/>
+                                            </td>
+                                            <td style="text-align: center">
+                                                <input class="form-control input-sm weight"
+                                                       onblur="setInventoryData($('#packing-num').text(),$(this).parent().parent().find('.index').eq(0).text(),$(this).parent().parent().find('.quantity').eq(0).val(),$(this).val())"/>
+                                            </td>
+                                            <td style="text-align: center">
+                                                <button class="btn btn-danger btn-sm" onclick="removeWaste($(this))">删除
+                                                </button>
+                                            </td>
+                                        </tr>
                                         </tbody>
                                     </table>
                                 </div>
