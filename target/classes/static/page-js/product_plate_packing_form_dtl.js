@@ -5,20 +5,24 @@ $(function () {
 
 
 function addWaste() {
-    $('#tbody-waste').append('<tr>\n' +
-        '<td style="text-align: center" class="index"></td>' +
-    '                                            <td style="text-align: center">\n' +
-    '                                                <input class="form-control input-sm waste-name"/>\n' +
-    '                                            </td>\n' +
-    '                                            <td style="text-align: center">\n' +
-    '                                                <input class="form-control input-sm waste-weight"/>\n' +
-    '                                            </td>\n' +
-    '                                            <td style="text-align: center">\n' +
-    '                                                <button class="btn btn-danger btn-sm" onclick="removeWaste($(this))">删除</button>\n' +
-    '                                            </td>\n' +
-    '                                        </tr>'
-)
-    ;
+    if ($('#tbody-waste>tr:last-child input.quantity').val() != '' && $('#tbody-waste>tr:last-child input.weight').val() != '') {
+        $('#tbody-waste').append('<tr>\n' +
+            '<td style="text-align: center" class="index"></td>' +
+            '                                            <td style="text-align: center">\n' +
+            '                                                <input class="form-control input-sm quantity"/>\n' +
+            '                                            </td>\n' +
+            '                                            <td style="text-align: center">\n' +
+            '                                                <input class="form-control input-sm weight"/>\n' +
+            '                                            </td>\n' +
+            '                                            <td style="text-align: center">\n' +
+            '                                                <button class="btn btn-danger btn-sm" onclick="removeWaste($(this))">删除</button>\n' +
+            '                                            </td>\n' +
+            '                                        </tr>'
+        );
+    } else {
+        alert('无法连续创建2条空的废品记录');
+    }
+
     $("#tbody-waste .index").each(function (index) {
         $(this).empty();
         $(this).append(index + 1);
@@ -36,18 +40,22 @@ function removeWaste(self) {
 w
 
 function addInventory() {
-    $('#tbody-inventory').append('<tr>\n' +
-        '<td style="text-align: center" class="index"></td>' +
-        '                                            <td style="text-align: center">\n' +
-        '                                                <input class="form-control input-sm quantity"/>\n' +
-        '                                            </td>\n' +
-        '                                            <td style="text-align: center">\n' +
-        '                                                <input class="form-control input-sm weight"/>\n' +
-        '                                            </td>\n' +
-        '                                            <td style="text-align: center">\n' +
-        '                                                <button class="btn btn-danger btn-sm" onclick="removeInventory($(this))">删除</button>\n' +
-        '                                            </td>\n' +
-        '                                        </tr>');
+    if ($('#tbody-inventory>tr:last-child input.quantity').val() != '' && $('#tbody-inventory>tr:last-child input.weight').val() != '') {
+        $('#tbody-inventory').append('<tr>\n' +
+            '<td style="text-align: center" class="index"></td>' +
+            '                                            <td style="text-align: center">\n' +
+            '                                                <input class="form-control input-sm quantity"/>\n' +
+            '                                            </td>\n' +
+            '                                            <td style="text-align: center">\n' +
+            '                                                <input class="form-control input-sm weight"/>\n' +
+            '                                            </td>\n' +
+            '                                            <td style="text-align: center">\n' +
+            '                                                <button class="btn btn-danger btn-sm" onclick="removeInventory($(this))">删除</button>\n' +
+            '                                            </td>\n' +
+            '                                        </tr>');
+    }else{
+        alert('无法连续创建2条空的库存记录');
+    }
     $("#tbody-inventory .index").each(function (index) {
         $(this).empty();
         $(this).append(index + 1);
@@ -95,10 +103,20 @@ function setWeighingData(packingNum, index, quantity, weight) {
     })
 }
 
+function setWasteData(packingNum, index, quantity, weight) {
+    // console.log(packingNum + index + quantity + weight);
+    $.post('/product/packing_form/set_weighing_data', {
+        packingNum: packingNum,
+        index: index,
+        quantity: quantity,
+        weight: weight
+    }, function () {
+    })
+}
+
 function generateWeighingList(batchNum, bundleNum) {
-    console.log(bundleNum);
-    // $.post('/product/packing_form/generate_weighing_list', {batchNum: batchNum, bundleNum: bundleNum}, function () {
-    //     location = '/product/packing_form/2dtl?batchNum=' + batchNum;
-    // })
+    $.post('/product/packing_form/generate_weighing_list', {batchNum: batchNum, bundleNum: bundleNum}, function () {
+        location = '/product/packing_form/2dtl?batchNum=' + batchNum;
+    })
 }
 

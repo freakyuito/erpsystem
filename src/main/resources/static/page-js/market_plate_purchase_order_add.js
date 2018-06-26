@@ -269,7 +269,7 @@ $(function () {
         $('#modal-body').append('数据提交中，请勿关闭页面');
         $.post('/market/purchase_order/insert_order', info, function (res1) {
             if (res1.status) {
-                location.href = '/market/purchase_order/2lst';
+                location.href = '/market/purchase_order/2dtl?purchaseNum=' + purchaseNum;
                 // if (contractFiles.length > 0) {
                 //     var reader = new FileReader();//新建一个FileReader
                 //     reader.readAsText(contractFiles[0], "UTF-8");//读取文件

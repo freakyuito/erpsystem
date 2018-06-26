@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="96182eff-537a-4ff4-8ca8-5a64cb69b766" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/page-js/market_plate_purchase_order_add.js" afterPath="$PROJECT_DIR$/src/main/resources/static/page-js/market_plate_purchase_order_add.js" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/page-js/market_plate_purchase_order_dtl.js" afterPath="$PROJECT_DIR$/src/main/resources/static/page-js/market_plate_purchase_order_dtl.js" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/page-js/product_plate_packing_form_dtl.js" afterPath="$PROJECT_DIR$/src/main/resources/static/page-js/product_plate_packing_form_dtl.js" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/template/market/plate/purchase_order/add.html" afterPath="$PROJECT_DIR$/src/main/resources/template/market/plate/purchase_order/add.html" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/template/product/plate/packing_form/dtl.html" afterPath="$PROJECT_DIR$/src/main/resources/template/product/plate/packing_form/dtl.html" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/page-js/product_plate_packing_form_dtl.js" afterPath="$PROJECT_DIR$/target/classes/static/page-js/product_plate_packing_form_dtl.js" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -58,28 +53,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="product_plate_packing_form_dtl.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/static/page-js/product_plate_packing_form_dtl.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="491">
-              <caret line="98" column="27" lean-forward="false" selection-start-line="98" selection-start-column="27" selection-end-line="98" selection-end-column="27" />
-              <folding>
-                <marker date="1530011186732" expanded="true" signature="206:224" ph="..." />
-                <marker date="1530011186732" expanded="true" signature="309:327" ph="..." />
-                <marker date="1530011186732" expanded="true" signature="563:581" ph="..." />
-                <marker date="1530011186732" expanded="true" signature="819:837" ph="..." />
-                <marker date="1530011186732" expanded="true" signature="1512:1530" ph="..." />
-                <marker date="1530011186732" expanded="true" signature="1619:1637" ph="..." />
-                <marker date="1530011186732" expanded="true" signature="1883:1901" ph="..." />
-                <marker date="1530011186732" expanded="true" signature="2145:2163" ph="..." />
-                <marker date="1530011186732" expanded="true" signature="3161:3190" ph="..." />
-                <marker date="1530011186732" expanded="true" signature="3311:3342" ph="..." />
-                <marker date="1530011186732" expanded="true" signature="3457:3488" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ProductOrderController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/controller/ProductOrderController.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -93,25 +66,25 @@
       <file leaf-file-name="market_plate_purchase_order_add.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/static/page-js/market_plate_purchase_order_add.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="333">
-              <caret line="268" column="45" lean-forward="false" selection-start-line="268" selection-start-column="45" selection-end-line="268" selection-end-column="45" />
+            <state relative-caret-position="423">
+              <caret line="271" column="73" lean-forward="false" selection-start-line="271" selection-start-column="73" selection-end-line="271" selection-end-column="73" />
               <folding>
-                <marker date="1530012621749" expanded="true" signature="1400:1418" ph="..." />
-                <marker date="1530012621749" expanded="true" signature="1540:1558" ph="..." />
-                <marker date="1530012621749" expanded="true" signature="1949:1967" ph="..." />
-                <marker date="1530012621749" expanded="true" signature="2367:2385" ph="..." />
-                <marker date="1530012621749" expanded="true" signature="2566:2584" ph="..." />
-                <marker date="1530012621749" expanded="true" signature="2657:2667" ph="..." />
-                <marker date="1530012621749" expanded="true" signature="2837:2855" ph="..." />
-                <marker date="1530012621749" expanded="true" signature="3033:3051" ph="..." />
-                <marker date="1530012621749" expanded="true" signature="3123:3133" ph="..." />
-                <marker date="1530012621749" expanded="true" signature="3303:3321" ph="..." />
-                <marker date="1530012621749" expanded="true" signature="3507:3525" ph="..." />
-                <marker date="1530012621749" expanded="true" signature="3601:3611" ph="..." />
-                <marker date="1530012621749" expanded="true" signature="3781:3799" ph="..." />
-                <marker date="1530012621749" expanded="true" signature="3978:3996" ph="..." />
-                <marker date="1530012621749" expanded="true" signature="4069:4079" ph="..." />
-                <marker date="1530012621749" expanded="true" signature="4649:4667" ph="..." />
+                <marker date="1530014308205" expanded="true" signature="1400:1418" ph="..." />
+                <marker date="1530014308205" expanded="true" signature="1540:1558" ph="..." />
+                <marker date="1530014308205" expanded="true" signature="1949:1967" ph="..." />
+                <marker date="1530014308205" expanded="true" signature="2367:2385" ph="..." />
+                <marker date="1530014308205" expanded="true" signature="2566:2584" ph="..." />
+                <marker date="1530014308205" expanded="true" signature="2657:2667" ph="..." />
+                <marker date="1530014308205" expanded="true" signature="2837:2855" ph="..." />
+                <marker date="1530014308205" expanded="true" signature="3033:3051" ph="..." />
+                <marker date="1530014308205" expanded="true" signature="3123:3133" ph="..." />
+                <marker date="1530014308205" expanded="true" signature="3303:3321" ph="..." />
+                <marker date="1530014308205" expanded="true" signature="3507:3525" ph="..." />
+                <marker date="1530014308205" expanded="true" signature="3601:3611" ph="..." />
+                <marker date="1530014308205" expanded="true" signature="3781:3799" ph="..." />
+                <marker date="1530014308205" expanded="true" signature="3978:3996" ph="..." />
+                <marker date="1530014308205" expanded="true" signature="4069:4079" ph="..." />
+                <marker date="1530014308205" expanded="true" signature="4649:4667" ph="..." />
               </folding>
             </state>
           </provider>
@@ -147,10 +120,32 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="product_plate_packing_form_dtl.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/static/page-js/product_plate_packing_form_dtl.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="23" column="5" lean-forward="true" selection-start-line="22" selection-start-column="32" selection-end-line="23" selection-end-column="5" />
+              <folding>
+                <marker date="1530013982876" expanded="true" signature="344:362" ph="..." />
+                <marker date="1530013982876" expanded="true" signature="455:473" ph="..." />
+                <marker date="1530013982876" expanded="true" signature="731:749" ph="..." />
+                <marker date="1530013982876" expanded="true" signature="1005:1023" ph="..." />
+                <marker date="1530013982876" expanded="true" signature="1924:1942" ph="..." />
+                <marker date="1530013982876" expanded="true" signature="2035:2053" ph="..." />
+                <marker date="1530013982876" expanded="true" signature="2311:2329" ph="..." />
+                <marker date="1530013982876" expanded="true" signature="2585:2603" ph="..." />
+                <marker date="1530013982876" expanded="true" signature="3663:3692" ph="..." />
+                <marker date="1530013982876" expanded="true" signature="3813:3844" ph="..." />
+                <marker date="1530013982876" expanded="true" signature="3959:3990" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="dtl.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/template/product/plate/packing_form/dtl.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
+            <state relative-caret-position="-2458">
               <caret line="90" column="61" lean-forward="false" selection-start-line="90" selection-start-column="61" selection-end-line="90" selection-end-column="61" />
               <folding>
                 <element signature="n#style#0;n#th#1;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -260,10 +255,10 @@
         <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/PackingFormDtlGrid.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/service/PackingFormService.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/controller/PackingFormController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/page-js/product_plate_packing_form_dtl.js" />
         <option value="$PROJECT_DIR$/src/main/resources/template/product/plate/packing_form/dtl.html" />
         <option value="$PROJECT_DIR$/src/main/resources/static/page-js/market_plate_purchase_order_dtl.js" />
         <option value="$PROJECT_DIR$/src/main/resources/template/market/plate/purchase_order/add.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/page-js/product_plate_packing_form_dtl.js" />
         <option value="$PROJECT_DIR$/src/main/resources/static/page-js/market_plate_purchase_order_add.js" />
       </list>
     </option>
@@ -979,12 +974,12 @@
       <workItem from="1529889388445" duration="8360000" />
       <workItem from="1529924373598" duration="11814000" />
       <workItem from="1529974019906" duration="12238000" />
-      <workItem from="1530009705262" duration="2915000" />
+      <workItem from="1530009705262" duration="4600000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="390506000" />
+    <option name="totallyTimeSpent" value="392191000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1019,7 +1014,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23260869" sideWeight="0.4914712" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14712153" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23880596" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -1411,37 +1406,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/page-js/product_plate_packing_form_dtl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="491">
-          <caret line="98" column="27" lean-forward="false" selection-start-line="98" selection-start-column="27" selection-end-line="98" selection-end-column="27" />
-          <folding>
-            <marker date="1530011186732" expanded="true" signature="206:224" ph="..." />
-            <marker date="1530011186732" expanded="true" signature="309:327" ph="..." />
-            <marker date="1530011186732" expanded="true" signature="563:581" ph="..." />
-            <marker date="1530011186732" expanded="true" signature="819:837" ph="..." />
-            <marker date="1530011186732" expanded="true" signature="1512:1530" ph="..." />
-            <marker date="1530011186732" expanded="true" signature="1619:1637" ph="..." />
-            <marker date="1530011186732" expanded="true" signature="1883:1901" ph="..." />
-            <marker date="1530011186732" expanded="true" signature="2145:2163" ph="..." />
-            <marker date="1530011186732" expanded="true" signature="3161:3190" ph="..." />
-            <marker date="1530011186732" expanded="true" signature="3311:3342" ph="..." />
-            <marker date="1530011186732" expanded="true" signature="3457:3488" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/template/product/plate/packing_form/dtl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="90" column="61" lean-forward="false" selection-start-line="90" selection-start-column="61" selection-end-line="90" selection-end-column="61" />
-          <folding>
-            <element signature="n#style#0;n#th#1;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#th#1;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/page-js/market_plate_purchase_order_dtl.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="506">
@@ -1458,27 +1422,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/template/product/plate/packing_form/dtl.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2458">
+          <caret line="90" column="61" lean-forward="false" selection-start-line="90" selection-start-column="61" selection-end-line="90" selection-end-column="61" />
+          <folding>
+            <element signature="n#style#0;n#th#1;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#1;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/page-js/product_plate_packing_form_dtl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="23" column="5" lean-forward="true" selection-start-line="22" selection-start-column="32" selection-end-line="23" selection-end-column="5" />
+          <folding>
+            <marker date="1530013982876" expanded="true" signature="344:362" ph="..." />
+            <marker date="1530013982876" expanded="true" signature="455:473" ph="..." />
+            <marker date="1530013982876" expanded="true" signature="731:749" ph="..." />
+            <marker date="1530013982876" expanded="true" signature="1005:1023" ph="..." />
+            <marker date="1530013982876" expanded="true" signature="1924:1942" ph="..." />
+            <marker date="1530013982876" expanded="true" signature="2035:2053" ph="..." />
+            <marker date="1530013982876" expanded="true" signature="2311:2329" ph="..." />
+            <marker date="1530013982876" expanded="true" signature="2585:2603" ph="..." />
+            <marker date="1530013982876" expanded="true" signature="3663:3692" ph="..." />
+            <marker date="1530013982876" expanded="true" signature="3813:3844" ph="..." />
+            <marker date="1530013982876" expanded="true" signature="3959:3990" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/page-js/market_plate_purchase_order_add.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="268" column="45" lean-forward="false" selection-start-line="268" selection-start-column="45" selection-end-line="268" selection-end-column="45" />
+        <state relative-caret-position="423">
+          <caret line="271" column="73" lean-forward="false" selection-start-line="271" selection-start-column="73" selection-end-line="271" selection-end-column="73" />
           <folding>
-            <marker date="1530012621749" expanded="true" signature="1400:1418" ph="..." />
-            <marker date="1530012621749" expanded="true" signature="1540:1558" ph="..." />
-            <marker date="1530012621749" expanded="true" signature="1949:1967" ph="..." />
-            <marker date="1530012621749" expanded="true" signature="2367:2385" ph="..." />
-            <marker date="1530012621749" expanded="true" signature="2566:2584" ph="..." />
-            <marker date="1530012621749" expanded="true" signature="2657:2667" ph="..." />
-            <marker date="1530012621749" expanded="true" signature="2837:2855" ph="..." />
-            <marker date="1530012621749" expanded="true" signature="3033:3051" ph="..." />
-            <marker date="1530012621749" expanded="true" signature="3123:3133" ph="..." />
-            <marker date="1530012621749" expanded="true" signature="3303:3321" ph="..." />
-            <marker date="1530012621749" expanded="true" signature="3507:3525" ph="..." />
-            <marker date="1530012621749" expanded="true" signature="3601:3611" ph="..." />
-            <marker date="1530012621749" expanded="true" signature="3781:3799" ph="..." />
-            <marker date="1530012621749" expanded="true" signature="3978:3996" ph="..." />
-            <marker date="1530012621749" expanded="true" signature="4069:4079" ph="..." />
-            <marker date="1530012621749" expanded="true" signature="4649:4667" ph="..." />
+            <marker date="1530014308205" expanded="true" signature="1400:1418" ph="..." />
+            <marker date="1530014308205" expanded="true" signature="1540:1558" ph="..." />
+            <marker date="1530014308205" expanded="true" signature="1949:1967" ph="..." />
+            <marker date="1530014308205" expanded="true" signature="2367:2385" ph="..." />
+            <marker date="1530014308205" expanded="true" signature="2566:2584" ph="..." />
+            <marker date="1530014308205" expanded="true" signature="2657:2667" ph="..." />
+            <marker date="1530014308205" expanded="true" signature="2837:2855" ph="..." />
+            <marker date="1530014308205" expanded="true" signature="3033:3051" ph="..." />
+            <marker date="1530014308205" expanded="true" signature="3123:3133" ph="..." />
+            <marker date="1530014308205" expanded="true" signature="3303:3321" ph="..." />
+            <marker date="1530014308205" expanded="true" signature="3507:3525" ph="..." />
+            <marker date="1530014308205" expanded="true" signature="3601:3611" ph="..." />
+            <marker date="1530014308205" expanded="true" signature="3781:3799" ph="..." />
+            <marker date="1530014308205" expanded="true" signature="3978:3996" ph="..." />
+            <marker date="1530014308205" expanded="true" signature="4069:4079" ph="..." />
+            <marker date="1530014308205" expanded="true" signature="4649:4667" ph="..." />
           </folding>
         </state>
       </provider>
