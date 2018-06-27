@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -155,7 +156,7 @@ public class PackingFormService {
 
     }
 
-    public void setWasteList(String packingNum,List<PackingFormDataItem> items){
+    public void setWasteList(String packingNum, List<PackingFormDataItem> items) {
         String result = JSON.toJSONString(items);
         PackingFormWithBLOBs packingFormWithBLOBs = mapper.selectByPrimaryKey(packingNum);
         packingFormWithBLOBs.setWasteList(result);
@@ -203,6 +204,10 @@ public class PackingFormService {
             return true;
         else
             return false;
+    }
+
+    public List<List<HashMap<String,Object>>> getByCriteria(String purchaseNum, String colorId, String batchNum, String packingNum) {
+        return mapper.getByCriteria(purchaseNum, colorId, batchNum, packingNum);
     }
 
 }

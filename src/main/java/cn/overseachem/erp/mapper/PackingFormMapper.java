@@ -6,6 +6,7 @@ import cn.overseachem.erp.pojo.PackingFormWithBLOBs;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Component
@@ -37,4 +38,6 @@ public interface PackingFormMapper {
     int updateByPrimaryKeyWithBLOBs(PackingFormWithBLOBs record);
 
     int updateByPrimaryKey(PackingForm record);
+
+    List<List<HashMap<String,Object>>> getByCriteria(@Param("purchaseNum") String purchaseNum,@Param("colorId") String colorId,@Param("batchNum") String batchNum,@Param("packingNum") String packingNum);
 }

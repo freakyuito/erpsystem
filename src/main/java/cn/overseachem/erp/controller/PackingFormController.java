@@ -2,6 +2,7 @@ package cn.overseachem.erp.controller;
 
 import cn.overseachem.erp.pojo.PackingFormDataItem;
 import cn.overseachem.erp.pojo.PackingFormDtlGrid;
+import cn.overseachem.erp.pojo.PackingFormLstGrid;
 import cn.overseachem.erp.pojo.PurchaseOrderSpec;
 import cn.overseachem.erp.service.ColorService;
 import cn.overseachem.erp.service.PackingFormService;
@@ -10,6 +11,7 @@ import cn.overseachem.erp.service.PurchaseOrderService;
 import cn.overseachem.erp.utils.AjaxReturn;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import org.codehaus.groovy.util.ListHashMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -38,6 +41,36 @@ public class PackingFormController {
     private PurchaseOrderService purchaseOrderService;
     @Autowired
     private ColorService colorService;
+
+    @RequestMapping("/2lst")
+    public String listPage() {
+        return "/product/plate/packing_form/lst";
+    }
+
+    @RequestMapping("/2add")
+    public String addPage() {
+        return "/product/plate/packing_form/add";
+    }
+
+    @RequestMapping("/get_by_criteria")
+    @ResponseBody
+    public List<PackingFormLstGrid> getByCriteria(String purchaseNum, String colorId, String batchNum, String packingNum) {
+        List<List<HashMap<String, Object>>> map = packingFormService.getByCriteria(purchaseNum, colorId, batchNum, packingNum);
+        JSONArray jsonArray = (JSONArray) JSONArray.toJSON(map);
+
+        ArrayList<PackingFormLstGrid> grids = new ArrayList<PackingFormLstGrid>();
+        for (int i = 0; i < jsonArray.size(); i++) {
+            JSONObject jsonObject = jsonArray.getJSONObject(i);
+            Integer machineId = productOrderService.getMachineIdByBatchNum(jsonObject.getString("batch_num"));
+            PackingFormLstGrid grid = new PackingFormLstGrid(jsonObject.getString("fk_purchase_num"),
+                    colorService.getNameById(jsonObject.getString("color_id")),jsonObject.getString("batch_num"),
+                    machineId+"",jsonObject.getInteger("length").toString() +" * "+ jsonObject.getInteger("width").toString() + " * " +
+                    jsonObject.getFloat("thickness").toString(),jsonObject.getInteger("required_amount").toString(),
+                    jsonObject.getInteger("completed_amount").toString(),jsonObject.getString("packing_num"));
+            grids.add(grid);
+        }
+        return grids;
+    }
 
     @RequestMapping("/2dtl")
     public String detailPage(String batchNum, Model model) {

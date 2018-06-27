@@ -1,0 +1,339 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>批次装箱清单</title>
+    <!-- Bootstrap Styles-->
+    <link th:href="@{/css/custom-styles.css}" rel="stylesheet"/>
+    <link th:href="@{/css/font-awesome.css}" rel="stylesheet"/>
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/bootstrap-datepicker/css/bootstrap-datetimepicker.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/bootstrap3-editable/css/bootstrap-editable.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/css/custom-styles.css}" rel="stylesheet"/>
+    <link th:href="@{/css/font-awesome.css}" rel="stylesheet"/>
+    <link th:href="@{/bootstrap-select2/css/select2.min.css}" rel="stylesheet"/>
+</head>
+
+<body>
+
+<nav class="navbar navbar-default top-navbar" role="navigation" th:include="nav_bar::top-nav"></nav>
+<nav class="navbar-default navbar-side" role="navigation" th:include="nav_bar::side-nav"></nav>
+
+<div id="wrapper">
+    <div id="page-wrapper">
+        <div class="header">
+            <h1 class="page-header">
+                板材生产指令单管理
+                <small>批次装箱清单明细</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li>
+                    <a href="#">主页</a>
+                </li>
+                <li>
+                    <a href="#">生产部门</a>
+                </li>
+                <li class="active">板材生产</li>
+            </ol>
+
+        </div>
+
+        <div id="page-inner">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            基础信息
+                        </div>
+                        <div class="panel-body">
+                            <table class="table table-condensed">
+                                <thead>
+                                <tr>
+                                    <th style="text-align: center">订单号</th>
+                                    <th style="text-align: center">颜色</th>
+                                    <th style="text-align: center">批次</th>
+                                    <th style="text-align: center">规格</th>
+                                    <th style="text-align: center">装箱单号</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td style="text-align: center">
+                                        <input class="form-control input-sm" id="purchase-num"/>
+                                    </td>
+                                    <td style="text-align: center">
+                                        <input class="form-control input-sm" id="color-id"/>
+                                    </td>
+                                    <td style="text-align: center">
+                                        <input class="form-control input-sm" id="batch-num"/>
+                                    </td>
+                                    <td style="text-align: center">
+                                        <input class="form-control input-sm" id="size"/>
+                                    </td>
+                                    <td style="text-align: center">
+                                        <input class="form-control input-sm" id="packing-num"/>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <button class="btn btn-primary btn-sm" id="add-weighing" onclick="addWeighing()">
+                                <i class="fa fa-plus ">添加条目</i>
+                            </button>
+                            记录
+                        </div>
+                        <div class="panel-body">
+                            <div class="col-lg-12">
+                                <div class="table-responsive">
+                                    <table class="table table-condensed">
+                                        <thead>
+                                        <tr>
+                                            <th style="width: 100px;text-align:center">序号</th>
+                                            <th style="width: 100px;text-align:center">数量/张</th>
+                                            <th style="width: 100px;text-align:center">重量/kg</th>
+                                            <th style="width: 50px;text-align:center">操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="tbody-weighing">
+
+                                        </tbody>
+                                        <tfoot id="tfoot-weighing">
+
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <button class="btn btn-primary btn-sm" id="add-waste" onclick="addWaste()">
+                                <i class="fa fa-plus ">添加条目</i>
+                            </button>
+                            废品记录
+                        </div>
+                        <div class="panel-body">
+                            <div class="col-lg-12">
+                                <div class="table-responsive">
+                                    <table class="table table-condensed">
+                                        <thead>
+                                        <tr>
+                                            <th style="width: 100px;text-align:center">序号</th>
+                                            <th style="width: 100px;text-align:center">废品名</th>
+                                            <th style="width: 100px;text-align:center">废品量/kg</th>
+                                            <th style="width: 50px;text-align:center">操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="tbody-waste">
+
+                                        </tbody>
+                                        <tfoot id="tfoot-waste">
+
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <button class="btn btn-primary btn-sm" onclick="addInventory()">
+                                <i class="fa fa-plus ">添加条目</i>
+                            </button>
+                            库存记录
+                        </div>
+                        <div class="panel-body">
+                            <div class="col-lg-12">
+                                <div class="table-responsive">
+                                    <table class="table table-condensed">
+                                        <thead>
+                                        <tr>
+                                            <th style="width: 100px;text-align:center">序号</th>
+                                            <th style="width: 100px;text-align:center">数量/张</th>
+                                            <th style="width: 100px;text-align:center">重量/kg</th>
+                                            <th style="width: 50px;text-align:center">操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="tbody-inventory">
+                                        <tr>
+                                            <td style="text-align: center" class="index">1</td>
+                                            <td style="text-align: center">
+                                                <input class="form-control input-sm quantity"
+                                                       onblur="setInventoryData($('#packing-num').text(),$(this).parent().parent().find('.index').eq(0).text(),$(this).val(),$(this).parent().parent().find('.weight').eq(0).val())"/>
+                                            </td>
+                                            <td style="text-align: center">
+                                                <input class="form-control input-sm weight"
+                                                       onblur="setInventoryData($('#packing-num').text(),$(this).parent().parent().find('.index').eq(0).text(),$(this).parent().parent().find('.quantity').eq(0).val(),$(this).val())"/>
+                                            </td>
+                                            <td style="text-align: center">
+                                                <button class="btn btn-danger btn-sm" onclick="removeWaste($(this))">删除
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                        <tfoot id="tfoot-inventory">
+
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <tr>
+                                <th style="text-align:center">操作</th>
+                            </tr>
+                        </div>
+                        <div class="panel-body">
+                            <table class="table table-condensed">
+                                <thead>
+                                <tr>
+                                    <th style="text-align: center"></th>
+                                    <th style="text-align: center"></th>
+                                    <th style="text-align: center"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td style="text-align: center">
+
+                                        <button class="btn btn-primary btn-sm" data-toggle="modal"
+                                                data-target="#myModal_supervisor"><i
+                                                class="glyphicon glyphicon-transfer "></i>交接班
+                                        </button>
+                                        <!-- 模态框（Modal） -->
+                                        <div class="modal fade" id="myModal_supervisor" tabindex="-1" role="dialog"
+                                             aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                                aria-hidden="true">
+                                                            &times;
+                                                        </button>
+                                                        <h4 class="modal-title" id="myModalLabel_supervisor">
+                                                            交接班署名，署名之后，当班次当批次入库结算完成。</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        署名人为：xxx
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default"
+                                                                data-dismiss="modal">关闭
+                                                        </button>
+                                                        <button type="button" class="btn btn-primary">确认</button>
+                                                    </div>
+                                                </div>
+                                                <!-- /.modal-content -->
+                                            </div>
+                                            <!-- /.modal -->
+                                        </div>
+
+                                    </td>
+                                    <td style="text-align: center">
+                                        <button class="btn btn-primary btn-sm" data-toggle="modal"
+                                                data-target="#myModal_supervisor"><i
+                                                class="glyphicon glyphicon-floppy-save "></i>打印
+                                        </button>
+                                        <!-- 模态框（Modal） -->
+                                        <div class="modal fade" id="myModal_supervisor" tabindex="-1" role="dialog"
+                                             aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                                aria-hidden="true">
+                                                            &times;
+                                                        </button>
+                                                        <h4 class="modal-title" id="myModalLabel_supervisor">
+                                                            交接班署名，署名之后，当班次当批次入库结算完成。</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        署名人为：xxx
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default"
+                                                                data-dismiss="modal">关闭
+                                                        </button>
+                                                        <button type="button" class="btn btn-primary">确认</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td style="text-align: center">
+                                        <btn class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-check "></i>提交
+                                        </btn>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <tr>
+                                <th style="text-align:center">打印记录</th>
+                            </tr>
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th style="text-align: center">时间</th>
+                                        <th style="text-align: center">操作人</th>
+                                        <th style="text-align: center">句柄</th>
+                                        <th style="text-align: center">原因</th>
+                                        <th style="text-align: center">内容</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td style="text-align: center">2018-04-20 12:35:00</td>
+                                        <td style="text-align: center">xxx</td>
+                                        <td style="text-align: center">开始生产</td>
+                                        <td style="text-align: center">无</td>
+                                        <td style="text-align: center">JY180004批次开始生产</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" th:src="@{/js/jquery-3.3.1.js}" charset="UTF-8"></script>
+<script type="text/javascript" th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/jquery.metisMenu.js}"></script>
+<script th:src="@{/js/custom-scripts.js}"></script>
+<script type="text/javascript" th:src="@{/bootstrap-datepicker/js/bootstrap-datetimepicker.js}"
+        charset="UTF-8"></script>
+<script type="text/javascript" th:src="@{/bootstrap-datepicker/js/locales/bootstrap-datetimepicker.zh-CN.js}"
+        charset="UTF-8"></script>
+<script type="text/javascript" th:src="@{/bootstrap3-editable/js/bootstrap-editable.js}"
+        charset="UTF-8"></script>
+<script th:src="@{/bootstrap-select2/js/select2.min.js}"></script>
+<script type="text/javascript" th:src="@{/page-js/product_plate_packing_form_add.js}"></script>
+</body>
+</html>

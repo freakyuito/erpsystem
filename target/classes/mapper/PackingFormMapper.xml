@@ -280,4 +280,8 @@
       print_records = #{printRecords,jdbcType=VARCHAR}
     where packing_num = #{packingNum,jdbcType=VARCHAR}
   </update>
+  <select id="getByCriteria" resultType="hashmap">
+    SELECT purchase_order_spec.fk_purchase_num,purchase_order_spec.color_id,product_order_spec.batch_num,purchase_order_spec.length,purchase_order_spec.width,purchase_order_spec.thickness,purchase_order_spec.required_amount,product_order_spec.completed_amount,packing_form.packing_num FROM purchase_order_spec INNER JOIN product_order_spec ON
+product_order_spec.fk_purchase_spec_id = purchase_order_spec.spec_id INNER JOIN packing_form ON product_order_spec.batch_num = packing_form.fk_batch_num WHERE purchase_order_spec.fk_purchase_num LIKE '%${purchaseNum}%' AND purchase_order_spec.color_id LIKE '%${colorId}%' AND product_order_spec.batch_num LIKE '%${batchNum}%' AND packing_form.packing_num LIKE '%${packingNum}%'
+  </select>
 </mapper>
