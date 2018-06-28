@@ -157,4 +157,10 @@ public class ProductOrderService {
     public Integer getMachineIdByBatchNum(String batchNum){
         return orderMapper.selectByPrimaryKey(specMapper.selectByPrimaryKey(batchNum).getFkProductNum()).getMachineNum();
     }
+
+    public void setCompletedAmount(String batchNum,Integer value){
+        ProductOrderSpec s = specMapper.selectByPrimaryKey(batchNum);
+        s.setCompletedAmount(value);
+        specMapper.updateByPrimaryKey(s);
+    }
 }

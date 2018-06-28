@@ -51,29 +51,13 @@
                             <table class="table table-condensed">
                                 <thead>
                                 <tr>
-                                    <th style="text-align: center">订单号</th>
-                                    <th style="text-align: center">颜色</th>
-                                    <th style="text-align: center">批次</th>
-                                    <th style="text-align: center">规格</th>
                                     <th style="text-align: center">装箱单号</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td style="text-align: center">
-                                        <input class="form-control input-sm" id="purchase-num"/>
-                                    </td>
-                                    <td style="text-align: center">
-                                        <input class="form-control input-sm" id="color-id"/>
-                                    </td>
-                                    <td style="text-align: center">
-                                        <input class="form-control input-sm" id="batch-num"/>
-                                    </td>
-                                    <td style="text-align: center">
-                                        <input class="form-control input-sm" id="size"/>
-                                    </td>
-                                    <td style="text-align: center">
-                                        <input class="form-control input-sm" id="packing-num"/>
+                                    <td style="text-align: center" id="packing-num"
+                                        th:text="${packingFormDtlGrid.packingNum}">
                                     </td>
                                 </tr>
                                 </tbody>
@@ -87,10 +71,10 @@
                 <div class="col-lg-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <button class="btn btn-primary btn-sm" id="add-weighing" onclick="addWeighing()">
+                            <button class="btn btn-primary btn-sm" onclick="addWeighing()">
                                 <i class="fa fa-plus ">添加条目</i>
                             </button>
-                            记录
+                            成品记录
                         </div>
                         <div class="panel-body">
                             <div class="col-lg-12">
@@ -105,10 +89,8 @@
                                         </tr>
                                         </thead>
                                         <tbody id="tbody-weighing">
-
                                         </tbody>
                                         <tfoot id="tfoot-weighing">
-
                                         </tfoot>
                                     </table>
                                 </div>
@@ -138,10 +120,8 @@
                                         </tr>
                                         </thead>
                                         <tbody id="tbody-waste">
-
                                         </tbody>
                                         <tfoot id="tfoot-waste">
-
                                         </tfoot>
                                     </table>
                                 </div>
@@ -169,21 +149,6 @@
                                         </tr>
                                         </thead>
                                         <tbody id="tbody-inventory">
-                                        <tr>
-                                            <td style="text-align: center" class="index">1</td>
-                                            <td style="text-align: center">
-                                                <input class="form-control input-sm quantity"
-                                                       onblur="setInventoryData($('#packing-num').text(),$(this).parent().parent().find('.index').eq(0).text(),$(this).val(),$(this).parent().parent().find('.weight').eq(0).val())"/>
-                                            </td>
-                                            <td style="text-align: center">
-                                                <input class="form-control input-sm weight"
-                                                       onblur="setInventoryData($('#packing-num').text(),$(this).parent().parent().find('.index').eq(0).text(),$(this).parent().parent().find('.quantity').eq(0).val(),$(this).val())"/>
-                                            </td>
-                                            <td style="text-align: center">
-                                                <button class="btn btn-danger btn-sm" onclick="removeWaste($(this))">删除
-                                                </button>
-                                            </td>
-                                        </tr>
                                         </tbody>
                                         <tfoot id="tfoot-inventory">
 
@@ -218,7 +183,7 @@
                                                 class="glyphicon glyphicon-transfer "></i>交接班
                                         </button>
                                         <!-- 模态框（Modal） -->
-                                        <div class="modal fade" id="myModal_supervisor" tabindex="-1" role="dialog"
+                                        <div class="modal fade" id="myModal_exchange" tabindex="-1" role="dialog"
                                              aria-labelledby="myModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
@@ -227,7 +192,7 @@
                                                                 aria-hidden="true">
                                                             &times;
                                                         </button>
-                                                        <h4 class="modal-title" id="myModalLabel_supervisor">
+                                                        <h4 class="modal-title" id="myModalLabel_exchange">
                                                             交接班署名，署名之后，当班次当批次入库结算完成。</h4>
                                                     </div>
                                                     <div class="modal-body">
@@ -248,11 +213,11 @@
                                     </td>
                                     <td style="text-align: center">
                                         <button class="btn btn-primary btn-sm" data-toggle="modal"
-                                                data-target="#myModal_supervisor"><i
+                                                data-target="#myModal_print"><i
                                                 class="glyphicon glyphicon-floppy-save "></i>打印
                                         </button>
                                         <!-- 模态框（Modal） -->
-                                        <div class="modal fade" id="myModal_supervisor" tabindex="-1" role="dialog"
+                                        <div class="modal fade" id="myModal_print" tabindex="-1" role="dialog"
                                              aria-labelledby="myModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
@@ -261,7 +226,7 @@
                                                                 aria-hidden="true">
                                                             &times;
                                                         </button>
-                                                        <h4 class="modal-title" id="myModalLabel_supervisor">
+                                                        <h4 class="modal-title" id="myModalLabel_print">
                                                             交接班署名，署名之后，当班次当批次入库结算完成。</h4>
                                                     </div>
                                                     <div class="modal-body">
@@ -334,6 +299,6 @@
 <script type="text/javascript" th:src="@{/bootstrap3-editable/js/bootstrap-editable.js}"
         charset="UTF-8"></script>
 <script th:src="@{/bootstrap-select2/js/select2.min.js}"></script>
-<script type="text/javascript" th:src="@{/page-js/product_plate_packing_form_add.js}"></script>
+<script type="text/javascript" th:src="@{/page-js/product_plate_packing_form_dtl_free.js}"></script>
 </body>
 </html>

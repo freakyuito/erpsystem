@@ -1,9 +1,6 @@
 package cn.overseachem.erp.controller;
 
-import cn.overseachem.erp.pojo.PackingFormDataItem;
-import cn.overseachem.erp.pojo.PackingFormDtlGrid;
-import cn.overseachem.erp.pojo.PackingFormLstGrid;
-import cn.overseachem.erp.pojo.PurchaseOrderSpec;
+import cn.overseachem.erp.pojo.*;
 import cn.overseachem.erp.service.ColorService;
 import cn.overseachem.erp.service.PackingFormService;
 import cn.overseachem.erp.service.ProductOrderService;
@@ -47,9 +44,9 @@ public class PackingFormController {
         return "/product/plate/packing_form/lst";
     }
 
-    @RequestMapping("/2add")
-    public String addPage() {
-        return "/product/plate/packing_form/add";
+    @RequestMapping("/2add_free")
+    public String addFreePage() {
+        return "/product/plate/packing_form/add_free";
     }
 
     @RequestMapping("/get_by_criteria")
@@ -57,17 +54,33 @@ public class PackingFormController {
     public List<PackingFormLstGrid> getByCriteria(String purchaseNum, String colorId, String batchNum, String packingNum) {
         List<List<HashMap<String, Object>>> map = packingFormService.getByCriteria(purchaseNum, colorId, batchNum, packingNum);
         JSONArray jsonArray = (JSONArray) JSONArray.toJSON(map);
-
         ArrayList<PackingFormLstGrid> grids = new ArrayList<PackingFormLstGrid>();
         for (int i = 0; i < jsonArray.size(); i++) {
             JSONObject jsonObject = jsonArray.getJSONObject(i);
             Integer machineId = productOrderService.getMachineIdByBatchNum(jsonObject.getString("batch_num"));
             PackingFormLstGrid grid = new PackingFormLstGrid(jsonObject.getString("fk_purchase_num"),
-                    colorService.getNameById(jsonObject.getString("color_id")),jsonObject.getString("batch_num"),
-                    machineId+"",jsonObject.getInteger("length").toString() +" * "+ jsonObject.getInteger("width").toString() + " * " +
-                    jsonObject.getFloat("thickness").toString(),jsonObject.getInteger("required_amount").toString(),
-                    jsonObject.getInteger("completed_amount").toString(),jsonObject.getString("packing_num"));
+                    colorService.getNameById(jsonObject.getString("color_id")), jsonObject.getString("batch_num"),
+                    machineId + "", jsonObject.getInteger("length").toString() + " * " + jsonObject.getInteger("width").toString() + " * " +
+                    jsonObject.getFloat("thickness").toString(), jsonObject.getInteger("completed_amount").toString() + "/" +jsonObject.getInteger("required_amount").toString(),
+                    packingFormService.getCompletedWeightByPackingNum(jsonObject.getString("packing_num")).toString(), jsonObject.getString("packing_num"));
             grids.add(grid);
+        }
+        return grids;
+    }
+
+    @RequestMapping("/get_free_packing_form")
+    @ResponseBody
+    public List<PackingFormLstGrid> getFreePackingForm(String packingNum) {
+        List<PackingForm> packingFormList = packingFormService.getFreePackingForm(packingNum);
+
+        ArrayList<PackingFormLstGrid> grids = new ArrayList<PackingFormLstGrid>();
+        for (PackingForm s : packingFormList
+                ) {
+            if (s.getFkBatchNum() == null) {
+                PackingFormLstGrid grid = new PackingFormLstGrid();
+                grid.setPackingNum(s.getPackingNum());
+                grids.add(grid);
+            }
         }
         return grids;
     }
@@ -88,6 +101,14 @@ public class PackingFormController {
         grid.setWeighingListEmpty(packingFormService.isWeighingListEmpty(packingNum));
         model.addAttribute("packingFormDtlGrid", grid);
         return "/product/plate/packing_form/dtl";
+    }
+
+    @RequestMapping("/2dtl_free")
+    public String detailFreePage(String packingNum, Model model) {
+        PackingFormDtlGrid grid = new PackingFormDtlGrid();
+        grid.setPackingNum(packingNum);
+        model.addAttribute("packingFormDtlGrid", grid);
+        return "/product/plate/packing_form/dtl_free";
     }
 
     @RequestMapping("/get_weighing_list")
@@ -112,6 +133,7 @@ public class PackingFormController {
     @ResponseBody
     public void setWeighingData(String packingNum, String index, String quantity, String weight) {
         packingFormService.setWeighingData(packingNum, index, quantity, weight);
+        productOrderService.setCompletedAmount(packingFormService.getBatchNumByPackingNum(packingNum),packingFormService.getCompletedAmountByPackingNum(packingNum));
     }
 
     @RequestMapping("/set_waste_data")
@@ -140,18 +162,45 @@ public class PackingFormController {
         }
     }
 
-    @RequestMapping("/insert_packing_form")
+    @RequestMapping("/insert_packing_form_with_batch_num")
     @ResponseBody
-    public void insertPackingForm(String batchNum) {
+    public void insertPackingFormWithBatchNum(String batchNum) {
         Integer count = packingFormService.countByBatchNum(batchNum);
         if (count > 0) {
             return;
         } else {
-            DecimalFormat df = new DecimalFormat("000000");
-            String str = df.format(packingFormService.getTotalAmount());
-            String packingNum = "Z" + str;
-            packingFormService.insertPackingForm(batchNum, packingNum);
+            packingFormService.insertPackingFormWithBatchNum(batchNum, getPackingNum());
         }
+    }
+
+    @RequestMapping("/insert_packing_form")
+    @ResponseBody
+    public void insertPackingForm() {
+        packingFormService.insertPackingForm(getPackingNum());
+    }
+
+    @RequestMapping("/set_weighing_list")
+    @ResponseBody
+    public void setWeighingList(HttpServletRequest request) {
+        String packingNum = request.getParameter("packingNum");
+        ArrayList<PackingFormDataItem> items = new ArrayList<PackingFormDataItem>();
+        int count = 1;
+        for (int i = 0; ; i++) {
+            String index = request.getParameter("index_" + i);
+            if (index == null) break;
+            String key = request.getParameter("key_" + i);
+            String value = request.getParameter("value_" + i);
+            PackingFormDataItem item = new PackingFormDataItem(count + "", key, value);
+            if (key.equals("") && value.equals("")) {
+
+            } else {
+                items.add(item);
+                count++;
+            }
+            System.out.println("controller-set weighing list:" + item.toString());
+        }
+        packingFormService.setWeighingList(packingNum, items);
+        productOrderService.setCompletedAmount(packingFormService.getBatchNumByPackingNum(packingNum),packingFormService.getCompletedAmountByPackingNum(packingNum));
     }
 
     @RequestMapping("/set_waste_list")
@@ -198,5 +247,12 @@ public class PackingFormController {
         packingFormService.setInventoryList(packingNum, items);
     }
 
+    @RequestMapping("/get_packing_num")
+    @ResponseBody
+    public String getPackingNum() {
+        DecimalFormat df = new DecimalFormat("000000");
+        String str = df.format(packingFormService.getTotalAmount());
+        return "Z" + str;
+    }
 
 }

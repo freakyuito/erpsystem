@@ -24,6 +24,9 @@ public class PackingFormLstGrid {
                 '}';
     }
 
+    public PackingFormLstGrid() {
+    }
+
     public PackingFormLstGrid(String purchaseNum, String colorName, String batchNum, String machineId, String size, String requiredAmount, String completedWeight, String packingNum) {
         this.purchaseNum = purchaseNum;
         this.colorName = colorName;

@@ -20,6 +20,8 @@
 </head>
 
 <body>
+<nav class="navbar navbar-default top-navbar" role="navigation" th:include="nav_bar::top-nav"></nav>
+<nav class="navbar-default navbar-side" role="navigation" th:include="nav_bar::side-nav"></nav>
 
 <div id="page-wrapper">
     <div class="header">
@@ -43,7 +45,7 @@
         <div class="row">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <a href='/product/packing_form/2add' class="btn btn-primary pull-left">新建</a>
+                    <a href='/product/packing_form/2add_free' class="btn btn-primary pull-left">新建</a>
 
                     <div class="btn-group pull-right">
                         <button data-toggle="dropdown" class="btn btn-default dropdown-toggle"
@@ -87,7 +89,8 @@
                                 <input class="form-control input-sm" id="purchase-num" value=""/>
                             </td>
                             <td style="text-align: center">
-                                <select class="js-example-basic-multiple js-states form-control" id="color-name-multiple" multiple="multiple">
+                                <select class="js-example-basic-multiple js-states form-control"
+                                        id="color-name-multiple" multiple="multiple">
                                 </select>
                             </td>
                             <td style="text-align: center">

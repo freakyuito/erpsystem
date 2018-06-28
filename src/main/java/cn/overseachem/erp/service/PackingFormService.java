@@ -11,6 +11,8 @@ import com.google.gson.JsonParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.awt.geom.FlatteningPathIterator;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -156,6 +158,14 @@ public class PackingFormService {
 
     }
 
+    public void setWeighingList(String packingNum, List<PackingFormDataItem> items) {
+        String result = JSON.toJSONString(items);
+        PackingFormWithBLOBs packingFormWithBLOBs = mapper.selectByPrimaryKey(packingNum);
+        packingFormWithBLOBs.setWeighingList(result);
+        mapper.updateByPrimaryKeyWithBLOBs(packingFormWithBLOBs);
+        System.out.println("set weighing list:" + result);
+    }
+
     public void setWasteList(String packingNum, List<PackingFormDataItem> items) {
         String result = JSON.toJSONString(items);
         PackingFormWithBLOBs packingFormWithBLOBs = mapper.selectByPrimaryKey(packingNum);
@@ -186,9 +196,15 @@ public class PackingFormService {
         return mapper.countByExample(e);
     }
 
-    public void insertPackingForm(String batchNum, String packingNum) {
+    public void insertPackingFormWithBatchNum(String batchNum, String packingNum) {
         PackingFormWithBLOBs packingFormWithBLOBs = new PackingFormWithBLOBs();
         packingFormWithBLOBs.setFkBatchNum(batchNum);
+        packingFormWithBLOBs.setPackingNum(packingNum);
+        mapper.insert(packingFormWithBLOBs);
+    }
+
+    public void insertPackingForm(String packingNum) {
+        PackingFormWithBLOBs packingFormWithBLOBs = new PackingFormWithBLOBs();
         packingFormWithBLOBs.setPackingNum(packingNum);
         mapper.insert(packingFormWithBLOBs);
     }
@@ -206,8 +222,52 @@ public class PackingFormService {
             return false;
     }
 
-    public List<List<HashMap<String,Object>>> getByCriteria(String purchaseNum, String colorId, String batchNum, String packingNum) {
+    public List<List<HashMap<String, Object>>> getByCriteria(String purchaseNum, String colorId, String batchNum, String packingNum) {
         return mapper.getByCriteria(purchaseNum, colorId, batchNum, packingNum);
     }
 
+    public List<PackingForm> getFreePackingForm(String packingNum) {
+        PackingFormExample e = new PackingFormExample();
+        e.createCriteria().andPackingNumLike("%" + packingNum + "%");
+        return mapper.selectByExample(e);
+    }
+
+    public Integer getCompletedAmountByPackingNum(String packingNum) {
+        PackingFormWithBLOBs p = mapper.selectByPrimaryKey(packingNum);
+        List<PackingFormDataItem> arrayList = str2List(p.getWeighingList());
+        Integer totalAmount = 0;
+        for (PackingFormDataItem i : arrayList
+                ) {
+            if (Float.parseFloat(i.getValue()) != 0){
+                totalAmount += Integer.parseInt(i.getKey());
+                System.out.println(i.getValue());
+            }
+        }
+        System.out.println(totalAmount);
+        return totalAmount;
+    }
+
+    public Float getCompletedWeightByPackingNum(String packingNum) {
+        System.out.println(packingNum);
+        PackingFormWithBLOBs p = mapper.selectByPrimaryKey(packingNum);
+        List<PackingFormDataItem> arrayList = str2List(p.getWeighingList());
+        Float totalWeight = 0f;
+        if(arrayList == null)
+            return 0f;
+        else{
+            for (PackingFormDataItem i : arrayList
+                    ) {
+                if (Float.parseFloat(i.getValue()) != 0){
+                    totalWeight += Float.parseFloat(i.getValue());
+                }
+            }
+            DecimalFormat d = new DecimalFormat("#.00");
+            return Float.valueOf(d.format(totalWeight));
+        }
+
+    }
+
+    public String getBatchNumByPackingNum(String packingNum) {
+        return mapper.selectByPrimaryKey(packingNum).getFkBatchNum();
+    }
 }

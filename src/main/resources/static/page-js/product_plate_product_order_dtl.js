@@ -36,7 +36,7 @@ function sign() {
 }
 
 function insertPackingForm(batchNum) {
-    $.post('/product/packing_form/insert_packing_form',{batchNum:batchNum},function () {
+    $.post('/product/packing_form/insert_packing_form_with_batch_num',{batchNum:batchNum},function () {
 
     })
 }

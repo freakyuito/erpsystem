@@ -9,12 +9,12 @@ function addWeighing() {
         $('#tbody-weighing').append('<tr>\n' +
             '                                            <td style="text-align: center" class="index">1</td>\n' +
             '                                            <td style="text-align: center">\n' +
-            '                                                <input class="form-control input-sm quantity"\n' +
-            '                                                       onchange="setWeighingData($(\'#packing-num\').text(),$(this).parent().parent().find(\'.index\').eq(0).text(),$(this).val(),$(this).parent().parent().find(\'.weight\').eq(0).val());setWeighingListColor();totalWeighingAmount()"' +
+            '                                                <input type="number" class="form-control input-sm quantity"\n' +
+            '                                                       onchange="setWeighingList();setWeighingListColor();totalWeighingAmount()"' +
             '                                            </td>\n' +
             '                                            <td style="text-align: center">\n' +
-            '                                                <input class="form-control input-sm weight"\n' +
-            '                                                       onchange="setWeighingData($(\'#packing-num\').text(),$(this).parent().parent().find(\'.index\').eq(0).text(),$(this).parent().parent().find(\'.quantity\').eq(0).val(),$(this).val());setWeighingListColor();totalWeighingAmount()"' +
+            '                                                <input type="number" class="form-control input-sm weight"\n' +
+            '                                                       onchange="setWeighingList();setWeighingListColor();totalWeighingAmount()"' +
             '                                            </td>\n' +
             '                                            <td style="text-align: center">\n' +
             '                                                <button class="btn btn-danger btn-sm" onclick="removeWeighing($(this))">删除\n' +
@@ -35,13 +35,13 @@ function addWeighing() {
 
 function removeWeighing(self) {
     $(self).parent().parent().remove();
-    $("#tbody-waste .index").each(function (index) {
+    $("#tbody-weighing .index").each(function (index) {
         $(this).empty();
         $(this).append(index + 1);
     })
-    setWasteList();
-    setWasteListColor();
-    totalWasteAmount();
+    setWeighingList();
+    setWeighingListColor();
+    totalWeighingAmount();
 }
 
 function addWaste() {
@@ -53,7 +53,7 @@ function addWaste() {
             '                                                       onchange="setWasteData($(\'#packing-num\').text(),$(this).parent().parent().find(\'.index\').eq(0).text(),$(this).val(),$(this).parent().parent().find(\'.weight\').eq(0).val());setWasteListColor();totalWasteAmount()"' +
             '                                            </td>\n' +
             '                                            <td style="text-align: center">\n' +
-            '                                                <input class="form-control input-sm weight"\n' +
+            '                                                <input type="number" class="form-control input-sm weight"\n' +
             '                                                       onchange="setWasteData($(\'#packing-num\').text(),$(this).parent().parent().find(\'.index\').eq(0).text(),$(this).parent().parent().find(\'.quantity\').eq(0).val(),$(this).val());setWasteListColor();totalWasteAmount()"' +
             '                                            </td>\n' +
             '                                            <td style="text-align: center">\n' +
@@ -93,7 +93,7 @@ function addInventory() {
             '                                                       onblur="setInventoryData($(\'#packing-num\').text(),$(this).parent().parent().find(\'.index\').eq(0).text(),$(this).val(),$(this).parent().parent().find(\'.weight\').eq(0).val());setInventoryListColor();totalInventoryAmount()"' +
             '                                            </td>\n' +
             '                                            <td style="text-align: center">\n' +
-            '                                                <input class="form-control input-sm weight"\n' +
+            '                                                <input type="number" class="form-control input-sm weight"\n' +
             '                                                       onblur="setInventoryData($(\'#packing-num\').text(),$(this).parent().parent().find(\'.index\').eq(0).text(),$(this).parent().parent().find(\'.quantity\').eq(0).val(),$(this).val());setInventoryListColor();totalInventoryAmount()"' +
             '                                            </td>\n' +
             '                                            <td style="text-align: center">\n' +
@@ -161,15 +161,19 @@ function getWeighingList(packingNum) {
             $('#tbody-weighing').empty();
             $.each(res, function (index, obj) {
                 $('#tbody-weighing').append('<tr>\n' +
-                    '                                        <td class="index" style="width: 50px;text-align:center">' + (index + 1) + '</td>\n' +
-                    '                                        <td class="quantity" style="width: 110px;text-align: center">' + obj.key + '</td>\n' +
-                    '                                        <td class="" style="width: 110px;text-align: center">\n' +
-                    '                                            <input type="number" value="' + obj.value + '" class="form-control input-sm weight"\n' +
-                    '                                                   onchange="setWeighingData($(\'#packing-num\').text(),\n' +
-                    '                                                   $(this).parent().prev().prev().text(),\n' +
-                    '                                                   $(this).parent().prev().text(),\n' +
-                    '                                                   $(this).val());setWeighingListColor();totalWeighingAmount();"/>\n' +
-                    '                                        </td>\n' +
+                    '                                            <td style="text-align: center" class="index">' + (index + 1) + '</td>\n' +
+                    '                                            <td style="text-align: center">\n' +
+                    '                                                <input type="number" class="form-control input-sm quantity"\n' + 'value="' + obj.key + '"' +
+                    '                                                       onchange="setWeighingList();setWeighingListColor();totalWeighingAmount()"/>' +
+                    '                                            </td>\n' +
+                    '                                            <td style="text-align: center">\n' +
+                    '                                                <input type="number" class="form-control input-sm weight"\n' + 'value="' + obj.value + '"' +
+                    '                                                       onchange="setWeighingList();setWeighingListColor();totalWeighingAmount()"/>' +
+                    '                                            </td>\n' +
+                    '                                            <td style="text-align: center">\n' +
+                    '                                                <button class="btn btn-danger btn-sm" onclick="removeWeighing($(this))">删除\n' +
+                    '                                                </button>\n' +
+                    '                                            </td>\n' +
                     '                                    </tr>');
             })
             $('#tbody-weighing').append('<tr id="tr-weighing-amount">' +
@@ -181,6 +185,23 @@ function getWeighingList(packingNum) {
             totalWeighingAmount();
         }
 
+    })
+}
+
+function setWeighingList() {
+    var info = {};
+    $('#tbody-weighing .index').each(function (index) {
+        info['index_' + index] = $(this).text();
+    })
+    $('#tbody-weighing .quantity').each(function (index) {
+        info['key_' + index] = $(this).val();
+    })
+    $('#tbody-weighing .weight').each(function (index) {
+        info['value_' + index] = $(this).val();
+    })
+    info['packingNum'] = $('#packing-num').text();
+    $.post('/product/packing_form/set_weighing_list', info, function () {
+        getWasteList($('#packing-num').text());
     })
 }
 
@@ -196,7 +217,7 @@ function getWasteList(packingNum) {
                     '                                                       onchange="setWasteData($(\'#packing-num\').text(),$(this).parent().parent().find(\'.index\').eq(0).text(),$(this).val(),$(this).parent().parent().find(\'.weight\').eq(0).val());setWasteListColor();totalWasteAmount()"/>' +
                     '                                            </td>\n' +
                     '                                            <td style="text-align: center">\n' +
-                    '                                                <input class="form-control input-sm weight"\n' + 'value="' + obj.value + '"' +
+                    '                                                <input type="number" class="form-control input-sm weight"\n' + 'value="' + obj.value + '"' +
                     '                                                       onchange="setWasteData($(\'#packing-num\').text(),$(this).parent().parent().find(\'.index\').eq(0).text(),$(this).parent().parent().find(\'.quantity\').eq(0).val(),$(this).val());setWasteListColor();totalWasteAmount()"/>' +
                     '                                            </td>\n' +
                     '                                            <td style="text-align: center">\n' +
@@ -241,7 +262,7 @@ function getInventoryList(packingNum) {
                     '                                                       onchange="setInventoryData($(\'#packing-num\').text(),$(this).parent().parent().find(\'.index\').eq(0).text(),$(this).val(),$(this).parent().parent().find(\'.weight\').eq(0).val());setInventoryListColor();totalInventoryAmount()"' +
                     '                                            </td>\n' +
                     '                                            <td style="text-align: center">\n' +
-                    '                                                <input class="form-control input-sm weight"\n' + 'value="' + obj.value + '"' +
+                    '                                                <input type="number" class="form-control input-sm weight"\n' + 'value="' + obj.value + '"' +
                     '                                                       onchange="setInventoryData($(\'#packing-num\').text(),$(this).parent().parent().find(\'.index\').eq(0).text(),$(this).parent().parent().find(\'.quantity\').eq(0).val(),$(this).val());setInventoryListColor();totalInventoryAmount()"' +
                     '                                            </td>\n' +
                     '                                            <td style="text-align: center">\n' +
@@ -318,12 +339,8 @@ function totalWeighingAmount() {
         }
         totalAmount += parseFloat($(this).val());
     })
-    $('#tr-weighing-amount').empty();
-    $('#tr-weighing-amount').append(
-        '<td></td>' +
-        '<td></td>' +
-        '<td class="total-weighing-amount" style="text-align: center">' + totalAmount + '</td>'
-    );
+    $('#tfoot-weighing').empty();
+    $('#tfoot-weighing').append('<tr><td colspan="2" style="text-align: center">合计</td><td style="text-align: center">' + totalAmount + '</td><td></td></tr>');
 }
 
 function totalWasteAmount() {

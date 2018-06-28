@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>批次装箱清单</title>
+    <!-- Bootstrap Styles-->
+    <link th:href="@{/css/custom-styles.css}" rel="stylesheet"/>
+    <link th:href="@{/css/font-awesome.css}" rel="stylesheet"/>
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/bootstrap-datepicker/css/bootstrap-datetimepicker.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/bootstrap3-editable/css/bootstrap-editable.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/css/custom-styles.css}" rel="stylesheet"/>
+    <link th:href="@{/css/font-awesome.css}" rel="stylesheet"/>
+    <link th:href="@{/bootstrap-select2/css/select2.min.css}" rel="stylesheet"/>
+</head>
+
+<body>
+
+<nav class="navbar navbar-default top-navbar" role="navigation" th:include="nav_bar::top-nav"></nav>
+<nav class="navbar-default navbar-side" role="navigation" th:include="nav_bar::side-nav"></nav>
+
+<div id="wrapper">
+    <div id="page-wrapper">
+        <div class="header">
+            <h1 class="page-header">
+                板材生产指令单管理
+                <small>批次装箱清单明细</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li>
+                    <a href="#">主页</a>
+                </li>
+                <li>
+                    <a href="#">生产部门</a>
+                </li>
+                <li class="active">板材生产</li>
+            </ol>
+
+        </div>
+
+        <div id="page-inner">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            基础信息
+                        </div>
+                        <div class="panel-body">
+                            <table class="table table-condensed">
+                                <thead>
+                                <tr>
+                                    <th style="text-align: center">装箱单号</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td style="text-align: center" id="packing-num">
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="panel-footer">
+
+                            <button class="btn btn-primary btn-sm" data-toggle="modal"
+                                    data-target="#myModal_submit"><i class="fa fa-edit "></i>提交
+                            </button>
+                            <!-- 模态框（Modal） -->
+                            <div class="modal fade" id="myModal_submit" tabindex="-1" role="dialog"
+                                 aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+
+                                        </div>
+                                        <div class="modal-body">
+                                            确认提交吗？
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default"
+                                                    data-dismiss="modal">关闭
+                                            </button>
+                                            <button type="button" id="selection-confirm" class="btn btn-primary"
+                                                    onclick="submit()">
+                                                确认
+                                            </button>
+                                        </div>
+                                    </div><!-- /.modal-content -->
+                                </div><!-- /.modal -->
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script type="text/javascript" th:src="@{/js/jquery-3.3.1.js}" charset="UTF-8"></script>
+<script type="text/javascript" th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/jquery.metisMenu.js}"></script>
+<script th:src="@{/js/custom-scripts.js}"></script>
+<script type="text/javascript" th:src="@{/bootstrap-datepicker/js/bootstrap-datetimepicker.js}"
+        charset="UTF-8"></script>
+<script type="text/javascript" th:src="@{/bootstrap-datepicker/js/locales/bootstrap-datetimepicker.zh-CN.js}"
+        charset="UTF-8"></script>
+<script type="text/javascript" th:src="@{/bootstrap3-editable/js/bootstrap-editable.js}"
+        charset="UTF-8"></script>
+<script th:src="@{/bootstrap-select2/js/select2.min.js}"></script>
+<script type="text/javascript" th:src="@{/page-js/product_plate_packing_form_add_free.js}"></script>
+</body>
+</html>
