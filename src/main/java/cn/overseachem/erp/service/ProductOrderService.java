@@ -136,31 +136,57 @@ public class ProductOrderService {
         orderMapper.updateByPrimaryKey(o);
     }
 
-    public Integer getPurchaseSpecRequiredAmountByBatchNum(String batchNum){
+    public Integer getPurchaseSpecRequiredAmountByBatchNum(String batchNum) {
         return specMapper.selectByPrimaryKey(batchNum).getFkPurchaseSpecId();
     }
 
-    public String getPurchaseNumByBatchNum(String batchNum){
+    public String getPurchaseNumByBatchNum(String batchNum) {
         String productNum = specMapper.selectByPrimaryKey(batchNum).getFkProductNum();
         return orderMapper.selectByPrimaryKey(productNum).getFkPurchaseNum();
     }
 
-    public String getColorIdByBatchNum(String batchNum){
+    public String getColorIdByBatchNum(String batchNum) {
         Integer specId = specMapper.selectByPrimaryKey(batchNum).getFkPurchaseSpecId();
         return purchaseOrderSpecMapper.selectByPrimaryKey(specId).getColorId();
     }
 
-    public Integer getPurchaseSpecIdByBatchNum(String batchNum){
+    public Integer getPurchaseSpecIdByBatchNum(String batchNum) {
         return specMapper.selectByPrimaryKey(batchNum).getFkPurchaseSpecId();
     }
 
-    public Integer getMachineIdByBatchNum(String batchNum){
+    public Integer getMachineIdByBatchNum(String batchNum) {
         return orderMapper.selectByPrimaryKey(specMapper.selectByPrimaryKey(batchNum).getFkProductNum()).getMachineNum();
     }
 
-    public void setCompletedAmount(String batchNum,Integer value){
+    public void setCompletedAmount(String batchNum, Integer value) {
         ProductOrderSpec s = specMapper.selectByPrimaryKey(batchNum);
         s.setCompletedAmount(value);
         specMapper.updateByPrimaryKey(s);
+    }
+
+    public List<ProductOrderSpec> getSpecsByPurchaseNum(String purchaseNum) {
+        ArrayList<ProductOrderSpec> arrayList = new ArrayList<ProductOrderSpec>();
+        ProductOrderExample productOrderExample = new ProductOrderExample();
+        productOrderExample.createCriteria().andFkPurchaseNumEqualTo(purchaseNum);
+        List<ProductOrder> productOrders = orderMapper.selectByExample(productOrderExample);
+        for (ProductOrder o : productOrders
+                ) {
+            ProductOrderSpecExample e = new ProductOrderSpecExample();
+            e.createCriteria().andFkProductNumEqualTo(o.getProductNum());
+            List<ProductOrderSpec> specs = specMapper.selectByExample(e);
+            for (ProductOrderSpec s : specs
+                    ) {
+                arrayList.add(s);
+            }
+        }
+        return arrayList;
+    }
+
+    public ProductOrderSpec getProductOrderSpecByBatchNum(String batchNum) {
+        return specMapper.selectByPrimaryKey(batchNum);
+    }
+
+    public PurchaseOrderSpec getPurchaseOrderSpecByBatchNum(String batchNum) {
+        return purchaseOrderSpecMapper.selectByPrimaryKey(getProductOrderSpecByBatchNum(batchNum).getFkPurchaseSpecId());
     }
 }

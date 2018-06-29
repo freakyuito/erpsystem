@@ -2,12 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="96182eff-537a-4ff4-8ca8-5a64cb69b766" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/controller/MachineController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/mapper/MachineMapper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/Machine.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/MachineExample.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/service/MachineService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/controller/InventoryController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/page-js/product_plate_inventory_dtl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/page-js/product_plate_inventory_lst.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/mapper/MachineMapper.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/mapper/MachineMapper.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/cn/overseachem/erp/mapper/MachineMapper.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mapper/MachineMapper.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/cn/overseachem/erp/controller/MachineController.class" afterPath="$PROJECT_DIR$/target/classes/cn/overseachem/erp/controller/MachineController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/cn/overseachem/erp/controller/PurchaseOrderController.class" afterPath="$PROJECT_DIR$/target/classes/cn/overseachem/erp/controller/PurchaseOrderController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/cn/overseachem/erp/pojo/PurchaseOrder.class" afterPath="$PROJECT_DIR$/target/classes/cn/overseachem/erp/pojo/PurchaseOrder.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/cn/overseachem/erp/service/CustomerService.class" afterPath="$PROJECT_DIR$/target/classes/cn/overseachem/erp/service/CustomerService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/cn/overseachem/erp/service/ProductOrderService.class" afterPath="$PROJECT_DIR$/target/classes/cn/overseachem/erp/service/ProductOrderService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/cn/overseachem/erp/service/PurchaseOrderService.class" afterPath="$PROJECT_DIR$/target/classes/cn/overseachem/erp/service/PurchaseOrderService.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/controller/MachineController.java" afterPath="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/controller/MachineController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/controller/PurchaseOrderController.java" afterPath="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/controller/PurchaseOrderController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/PurchaseOrder.java" afterPath="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/PurchaseOrder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/service/CustomerService.java" afterPath="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/service/CustomerService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/service/MachineService.java" afterPath="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/service/MachineService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/service/ProductOrderService.java" afterPath="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/service/ProductOrderService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/service/PurchaseOrderService.java" afterPath="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/service/PurchaseOrderService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/template/nav_bar.html" afterPath="$PROJECT_DIR$/src/main/resources/template/nav_bar.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/template/nav_bar.html" afterPath="$PROJECT_DIR$/target/classes/template/nav_bar.html" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -38,140 +55,48 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="dtl.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/template/product/plate/inventory/dtl.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="299">
+              <caret line="183" column="73" lean-forward="false" selection-start-line="183" selection-start-column="73" selection-end-line="183" selection-end-column="73" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="lst.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/template/product/plate/packing_form/lst.html">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/template/product/plate/inventory/lst.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+            <state relative-caret-position="249">
+              <caret line="188" column="77" lean-forward="false" selection-start-line="188" selection-start-column="77" selection-end-line="188" selection-end-column="77" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProductOrderService.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/service/ProductOrderService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="426">
+              <caret line="189" column="0" lean-forward="false" selection-start-line="189" selection-start-column="0" selection-end-line="189" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="InventoryController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/controller/InventoryController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" column="35" lean-forward="true" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="35" />
               <folding>
-                <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#style#0;n#th#0;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#th#1;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#th#2;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#th#3;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#2;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#3;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#btn#0;n#td#4;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#th#0;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#th#1;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#th#2;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#th#3;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#th#4;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#th#5;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#th#6;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#th#7;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#th#8;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#345#346#0" expanded="true" />
+                <element signature="e#398#399#0" expanded="true" />
+                <element signature="e#478#479#0" expanded="true" />
+                <element signature="e#531#532#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dtl.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/template/product/plate/packing_form/dtl.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5565">
-              <caret line="371" column="0" lean-forward="false" selection-start-line="371" selection-start-column="0" selection-end-line="382" selection-end-column="95" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dtl.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/template/product/plate/product_order/dtl.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1995">
-              <caret line="133" column="109" lean-forward="false" selection-start-line="133" selection-start-column="109" selection-end-line="133" selection-end-column="109" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MachineMapper.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/MachineMapper.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <marker date="1530175737836" expanded="true" signature="4149:4314" ph="select , fro... " />
-                <marker date="1530175737836" expanded="true" signature="4401:4473" ph="delete from " />
-                <marker date="1530175737836" expanded="true" signature="4578:4597" ph="delete from " />
-                <marker date="1530175737836" expanded="true" signature="4779:4997" ph="insert into machine... " />
-                <marker date="1530175737836" expanded="true" signature="5938:5966" ph="select count... machine" />
-                <marker date="1530175737836" expanded="true" signature="6762:6991" ph="update machi... " />
-                <marker date="1530175737836" expanded="true" signature="7164:7308" ph="update machi... " />
-                <marker date="1530175737836" expanded="true" signature="7521:7873" ph="update machi... " />
-                <marker date="1530175737836" expanded="true" signature="7983:8194" ph="update machi... " />
-                <marker date="1530175737836" expanded="true" signature="8295:8428" ph="update machi... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MachineMapper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/mapper/MachineMapper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MachineExample.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/MachineExample.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Machine.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/Machine.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MachineService.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/service/MachineService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="36" column="12" lean-forward="false" selection-start-line="36" selection-start-column="12" selection-end-line="36" selection-end-column="12" />
-              <folding>
-                <element signature="e#786#787#0" expanded="true" />
-                <element signature="e#845#846#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MachineController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/controller/MachineController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="33" column="5" lean-forward="true" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
-              <folding>
-                <element signature="e#902#903#0" expanded="true" />
-                <element signature="e#973#974#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="add_free.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/template/product/plate/packing_form/add_free.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1275">
-              <caret line="85" column="67" lean-forward="false" selection-start-line="85" selection-start-column="67" selection-end-line="85" selection-end-column="67" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -183,8 +108,8 @@
       <list>
         <option value="CSS File" />
         <option value="HTML File" />
-        <option value="JavaScript File" />
         <option value="Class" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -220,15 +145,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/ProductOrderSpecDtlGrid.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/ProductOrderMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/mapper/ProductOrderMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/ProductOrderLstGrid.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/page-js/product_plate_product_order_lst.js" />
-        <option value="$PROJECT_DIR$/src/main/resources/template/product/plate/product_order/lst.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/template/market/plate/purchase_order/lst.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/page-js/market_plate_purchase_order_lst.js" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/mapper/ProductOrderSpecMapper.java" />
         <option value="$PROJECT_DIR$/src/main/resources/template/market/plate/purchase_order/dtl.html" />
         <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/ProductOrderSpec.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/ProductOrder.java" />
@@ -239,9 +155,7 @@
         <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/PackingFormWeighingList.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/PurchaseOrderGrid.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/controller/PurchaseOrderController.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/PackingFormDataList.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/service/PurchaseOrderService.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/PackingFormDataItem.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/controller/LoginController.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/PackingFormDtlGrid.java" />
@@ -250,7 +164,6 @@
         <option value="$PROJECT_DIR$/src/main/resources/static/page-js/market_plate_purchase_order_add.js" />
         <option value="$PROJECT_DIR$/src/main/resources/template/product/plate/packing_form/dtl.html" />
         <option value="$PROJECT_DIR$/src/main/resources/static/page-js/product_plate_packing_form_dtl.js" />
-        <option value="$PROJECT_DIR$/src/main/resources/template/nav_bar.html" />
         <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/mapper/PackingFormMapper.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/page-js/product_plate_packing_form_add.js" />
         <option value="$PROJECT_DIR$/src/main/resources/template/product/plate/packing_form/add.html" />
@@ -263,14 +176,26 @@
         <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/PackingFormLstGrid.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/page-js/product_plate_packing_form_lst.js" />
         <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/controller/ProductOrderController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/service/ProductOrderService.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/controller/PackingFormController.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/service/PackingFormService.java" />
         <option value="$PROJECT_DIR$/src/main/resources/template/product/plate/packing_form/lst.html" />
         <option value="$PROJECT_DIR$/src/main/resources/template/product/plate/product_order/dtl.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/MachineMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/mapper/MachineMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/controller/MachineController.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/service/MachineService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/controller/MachineController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/PurchaseOrder.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/service/CustomerService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/service/PurchaseOrderService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/controller/PurchaseOrderController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/template/product/plate/inventory_form/dtl.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/template/product/plate/inventory_form/lst.html" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/controller/InventoryController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/template/nav_bar.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/page-js/product_plate_inventory_dtl.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/template/product/plate/inventory/lst.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/template/product/plate/inventory/dtl.html" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/service/ProductOrderService.java" />
       </list>
     </option>
   </component>
@@ -352,8 +277,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -479,6 +403,40 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="packing_form" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="erpsystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="erpsystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="template" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plate" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="inventory" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -734,7 +692,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="AndroidView" />
     </panes>
   </component>
@@ -761,26 +720,26 @@
     <property name="RequestMappingsPanelOrder2" value="2" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\software-dev\workspace\erpsystem\src\main\java\cn\overseachem\erp\pojo" />
-      <recent name="C:\software-dev\workspace\erpsystem\src\main\resources\mapper" />
-      <recent name="C:\software-dev\workspace\erpsystem\src\main\resources\template\product\plate\packing_form" />
-      <recent name="C:\software-dev\workspace\erpsystem\src\main\resources\static\page-js" />
-      <recent name="C:\software-dev\java-ee\erpsystem\src\main\java\cn\overseachem\erp\pojo" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="cn.overseachem.erp.controller" />
-      <recent name="cn.overseachem.erp.service" />
-      <recent name="cn.overseachem.erp.mapper" />
-      <recent name="cn.overseachem.erp.pojo" />
-      <recent name="cn.overseachem.service" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\software-dev\workspace\erpsystem\src\main\resources\template\product\plate\packing_form" />
       <recent name="C:\Users\uito\Documents\GitHub\erp-system\src\main\resources\template\market\plate\purchase_order\product_order" />
       <recent name="C:\software-dev\erpsystem\src\main\resources\static\bootstrap-datepicker\css\css" />
       <recent name="C:\software-dev\erpsystem\src\main\resources\static\bootstrap-datepicker\css\js" />
       <recent name="C:\software-dev\erpsystem\src\main\resources\static\bootstrap-datepicker\css" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="cn.overseachem.erp.mapper" />
+      <recent name="cn.overseachem.erp.controller" />
+      <recent name="cn.overseachem.erp.service" />
+      <recent name="cn.overseachem.erp.pojo" />
+      <recent name="cn.overseachem.service" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\software-dev\workspace\erpsystem\src\main\resources\static\page-js" />
+      <recent name="C:\software-dev\workspace\erpsystem\src\main\java\cn\overseachem\erp\pojo" />
+      <recent name="C:\software-dev\workspace\erpsystem\src\main\resources\mapper" />
+      <recent name="C:\software-dev\workspace\erpsystem\src\main\resources\template\product\plate\packing_form" />
+      <recent name="C:\software-dev\java-ee\erpsystem\src\main\java\cn\overseachem\erp\pojo" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -1297,11 +1256,14 @@
       <workItem from="1530095241331" duration="14279000" />
       <workItem from="1530147289300" duration="26495000" />
       <workItem from="1530184480908" duration="860000" />
+      <workItem from="1530185700668" duration="624000" />
+      <workItem from="1530186342503" duration="1049000" />
+      <workItem from="1530240973090" duration="8434000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="462068000" />
+    <option name="totallyTimeSpent" value="472175000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1329,15 +1291,16 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30983606" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32459018" sideWeight="0.49791667" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20819671" sideWeight="0.4914712" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20655738" sideWeight="0.4914712" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32786885" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20877458" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21785174" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942432" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -1347,7 +1310,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32459018" sideWeight="0.49791667" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32786885" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1380,56 +1342,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/ProductOrderDtlGrid.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/page-js/market_plate_purchase_order_lst.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="38" column="57" lean-forward="false" selection-start-line="38" selection-start-column="57" selection-end-line="38" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/dev-classpath/java/jdk1.8.0_73/src.zip!/java/lang/Object.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/ProductOrder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="870">
-          <caret line="88" column="18" lean-forward="false" selection-start-line="88" selection-start-column="18" selection-end-line="88" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/service/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="79" column="45" lean-forward="false" selection-start-line="79" selection-start-column="45" selection-end-line="79" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="35" column="29" lean-forward="false" selection-start-line="35" selection-start-column="29" selection-end-line="35" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/PackingFormExample.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/PackingForm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/utils/String2Json.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -1455,13 +1367,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
           <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/service/PurchaseOrderService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-14">
-          <caret line="147" column="45" lean-forward="true" selection-start-line="147" selection-start-column="45" selection-end-line="147" selection-end-column="45" />
         </state>
       </provider>
     </entry>
@@ -1529,13 +1434,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/template/nav_bar.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="370">
-          <caret line="292" column="71" lean-forward="false" selection-start-line="292" selection-start-column="71" selection-end-line="292" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/template/market/plate/purchase_order/add.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3030">
@@ -1547,14 +1445,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1275">
           <caret line="85" column="116" lean-forward="false" selection-start-line="85" selection-start-column="12" selection-end-line="85" selection-end-column="116" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/controller/PurchaseOrderController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1530">
-          <caret line="122" column="0" lean-forward="false" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1648,15 +1538,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1710">
           <caret line="131" column="41" lean-forward="false" selection-start-line="131" selection-start-column="41" selection-end-line="131" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/service/ProductOrderService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2085">
-          <caret line="163" column="41" lean-forward="false" selection-start-line="163" selection-start-column="41" selection-end-line="163" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1664,18 +1545,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="600">
           <caret line="64" column="20" lean-forward="false" selection-start-line="64" selection-start-column="20" selection-end-line="64" selection-end-column="20" />
-          <folding>
-            <element signature="e#7784#7785#0" expanded="true" />
-            <element signature="e#7853#7854#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/service/PackingFormService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3750">
-          <caret line="264" column="27" lean-forward="false" selection-start-line="264" selection-start-column="27" selection-end-line="264" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1683,7 +1552,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="21" selection-end-column="95" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1695,83 +1563,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/template/product/plate/packing_form/lst.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding>
-            <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#th#0;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#th#1;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#th#2;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#th#3;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#2;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#3;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#btn#0;n#td#4;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#th#0;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#th#1;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#th#2;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#th#3;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#th#4;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#th#5;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#th#6;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#th#7;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#th#8;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/template/product/plate/packing_form/dtl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5565">
-          <caret line="371" column="0" lean-forward="false" selection-start-line="371" selection-start-column="0" selection-end-line="382" selection-end-column="95" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/template/product/plate/product_order/dtl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1995">
-          <caret line="133" column="109" lean-forward="false" selection-start-line="133" selection-start-column="109" selection-end-line="133" selection-end-column="109" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/MachineMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1530175737836" expanded="true" signature="4149:4314" ph="select , fro... " />
-            <marker date="1530175737836" expanded="true" signature="4401:4473" ph="delete from " />
-            <marker date="1530175737836" expanded="true" signature="4578:4597" ph="delete from " />
-            <marker date="1530175737836" expanded="true" signature="4779:4997" ph="insert into machine... " />
-            <marker date="1530175737836" expanded="true" signature="5938:5966" ph="select count... machine" />
-            <marker date="1530175737836" expanded="true" signature="6762:6991" ph="update machi... " />
-            <marker date="1530175737836" expanded="true" signature="7164:7308" ph="update machi... " />
-            <marker date="1530175737836" expanded="true" signature="7521:7873" ph="update machi... " />
-            <marker date="1530175737836" expanded="true" signature="7983:8194" ph="update machi... " />
-            <marker date="1530175737836" expanded="true" signature="8295:8428" ph="update machi... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/mapper/MachineMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/MachineMapper.xml" />
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/MachineExample.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1783,25 +1579,182 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/controller/MachineController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/mapper/MachineMapper.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/PurchaseOrder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="33" column="5" lean-forward="true" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
+        <state relative-caret-position="144">
+          <caret line="12" column="18" lean-forward="false" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/service/CustomerService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="47" column="53" lean-forward="false" selection-start-line="47" selection-start-column="53" selection-end-line="47" selection-end-column="53" />
           <folding>
-            <element signature="e#902#903#0" expanded="true" />
-            <element signature="e#973#974#0" expanded="true" />
+            <element signature="e#1299#1300#0" expanded="false" />
+            <element signature="e#1359#1360#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/template/product/plate/packing_form/lst.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#th#0;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#th#1;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#th#2;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#th#3;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#td#2;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#td#3;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#btn#0;n#td#4;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#th#0;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#th#1;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#th#2;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#th#3;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#th#4;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#th#5;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#th#6;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#th#7;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#th#8;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/template/product/plate/product_order/dtl.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="133" column="109" lean-forward="false" selection-start-line="133" selection-start-column="109" selection-end-line="133" selection-end-column="109" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/service/MachineService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="36" column="12" lean-forward="false" selection-start-line="36" selection-start-column="12" selection-end-line="36" selection-end-column="12" />
+        <state relative-caret-position="29">
+          <caret line="11" column="7" lean-forward="false" selection-start-line="11" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/controller/MachineController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="18" column="7" lean-forward="false" selection-start-line="18" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/service/PurchaseOrderService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-436">
+          <caret line="122" column="0" lean-forward="false" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/controller/PurchaseOrderController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="720">
+          <caret line="88" column="48" lean-forward="false" selection-start-line="88" selection-start-column="48" selection-end-line="88" selection-end-column="48" />
           <folding>
-            <element signature="e#786#787#0" expanded="true" />
-            <element signature="e#845#846#0" expanded="true" />
+            <element signature="e#1992#2015#0" expanded="false" />
+            <element signature="e#4162#4185#0" expanded="false" />
+            <element signature="e#4530#4553#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/template/product/plate/packing_form/dtl.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="21" selection-end-column="95" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/controller/IndexController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/controller/InventoryController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="35" lean-forward="true" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#345#346#0" expanded="true" />
+            <element signature="e#398#399#0" expanded="true" />
+            <element signature="e#478#479#0" expanded="true" />
+            <element signature="e#531#532#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/template/nav_bar.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="295" column="68" lean-forward="false" selection-start-line="295" selection-start-column="68" selection-end-line="295" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/service/PackingFormService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2918">
+          <caret line="52" column="0" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/page-js/product_plate_inventory_dtl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/page-js/product_plate_inventory_lst.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/template/product/plate/inventory/dtl.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="183" column="73" lean-forward="false" selection-start-line="183" selection-start-column="73" selection-end-line="183" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/template/product/plate/inventory/lst.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="188" column="77" lean-forward="false" selection-start-line="188" selection-start-column="77" selection-end-line="188" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/service/ProductOrderService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="426">
+          <caret line="189" column="0" lean-forward="false" selection-start-line="189" selection-start-column="0" selection-end-line="189" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

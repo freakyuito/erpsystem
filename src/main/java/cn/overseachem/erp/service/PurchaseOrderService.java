@@ -32,10 +32,7 @@ public class PurchaseOrderService {
     @Autowired
     private ProductOrderSpecMapper productOrderSpecMapper;
 
-    public List<PurchaseOrderListGrid> getByCriteria(Integer customerId, String purchaseNum, String purchaseTimeBegin, String purchaseTimeEnd) throws ParseException {
-        System.out.println(customerId);
-        System.out.println(purchaseNum);
-        System.out.println(purchaseTimeBegin);
+    public List<PurchaseOrder> getByCriteria(Integer customerId, String purchaseNum, String purchaseTimeBegin, String purchaseTimeEnd) throws ParseException {
         PurchaseOrderExample e = new PurchaseOrderExample();
         if (customerId == null) {
             if (purchaseNum == null) {
@@ -68,45 +65,26 @@ public class PurchaseOrderService {
         }
 
         List<PurchaseOrder> orderList = orderMapper.selectByExample(e);
-        System.out.println(orderList.size());
-        return generateGrid(orderList);
+        return orderList;
     }
 
-    public List<PurchaseOrderListGrid> getUncheckedOrders() {
+    public List<PurchaseOrder> getUncheckedOrders() {
         PurchaseOrderExample e = new PurchaseOrderExample();
         e.or(e.createCriteria().andSupervisorIdIsNull());
         e.or(e.createCriteria().andSalesmanIdIsNull());
         e.or(e.createCriteria().andProducerIdIsNull());
         List<PurchaseOrder> orderList = orderMapper.selectByExample(e);
-        return generateGrid(orderList);
+        return orderList;
     }
 
-    public List<PurchaseOrderListGrid> getInvalidOrders() {
+    public List<PurchaseOrder> getInvalidOrders() {
         PurchaseOrderExample e = new PurchaseOrderExample();
         e.or(e.createCriteria().andValidityCodeEqualTo(false));
         List<PurchaseOrder> orderList = orderMapper.selectByExample(e);
-        return generateGrid(orderList);
+        return orderList;
     }
 
-    List<PurchaseOrderListGrid> generateGrid(List<PurchaseOrder> orderList) {
-        ArrayList<PurchaseOrderListGrid> gridArrayList = new ArrayList<PurchaseOrderListGrid>();
-        for (PurchaseOrder s : orderList
-                ) {
-            Customer c = customerMapper.selectByPrimaryKey(s.getCustomerId());
 
-            if (s.getMakerId() != null && s.getProducerId() != null && s.getSalesmanId() != null && s.getSupervisorId() != null) {
-//                HashMap<String, Object> process = orderMapper.getProductProcessByNumber(s.getPurchaseNum());
-                gridArrayList.add(new PurchaseOrderListGrid(c.getAbbreviation().toString(), s.getPurchaseNum(),
-                        0, 0, new SimpleDateFormat("yyyy-MM-dd").format(s.getPurchaseTime()),
-                        new SimpleDateFormat("yyyy-MM-dd").format(s.getDeliverTime()), s.getRemark()));
-            } else {
-                gridArrayList.add(new PurchaseOrderListGrid(c.getAbbreviation().toString(), s.getPurchaseNum(),
-                        0, 0, new SimpleDateFormat("yyyy-MM-dd").format(s.getPurchaseTime()),
-                        new SimpleDateFormat("yyyy-MM-dd").format(s.getDeliverTime()), s.getRemark()));
-            }
-        }
-        return gridArrayList;
-    }
 
     public String generateBatchNum() {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -123,8 +101,8 @@ public class PurchaseOrderService {
 
         Integer count = productOrderSpecMapper.countInMonth(first, last);
 
-        DecimalFormat df=new DecimalFormat("000");
-        String str =df.format(count);
+        DecimalFormat df = new DecimalFormat("000");
+        String str = df.format(count);
 
         String batchNum = first.substring(2, 4) + first.substring(5, 7) + str;
         return batchNum;
@@ -140,12 +118,6 @@ public class PurchaseOrderService {
 
     public PurchaseOrder getOrderByPurchaseNum(String num) {
         return orderMapper.selectByPrimaryKey(num);
-    }
-
-    public List<PurchaseOrderSpec> getSpecsByPurchaseNum(String num) {
-        PurchaseOrderSpecExample e = new PurchaseOrderSpecExample();
-        e.createCriteria().andFkPurchaseNumEqualTo(num);
-        return specMapper.selectByExample(e);
     }
 
     public Boolean checkOrderExistence(String num) {
@@ -193,9 +165,13 @@ public class PurchaseOrderService {
         return specMapper.selectSpecsByPurchaseNumAndColorId(purchaseNum, colorId);
     }
 
-    public PurchaseOrderSpec getSpecById(Integer id){
+    public PurchaseOrderSpec getSpecById(Integer id) {
         return specMapper.selectByPrimaryKey(id);
     }
 
-
+    public List<PurchaseOrderSpec> getSpecsByPurchaseNum(String purchaseNum){
+        PurchaseOrderSpecExample e = new PurchaseOrderSpecExample();
+        e.createCriteria().andFkPurchaseNumEqualTo(purchaseNum);
+        return specMapper.selectByExample(e);
+    }
 }

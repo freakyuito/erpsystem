@@ -9,6 +9,23 @@ public class PurchaseOrder {
 
     private Date purchaseTime;
 
+    @Override
+    public String toString() {
+        return "PurchaseOrder{" +
+                "purchaseNum='" + purchaseNum + '\'' +
+                ", customerId=" + customerId +
+                ", purchaseTime=" + purchaseTime +
+                ", deliverTime=" + deliverTime +
+                ", supervisorId=" + supervisorId +
+                ", salesmanId=" + salesmanId +
+                ", producerId=" + producerId +
+                ", makerId=" + makerId +
+                ", remark='" + remark + '\'' +
+                ", validityCode=" + validityCode +
+                ", fkOperationRecordsId='" + fkOperationRecordsId + '\'' +
+                '}';
+    }
+
     private Date deliverTime;
 
     private Integer supervisorId;

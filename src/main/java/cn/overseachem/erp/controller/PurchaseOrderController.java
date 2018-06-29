@@ -52,11 +52,43 @@ public class PurchaseOrderController {
         if (purchaseTimeBegin.equals(""))
             purchaseTimeBegin = null;
         try {
-            return purchaseOrderService.getByCriteria(customerId, purchaseNum, purchaseTimeBegin, purchaseTimeBegin);
+            List<PurchaseOrder> o = purchaseOrderService.getByCriteria(customerId, purchaseNum, purchaseTimeBegin, purchaseTimeBegin);
+            ArrayList<PurchaseOrderListGrid> grids = new ArrayList<PurchaseOrderListGrid>();
+            for (PurchaseOrder s : o
+                    ) {
+                grids.add(generateGrid(s));
+            }
+            return grids;
         } catch (ParseException e) {
             e.printStackTrace();
         }
         return null;
+    }
+
+    PurchaseOrderListGrid generateGrid(PurchaseOrder order) {
+        Customer c = customerService.getById(order.getCustomerId());
+        String purchaseNum = order.getPurchaseNum();
+        List<ProductOrderSpec> productOrderSpecs = productOrderService.getSpecsByPurchaseNum(purchaseNum);
+        List<PurchaseOrderSpec> purchaseOrderSpecs = purchaseOrderService.getSpecsByPurchaseNum(purchaseNum);
+        Integer totalAmount = 0;
+        Integer completedAmount = 0;
+        for (ProductOrderSpec s : productOrderSpecs
+                ) {
+            completedAmount += s.getCompletedAmount();
+        }
+        for (PurchaseOrderSpec s:purchaseOrderSpecs
+             ) {
+            totalAmount += s.getRequiredAmount();
+        }
+        if (order.getMakerId() != null && order.getProducerId() != null && order.getSalesmanId() != null && order.getSupervisorId() != null) {
+            return new PurchaseOrderListGrid(c.getAbbreviation(), order.getPurchaseNum(),
+                    completedAmount, totalAmount, new SimpleDateFormat("yyyy-MM-dd").format(order.getPurchaseTime()),
+                    new SimpleDateFormat("yyyy-MM-dd").format(order.getDeliverTime()), order.getRemark());
+        } else {
+            return new PurchaseOrderListGrid(c.getAbbreviation(), order.getPurchaseNum(),
+                    completedAmount, totalAmount, new SimpleDateFormat("yyyy-MM-dd").format(order.getPurchaseTime()),
+                    new SimpleDateFormat("yyyy-MM-dd").format(order.getDeliverTime()), order.getRemark());
+        }
     }
 
     @RequestMapping("/get_category")
@@ -64,9 +96,21 @@ public class PurchaseOrderController {
     public List<PurchaseOrderListGrid> getCategory(String category) {
         switch (Integer.parseInt(category)) {
             case 2:
-                return purchaseOrderService.getUncheckedOrders();
+                List<PurchaseOrder> o2 = purchaseOrderService.getUncheckedOrders();
+                ArrayList<PurchaseOrderListGrid> grids2 = new ArrayList<PurchaseOrderListGrid>();
+                for (PurchaseOrder s : o2
+                        ) {
+                    grids2.add(generateGrid(s));
+                }
+                return grids2;
             case 8:
-                return purchaseOrderService.getInvalidOrders();
+                List<PurchaseOrder> o8 = purchaseOrderService.getInvalidOrders();
+                ArrayList<PurchaseOrderListGrid> grids8 = new ArrayList<PurchaseOrderListGrid>();
+                for (PurchaseOrder s : o8
+                        ) {
+                    grids8.add(generateGrid(s));
+                }
+                return grids8;
             default:
                 return null;
         }

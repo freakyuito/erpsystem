@@ -34,13 +34,17 @@ public class CustomerService {
         return null;
     }
 
-    public Integer getIdByName(String name){
+    public Integer getIdByName(String name) {
         CustomerExample e = new CustomerExample();
         e.createCriteria().andAbbreviationEqualTo(name);
         List<Customer> c = mapper.selectByExample(e);
-        if(c != null){
+        if (c != null) {
             return c.get(0).getCustomerId();
         }
         return null;
+    }
+
+    public Customer getById(Integer customerId) {
+        return mapper.selectByPrimaryKey(customerId);
     }
 }
