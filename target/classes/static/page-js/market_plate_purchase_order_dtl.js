@@ -48,6 +48,8 @@ $("#obsolate").on('click', function () {
     })
 })
 $("#sign-confirm").on('click', function () {
+    $('#sign-confirm').remove();
+    $('#sign').remove();
     var userName = $("#user-name").val();
     var purchaseNum = $("#purchase-num").text();
     $.post('/market/purchase_order/sign', {userName: userName, purchaseNum: purchaseNum}, function (res) {

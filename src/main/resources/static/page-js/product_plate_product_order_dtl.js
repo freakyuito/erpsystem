@@ -20,6 +20,9 @@ function getAllCaptain() {
 }
 
 function sign() {
+    $('#select_machine_and_commander').remove();
+    $('#select_machine_and_commander-confirm').remove();
+
     var approverName = $('#user-name').val();
     var receiverName = $("#receiver-name").children('option:selected').val();
     var machineNum = $("#machine-num").children('option:selected').val();

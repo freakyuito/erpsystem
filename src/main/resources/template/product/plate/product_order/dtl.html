@@ -217,7 +217,7 @@
 
                                         <button th:if="!${productOrderDtlGrid.begin}" class="btn btn-primary btn-sm"
                                                 data-toggle="modal"
-                                                data-target="#myModal_selection"><i class="fa fa-edit "></i>选择机台和机长
+                                                data-target="#myModal_selection" id="select_machine_and_commander"><i class="fa fa-edit "></i>选择机台和机长
                                         </button>
                                         <!-- 模态框（Modal） -->
                                         <div class="modal fade" id="myModal_selection" tabindex="-1" role="dialog"
@@ -261,7 +261,7 @@
                                                         <button type="button" class="btn btn-default"
                                                                 data-dismiss="modal">关闭
                                                         </button>
-                                                        <button type="button" id="selection-confirm"
+                                                        <button type="button" id="select_machine_and_commander-confirm"
                                                                 class="btn btn-primary" onclick="sign()">
                                                             确认
                                                         </button>
