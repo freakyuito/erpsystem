@@ -3,7 +3,7 @@ package cn.overseachem.erp.pojo;
 public class GodownEntrySpec {
     private String fkBatchNum;
 
-    private Integer fkInventoryNum;
+    private String fkInventoryNum;
 
     private Integer finishedQuantity;
 
@@ -23,12 +23,12 @@ public class GodownEntrySpec {
         this.fkBatchNum = fkBatchNum == null ? null : fkBatchNum.trim();
     }
 
-    public Integer getFkInventoryNum() {
+    public String getFkInventoryNum() {
         return fkInventoryNum;
     }
 
-    public void setFkInventoryNum(Integer fkInventoryNum) {
-        this.fkInventoryNum = fkInventoryNum;
+    public void setFkInventoryNum(String fkInventoryNum) {
+        this.fkInventoryNum = fkInventoryNum == null ? null : fkInventoryNum.trim();
     }
 
     public Integer getFinishedQuantity() {

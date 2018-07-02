@@ -323,3 +323,22 @@ function totalInventoryAmount() {
     $('#tfoot-inventory').append('<tr><td colspan="2" style="text-align: center">合计</td><td style="text-align: center">' + totalAmount + '</td><td></td></tr>');
 }
 
+function exchange(machineId, workgroupId, monitorName, commanderName, recorderName, inspectorName, inventoryNum, batchNum, finishedQty, finishedWgt, inventoryQty, inventoryWgt, wasteWgt) {
+    $.post('/product/godown_entry/is_exist', {machineId: machineId, workgroupId: workgroupId}, function (res) {
+        if (res) {
+
+        } else {
+            $.post('/product/godown_entry/insert_form', {
+                machineId: machineId,
+                monitorName: monitorName,
+                commanderName: commanderName,
+                recorderName:recorderName,
+                inspectorName:inspectorName,
+                workgroupId:workgroupId
+            },function (res) {
+                $.post('/product/godown_entry/insert_spec',{})
+            })
+        }
+    })
+}
+

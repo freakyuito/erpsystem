@@ -3,9 +3,11 @@ package cn.overseachem.erp.mapper;
 import cn.overseachem.erp.pojo.GodownEntry;
 import cn.overseachem.erp.pojo.GodownEntryExample;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public interface GodownEntryMapper {
     int countByExample(GodownEntryExample example);
 

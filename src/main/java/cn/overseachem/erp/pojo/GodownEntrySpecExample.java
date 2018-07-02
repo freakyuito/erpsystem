@@ -184,52 +184,62 @@ public class GodownEntrySpecExample {
             return (Criteria) this;
         }
 
-        public Criteria andFkInventoryNumEqualTo(Integer value) {
+        public Criteria andFkInventoryNumEqualTo(String value) {
             addCriterion("fk_inventory_num =", value, "fkInventoryNum");
             return (Criteria) this;
         }
 
-        public Criteria andFkInventoryNumNotEqualTo(Integer value) {
+        public Criteria andFkInventoryNumNotEqualTo(String value) {
             addCriterion("fk_inventory_num <>", value, "fkInventoryNum");
             return (Criteria) this;
         }
 
-        public Criteria andFkInventoryNumGreaterThan(Integer value) {
+        public Criteria andFkInventoryNumGreaterThan(String value) {
             addCriterion("fk_inventory_num >", value, "fkInventoryNum");
             return (Criteria) this;
         }
 
-        public Criteria andFkInventoryNumGreaterThanOrEqualTo(Integer value) {
+        public Criteria andFkInventoryNumGreaterThanOrEqualTo(String value) {
             addCriterion("fk_inventory_num >=", value, "fkInventoryNum");
             return (Criteria) this;
         }
 
-        public Criteria andFkInventoryNumLessThan(Integer value) {
+        public Criteria andFkInventoryNumLessThan(String value) {
             addCriterion("fk_inventory_num <", value, "fkInventoryNum");
             return (Criteria) this;
         }
 
-        public Criteria andFkInventoryNumLessThanOrEqualTo(Integer value) {
+        public Criteria andFkInventoryNumLessThanOrEqualTo(String value) {
             addCriterion("fk_inventory_num <=", value, "fkInventoryNum");
             return (Criteria) this;
         }
 
-        public Criteria andFkInventoryNumIn(List<Integer> values) {
+        public Criteria andFkInventoryNumLike(String value) {
+            addCriterion("fk_inventory_num like", value, "fkInventoryNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andFkInventoryNumNotLike(String value) {
+            addCriterion("fk_inventory_num not like", value, "fkInventoryNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andFkInventoryNumIn(List<String> values) {
             addCriterion("fk_inventory_num in", values, "fkInventoryNum");
             return (Criteria) this;
         }
 
-        public Criteria andFkInventoryNumNotIn(List<Integer> values) {
+        public Criteria andFkInventoryNumNotIn(List<String> values) {
             addCriterion("fk_inventory_num not in", values, "fkInventoryNum");
             return (Criteria) this;
         }
 
-        public Criteria andFkInventoryNumBetween(Integer value1, Integer value2) {
+        public Criteria andFkInventoryNumBetween(String value1, String value2) {
             addCriterion("fk_inventory_num between", value1, value2, "fkInventoryNum");
             return (Criteria) this;
         }
 
-        public Criteria andFkInventoryNumNotBetween(Integer value1, Integer value2) {
+        public Criteria andFkInventoryNumNotBetween(String value1, String value2) {
             addCriterion("fk_inventory_num not between", value1, value2, "fkInventoryNum");
             return (Criteria) this;
         }

@@ -3,7 +3,7 @@
 <mapper namespace="cn.overseachem.erp.mapper.GodownEntrySpecMapper" >
   <resultMap id="BaseResultMap" type="cn.overseachem.erp.pojo.GodownEntrySpec" >
     <result column="fk_batch_num" property="fkBatchNum" jdbcType="VARCHAR" />
-    <result column="fk_inventory_num" property="fkInventoryNum" jdbcType="INTEGER" />
+    <result column="fk_inventory_num" property="fkInventoryNum" jdbcType="VARCHAR" />
     <result column="finished_quantity" property="finishedQuantity" jdbcType="INTEGER" />
     <result column="finished_weight" property="finishedWeight" jdbcType="REAL" />
     <result column="inventory_quantity" property="inventoryQuantity" jdbcType="INTEGER" />
@@ -96,7 +96,7 @@
     insert into godown_entry_spec (fk_batch_num, fk_inventory_num, finished_quantity, 
       finished_weight, inventory_quantity, inventory_weight, 
       waste_weight)
-    values (#{fkBatchNum,jdbcType=VARCHAR}, #{fkInventoryNum,jdbcType=INTEGER}, #{finishedQuantity,jdbcType=INTEGER}, 
+    values (#{fkBatchNum,jdbcType=VARCHAR}, #{fkInventoryNum,jdbcType=VARCHAR}, #{finishedQuantity,jdbcType=INTEGER}, 
       #{finishedWeight,jdbcType=REAL}, #{inventoryQuantity,jdbcType=INTEGER}, #{inventoryWeight,jdbcType=REAL}, 
       #{wasteWeight,jdbcType=REAL})
   </insert>
@@ -130,7 +130,7 @@
         #{fkBatchNum,jdbcType=VARCHAR},
       </if>
       <if test="fkInventoryNum != null" >
-        #{fkInventoryNum,jdbcType=INTEGER},
+        #{fkInventoryNum,jdbcType=VARCHAR},
       </if>
       <if test="finishedQuantity != null" >
         #{finishedQuantity,jdbcType=INTEGER},
@@ -162,7 +162,7 @@
         fk_batch_num = #{record.fkBatchNum,jdbcType=VARCHAR},
       </if>
       <if test="record.fkInventoryNum != null" >
-        fk_inventory_num = #{record.fkInventoryNum,jdbcType=INTEGER},
+        fk_inventory_num = #{record.fkInventoryNum,jdbcType=VARCHAR},
       </if>
       <if test="record.finishedQuantity != null" >
         finished_quantity = #{record.finishedQuantity,jdbcType=INTEGER},
@@ -187,7 +187,7 @@
   <update id="updateByExample" parameterType="map" >
     update godown_entry_spec
     set fk_batch_num = #{record.fkBatchNum,jdbcType=VARCHAR},
-      fk_inventory_num = #{record.fkInventoryNum,jdbcType=INTEGER},
+      fk_inventory_num = #{record.fkInventoryNum,jdbcType=VARCHAR},
       finished_quantity = #{record.finishedQuantity,jdbcType=INTEGER},
       finished_weight = #{record.finishedWeight,jdbcType=REAL},
       inventory_quantity = #{record.inventoryQuantity,jdbcType=INTEGER},
