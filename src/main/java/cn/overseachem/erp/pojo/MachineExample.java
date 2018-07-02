@@ -164,73 +164,133 @@ public class MachineExample {
             return (Criteria) this;
         }
 
-        public Criteria andOccupiedBatchNumIsNull() {
-            addCriterion("occupied_batch_num is null");
+        public Criteria andOperateBatchNumIsNull() {
+            addCriterion("operate_batch_num is null");
             return (Criteria) this;
         }
 
-        public Criteria andOccupiedBatchNumIsNotNull() {
-            addCriterion("occupied_batch_num is not null");
+        public Criteria andOperateBatchNumIsNotNull() {
+            addCriterion("operate_batch_num is not null");
             return (Criteria) this;
         }
 
-        public Criteria andOccupiedBatchNumEqualTo(String value) {
-            addCriterion("occupied_batch_num =", value, "occupiedBatchNum");
+        public Criteria andOperateBatchNumEqualTo(String value) {
+            addCriterion("operate_batch_num =", value, "operateBatchNum");
             return (Criteria) this;
         }
 
-        public Criteria andOccupiedBatchNumNotEqualTo(String value) {
-            addCriterion("occupied_batch_num <>", value, "occupiedBatchNum");
+        public Criteria andOperateBatchNumNotEqualTo(String value) {
+            addCriterion("operate_batch_num <>", value, "operateBatchNum");
             return (Criteria) this;
         }
 
-        public Criteria andOccupiedBatchNumGreaterThan(String value) {
-            addCriterion("occupied_batch_num >", value, "occupiedBatchNum");
+        public Criteria andOperateBatchNumGreaterThan(String value) {
+            addCriterion("operate_batch_num >", value, "operateBatchNum");
             return (Criteria) this;
         }
 
-        public Criteria andOccupiedBatchNumGreaterThanOrEqualTo(String value) {
-            addCriterion("occupied_batch_num >=", value, "occupiedBatchNum");
+        public Criteria andOperateBatchNumGreaterThanOrEqualTo(String value) {
+            addCriterion("operate_batch_num >=", value, "operateBatchNum");
             return (Criteria) this;
         }
 
-        public Criteria andOccupiedBatchNumLessThan(String value) {
-            addCriterion("occupied_batch_num <", value, "occupiedBatchNum");
+        public Criteria andOperateBatchNumLessThan(String value) {
+            addCriterion("operate_batch_num <", value, "operateBatchNum");
             return (Criteria) this;
         }
 
-        public Criteria andOccupiedBatchNumLessThanOrEqualTo(String value) {
-            addCriterion("occupied_batch_num <=", value, "occupiedBatchNum");
+        public Criteria andOperateBatchNumLessThanOrEqualTo(String value) {
+            addCriterion("operate_batch_num <=", value, "operateBatchNum");
             return (Criteria) this;
         }
 
-        public Criteria andOccupiedBatchNumLike(String value) {
-            addCriterion("occupied_batch_num like", value, "occupiedBatchNum");
+        public Criteria andOperateBatchNumLike(String value) {
+            addCriterion("operate_batch_num like", value, "operateBatchNum");
             return (Criteria) this;
         }
 
-        public Criteria andOccupiedBatchNumNotLike(String value) {
-            addCriterion("occupied_batch_num not like", value, "occupiedBatchNum");
+        public Criteria andOperateBatchNumNotLike(String value) {
+            addCriterion("operate_batch_num not like", value, "operateBatchNum");
             return (Criteria) this;
         }
 
-        public Criteria andOccupiedBatchNumIn(List<String> values) {
-            addCriterion("occupied_batch_num in", values, "occupiedBatchNum");
+        public Criteria andOperateBatchNumIn(List<String> values) {
+            addCriterion("operate_batch_num in", values, "operateBatchNum");
             return (Criteria) this;
         }
 
-        public Criteria andOccupiedBatchNumNotIn(List<String> values) {
-            addCriterion("occupied_batch_num not in", values, "occupiedBatchNum");
+        public Criteria andOperateBatchNumNotIn(List<String> values) {
+            addCriterion("operate_batch_num not in", values, "operateBatchNum");
             return (Criteria) this;
         }
 
-        public Criteria andOccupiedBatchNumBetween(String value1, String value2) {
-            addCriterion("occupied_batch_num between", value1, value2, "occupiedBatchNum");
+        public Criteria andOperateBatchNumBetween(String value1, String value2) {
+            addCriterion("operate_batch_num between", value1, value2, "operateBatchNum");
             return (Criteria) this;
         }
 
-        public Criteria andOccupiedBatchNumNotBetween(String value1, String value2) {
-            addCriterion("occupied_batch_num not between", value1, value2, "occupiedBatchNum");
+        public Criteria andOperateBatchNumNotBetween(String value1, String value2) {
+            addCriterion("operate_batch_num not between", value1, value2, "operateBatchNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andOperateGroupIdIsNull() {
+            addCriterion("operate_group_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOperateGroupIdIsNotNull() {
+            addCriterion("operate_group_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOperateGroupIdEqualTo(Integer value) {
+            addCriterion("operate_group_id =", value, "operateGroupId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOperateGroupIdNotEqualTo(Integer value) {
+            addCriterion("operate_group_id <>", value, "operateGroupId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOperateGroupIdGreaterThan(Integer value) {
+            addCriterion("operate_group_id >", value, "operateGroupId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOperateGroupIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("operate_group_id >=", value, "operateGroupId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOperateGroupIdLessThan(Integer value) {
+            addCriterion("operate_group_id <", value, "operateGroupId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOperateGroupIdLessThanOrEqualTo(Integer value) {
+            addCriterion("operate_group_id <=", value, "operateGroupId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOperateGroupIdIn(List<Integer> values) {
+            addCriterion("operate_group_id in", values, "operateGroupId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOperateGroupIdNotIn(List<Integer> values) {
+            addCriterion("operate_group_id not in", values, "operateGroupId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOperateGroupIdBetween(Integer value1, Integer value2) {
+            addCriterion("operate_group_id between", value1, value2, "operateGroupId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOperateGroupIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("operate_group_id not between", value1, value2, "operateGroupId");
             return (Criteria) this;
         }
     }

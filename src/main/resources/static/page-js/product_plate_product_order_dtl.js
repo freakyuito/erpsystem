@@ -25,7 +25,7 @@ function sign() {
 
     var approverName = $('#user-name').val();
     var receiverName = $("#receiver-name").children('option:selected').val();
-    var machineNum = $("#machine-num").children('option:selected').val();
+    var machineNum = $("#select_machine-num").children('option:selected').val();
     var productNum = $('#product-num').text();
     $.post('/product/product_order/sign', {
         approverName: approverName,
@@ -41,5 +41,32 @@ function sign() {
 function insertPackingForm(batchNum) {
     $.post('/product/packing_form/insert_packing_form_with_batch_num',{batchNum:batchNum},function () {
 
+    })
+}
+
+function getAvailablesMachineId() {
+    $.post('/product/plate/machine/get_availables_id',{},function (res) {
+        $('#select_machine-num').empty();
+        $.each(res,function (index,obj) {
+            $('#select_machine-num').append('<option value="' + obj + '">' + obj + '</option>');
+        })
+    })
+}
+
+function occupyMachine(curState,batchNum) {
+    $.post('/product/plate/machine/is_available_by_id',{machineId:$('#machine-num').attr('value')},function (res) {
+        if(res){
+            $.post('/product/plate/machine/occupy_by_id',{machineId:$('#machine-num').attr('value'),batchNum:batchNum},function (res) {
+                setStateCode(curState,batchNum);
+            })
+        }else{
+            alert('机台已被占用');
+        }
+    })
+}
+
+function releaseMachine(curState,batchNum) {
+    $.post('/product/plate/machine/release_by_id',{machineId:$('#machine-num').attr('value')},function (res) {
+        setStateCode(curState,batchNum);
     })
 }

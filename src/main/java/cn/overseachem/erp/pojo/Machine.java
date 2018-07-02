@@ -3,7 +3,9 @@ package cn.overseachem.erp.pojo;
 public class Machine {
     private Integer machineId;
 
-    private String occupiedBatchNum;
+    private String operateBatchNum;
+
+    private Integer operateGroupId;
 
     private String fkOperationRecordsId;
 
@@ -15,12 +17,20 @@ public class Machine {
         this.machineId = machineId;
     }
 
-    public String getOccupiedBatchNum() {
-        return occupiedBatchNum;
+    public String getOperateBatchNum() {
+        return operateBatchNum;
     }
 
-    public void setOccupiedBatchNum(String occupiedBatchNum) {
-        this.occupiedBatchNum = occupiedBatchNum == null ? null : occupiedBatchNum.trim();
+    public void setOperateBatchNum(String operateBatchNum) {
+        this.operateBatchNum = operateBatchNum == null ? null : operateBatchNum.trim();
+    }
+
+    public Integer getOperateGroupId() {
+        return operateGroupId;
+    }
+
+    public void setOperateGroupId(Integer operateGroupId) {
+        this.operateGroupId = operateGroupId;
     }
 
     public String getFkOperationRecordsId() {

@@ -61,7 +61,7 @@ public class PackingFormController {
             PackingFormLstGrid grid = new PackingFormLstGrid(jsonObject.getString("fk_purchase_num"),
                     colorService.getNameById(jsonObject.getString("color_id")), jsonObject.getString("batch_num"),
                     machineId + "", jsonObject.getInteger("length").toString() + " * " + jsonObject.getInteger("width").toString() + " * " +
-                    jsonObject.getFloat("thickness").toString(), jsonObject.getInteger("completed_amount").toString() + "/" +jsonObject.getInteger("required_amount").toString(),
+                    jsonObject.getFloat("thickness").toString(), jsonObject.getInteger("completed_amount").toString() + "/" + jsonObject.getInteger("required_amount").toString(),
                     packingFormService.getCompletedWeightByPackingNum(jsonObject.getString("packing_num")).toString(), jsonObject.getString("packing_num"));
             grids.add(grid);
         }
@@ -133,7 +133,7 @@ public class PackingFormController {
     @ResponseBody
     public void setWeighingData(String packingNum, String index, String quantity, String weight) {
         packingFormService.setWeighingData(packingNum, index, quantity, weight);
-        productOrderService.setCompletedAmount(packingFormService.getBatchNumByPackingNum(packingNum),packingFormService.getCompletedAmountByPackingNum(packingNum));
+        productOrderService.setCompletedAmount(packingFormService.getBatchNumByPackingNum(packingNum), packingFormService.getCompletedAmountByPackingNum(packingNum));
     }
 
     @RequestMapping("/set_waste_data")
@@ -200,7 +200,7 @@ public class PackingFormController {
             System.out.println("controller-set weighing list:" + item.toString());
         }
         packingFormService.setWeighingList(packingNum, items);
-        productOrderService.setCompletedAmount(packingFormService.getBatchNumByPackingNum(packingNum),packingFormService.getCompletedAmountByPackingNum(packingNum));
+        productOrderService.setCompletedAmount(packingFormService.getBatchNumByPackingNum(packingNum), packingFormService.getCompletedAmountByPackingNum(packingNum));
     }
 
     @RequestMapping("/set_waste_list")
@@ -253,6 +253,11 @@ public class PackingFormController {
         DecimalFormat df = new DecimalFormat("000000");
         String str = df.format(packingFormService.getTotalAmount());
         return "Z" + str;
+    }
+
+    @RequestMapping("/exchange")
+    public void exchange(String monitorName, String commanderName, String inspectorName,String recorderName, String groupName, String packingNum) {
+
     }
 
 }

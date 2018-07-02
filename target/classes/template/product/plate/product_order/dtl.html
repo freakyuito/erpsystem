@@ -68,7 +68,7 @@
                                     <small th:text="${productOrderDtlGrid.patternName}"></small>
                                 </td>
                                 <td style="text-align: center">
-                                    <small th:text="|${productOrderDtlGrid.machineNum}号机|"></small>
+                                    <small th:text="|${productOrderDtlGrid.machineNum}号机|" th:value="${productOrderDtlGrid.machineNum}" id="machine-num"></small>
                                 </td>
                                 <td style="text-align: center">
                                     <small id="product-num" th:text="${productOrderDtlGrid.productNum}"></small>
@@ -115,15 +115,15 @@
                                     <td th:text="${spec.estimateWeight}" style="text-align: center">2.41</td>
                                     <td id="batch-num" th:text="${spec.batchNum}" style="text-align: center">2.41</td>
                                     <td style="text-align: center" th:if="${productOrderDtlGrid.checked}">
-                                        <btn class="btn btn-info" th:if="${spec.stateCode}==-1" onclick="setStateCode(-1,$(this).parent().parent().find('#batch-num').eq(0).text());
-                                        insertPackingForm($(this).parent().parent().find('#batch-num').eq(0).text())">开始
+                                        <btn class="btn btn-info" th:if="${spec.stateCode}==-1" onclick="occupyMachine(-1,$(this).parent().parent().find('#batch-num').eq(0).text());
+                                        insertPackingForm($(this).parent().parent().find('#batch-num').eq(0).text());">开始
                                         </btn>
                                         <btn class="btn btn-success" th:if="${spec.stateCode}==0"
-                                             onclick="setStateCode(0,$(this).parent().parent().find('#batch-num').eq(0).text())">
+                                             onclick="occupyMachine(0,$(this).parent().parent().find('#batch-num').eq(0).text());">
                                             继续
                                         </btn>
                                         <btn class="btn btn-warning" th:if="${spec.stateCode}==1"
-                                             onclick="setStateCode(1,$(this).parent().parent().find('#batch-num').eq(0).text())">
+                                             onclick="releaseMachine(1,$(this).parent().parent().find('#batch-num').eq(0).text());">
                                             暂停
                                         </btn>
                                     </td>
@@ -241,17 +241,15 @@
                                                             </div>
                                                             <div class="form-group col-sm-6">
                                                                 <label>机台选择：</label>
-                                                                <select class="form-control" id="machine-num">
-                                                                    <option value="1">1 号机</option>
-                                                                    <option value="2">2 号机</option>
-                                                                    <option value="3">3 号机</option>
-                                                                    <option value="4">4 号机</option>
-                                                                    <option value="5">5 号机</option>
-                                                                    <option value="6">6 号机</option>
-                                                                    <option value="7">7 号机</option>
-                                                                    <option value="7">8 号机</option>
-                                                                    <option value="7">9 号机</option>
-                                                                    <option value="7">10 号机</option>
+                                                                <select class="form-control" id="select_machine-num">
+                                                                    <option value="2">2号机</option>
+                                                                    <option value="3">3号机</option>
+                                                                    <option value="4">4号机</option>
+                                                                    <option value="5">5号机</option>
+                                                                    <option value="6">6号机</option>
+                                                                    <option value="7">7号机</option>
+                                                                    <option value="8">8号机</option>
+                                                                    <option value="9">9号机</option>
                                                                 </select>
                                                             </div>
                                                         </div>

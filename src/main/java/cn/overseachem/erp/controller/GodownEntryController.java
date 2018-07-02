@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Created by Zhihui_Shen on 2018/6/29.
  */
 @Controller
-@RequestMapping("/product/inventory")
-public class InventoryController {
+@RequestMapping("/product/godown_entry")
+public class GodownEntryController {
     @RequestMapping("/2lst")
     public String listPage() {
         return "/product/plate/inventory/lst";
