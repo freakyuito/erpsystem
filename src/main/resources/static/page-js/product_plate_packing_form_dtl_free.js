@@ -85,8 +85,8 @@ function removeWaste(self) {
 }
 
 function addInventory() {
-    if ($('#tbody-inventory>tr:last-child input.quantity').val() != '' && $('#tbody-inventory>tr:last-child input.weight').val() != '') {
-        $('#tbody-inventory').append('<tr>\n' +
+    if ($('#tbody-godown_entry>tr:last-child input.quantity').val() != '' && $('#tbody-godown_entry>tr:last-child input.weight').val() != '') {
+        $('#tbody-godown_entry').append('<tr>\n' +
             '                                            <td style="text-align: center" class="index">1</td>\n' +
             '                                            <td style="text-align: center">\n' +
             '                                                <input class="form-control input-sm quantity"\n' +
@@ -104,7 +104,7 @@ function addInventory() {
     } else {
         alert('无法连续创建2条空的库存记录');
     }
-    $("#tbody-inventory .index").each(function (index) {
+    $("#tbody-godown_entry .index").each(function (index) {
         $(this).empty();
         $(this).append(index + 1);
     })
@@ -114,7 +114,7 @@ function addInventory() {
 
 function removeInventory(self) {
     $(self).parent().parent().remove();
-    $("#tbody-inventory .index").each(function (index) {
+    $("#tbody-godown_entry .index").each(function (index) {
         $(this).empty();
         $(this).append(index + 1);
     })
@@ -253,9 +253,9 @@ function setWasteList() {
 function getInventoryList(packingNum) {
     $.post('/product/packing_form/get_inventory_list', {packingNum: packingNum}, function (res) {
         if (res != null) {
-            $('#tbody-inventory').empty();
+            $('#tbody-godown_entry').empty();
             $.each(res, function (index, obj) {
-                $('#tbody-inventory').append(' <tr>\n' +
+                $('#tbody-godown_entry').append(' <tr>\n' +
                     '                                            <td style="text-align: center" class="index">' + (index + 1) + '</td>\n' +
                     '                                            <td style="text-align: center">\n' +
                     '                                                <input class="form-control input-sm quantity"\n' + 'value="' + obj.key + '"' +
@@ -280,13 +280,13 @@ function getInventoryList(packingNum) {
 
 function setInventoryList() {
     var info = {};
-    $('#tbody-inventory .index').each(function (index) {
+    $('#tbody-godown_entry .index').each(function (index) {
         info['index_' + index] = $(this).text();
     })
-    $('#tbody-inventory .quantity').each(function (index) {
+    $('#tbody-godown_entry .quantity').each(function (index) {
         info['key_' + index] = $(this).val();
     })
-    $('#tbody-inventory .weight').each(function (index) {
+    $('#tbody-godown_entry .weight').each(function (index) {
         info['value_' + index] = $(this).val();
     })
     info['packingNum'] = $('#packing-num').text();
@@ -318,7 +318,7 @@ function setWasteListColor() {
 }
 
 function setInventoryListColor() {
-    $('#tbody-inventory .weight').each(function () {
+    $('#tbody-godown_entry .weight').each(function () {
 
         if ($(this).val() == 0 || $(this).val() == '') {
             $(this).parent().attr('class', 'bg-default');
@@ -361,7 +361,7 @@ function totalWasteAmount() {
 function totalInventoryAmount() {
     var totalAmount = 0;
 
-    $('#tbody-inventory .weight').each(function (index) {
+    $('#tbody-godown_entry .weight').each(function (index) {
         if ($(this).val() == '') {
             $(this).val(0);
         } else {
@@ -369,7 +369,7 @@ function totalInventoryAmount() {
         }
         totalAmount += parseFloat($(this).val());
     })
-    $('#tfoot-inventory').empty();
-    $('#tfoot-inventory').append('<tr><td colspan="2" style="text-align: center">合计</td><td style="text-align: center">' + totalAmount + '</td><td></td></tr>');
+    $('#tfoot-godown_entry').empty();
+    $('#tfoot-godown_entry').append('<tr><td colspan="2" style="text-align: center">合计</td><td style="text-align: center">' + totalAmount + '</td><td></td></tr>');
 }
 

@@ -9,14 +9,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.text.DateFormat;
 import java.text.DecimalFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
  * Created by Zhihui_Shen on 2018/6/29.
  */
 @Controller
-@RequestMapping("/product/godown_entry")
+@RequestMapping("/product/plate/godown_entry")
 public class GodownEntryController {
     @Autowired
     private GodownEntryService godownEntryService;
@@ -25,12 +28,13 @@ public class GodownEntryController {
 
     @RequestMapping("/2lst")
     public String listPage() {
-        return "/product/plate/inventory/lst";
+        getBeginTime(new Date(1530621572));
+        return "/product/plate/godown_entry/lst";
     }
 
     @RequestMapping("2dtl")
     public String detailPage(String inventoryNum) {
-        return "/product/plate/inventory/dtl";
+        return "/product/plate/godown_entry/dtl";
     }
 
     private String generateInventoryNum() {
@@ -39,12 +43,18 @@ public class GodownEntryController {
         return "Z" + str;
     }
 
-    public String getBeginTime(Date now) {
-
-    }
-
-    public String getEndTime(Date now) {
-
+    public void getBeginTime(Date now) {
+        DateFormat df = new SimpleDateFormat("hh:mm:ss");
+        try {
+            if (now.getTime() > df.parse("08:00:00").getTime() && now.getTime() > df.parse("19:59:59").getTime()) {
+                System.out.println("day team");
+            } else if (now.getTime() < df.parse("23:59:59").getTime() && now.getTime() > df.parse("20:00:00").getTime()
+            || now.getTime() < df.parse("07:59:59").getTime() && now.getTime() > df.parse("00:00:00").getTime()) {
+                System.out.println("night team");
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     public GodownEntry isExist(Integer machineId, Date now) {
