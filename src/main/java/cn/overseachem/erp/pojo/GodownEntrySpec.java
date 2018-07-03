@@ -1,6 +1,8 @@
 package cn.overseachem.erp.pojo;
 
 public class GodownEntrySpec {
+    private Integer specId;
+
     private String fkBatchNum;
 
     private String fkInventoryNum;
@@ -14,6 +16,14 @@ public class GodownEntrySpec {
     private Float inventoryWeight;
 
     private Float wasteWeight;
+
+    public Integer getSpecId() {
+        return specId;
+    }
+
+    public void setSpecId(Integer specId) {
+        this.specId = specId;
+    }
 
     public String getFkBatchNum() {
         return fkBatchNum;

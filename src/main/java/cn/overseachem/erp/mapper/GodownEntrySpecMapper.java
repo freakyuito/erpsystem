@@ -13,13 +13,21 @@ public interface GodownEntrySpecMapper {
 
     int deleteByExample(GodownEntrySpecExample example);
 
+    int deleteByPrimaryKey(Integer specId);
+
     int insert(GodownEntrySpec record);
 
     int insertSelective(GodownEntrySpec record);
 
     List<GodownEntrySpec> selectByExample(GodownEntrySpecExample example);
 
+    GodownEntrySpec selectByPrimaryKey(Integer specId);
+
     int updateByExampleSelective(@Param("record") GodownEntrySpec record, @Param("example") GodownEntrySpecExample example);
 
     int updateByExample(@Param("record") GodownEntrySpec record, @Param("example") GodownEntrySpecExample example);
+
+    int updateByPrimaryKeySelective(GodownEntrySpec record);
+
+    int updateByPrimaryKey(GodownEntrySpec record);
 }

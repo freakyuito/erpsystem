@@ -104,6 +104,66 @@ public class GodownEntrySpecExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
+        public Criteria andSpecIdIsNull() {
+            addCriterion("spec_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSpecIdIsNotNull() {
+            addCriterion("spec_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSpecIdEqualTo(Integer value) {
+            addCriterion("spec_id =", value, "specId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSpecIdNotEqualTo(Integer value) {
+            addCriterion("spec_id <>", value, "specId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSpecIdGreaterThan(Integer value) {
+            addCriterion("spec_id >", value, "specId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSpecIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("spec_id >=", value, "specId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSpecIdLessThan(Integer value) {
+            addCriterion("spec_id <", value, "specId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSpecIdLessThanOrEqualTo(Integer value) {
+            addCriterion("spec_id <=", value, "specId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSpecIdIn(List<Integer> values) {
+            addCriterion("spec_id in", values, "specId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSpecIdNotIn(List<Integer> values) {
+            addCriterion("spec_id not in", values, "specId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSpecIdBetween(Integer value1, Integer value2) {
+            addCriterion("spec_id between", value1, value2, "specId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSpecIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("spec_id not between", value1, value2, "specId");
+            return (Criteria) this;
+        }
+
         public Criteria andFkBatchNumIsNull() {
             addCriterion("fk_batch_num is null");
             return (Criteria) this;

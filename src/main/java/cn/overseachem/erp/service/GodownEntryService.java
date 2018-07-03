@@ -32,6 +32,10 @@ public class GodownEntryService {
         godownEntrySpecMapper.insert(spec);
     }
 
+    public void updateSpec(GodownEntrySpec spec) {
+        godownEntrySpecMapper.updateByPrimaryKey(spec);
+    }
+
     public GodownEntry isExist(Integer machineId, Date date) {
         try {
             String utDate = new SimpleDateFormat("yyyy-MM-dd").format(date);
@@ -53,17 +57,23 @@ public class GodownEntryService {
         return godownEntryMapper.countByExample(e);
     }
 
-    public GodownEntry getByMachineIdAndDate(Integer machineId, Date date) {
-        String strDate = new SimpleDateFormat("yyyy-MM-dd").format(date);
-        try {
-            Date utDate = new SimpleDateFormat("yyyy-MM-dd").parse(strDate);
-            GodownEntryExample e = new GodownEntryExample();
-            e.createCriteria().andMachineIdEqualTo(machineId).andGenerateTimeEqualTo(utDate);
-            return godownEntryMapper.selectByExample(e).get(0);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return null;
+    public GodownEntry getByMachineIdAndDatePeriod(Integer machineId, Date dateBegin, Date dateEnd) {
+        GodownEntryExample e = new GodownEntryExample();
+        e.createCriteria().andMachineIdEqualTo(machineId).andGenerateTimeBetween(dateBegin, dateEnd);
+        List<GodownEntry> list = godownEntryMapper.selectByExample(e);
+        if (list != null)
+            return list.get(0);
+        else
+            return null;
     }
 
+    public GodownEntrySpec getSpecByInventoryNumAndBatchNum(String inventoryNum, String batchNum) {
+        GodownEntrySpecExample e = new GodownEntrySpecExample();
+        e.createCriteria().andFkInventoryNumEqualTo(inventoryNum).andFkBatchNumEqualTo(batchNum);
+        List<GodownEntrySpec> list = godownEntrySpecMapper.selectByExample(e);
+        if (list != null)
+            return list.get(0);
+        else
+            return null;
+    }
 }

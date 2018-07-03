@@ -13,7 +13,7 @@ import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.*;
 
 /**
  * Created by Zhihui_Shen on 2018/6/29.
@@ -28,7 +28,6 @@ public class GodownEntryController {
 
     @RequestMapping("/2lst")
     public String listPage() {
-        getBeginTime(new Date(1530621572));
         return "/product/plate/godown_entry/lst";
     }
 
@@ -43,22 +42,45 @@ public class GodownEntryController {
         return "Z" + str;
     }
 
-    public void getBeginTime(Date now) {
-        DateFormat df = new SimpleDateFormat("hh:mm:ss");
-        try {
-            if (now.getTime() > df.parse("08:00:00").getTime() && now.getTime() > df.parse("19:59:59").getTime()) {
-                System.out.println("day team");
-            } else if (now.getTime() < df.parse("23:59:59").getTime() && now.getTime() > df.parse("20:00:00").getTime()
-            || now.getTime() < df.parse("07:59:59").getTime() && now.getTime() > df.parse("00:00:00").getTime()) {
-                System.out.println("night team");
-            }
-        } catch (ParseException e) {
-            e.printStackTrace();
+    public HashMap<String, Date> getTimePeriod(Date now) {
+        HashMap<String, Date> period = new HashMap<String, Date>();
+
+        Calendar calendar = Calendar.getInstance();
+        Calendar calendarBegin = Calendar.getInstance();
+        Calendar calendarEnd = Calendar.getInstance();
+        calendar.setTime(now);
+        calendarBegin.setTime(now);
+        calendarEnd.setTime(now);
+
+        int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        if (hour >= 8 && hour <= 19) {
+            calendarBegin.set(Calendar.HOUR_OF_DAY, 8);
+            calendarBegin.set(Calendar.MINUTE, 0);
+            calendarBegin.set(Calendar.SECOND, 0);
+            calendarEnd.set(Calendar.HOUR_OF_DAY, 19);
+            calendarEnd.set(Calendar.MINUTE, 59);
+            calendarEnd.set(Calendar.SECOND, 59);
+        } else {
+            calendarBegin.set(Calendar.HOUR_OF_DAY, 20);
+            calendarBegin.set(Calendar.MINUTE, 0);
+            calendarBegin.set(Calendar.SECOND, 0);
+            calendarEnd.add(calendar.DATE, 1);
+            calendarEnd.set(Calendar.HOUR_OF_DAY, 7);
+            calendarEnd.set(Calendar.MINUTE, 59);
+            calendarEnd.set(Calendar.SECOND, 59);
         }
+        period.put("dateBegin", calendarBegin.getTime());
+        period.put("dateEnd", calendarEnd.getTime());
+        System.out.println(period.toString());
+        return period;
     }
 
-    public GodownEntry isExist(Integer machineId, Date now) {
-        return godownEntryService.isExist(machineId, now);
+    public GodownEntry isFormExist(Integer machineId, Date now) {
+        return godownEntryService.getByMachineIdAndDatePeriod(machineId, getTimePeriod(now).get("dateBegin"), getTimePeriod(now).get("dateEnd"));
+    }
+
+    public GodownEntrySpec isSpecExist(String inventoryNum, String batchNum) {
+        return godownEntryService.getSpecByInventoryNumAndBatchNum(inventoryNum, batchNum);
     }
 
     public void insertForm(Integer machineId, String monitorName, String commanderName, String recorderName, String inspectorName, Integer workgroupId) {
@@ -74,7 +96,7 @@ public class GodownEntryController {
         godownEntryService.insert(godownEntry);
     }
 
-    public void insertSpec(String inventoryNum, Integer machineId, String batchNum, Integer finishedQty, Float finishedWgt, Integer inventoryQty, Float inventoryWgt, Float wasteWgt) {
+    public void insertSpec(String inventoryNum, String batchNum, Integer finishedQty, Float finishedWgt, Integer inventoryQty, Float inventoryWgt, Float wasteWgt) {
         GodownEntrySpec spec = new GodownEntrySpec();
         spec.setFinishedQuantity(finishedQty);
         spec.setFinishedWeight(finishedWgt);
@@ -84,5 +106,34 @@ public class GodownEntryController {
         spec.setInventoryWeight(inventoryWgt);
         spec.setWasteWeight(wasteWgt);
         godownEntryService.insertSpec(spec);
+    }
+
+    public void updateSpec(GodownEntrySpec spec, String inventoryNum, String batchNum, Integer finishedQty, Float finishedWgt, Integer inventoryQty, Float inventoryWgt, Float wasteWgt) {
+        spec.setFkInventoryNum(inventoryNum);
+        spec.setWasteWeight(wasteWgt);
+        spec.setInventoryWeight(inventoryWgt);
+        spec.setInventoryQuantity(inventoryQty);
+        spec.setFkBatchNum(batchNum);
+        spec.setFinishedWeight(finishedWgt);
+        spec.setFinishedQuantity(finishedQty);
+        godownEntryService.updateSpec(spec);
+    }
+
+    @RequestMapping("/shift")
+    public void shift(Integer machineId, String monitorName, String commanderName, String recorderName,
+                      String inspectorName, Integer workgroupId, String batchNum, Integer finishedQty,
+                      Float finishedWgt, Integer inventoryQty, Float inventoryWgt, Float wasteWgt) {
+        GodownEntry godownEntry = isFormExist(machineId, new Date());
+        if (godownEntry != null) {
+            GodownEntrySpec spec = isSpecExist(godownEntry.getInventoryNum(), batchNum);
+            if (spec != null) {
+                updateSpec(spec, godownEntry.getInventoryNum(), batchNum, finishedQty, finishedWgt, inventoryQty, inventoryWgt, wasteWgt);
+            } else {
+                insertSpec(godownEntry.getInventoryNum(),batchNum,finishedQty,finishedWgt,inventoryQty,inventoryWgt,wasteWgt);
+            }
+        } else {
+            insertForm(machineId,monitorName,commanderName,recorderName,inspectorName,workgroupId);
+            insertSpec(godownEntry.getInventoryNum(),batchNum,finishedQty,finishedWgt,inventoryQty,inventoryWgt,wasteWgt);
+        }
     }
 }

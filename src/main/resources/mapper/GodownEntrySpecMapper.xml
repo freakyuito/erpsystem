@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.overseachem.erp.mapper.GodownEntrySpecMapper" >
   <resultMap id="BaseResultMap" type="cn.overseachem.erp.pojo.GodownEntrySpec" >
+    <id column="spec_id" property="specId" jdbcType="INTEGER" />
     <result column="fk_batch_num" property="fkBatchNum" jdbcType="VARCHAR" />
     <result column="fk_inventory_num" property="fkInventoryNum" jdbcType="VARCHAR" />
     <result column="finished_quantity" property="finishedQuantity" jdbcType="INTEGER" />
@@ -69,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    fk_batch_num, fk_inventory_num, finished_quantity, finished_weight, inventory_quantity, 
+    spec_id, fk_batch_num, fk_inventory_num, finished_quantity, finished_weight, inventory_quantity, 
     inventory_weight, waste_weight
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.overseachem.erp.pojo.GodownEntrySpecExample" >
@@ -86,6 +87,16 @@
       order by ${orderByClause}
     </if>
   </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from godown_entry_spec
+    where spec_id = #{specId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from godown_entry_spec
+    where spec_id = #{specId,jdbcType=INTEGER}
+  </delete>
   <delete id="deleteByExample" parameterType="cn.overseachem.erp.pojo.GodownEntrySpecExample" >
     delete from godown_entry_spec
     <if test="_parameter != null" >
@@ -93,16 +104,19 @@
     </if>
   </delete>
   <insert id="insert" parameterType="cn.overseachem.erp.pojo.GodownEntrySpec" >
-    insert into godown_entry_spec (fk_batch_num, fk_inventory_num, finished_quantity, 
-      finished_weight, inventory_quantity, inventory_weight, 
-      waste_weight)
-    values (#{fkBatchNum,jdbcType=VARCHAR}, #{fkInventoryNum,jdbcType=VARCHAR}, #{finishedQuantity,jdbcType=INTEGER}, 
-      #{finishedWeight,jdbcType=REAL}, #{inventoryQuantity,jdbcType=INTEGER}, #{inventoryWeight,jdbcType=REAL}, 
-      #{wasteWeight,jdbcType=REAL})
+    insert into godown_entry_spec (spec_id, fk_batch_num, fk_inventory_num, 
+      finished_quantity, finished_weight, inventory_quantity, 
+      inventory_weight, waste_weight)
+    values (#{specId,jdbcType=INTEGER}, #{fkBatchNum,jdbcType=VARCHAR}, #{fkInventoryNum,jdbcType=VARCHAR}, 
+      #{finishedQuantity,jdbcType=INTEGER}, #{finishedWeight,jdbcType=REAL}, #{inventoryQuantity,jdbcType=INTEGER}, 
+      #{inventoryWeight,jdbcType=REAL}, #{wasteWeight,jdbcType=REAL})
   </insert>
   <insert id="insertSelective" parameterType="cn.overseachem.erp.pojo.GodownEntrySpec" >
     insert into godown_entry_spec
     <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="specId != null" >
+        spec_id,
+      </if>
       <if test="fkBatchNum != null" >
         fk_batch_num,
       </if>
@@ -126,6 +140,9 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="specId != null" >
+        #{specId,jdbcType=INTEGER},
+      </if>
       <if test="fkBatchNum != null" >
         #{fkBatchNum,jdbcType=VARCHAR},
       </if>
@@ -158,6 +175,9 @@
   <update id="updateByExampleSelective" parameterType="map" >
     update godown_entry_spec
     <set >
+      <if test="record.specId != null" >
+        spec_id = #{record.specId,jdbcType=INTEGER},
+      </if>
       <if test="record.fkBatchNum != null" >
         fk_batch_num = #{record.fkBatchNum,jdbcType=VARCHAR},
       </if>
@@ -186,7 +206,8 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update godown_entry_spec
-    set fk_batch_num = #{record.fkBatchNum,jdbcType=VARCHAR},
+    set spec_id = #{record.specId,jdbcType=INTEGER},
+      fk_batch_num = #{record.fkBatchNum,jdbcType=VARCHAR},
       fk_inventory_num = #{record.fkInventoryNum,jdbcType=VARCHAR},
       finished_quantity = #{record.finishedQuantity,jdbcType=INTEGER},
       finished_weight = #{record.finishedWeight,jdbcType=REAL},
@@ -196,5 +217,43 @@
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.overseachem.erp.pojo.GodownEntrySpec" >
+    update godown_entry_spec
+    <set >
+      <if test="fkBatchNum != null" >
+        fk_batch_num = #{fkBatchNum,jdbcType=VARCHAR},
+      </if>
+      <if test="fkInventoryNum != null" >
+        fk_inventory_num = #{fkInventoryNum,jdbcType=VARCHAR},
+      </if>
+      <if test="finishedQuantity != null" >
+        finished_quantity = #{finishedQuantity,jdbcType=INTEGER},
+      </if>
+      <if test="finishedWeight != null" >
+        finished_weight = #{finishedWeight,jdbcType=REAL},
+      </if>
+      <if test="inventoryQuantity != null" >
+        inventory_quantity = #{inventoryQuantity,jdbcType=INTEGER},
+      </if>
+      <if test="inventoryWeight != null" >
+        inventory_weight = #{inventoryWeight,jdbcType=REAL},
+      </if>
+      <if test="wasteWeight != null" >
+        waste_weight = #{wasteWeight,jdbcType=REAL},
+      </if>
+    </set>
+    where spec_id = #{specId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.overseachem.erp.pojo.GodownEntrySpec" >
+    update godown_entry_spec
+    set fk_batch_num = #{fkBatchNum,jdbcType=VARCHAR},
+      fk_inventory_num = #{fkInventoryNum,jdbcType=VARCHAR},
+      finished_quantity = #{finishedQuantity,jdbcType=INTEGER},
+      finished_weight = #{finishedWeight,jdbcType=REAL},
+      inventory_quantity = #{inventoryQuantity,jdbcType=INTEGER},
+      inventory_weight = #{inventoryWeight,jdbcType=REAL},
+      waste_weight = #{wasteWeight,jdbcType=REAL}
+    where spec_id = #{specId,jdbcType=INTEGER}
   </update>
 </mapper>
