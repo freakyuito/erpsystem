@@ -76,4 +76,27 @@ public class GodownEntryService {
         else
             return null;
     }
+
+    public GodownEntry getByInventory(String inventoryNum){
+        return godownEntryMapper.selectByPrimaryKey(inventoryNum);
+    }
+
+    public List<GodownEntrySpec> getSpecsByInventoryNum(String inventory){
+        GodownEntrySpecExample e = new GodownEntrySpecExample();
+        e.createCriteria().andFkInventoryNumEqualTo(inventory);
+        return godownEntrySpecMapper.selectByExample(e);
+    }
+
+    public List<GodownEntryLstGrid> getByCriteria(Date startTime,Date endTime,Integer machineId,
+                              Integer workgroupId,Integer commanderId,String inventoryNum) {
+        GodownEntryExample e = new GodownEntryExample();
+        e.createCriteria().andInventoryNumEqualTo(inventoryNum).
+                andWorkgroupIdEqualTo(workgroupId).andGenerateTimeBetween(startTime,endTime).
+                andCommanderIdEqualTo(commanderId).andInventoryNumLike("%"+inventoryNum+"%");
+        List<GodownEntry> godownEntries = godownEntryMapper.selectByExample(e);
+        for (GodownEntry g:godownEntries
+             ) {
+            
+        }
+    }
 }

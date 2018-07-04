@@ -1,12 +1,13 @@
 package cn.overseachem.erp.controller;
 
-import cn.overseachem.erp.pojo.GodownEntry;
-import cn.overseachem.erp.pojo.GodownEntrySpec;
+import cn.overseachem.erp.pojo.*;
+import cn.overseachem.erp.service.ColorService;
 import cn.overseachem.erp.service.GodownEntryService;
 import cn.overseachem.erp.service.ProductOrderService;
 import cn.overseachem.erp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -29,6 +30,8 @@ public class GodownEntryController {
     private UserService userService;
     @Autowired
     private ProductOrderService productOrderService;
+    @Autowired
+    private ColorService colorService;
 
     @RequestMapping("/2lst")
     public String listPage() {
@@ -36,14 +39,45 @@ public class GodownEntryController {
     }
 
     @RequestMapping("2dtl")
-    public String detailPage(String inventoryNum) {
+    public String detailPage(String inventoryNum,Model model) {
+        GodownEntry godownEntry = godownEntryService.getByInventory(inventoryNum);
+        GodownEntryDtlGrid grid = new GodownEntryDtlGrid(new SimpleDateFormat("yyyy-MM-dd").format(godownEntry.getGenerateTime()),godownEntry.getMachineId().toString(),godownEntry.getWorkgroupId().toString(),
+                godownEntry.getInventoryNum().toString(),userService.getNameById(godownEntry.getMonitorId()),userService.getNameById(godownEntry.getCommanderId()),userService.getNameById(godownEntry.getInspectorId()),
+                userService.getNameById(godownEntry.getRecorderId()));
+        ArrayList<GodownEntrySpecDtlGrid> specDtlGrids = new ArrayList<GodownEntrySpecDtlGrid>();
+        List<GodownEntrySpec> specs = godownEntryService.getSpecsByInventoryNum(inventoryNum);
+        for (GodownEntrySpec s:specs
+             ) {
+            PurchaseOrderSpec purchaseOrderSpec = productOrderService.getPurchaseOrderSpecByBatchNum(s.getFkBatchNum());
+            specDtlGrids.add(new GodownEntrySpecDtlGrid(purchaseOrderSpec.getFkPurchaseNum(),purchaseOrderSpec.getColorId() + colorService.getNameById(purchaseOrderSpec.getColorId()),s.getFkBatchNum(),
+                    purchaseOrderSpec.getLength() +"*"+purchaseOrderSpec.getWidth()+"*"+purchaseOrderSpec.getThickness(),s.getFinishedQuantity().toString(),s.getFinishedWeight().toString(),
+                    s.getInventoryQuantity().toString(),s.getInventoryWeight().toString(),s.getWasteWeight().toString()));
+        }
+        model.addAttribute("godownEntryDtlGrid",grid);
+        model.addAttribute("godownEntrySpecDtlGrid",specDtlGrids);
         return "/product/plate/godown_entry/dtl";
+    }
+
+    @RequestMapping("/get_by_criteria")
+    @ResponseBody
+    public List<GodownEntryLstGrid> getByCriteria(String startTime,String endTime,Integer machineId,
+                                                 Integer workgroupId,String commanderName,String material,String inventoryNum){
+        if(machineId >= 2 && machineId <= 6 && material.equals("F")||machineId >= 7 && machineId <= 8 && material.equals("X")){
+            try {
+                return godownEntryService.getByCriteria(new SimpleDateFormat("yyyy-MM-dd").parse(startTime),
+                        new SimpleDateFormat("yyyy-MM-dd").parse(endTime),machineId,workgroupId,userService.getIdByRealName(commanderName),
+                        inventoryNum);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
     }
 
     private String generateInventoryNum() {
         DecimalFormat df = new DecimalFormat("000000");
         String str = df.format(godownEntryService.countAll());
-        return "Z" + str;
+        return "K" + str;
     }
 
     public HashMap<String, Date> getTimePeriod(Date now) {

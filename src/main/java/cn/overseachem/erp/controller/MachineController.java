@@ -20,12 +20,6 @@ public class MachineController {
     @Autowired
     private MachineService service;
 
-    @RequestMapping("/get_all")
-    @ResponseBody
-    public List<Machine> getAll() {
-        return service.getAll();
-    }
-
     @RequestMapping("/get_batch_num_by_id")
     @ResponseBody
     public String getBatchNumById(Integer machineId) {
@@ -39,6 +33,18 @@ public class MachineController {
         List<Machine> machines = service.getAvailables();
         for (Machine m:machines
              ) {
+            integers.add(m.getMachineId());
+        }
+        return integers;
+    }
+
+    @RequestMapping("/get_all")
+    @ResponseBody
+    public List<Integer> getAll(){
+        ArrayList<Integer> integers = new ArrayList<Integer>();
+        List<Machine> machines = service.getAll();
+        for (Machine m:machines
+                ) {
             integers.add(m.getMachineId());
         }
         return integers;

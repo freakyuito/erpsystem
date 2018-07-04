@@ -189,4 +189,8 @@ public class ProductOrderService {
     public PurchaseOrderSpec getPurchaseOrderSpecByBatchNum(String batchNum) {
         return purchaseOrderSpecMapper.selectByPrimaryKey(getProductOrderSpecByBatchNum(batchNum).getFkPurchaseSpecId());
     }
+
+    public ProductOrder getProductOrderByBatchNum(String batchNum) {
+        return orderMapper.selectByPrimaryKey(specMapper.selectByPrimaryKey(batchNum).getFkProductNum());
+    }
 }

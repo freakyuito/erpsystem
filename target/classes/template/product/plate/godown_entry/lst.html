@@ -83,28 +83,50 @@
                                 <tbody>
                                 <tr>
                                     <td style="text-align: center">
-                                        <input class="form-control input-sm" id="customer-name" value="选择时间段"/>
+                                        <div class="input-group date form_date" data-date=""
+                                             data-date-format="yyyy-MM-dd" data-link-field="dtp_input1"
+                                             data-link-format="yyyy-mm-dd">
+                                            <input class="form-control" size="16" type="text" value=""
+                                                   readonly="readonly"/>
+                                            <span class="input-group-addon"><span
+                                                    class="glyphicon glyphicon-remove"></span></span>
+                                        </div>
+                                        <input type="hidden" id="dtp_input1" value=""/><br/>
                                     </td>
                                     <td style="text-align: center">
-                                        <input class="form-control input-sm" id="customer-name" value="选择时间段"/>
+                                        <div class="input-group date form_date" data-date=""
+                                             data-date-format="yyyy-MM-dd" data-link-field="dtp_input1"
+                                             data-link-format="yyyy-mm-dd">
+                                            <input class="form-control" size="16" type="text" value=""
+                                                   readonly="readonly"/>
+                                            <span class="input-group-addon"><span
+                                                    class="glyphicon glyphicon-remove"></span></span>
+                                        </div>
+                                        <input type="hidden" id="dtp_input2" value=""/><br/>
                                     </td>
                                     <td style="text-align: center">
-                                        <input class="form-control input-sm" id="purchase-num" value="机台下拉框"/>
+                                        <select class="form-control" id="select-machine">
+                                        </select>
                                     </td>
                                     <td style="text-align: center">
-                                        <input class="form-control input-sm" id="purchase-num" value="班组下拉框"/>
+                                        <select class="form-control" id="select-workgroup">
+                                        </select>
                                     </td>
                                     <td style="text-align: center">
-                                        <input class="form-control input-sm" id="purchase-num" value="机长下拉框"/>
+                                        <select class="form-control" id="select-commander">
+                                        </select>
                                     </td>
                                     <td style="text-align: center">
-                                        <input class="form-control input-sm" id="purchase-num" value="用料下拉框"/>
+                                        <select class="form-control" id="select-material">
+                                            <option value="F">F</option>
+                                            <option value="X">X</option>
+                                        </select>
                                     </td>
                                     <td style="text-align: center">
-                                        <input class="form-control input-sm" id="purchase-num" value="入库单号下拉框"/>
+                                        <input class="form-control input-sm" id="inventory_num"/>
                                     </td>
                                     <td>
-                                        <btn class="btn btn-sm btn-info pull-right" id="search" style="width: 60px">
+                                        <btn class="btn btn-sm btn-info pull-right" id="search" onclick="search()" style="width: 60px">
                                             查询
                                         </btn>
                                     </td>
@@ -136,7 +158,7 @@
                                     <th style="width: 110px" class="text-center">成品数量</th>
                                     <th style="width: 110px" class="text-center">成品重量</th>
                                     <th style="width: 110px" class="text-center">废品重量</th>
-                                  </tr>
+                                </tr>
                                 </thead>
                                 <tbody>
                                 <tr>

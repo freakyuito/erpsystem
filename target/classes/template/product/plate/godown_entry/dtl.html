@@ -51,18 +51,18 @@
                     <table class="table table-condensed">
                         <thead>
                         <tr>
-                            <th style="text-align: center">日期</th>
-                            <th style="text-align: center">机台</th>
-                            <th style="text-align: center">班组</th>
-                            <th style="text-align: center">入库单号</th>
+                            <th style="text-align: center" >生成日期</th>
+                            <th style="text-align: center" >机台号</th>
+                            <th style="text-align: center" >班组</th>
+                            <th style="text-align: center" >入库号</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
-                            <td style="text-align: center">2018-06-05</td>
-                            <td style="text-align: center">7号机</td>
-                            <td style="text-align: center">甲一</td>
-                            <td style="text-align: center">K00001</td>
+                            <td style="text-align: center" th:text="${godownEntryDtlGrid.generateTime}">2018-06-05</td>
+                            <td style="text-align: center" th:text="|${godownEntryDtlGrid.machineId}号机|">7号机</td>
+                            <td style="text-align: center" th:text="${godownEntryDtlGrid.workgroup}">甲一</td>
+                            <td style="text-align: center" th:text="${godownEntryDtlGrid.inventoryNum}">K00001</td>
                         </tr>
                         </tbody>
                     </table>
@@ -91,17 +91,17 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td style="text-align: center">1</td>
-                                <td style="text-align: center">JY 18007</td>
-                                <td style="text-align: center">V05 红色</td>
-                                <td style="text-align: center">JY1705105</td>
-                                <td style="text-align: center">650*470*2.2</td>
-                                <td style="text-align: center">1005</td>
-                                <td style="text-align: center">1985.6</td>
-                                <td style="text-align: center">54</td>
-                                <td style="text-align: center">59.6</td>
-                                <td style="text-align: center">352.6</td>
+                            <tr th:each="spec,iterStat : ${godownEntrySpecDtlGrid}">
+                                <td th:text="${iterStat.index+1}" style="text-align: center"></td>
+                                <td th:text="${spec.purchaseNum}" style="text-align: center"></td>
+                                <td th:text="${spec.colorName}" style="text-align: center"></td>
+                                <td th:text="${spec.batchNum}" style="text-align: center"></td>
+                                <td th:text="${spec.size}" style="text-align: center"></td>
+                                <td th:text="${spec.finishedQty}" style="text-align: center"></td>
+                                <td id="amount" th:text="${spec.finishedWgt}" style="text-align: center"></td>
+                                <td id="process" th:text="${spec.inventoryQty}" style="text-align: center"></td>
+                                <td id="estimate-weight" th:text="${spec.inventoryWgt}" style="text-align: center"></td>
+                                <td id="weight" th:text="${spec.wasteWgt}" style="text-align: center"></td>
                             </tr>
                             </tbody>
                         </table>
@@ -126,10 +126,10 @@
                             </thead>
                             <tbody>
                             <tr>
-                                <td style="text-align: center">胡付军</td>
-                                <td style="text-align: center">孔令壮</td>
-                                <td style="text-align: center">郭永东</td>
-                                <td style="text-align: center">张先武</td>
+                                <td style="text-align: center" th:text="${godownEntryDtlGrid.monitorName}">胡付军</td>
+                                <td style="text-align: center" th:text="${godownEntryDtlGrid.commanderName}">孔令壮</td>
+                                <td style="text-align: center" th:text="${godownEntryDtlGrid.inspectorName}">郭永东</td>
+                                <td style="text-align: center" th:text="${godownEntryDtlGrid.recorderName}">张先武</td>
                             </tr>
                             </tbody>
                         </table>
