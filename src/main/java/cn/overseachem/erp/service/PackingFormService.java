@@ -238,7 +238,7 @@ public class PackingFormService {
         Integer totalAmount = 0;
         for (PackingFormDataItem i : arrayList
                 ) {
-            if (Float.parseFloat(i.getValue()) != 0){
+            if (Float.parseFloat(i.getValue()) != 0) {
                 totalAmount += Integer.parseInt(i.getKey());
                 System.out.println(i.getValue());
             }
@@ -252,12 +252,12 @@ public class PackingFormService {
         PackingFormWithBLOBs p = mapper.selectByPrimaryKey(packingNum);
         List<PackingFormDataItem> arrayList = str2List(p.getWeighingList());
         Float totalWeight = 0f;
-        if(arrayList == null)
+        if (arrayList == null)
             return 0f;
-        else{
+        else {
             for (PackingFormDataItem i : arrayList
                     ) {
-                if (Float.parseFloat(i.getValue()) != 0){
+                if (Float.parseFloat(i.getValue()) != 0) {
                     totalWeight += Float.parseFloat(i.getValue());
                 }
             }
@@ -269,5 +269,16 @@ public class PackingFormService {
 
     public String getBatchNumByPackingNum(String packingNum) {
         return mapper.selectByPrimaryKey(packingNum).getFkBatchNum();
+    }
+
+    public void shift(String shiftRecord, String packingNum) {
+        PackingFormWithBLOBs form = mapper.selectByPrimaryKey(packingNum);
+        String newRecord = form.getExchangeRecords() + "," + shiftRecord;
+        form.setExchangeRecords(newRecord);
+        mapper.updateByPrimaryKeyWithBLOBs(form);
+    }
+
+    public PackingFormWithBLOBs getByPackingNum(String packingNum){
+        return mapper.selectByPrimaryKey(packingNum);
     }
 }

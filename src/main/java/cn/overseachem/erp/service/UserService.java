@@ -79,4 +79,10 @@ public class UserService {
         e.createCriteria();
         return userMapper.selectByExample(e);
     }
+
+    public List<User> getByAuth(String auth){
+        UserExample e = new UserExample();
+        e.createCriteria().andFkAuthoritiesIdLike("%" + auth + "%");
+        return userMapper.selectByExample(e);
+    }
 }

@@ -38,4 +38,16 @@ public class UserController {
     public List<User> getAll(){
         return userService.getAll();
     }
+
+    @RequestMapping("/get_by_auth")
+    @ResponseBody
+    public List<String> getByAuth(String auth){
+        List<User> users = userService.getByAuth(auth);
+        ArrayList<String> names = new ArrayList<String>();
+        for (User u:users
+             ) {
+            names.add(u.getRealName());
+        }
+        return names;
+    }
 }

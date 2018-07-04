@@ -1,5 +1,8 @@
 $(function () {
-    // generateWeighingList($('#batch-num').text(),20);
+    getUserList('BCP',$('#select_monitor'));
+    getUserList('BP',$('#select_commander'));
+    getUserList('BCJ',$('#select_inspector'));
+    getUserList('BCP',$('#select_recorder'));
     getWeighingList($('#packing-num').text());
     getWasteList($('#packing-num').text());
     getInventoryList($('#packing-num').text());
@@ -52,8 +55,8 @@ function removeWaste(self) {
 }
 
 function addInventory() {
-    if ($('#tbody-godown_entry>tr:last-child input.quantity').val() != '' && $('#tbody-godown_entry>tr:last-child input.weight').val() != '') {
-        $('#tbody-godown_entry').append('<tr>\n' +
+    if ($('#tbody-inventory>tr:last-child input.quantity').val() != '' && $('#tbody-inventory>tr:last-child input.weight').val() != '') {
+        $('#tbody-inventory').append('<tr>\n' +
             '                                            <td style="text-align: center" class="index">1</td>\n' +
             '                                            <td style="text-align: center">\n' +
             '                                                <input class="form-control input-sm quantity"\n' +
@@ -71,7 +74,7 @@ function addInventory() {
     } else {
         alert('无法连续创建2条空的库存记录');
     }
-    $("#tbody-godown_entry .index").each(function (index) {
+    $("#tbody-inventory .index").each(function (index) {
         $(this).empty();
         $(this).append(index + 1);
     })
@@ -81,7 +84,7 @@ function addInventory() {
 
 function removeInventory(self) {
     $(self).parent().parent().remove();
-    $("#tbody-godown_entry .index").each(function (index) {
+    $("#tbody-inventory .index").each(function (index) {
         $(this).empty();
         $(this).append(index + 1);
     })
@@ -127,27 +130,23 @@ function getWeighingList(packingNum) {
         if (res != null) {
             $('#tbody-weighing').empty();
             $.each(res, function (index, obj) {
-                $('#tbody-weighing').append('<tr>\n' +
-                    '                                        <td class="index" style="width: 50px;text-align:center">' + (index + 1) + '</td>\n' +
-                    '                                        <td class="quantity" style="width: 110px;text-align: center">' + obj.key + '</td>\n' +
-                    '                                        <td class="" style="width: 110px;text-align: center">\n' +
-                    '                                            <input type="number" value="' + obj.value + '" class="form-control input-sm weight"\n' +
-                    '                                                   onchange="setWeighingData($(\'#packing-num\').text(),\n' +
-                    '                                                   $(this).parent().prev().prev().text(),\n' +
-                    '                                                   $(this).parent().prev().text(),\n' +
-                    '                                                   $(this).val());setWeighingListColor();totalWeighingAmount();"/>\n' +
-                    '                                        </td>\n' +
-                    '                                    </tr>');
+                $('#tbody-weighing').append('<tr>' +
+                    '                                        <td class="index" style="width: 50px;text-align:center">' + obj.index + '</td>' +
+                    '                                        <td class="quantity" style="width: 110px;text-align: center">' + obj.key + '</td>' +
+                    '                                        <td class="" style="width: 110px;text-align: center">' +
+                    '                                            <input value="' + obj.value + '" class="form-control input-sm weight"' +
+                    '                                                   onchange="if(checkInputable($(this))){' +
+                    '                                        setWeighingData($(\'#packing-num\').text(),$(this).parent().prev().prev().text()' +
+                    '                                        ,$(this).parent().prev().text(),$(this).val());setWeighingListColor();totalWeighingAmount();}' +
+                    '                                        else {' +
+                    '                                        alert(\'无法跨行输入有效数值\');$(this).val(0);' +
+                    '                                        }' +
+                    '                                    "/>' +
+                    '                                        </td>');
             })
-            $('#tbody-weighing').append('<tr id="tr-weighing-amount">' +
-                '<td></td>' +
-                '<td></td>' +
-                '<td class="total-weighing-amount" style="text-align: center"></td>' +
-                '</tr>');
             setWeighingListColor();
             totalWeighingAmount();
         }
-
     })
 }
 
@@ -275,7 +274,8 @@ function setInventoryListColor() {
 }
 
 function totalWeighingAmount() {
-    var totalAmount = 0;
+    var totalQty = 0;
+    var totalWgt = 0;
 
     $('#tbody-weighing .weight').each(function (index) {
         if ($(this).val() == '') {
@@ -283,14 +283,12 @@ function totalWeighingAmount() {
         } else {
             $(this).val(parseFloat($(this).val()));
         }
-        totalAmount += parseFloat($(this).val());
+        if ($(this).val() != 0)
+            totalQty += parseInt($(this).parent().prev().text());
+        totalWgt += parseFloat($(this).val());
     })
-    $('#tr-weighing-amount').empty();
-    $('#tr-weighing-amount').append(
-        '<td></td>' +
-        '<td></td>' +
-        '<td class="total-weighing-amount" style="text-align: center">' + totalAmount + '</td>'
-    );
+    $('#total-weighing-qty').text(totalQty);
+    $('#total-weighing-amount').text(totalWgt);
 }
 
 function totalWasteAmount() {
@@ -304,41 +302,81 @@ function totalWasteAmount() {
         }
         totalAmount += parseFloat($(this).val());
     })
-    $('#tfoot-waste').empty();
-    $('#tfoot-waste').append('<tr><td colspan="2" style="text-align: center">合计</td><td style="text-align: center">' + totalAmount + '</td><td></td></tr>');
+    $('#total-waste-amount').text(totalAmount);
 }
 
 function totalInventoryAmount() {
+    var totalQty = 0;
     var totalAmount = 0;
 
-    $('#tbody-godown_entry .weight').each(function (index) {
+    $('#tbody-inventory .weight').each(function (index) {
         if ($(this).val() == '') {
             $(this).val(0);
         } else {
             $(this).val(parseFloat($(this).val()));
         }
+        if ($(this).val() != 0)
+            totalQty += parseInt($(this).parent().prev().find('.quantity').eq(0).val());
         totalAmount += parseFloat($(this).val());
     })
-    $('#tfoot-godown_entry').empty();
-    $('#tfoot-godown_entry').append('<tr><td colspan="2" style="text-align: center">合计</td><td style="text-align: center">' + totalAmount + '</td><td></td></tr>');
+    $('#total-inventory-qty').text(totalQty);
+    $('#total-inventory-amount').text(totalAmount);
 }
 
-function exchange(machineId, workgroupId, monitorName, commanderName, recorderName, inspectorName, inventoryNum, batchNum, finishedQty, finishedWgt, inventoryQty, inventoryWgt, wasteWgt) {
-    $.post('/product/godown_entry/is_exist', {machineId: machineId, workgroupId: workgroupId}, function (res) {
-        if (res) {
+function shift() {
+    $('#shift-confirm').remove();
+    var list = new Array();
+    var monitorName = $('#select_monitor').children('option:selected').val();
+    var commanderName = $('#select_commander').children('option:selected').val();
+    var recorderName = $('#select_recorder').children('option:selected').val();
+    var inspectorName = $('#select_inspector').children('option:selected').val();
+    var workgroupId = $('#select_workgroup').children('option:selected').val();
+    var batchNum = $('#batch-num').text();
+    var finishedQty = $('#total-weighing-qty').text();
+    var finishedWgt = $('#total-weighing-amount').text();
+    var inventoryQty = $('#total-inventory-qty').text();
+    var inventoryWgt = $('#total-inventory-amount').text();
+    var wasteWgt = $('#total-waste-amount').text();
+    $('#tbody-weighing input.weight').each(function (index) {
+        if ($(this).val() != 0)
+            list.push(index + 1);
+    })
+    $.post('/product/packing_form/shift', {
+        shiftRecord: list[0] + "-" + list[list.length - 1],
+        packingNum: $('#packing-num').text()
+    }, function () {
+        location.reload();
+    })
+    $.post('/product/plate/godown_entry/shift', {
+        monitorName: monitorName,
+        commanderName: commanderName,
+        recorderName: recorderName,
+        inspectorName: inspectorName,
+        workgroupId: workgroupId,
+        batchNum: batchNum,
+        finishedQty: finishedQty,
+        finishedWgt: finishedWgt,
+        inventoryQty: inventoryQty,
+        inventoryWgt: inventoryWgt,
+        wasteWgt: wasteWgt
+    }, function (res) {
+    })
+}
 
-        } else {
-            $.post('/product/godown_entry/insert_form', {
-                machineId: machineId,
-                monitorName: monitorName,
-                commanderName: commanderName,
-                recorderName:recorderName,
-                inspectorName:inspectorName,
-                workgroupId:workgroupId
-            },function (res) {
-                $.post('/product/godown_entry/insert_spec',{})
-            })
-        }
+function checkInputable(self) {
+    if ($(self).parent().parent().prev().find('.weight').eq(0).val() == '0') {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+function getUserList(auth,select) {
+    $.post('/common/user/get_by_auth', {auth: auth}, function (res) {
+        select.empty();
+        $.each(res, function (index, obj) {
+            select.append('<option value="' + obj + '">' + obj + '</option>');
+        })
     })
 }
 

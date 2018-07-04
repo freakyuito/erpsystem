@@ -3,7 +3,7 @@
 <mapper namespace="cn.overseachem.erp.mapper.GodownEntryMapper" >
   <resultMap id="BaseResultMap" type="cn.overseachem.erp.pojo.GodownEntry" >
     <id column="inventory_num" property="inventoryNum" jdbcType="VARCHAR" />
-    <result column="generate_time" property="generateTime" jdbcType="DATE" />
+    <result column="generate_time" property="generateTime" jdbcType="TIMESTAMP" />
     <result column="commander_id" property="commanderId" jdbcType="INTEGER" />
     <result column="recorder_id" property="recorderId" jdbcType="INTEGER" />
     <result column="inspector_id" property="inspectorId" jdbcType="INTEGER" />
@@ -109,7 +109,7 @@
       recorder_id, inspector_id, monitor_id, 
       workgroup_id, fk_operation_records_id, machine_id
       )
-    values (#{inventoryNum,jdbcType=VARCHAR}, #{generateTime,jdbcType=DATE}, #{commanderId,jdbcType=INTEGER}, 
+    values (#{inventoryNum,jdbcType=VARCHAR}, #{generateTime,jdbcType=TIMESTAMP}, #{commanderId,jdbcType=INTEGER}, 
       #{recorderId,jdbcType=INTEGER}, #{inspectorId,jdbcType=INTEGER}, #{monitorId,jdbcType=INTEGER}, 
       #{workgroupId,jdbcType=INTEGER}, #{fkOperationRecordsId,jdbcType=VARCHAR}, #{machineId,jdbcType=INTEGER}
       )
@@ -150,7 +150,7 @@
         #{inventoryNum,jdbcType=VARCHAR},
       </if>
       <if test="generateTime != null" >
-        #{generateTime,jdbcType=DATE},
+        #{generateTime,jdbcType=TIMESTAMP},
       </if>
       <if test="commanderId != null" >
         #{commanderId,jdbcType=INTEGER},
@@ -188,7 +188,7 @@
         inventory_num = #{record.inventoryNum,jdbcType=VARCHAR},
       </if>
       <if test="record.generateTime != null" >
-        generate_time = #{record.generateTime,jdbcType=DATE},
+        generate_time = #{record.generateTime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.commanderId != null" >
         commander_id = #{record.commanderId,jdbcType=INTEGER},
@@ -219,7 +219,7 @@
   <update id="updateByExample" parameterType="map" >
     update godown_entry
     set inventory_num = #{record.inventoryNum,jdbcType=VARCHAR},
-      generate_time = #{record.generateTime,jdbcType=DATE},
+      generate_time = #{record.generateTime,jdbcType=TIMESTAMP},
       commander_id = #{record.commanderId,jdbcType=INTEGER},
       recorder_id = #{record.recorderId,jdbcType=INTEGER},
       inspector_id = #{record.inspectorId,jdbcType=INTEGER},
@@ -235,7 +235,7 @@
     update godown_entry
     <set >
       <if test="generateTime != null" >
-        generate_time = #{generateTime,jdbcType=DATE},
+        generate_time = #{generateTime,jdbcType=TIMESTAMP},
       </if>
       <if test="commanderId != null" >
         commander_id = #{commanderId,jdbcType=INTEGER},
@@ -263,7 +263,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.overseachem.erp.pojo.GodownEntry" >
     update godown_entry
-    set generate_time = #{generateTime,jdbcType=DATE},
+    set generate_time = #{generateTime,jdbcType=TIMESTAMP},
       commander_id = #{commanderId,jdbcType=INTEGER},
       recorder_id = #{recorderId,jdbcType=INTEGER},
       inspector_id = #{inspectorId,jdbcType=INTEGER},

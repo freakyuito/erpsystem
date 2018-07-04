@@ -142,21 +142,14 @@
                                     </tr>
                                     </thead>
                                     <tbody id="tbody-weighing">
-                                    <!--<tr>-->
-                                    <!--<td class="index" style="width: 50px;text-align:center"></td>-->
-                                    <!--<td class="quantity" style="width: 110px;text-align: center"></td>-->
-                                    <!--<td class="weight" style="width: 110px;text-align: center">-->
-                                    <!--<input value="" class="form-control input-sm"-->
-                                    <!--onblur="setWeighingData()$(this).parent().attr('class','bg-success')"/>-->
-                                    <!--</td>-->
-                                    <!--</tr>-->
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td class="total-weighing-amount"></td>
-                                    </tr>
                                     </tbody>
-
+                                    <tfoot>
+                                    <tr>
+                                        <td style="text-align: center">合计</td>
+                                        <td style="text-align: center" id="total-weighing-qty"></td>
+                                        <td id="total-weighing-amount" style="text-align: center"></td>
+                                    </tr>
+                                    </tfoot>
                                 </table>
                             </div>
                         </div>
@@ -186,8 +179,11 @@
                                         <tbody id="tbody-waste">
 
                                         </tbody>
-                                        <tfoot id="tfoot-waste">
-
+                                        <tfoot>
+                                        <tr>
+                                            <td colspan="2" style="text-align: center">合计</td>
+                                            <td id="total-waste-amount"></td>
+                                        </tr>
                                         </tfoot>
                                     </table>
                                 </div>
@@ -215,24 +211,28 @@
                                         </tr>
                                         </thead>
                                         <tbody id="tbody-inventory">
-                                        <tr>
-                                            <td style="text-align: center" class="index">1</td>
-                                            <td style="text-align: center">
-                                                <input class="form-control input-sm quantity"
-                                                       onblur="setInventoryData($('#packing-num').text(),$(this).parent().parent().find('.index').eq(0).text(),$(this).val(),$(this).parent().parent().find('.weight').eq(0).val())"/>
-                                            </td>
-                                            <td style="text-align: center">
-                                                <input class="form-control input-sm weight"
-                                                       onblur="setInventoryData($('#packing-num').text(),$(this).parent().parent().find('.index').eq(0).text(),$(this).parent().parent().find('.quantity').eq(0).val(),$(this).val())"/>
-                                            </td>
-                                            <td style="text-align: center">
-                                                <button class="btn btn-danger btn-sm" onclick="removeWaste($(this))">删除
-                                                </button>
-                                            </td>
-                                        </tr>
+                                        <!--<tr>-->
+                                            <!--<td style="text-align: center" class="index">1</td>-->
+                                            <!--<td style="text-align: center">-->
+                                                <!--<input class="form-control input-sm quantity"-->
+                                                       <!--onblur="setInventoryData($('#packing-num').text(),$(this).parent().parent().find('.index').eq(0).text(),$(this).val(),$(this).parent().parent().find('.weight').eq(0).val())"/>-->
+                                            <!--</td>-->
+                                            <!--<td style="text-align: center">-->
+                                                <!--<input class="form-control input-sm weight"-->
+                                                       <!--onblur="setInventoryData($('#packing-num').text(),$(this).parent().parent().find('.index').eq(0).text(),$(this).parent().parent().find('.quantity').eq(0).val(),$(this).val())"/>-->
+                                            <!--</td>-->
+                                            <!--<td style="text-align: center">-->
+                                                <!--<button class="btn btn-danger btn-sm" onclick="removeWaste($(this))">删除-->
+                                                <!--</button>-->
+                                            <!--</td>-->
+                                        <!--</tr>-->
                                         </tbody>
-                                        <tfoot id="tfoot-inventory">
-
+                                        <tfoot>
+                                        <tr>
+                                            <td style="text-align: center">合计</td>
+                                            <td style="text-align: center" id="total-inventory-qty"></td>
+                                            <td id="total-inventory-amount"></td>
+                                        </tr>
                                         </tfoot>
                                     </table>
                                 </div>
@@ -260,11 +260,11 @@
                                     <td style="text-align: center">
 
                                         <button class="btn btn-primary btn-sm" data-toggle="modal"
-                                                data-target="#myModal_supervisor"><i
-                                                class="glyphicon glyphicon-transfer "></i>交接班
+                                                data-target="#myModal_shift"><i
+                                                class="glyphicon glyphicon-transfer"></i>交接班
                                         </button>
                                         <!-- 模态框（Modal） -->
-                                        <div class="modal fade" id="myModal_supervisor" tabindex="-1" role="dialog"
+                                        <div class="modal fade" id="myModal_shift" tabindex="-1" role="dialog"
                                              aria-labelledby="myModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
@@ -273,17 +273,46 @@
                                                                 aria-hidden="true">
                                                             &times;
                                                         </button>
-                                                        <h4 class="modal-title" id="myModalLabel_supervisor">
+                                                        <h4 class="modal-title" id="myModalLabel_shift">
                                                             交接班署名，署名之后，当班次当批次入库结算完成。</h4>
                                                     </div>
                                                     <div class="modal-body">
-                                                        署名人为：xxx
+                                                        <div class="form-group col-sm-10">
+                                                            <div class="form-group-sm col-sm-4">
+                                                                班长
+                                                                <select id="select_monitor" class="form-control">
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group-sm col-sm-4">
+                                                                机长
+                                                                <select id="select_commander" class="form-control">
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group-sm col-sm-4">
+                                                                检验
+                                                                <select id="select_inspector" class="form-control">
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group-sm col-sm-4" >
+                                                                记录
+                                                                <select id="select_recorder" class="form-control">
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group-sm col-sm-4">
+                                                                班组
+                                                                <select id="select_workgroup" class="form-control">
+                                                                    <option value="1">甲一</option>
+                                                                    <option value="2">甲二</option>
+                                                                    <option value="3">乙一</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-default"
                                                                 data-dismiss="modal">关闭
                                                         </button>
-                                                        <button type="button" class="btn btn-primary">确认</button>
+                                                        <button type="button" id="shift-confirm" class="btn btn-primary" onclick="shift()">确认</button>
                                                     </div>
                                                 </div>
                                                 <!-- /.modal-content -->

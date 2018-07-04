@@ -114,7 +114,21 @@ public class PackingFormController {
     @RequestMapping("/get_weighing_list")
     @ResponseBody
     public List<PackingFormDataItem> getWeighingList(String packingNum) {
-        return packingFormService.getWeighingList(packingNum);
+        PackingFormWithBLOBs bloBs = packingFormService.getByPackingNum(packingNum);
+        if (bloBs.getExchangeRecords() != null) {
+            Integer begin = decodeShiftRecord(bloBs.getExchangeRecords()).get("begin");
+            Integer end = decodeShiftRecord(bloBs.getExchangeRecords()).get("end");
+            ArrayList<PackingFormDataItem> results = new ArrayList<PackingFormDataItem>();
+            List<PackingFormDataItem> items = packingFormService.getWeighingList(packingNum);
+            for (PackingFormDataItem i : items
+                    ) {
+                if (items.indexOf(i) >= begin - 1 && items.indexOf(i) <= end - 1) ;
+                else results.add(i);
+            }
+            return results;
+        } else {
+            return packingFormService.getWeighingList(packingNum);
+        }
     }
 
     @RequestMapping("/get_waste_list")
@@ -255,9 +269,22 @@ public class PackingFormController {
         return "Z" + str;
     }
 
-    @RequestMapping("/exchange")
-    public void exchange(String monitorName, String commanderName, String inspectorName,String recorderName, String groupName, String packingNum) {
+    @RequestMapping("/shift")
+    @ResponseBody
+    public void shift(String shiftRecord, String packingNum) {
+        packingFormService.shift(shiftRecord, packingNum);
+    }
 
+    public HashMap<String, Integer> decodeShiftRecord(String record) {
+        if (record != null) {
+            HashMap<String, Integer> map = new HashMap<String, Integer>();
+            String[] records = record.split(",");
+            String[] pages = records[records.length - 1].split("-");
+            map.put("begin", Integer.parseInt(pages[0]));
+            map.put("end", Integer.parseInt(pages[1]));
+            return map;
+        }
+        return null;
     }
 
 }

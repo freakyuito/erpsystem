@@ -61,7 +61,7 @@ public class GodownEntryService {
         GodownEntryExample e = new GodownEntryExample();
         e.createCriteria().andMachineIdEqualTo(machineId).andGenerateTimeBetween(dateBegin, dateEnd);
         List<GodownEntry> list = godownEntryMapper.selectByExample(e);
-        if (list != null)
+        if (list != null && list.size() > 0)
             return list.get(0);
         else
             return null;
@@ -71,7 +71,7 @@ public class GodownEntryService {
         GodownEntrySpecExample e = new GodownEntrySpecExample();
         e.createCriteria().andFkInventoryNumEqualTo(inventoryNum).andFkBatchNumEqualTo(batchNum);
         List<GodownEntrySpec> list = godownEntrySpecMapper.selectByExample(e);
-        if (list != null)
+        if (list != null && list.size() > 0)
             return list.get(0);
         else
             return null;

@@ -3,12 +3,14 @@ package cn.overseachem.erp.controller;
 import cn.overseachem.erp.pojo.GodownEntry;
 import cn.overseachem.erp.pojo.GodownEntrySpec;
 import cn.overseachem.erp.service.GodownEntryService;
+import cn.overseachem.erp.service.ProductOrderService;
 import cn.overseachem.erp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.sql.Time;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.ParseException;
@@ -25,6 +27,8 @@ public class GodownEntryController {
     private GodownEntryService godownEntryService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private ProductOrderService productOrderService;
 
     @RequestMapping("/2lst")
     public String listPage() {
@@ -83,7 +87,7 @@ public class GodownEntryController {
         return godownEntryService.getSpecByInventoryNumAndBatchNum(inventoryNum, batchNum);
     }
 
-    public void insertForm(Integer machineId, String monitorName, String commanderName, String recorderName, String inspectorName, Integer workgroupId) {
+    public GodownEntry insertForm(Integer machineId, String monitorName, String commanderName, String recorderName, String inspectorName, Integer workgroupId) {
         GodownEntry godownEntry = new GodownEntry();
         godownEntry.setMonitorId(userService.getIdByRealName(monitorName));
         godownEntry.setCommanderId(userService.getIdByRealName(commanderName));
@@ -93,7 +97,9 @@ public class GodownEntryController {
         godownEntry.setMachineId(machineId);
         godownEntry.setGenerateTime(new Date());
         godownEntry.setInventoryNum(generateInventoryNum());
+        System.out.println(godownEntry.toString());
         godownEntryService.insert(godownEntry);
+        return godownEntry;
     }
 
     public void insertSpec(String inventoryNum, String batchNum, Integer finishedQty, Float finishedWgt, Integer inventoryQty, Float inventoryWgt, Float wasteWgt) {
@@ -110,30 +116,35 @@ public class GodownEntryController {
 
     public void updateSpec(GodownEntrySpec spec, String inventoryNum, String batchNum, Integer finishedQty, Float finishedWgt, Integer inventoryQty, Float inventoryWgt, Float wasteWgt) {
         spec.setFkInventoryNum(inventoryNum);
-        spec.setWasteWeight(wasteWgt);
-        spec.setInventoryWeight(inventoryWgt);
-        spec.setInventoryQuantity(inventoryQty);
+        spec.setWasteWeight(wasteWgt + spec.getWasteWeight());
+        spec.setInventoryWeight(inventoryWgt + spec.getInventoryWeight());
+        spec.setInventoryQuantity(inventoryQty + spec.getInventoryQuantity());
         spec.setFkBatchNum(batchNum);
-        spec.setFinishedWeight(finishedWgt);
-        spec.setFinishedQuantity(finishedQty);
+        spec.setFinishedWeight(finishedWgt + spec.getFinishedWeight());
+        spec.setFinishedQuantity(finishedQty + spec.getFinishedQuantity());
         godownEntryService.updateSpec(spec);
     }
 
     @RequestMapping("/shift")
-    public void shift(Integer machineId, String monitorName, String commanderName, String recorderName,
+    @ResponseBody
+    public void shift(String monitorName, String commanderName, String recorderName,
                       String inspectorName, Integer workgroupId, String batchNum, Integer finishedQty,
                       Float finishedWgt, Integer inventoryQty, Float inventoryWgt, Float wasteWgt) {
+        Integer machineId = productOrderService.getMachineIdByBatchNum(batchNum);
+        System.out.println(machineId + monitorName + commanderName + recorderName + inspectorName + workgroupId + batchNum + finishedQty + finishedWgt
+                + inventoryQty + inventoryWgt + wasteWgt);
         GodownEntry godownEntry = isFormExist(machineId, new Date());
         if (godownEntry != null) {
             GodownEntrySpec spec = isSpecExist(godownEntry.getInventoryNum(), batchNum);
             if (spec != null) {
                 updateSpec(spec, godownEntry.getInventoryNum(), batchNum, finishedQty, finishedWgt, inventoryQty, inventoryWgt, wasteWgt);
             } else {
-                insertSpec(godownEntry.getInventoryNum(),batchNum,finishedQty,finishedWgt,inventoryQty,inventoryWgt,wasteWgt);
+                insertSpec(godownEntry.getInventoryNum(), batchNum, finishedQty, finishedWgt, inventoryQty, inventoryWgt, wasteWgt);
             }
         } else {
-            insertForm(machineId,monitorName,commanderName,recorderName,inspectorName,workgroupId);
-            insertSpec(godownEntry.getInventoryNum(),batchNum,finishedQty,finishedWgt,inventoryQty,inventoryWgt,wasteWgt);
+            GodownEntry godownEntry1 = insertForm(machineId, monitorName, commanderName, recorderName, inspectorName, workgroupId);
+            assert godownEntry1 != null;
+            insertSpec(godownEntry1.getInventoryNum(), batchNum, finishedQty, finishedWgt, inventoryQty, inventoryWgt, wasteWgt);
         }
     }
 }

@@ -2,7 +2,6 @@ package cn.overseachem.erp.pojo;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 public class GodownEntryExample {
@@ -106,32 +105,6 @@ public class GodownEntryExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        protected void addCriterionForJDBCDate(String condition, Date value, String property) {
-            if (value == null) {
-                throw new RuntimeException("Value for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value.getTime()), property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, List<Date> values, String property) {
-            if (values == null || values.size() == 0) {
-                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
-            }
-            List<java.sql.Date> dateList = new ArrayList<java.sql.Date>();
-            Iterator<Date> iter = values.iterator();
-            while (iter.hasNext()) {
-                dateList.add(new java.sql.Date(iter.next().getTime()));
-            }
-            addCriterion(condition, dateList, property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, Date value1, Date value2, String property) {
-            if (value1 == null || value2 == null) {
-                throw new RuntimeException("Between values for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
-        }
-
         public Criteria andInventoryNumIsNull() {
             addCriterion("inventory_num is null");
             return (Criteria) this;
@@ -213,52 +186,52 @@ public class GodownEntryExample {
         }
 
         public Criteria andGenerateTimeEqualTo(Date value) {
-            addCriterionForJDBCDate("generate_time =", value, "generateTime");
+            addCriterion("generate_time =", value, "generateTime");
             return (Criteria) this;
         }
 
         public Criteria andGenerateTimeNotEqualTo(Date value) {
-            addCriterionForJDBCDate("generate_time <>", value, "generateTime");
+            addCriterion("generate_time <>", value, "generateTime");
             return (Criteria) this;
         }
 
         public Criteria andGenerateTimeGreaterThan(Date value) {
-            addCriterionForJDBCDate("generate_time >", value, "generateTime");
+            addCriterion("generate_time >", value, "generateTime");
             return (Criteria) this;
         }
 
         public Criteria andGenerateTimeGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("generate_time >=", value, "generateTime");
+            addCriterion("generate_time >=", value, "generateTime");
             return (Criteria) this;
         }
 
         public Criteria andGenerateTimeLessThan(Date value) {
-            addCriterionForJDBCDate("generate_time <", value, "generateTime");
+            addCriterion("generate_time <", value, "generateTime");
             return (Criteria) this;
         }
 
         public Criteria andGenerateTimeLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("generate_time <=", value, "generateTime");
+            addCriterion("generate_time <=", value, "generateTime");
             return (Criteria) this;
         }
 
         public Criteria andGenerateTimeIn(List<Date> values) {
-            addCriterionForJDBCDate("generate_time in", values, "generateTime");
+            addCriterion("generate_time in", values, "generateTime");
             return (Criteria) this;
         }
 
         public Criteria andGenerateTimeNotIn(List<Date> values) {
-            addCriterionForJDBCDate("generate_time not in", values, "generateTime");
+            addCriterion("generate_time not in", values, "generateTime");
             return (Criteria) this;
         }
 
         public Criteria andGenerateTimeBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("generate_time between", value1, value2, "generateTime");
+            addCriterion("generate_time between", value1, value2, "generateTime");
             return (Criteria) this;
         }
 
         public Criteria andGenerateTimeNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("generate_time not between", value1, value2, "generateTime");
+            addCriterion("generate_time not between", value1, value2, "generateTime");
             return (Criteria) this;
         }
 
