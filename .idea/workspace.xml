@@ -2,22 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="96182eff-537a-4ff4-8ca8-5a64cb69b766" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/cn/overseachem/erp/controller/GodownEntryController.class" afterPath="$PROJECT_DIR$/target/classes/cn/overseachem/erp/controller/GodownEntryController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/controller/GodownEntryController.java" afterPath="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/controller/GodownEntryController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/page-js/market_plate_purchase_order_dtl.js" afterPath="$PROJECT_DIR$/src/main/resources/static/page-js/market_plate_purchase_order_dtl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/page-js/product_plate_inventory_lst.js" afterPath="$PROJECT_DIR$/src/main/resources/static/page-js/product_plate_inventory_lst.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/page-js/product_plate_packing_form_dtl.js" afterPath="$PROJECT_DIR$/src/main/resources/static/page-js/product_plate_packing_form_dtl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/page-js/product_plate_product_order_lst.js" afterPath="$PROJECT_DIR$/src/main/resources/static/page-js/product_plate_product_order_lst.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/template/market/plate/purchase_order/dtl.html" afterPath="$PROJECT_DIR$/src/main/resources/template/market/plate/purchase_order/dtl.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/template/market/plate/purchase_order/lst.html" afterPath="$PROJECT_DIR$/src/main/resources/template/market/plate/purchase_order/lst.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/template/product/plate/godown_entry/lst.html" afterPath="$PROJECT_DIR$/src/main/resources/template/product/plate/godown_entry/lst.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/template/product/plate/product_order/lst.html" afterPath="$PROJECT_DIR$/src/main/resources/template/product/plate/product_order/lst.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/static/page-js/market_plate_purchase_order_dtl.js" afterPath="$PROJECT_DIR$/target/classes/static/page-js/market_plate_purchase_order_dtl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/static/page-js/product_plate_inventory_lst.js" afterPath="$PROJECT_DIR$/target/classes/static/page-js/product_plate_inventory_lst.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/static/page-js/product_plate_packing_form_dtl.js" afterPath="$PROJECT_DIR$/target/classes/static/page-js/product_plate_packing_form_dtl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/template/market/plate/purchase_order/dtl.html" afterPath="$PROJECT_DIR$/target/classes/template/market/plate/purchase_order/dtl.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/template/product/plate/godown_entry/lst.html" afterPath="$PROJECT_DIR$/target/classes/template/product/plate/godown_entry/lst.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/template/product/plate/godown_entry/dtl.html" afterPath="$PROJECT_DIR$/src/main/resources/template/product/plate/godown_entry/dtl.html" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -48,18 +33,6 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="lst.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/template/product/plate/godown_entry/lst.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2535">
-              <caret line="169" column="78" lean-forward="false" selection-start-line="169" selection-start-column="78" selection-end-line="169" selection-end-column="78" />
-              <folding>
-                <element signature="n#style#0;n#th#1;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="GodownEntryController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/controller/GodownEntryController.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -170,7 +143,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="product_plate_product_order_lst.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="product_plate_product_order_lst.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/static/page-js/product_plate_product_order_lst.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="390">
@@ -185,6 +158,19 @@
                 <marker date="1530789667373" expanded="true" signature="1322:1340" ph="..." />
                 <marker date="1530789667373" expanded="true" signature="1444:1462" ph="..." />
                 <marker date="1530789667373" expanded="true" signature="1534:1552" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dtl.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/template/product/plate/godown_entry/dtl.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="41">
+              <caret line="90" column="80" lean-forward="false" selection-start-line="90" selection-start-column="80" selection-end-line="90" selection-end-column="80" />
+              <folding>
+                <element signature="n#style#0;n#th#10;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#10;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -277,7 +263,6 @@
         <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/GodownEntryDtlGrid.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/service/ProductOrderService.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/GodownEntrySpecDtlGrid.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/template/product/plate/godown_entry/dtl.html" />
         <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/controller/MachineController.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/controller/WorkgroupController.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/mapper/GodownEntryMapper.java" />
@@ -295,6 +280,7 @@
         <option value="$PROJECT_DIR$/src/main/resources/template/market/plate/purchase_order/lst.html" />
         <option value="$PROJECT_DIR$/src/main/resources/template/product/plate/product_order/lst.html" />
         <option value="$PROJECT_DIR$/src/main/resources/static/page-js/product_plate_product_order_lst.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/template/product/plate/godown_entry/dtl.html" />
       </list>
     </option>
   </component>
@@ -497,6 +483,40 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="plate" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="erpsystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="erpsystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="template" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plate" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="godown_entry" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1361,12 +1381,12 @@
       <workItem from="1530699997343" duration="16028000" />
       <workItem from="1530751411575" duration="8051000" />
       <workItem from="1530784597622" duration="3304000" />
-      <workItem from="1530788927984" duration="741000" />
+      <workItem from="1530788927984" duration="829000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="552968000" />
+    <option name="totallyTimeSpent" value="553056000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1652,13 +1672,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/template/product/plate/godown_entry/dtl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="95" column="63" lean-forward="false" selection-start-line="95" selection-start-column="63" selection-end-line="95" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/service/ProductOrderService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="563">
@@ -1908,6 +1921,17 @@
             <marker date="1530789667373" expanded="true" signature="1322:1340" ph="..." />
             <marker date="1530789667373" expanded="true" signature="1444:1462" ph="..." />
             <marker date="1530789667373" expanded="true" signature="1534:1552" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/template/product/plate/godown_entry/dtl.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="41">
+          <caret line="90" column="80" lean-forward="false" selection-start-line="90" selection-start-column="80" selection-end-line="90" selection-end-column="80" />
+          <folding>
+            <element signature="n#style#0;n#th#10;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#10;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

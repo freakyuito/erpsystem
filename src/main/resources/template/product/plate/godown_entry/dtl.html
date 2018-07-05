@@ -88,6 +88,7 @@
                                 <th style="width: 120px" class="text-center">库存数量</th>
                                 <th style="width: 120px" class="text-center">库存重量</th>
                                 <th style="width: 120px" class="text-center">废品重量</th>
+                                <th style="width: 120px" class="text-center">成品率</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -101,6 +102,7 @@
                                 <td id="amount" th:text="${spec.finishedWgt}" style="text-align: center"></td>
                                 <td id="process" th:text="${spec.inventoryQty}" style="text-align: center"></td>
                                 <td id="estimate-weight" th:text="${spec.inventoryWgt}" style="text-align: center"></td>
+                                <td id="weight" th:text="${spec.wasteWgt}" style="text-align: center"></td>
                                 <td id="weight" th:text="${spec.wasteWgt}" style="text-align: center"></td>
                             </tr>
                             </tbody>
