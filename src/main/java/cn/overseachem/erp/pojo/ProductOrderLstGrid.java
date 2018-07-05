@@ -1,12 +1,10 @@
 package cn.overseachem.erp.pojo;
 
-import java.util.Date;
-
 public class ProductOrderLstGrid {
     private String purchaseNum;
     private String patternName;
     private String productNum;
-    private Integer machineNum;
+    private String machineNum;
     private Integer completedAmount;
     private Integer totalAmount;
     private Float estimateWeight;
@@ -32,7 +30,7 @@ public class ProductOrderLstGrid {
                 '}';
     }
 
-    public ProductOrderLstGrid(String purchaseNum, String patternName, String productNum, Integer machineNum, Integer completedAmount, Integer totalAmount, Float estimateWeight, String scheduleBeginTime, String scheduleFinishTime) {
+    public ProductOrderLstGrid(String purchaseNum, String patternName, String productNum, String machineNum, Integer completedAmount, Integer totalAmount, Float estimateWeight, String scheduleBeginTime, String scheduleFinishTime) {
         this.purchaseNum = purchaseNum;
         this.patternName = patternName;
         this.productNum = productNum;
@@ -64,11 +62,11 @@ public class ProductOrderLstGrid {
         this.productNum = productNum;
     }
 
-    public Integer getMachineNum() {
+    public String getMachineNum() {
         return machineNum;
     }
 
-    public void setMachineNum(Integer machineNum) {
+    public void setMachineNum(String machineNum) {
         this.machineNum = machineNum;
     }
 

@@ -11,6 +11,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -192,5 +193,17 @@ public class ProductOrderService {
 
     public ProductOrder getProductOrderByBatchNum(String batchNum) {
         return orderMapper.selectByPrimaryKey(specMapper.selectByPrimaryKey(batchNum).getFkProductNum());
+    }
+
+    public void setScheduleBeginTime(String productNum, Date time){
+       ProductOrder o = orderMapper.selectByPrimaryKey(productNum);
+       o.setScheduleBeginTime(time);
+       orderMapper.updateByPrimaryKey(o);
+    }
+
+    public void setScheduleFinishTime(String productNum, Date time){
+        ProductOrder o = orderMapper.selectByPrimaryKey(productNum);
+        o.setScheduleFinishTime(time);
+        orderMapper.updateByPrimaryKey(o);
     }
 }

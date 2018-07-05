@@ -110,14 +110,17 @@ public class ProductOrderController {
         String patternId = productOrderService.getPatternId(target.getProductNum());
         Integer totalAmount = productOrderService.getTotalAmount(target.getProductNum());
         Integer completedAmount = productOrderService.getCompletedAmount(target.getProductNum());
-        String scheduleBeginTime = null;
-        String scheduleEndTime = null;
+        String scheduleBeginTime = "未排单";
+        String scheduleEndTime = "未排单";
+        String machineNum = "未设定机台号";
         if (target.getScheduleBeginTime() != null)
             scheduleBeginTime = new SimpleDateFormat("yyyy-MM-dd").format(target.getScheduleBeginTime());
         if (target.getScheduleFinishTime() != null)
             scheduleEndTime = new SimpleDateFormat("yyyy-MM-dd").format(target.getScheduleFinishTime());
+        if(target.getMachineNum() != null)
+            machineNum = target.getMachineNum().toString();
         return new ProductOrderLstGrid(target.getFkPurchaseNum(), patternService.getNameById(patternId), target.getProductNum(),
-                target.getMachineNum(), completedAmount, totalAmount, 0f,
+                machineNum, completedAmount, totalAmount, 0f,
                 scheduleBeginTime, scheduleEndTime);
     }
 
@@ -143,5 +146,25 @@ public class ProductOrderController {
     @ResponseBody
     public void sign(String approverName, String receiverName, String machineNum, String productNum) {
         productOrderService.sign(userService.getIdByRealName(approverName), userService.getIdByRealName(receiverName), Integer.parseInt(machineNum), productNum);
+    }
+
+    @RequestMapping("set_schedule_begin_time")
+    @ResponseBody
+    public void setScheduleBeginTime(String productNum,String time){
+        try {
+            productOrderService.setScheduleBeginTime(productNum,new SimpleDateFormat("yyyy-MM-dd").parse(time));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @RequestMapping("set_schedule_finish_time")
+    @ResponseBody
+    public void setScheduleFinishTime(String productNum,String time){
+        try {
+            productOrderService.setScheduleFinishTime(productNum,new SimpleDateFormat("yyyy-MM-dd").parse(time));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 }

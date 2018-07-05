@@ -273,12 +273,16 @@ public class PackingFormService {
 
     public void shift(String shiftRecord, String packingNum) {
         PackingFormWithBLOBs form = mapper.selectByPrimaryKey(packingNum);
-        String newRecord = form.getExchangeRecords() + "," + shiftRecord;
+        String newRecord = null;
+        if (form.getExchangeRecords() != null)
+            newRecord = form.getExchangeRecords() + "," + shiftRecord;
+        else
+            newRecord = "," + shiftRecord;
         form.setExchangeRecords(newRecord);
         mapper.updateByPrimaryKeyWithBLOBs(form);
     }
 
-    public PackingFormWithBLOBs getByPackingNum(String packingNum){
+    public PackingFormWithBLOBs getByPackingNum(String packingNum) {
         return mapper.selectByPrimaryKey(packingNum);
     }
 }

@@ -337,9 +337,9 @@ function shift() {
     var inventoryQty = $('#total-inventory-qty').text();
     var inventoryWgt = $('#total-inventory-amount').text();
     var wasteWgt = $('#total-waste-amount').text();
-    $('#tbody-weighing input.weight').each(function (index) {
+    $('#tbody-weighing input.weight').each(function () {
         if ($(this).val() != 0)
-            list.push(index + 1);
+            list.push($(this).parent().parent().find('.index').eq(0).text());
     })
     $.post('/product/packing_form/shift', {
         shiftRecord: list[0] + "-" + list[list.length - 1],

@@ -122,7 +122,7 @@ public class PackingFormController {
             List<PackingFormDataItem> items = packingFormService.getWeighingList(packingNum);
             for (PackingFormDataItem i : items
                     ) {
-                if (items.indexOf(i) >= begin - 1 && items.indexOf(i) <= end - 1) ;
+                if (items.indexOf(i) >= 0 && items.indexOf(i) <= end - 1) ;
                 else results.add(i);
             }
             return results;

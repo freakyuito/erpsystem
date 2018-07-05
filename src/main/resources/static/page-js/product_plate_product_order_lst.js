@@ -25,13 +25,39 @@ function search() {
                     '<td style="text-align: center">' + obj.completedAmount + '/' + obj.totalAmount + '</td>' +
                     '<td style="text-align: center">' + obj.estimateWeight + '</td>' +
                     '<td ></td>' +
-                    '<td style="text-align: center">' + obj.scheduleBeginTime + '</td>' +
-                    '<td style="text-align: center">' + obj.scheduleFinishTime + '</td>' +
-                    '</tr>');
+                    '<td style="text-align: center">\n' +
+                    '                                    <div class="input-group date form_date" data-date=""\n' +
+                    '                                         data-date-format="yyyy-MM-dd" data-link-field="dtp_input1"\n' +
+                    '                                         data-link-format="yyyy-mm-dd">\n' +
+                    '                                        <input class="form-control" size="16" type="text" value="' + obj.scheduleBeginTime + '"\n' +
+                    '                                               readonly="readonly"/>\n' +
+                    '                                        <span class="input-group-addon"><span\n' +
+                    '                                                class="glyphicon glyphicon-remove"></span></span>\n' +
+                    '                                    </div>\n' +
+                    '                                    <input type="hidden" id="dtp_input1" value="' + obj.scheduleBeginTime + '"/><br/>\n' +
+                    '                                </td>' +
+                    '<td style="text-align: center">\n' +
+                    '                                    <div class="input-group date form_date" data-date=""\n' +
+                    '                                         data-date-format="yyyy-MM-dd" data-link-field="dtp_input2"\n' +
+                    '                                         data-link-format="yyyy-mm-dd">\n' +
+                    '                                        <input class="form-control" size="16" type="text" value="' + obj.scheduleFinishTime + '"\n' +
+                    '                                               readonly="readonly"/>\n' +
+                    '                                        <span class="input-group-addon"><span\n' +
+                    '                                                class="glyphicon glyphicon-remove"></span></span>\n' +
+                    '                                    </div>\n' +
+                    '                                    <input type="hidden" id="dtp_input2" value="' + obj.scheduleFinishTime + '"/><br/>\n' +
+                    '                                </td>' +
+                    '</tr>'
+                )
+                ;
             })
         } else {
             $("#table-body").empty();
             $("#table-body").append('null');
         }
     })
+}
+
+function setScheduleBeginTime(productNum, time) {
+
 }
