@@ -31,9 +31,8 @@ public class WorkgroupService {
             case 10:return "丙一夜";
             case 11:return "丙二白";
             case 12:return "丙二夜";
-            default:break;
+            default:return "";
         }
-        return null;
     }
 
     public Integer getIdByName(String name){
@@ -50,9 +49,8 @@ public class WorkgroupService {
             case "丙一夜":return 10;
             case "丙二白":return 11;
             case "丙二夜":return 12;
-            default:break;
+            default:return null;
         }
-        return null;
     }
 
     public List<String> getAll(){

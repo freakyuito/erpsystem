@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -87,16 +88,8 @@ public class GodownEntryService {
         return godownEntrySpecMapper.selectByExample(e);
     }
 
-    public List<GodownEntryLstGrid> getByCriteria(Date startTime,Date endTime,Integer machineId,
-                              Integer workgroupId,Integer commanderId,String inventoryNum) {
-        GodownEntryExample e = new GodownEntryExample();
-        e.createCriteria().andInventoryNumEqualTo(inventoryNum).
-                andWorkgroupIdEqualTo(workgroupId).andGenerateTimeBetween(startTime,endTime).
-                andCommanderIdEqualTo(commanderId).andInventoryNumLike("%"+inventoryNum+"%");
-        List<GodownEntry> godownEntries = godownEntryMapper.selectByExample(e);
-        for (GodownEntry g:godownEntries
-             ) {
-            
-        }
+    public List<HashMap<String,Object>>  getByCriteria(String startTime, String endTime, String machineId, String workgroupId, String commanderId,
+                                                       String inventoryNum){
+        return godownEntryMapper.getByCriteria(startTime,endTime,machineId,workgroupId,commanderId,inventoryNum);
     }
 }

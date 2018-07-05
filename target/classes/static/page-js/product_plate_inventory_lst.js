@@ -4,20 +4,22 @@ $(function () {
         $.each(res, function (index, obj) {
             s.append('<option value="' + obj + '">' + obj + '</option>');
         })
-    })
-    $.post('/product/plate/machine/get_all', {}, function (res) {
-        var s = $("#select-machine");
-        $.each(res, function (index, obj) {
-            s.append('<option value="' + obj + '">' + obj + '</option>');
+        $.post('/product/plate/machine/get_all', {}, function (res) {
+            var s = $("#select-machine");
+            $.each(res, function (index, obj) {
+                s.append('<option value="' + obj + '">' + obj + '</option>');
+            })
+            $.post('/product/plate/workgroup/get_all', {}, function (res) {
+                var s = $("#select-workgroup");
+                $.each(res, function (index, obj) {
+                    s.append('<option value="' + obj + '">' + obj + '</option>');
+                })
+                search();
+            })
         })
     })
-    $.post('/product/plate/workgroup/get_all', {}, function (res) {
-        var s = $("#select-workgroup");
-        $.each(res, function (index, obj) {
-            s.append('<option value="' + obj + '">' + obj + '</option>');
-        })
-    })
-    search();
+
+
 })
 
 function search() {
@@ -25,7 +27,7 @@ function search() {
         startTime: $("#dtp_input1").val(),
         endTime: $("#dtp_input2").val(),
         machineId: $("#select-machine").children('option:selected').val(),
-        workgroupId:$('#select-workgroup').children('option:selected').val(),
+        workgroupName:$('#select-workgroup').children('option:selected').val(),
         commanderName:$('#select-commander').children('option:selected').val(),
         material:$('#select-material').children('option:selected').val(),
         inventoryNum:$('#inventory_num').val(),

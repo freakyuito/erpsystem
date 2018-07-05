@@ -5,6 +5,7 @@ import cn.overseachem.erp.pojo.GodownEntryExample;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Component
@@ -30,4 +31,7 @@ public interface GodownEntryMapper {
     int updateByPrimaryKeySelective(GodownEntry record);
 
     int updateByPrimaryKey(GodownEntry record);
+
+    List<HashMap<String, Object>> getByCriteria(@Param("startTime") String startTime, @Param("endTime") String endTime, @Param("machineId") String machineId
+            , @Param("workgroupId") String workgroupId, @Param("commanderId") String commanderId, @Param("inventoryNum") String inventoryNum);
 }

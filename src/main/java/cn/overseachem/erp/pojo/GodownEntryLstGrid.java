@@ -15,6 +15,10 @@ public class GodownEntryLstGrid {
     private String finishedWgt;
     private String wasteWgt;
 
+    public GodownEntryLstGrid() {
+
+    }
+
     @Override
     public String toString() {
         return "GodownEntryLstGrid{" +

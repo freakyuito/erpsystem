@@ -1,10 +1,9 @@
 package cn.overseachem.erp.controller;
 
 import cn.overseachem.erp.pojo.*;
-import cn.overseachem.erp.service.ColorService;
-import cn.overseachem.erp.service.GodownEntryService;
-import cn.overseachem.erp.service.ProductOrderService;
-import cn.overseachem.erp.service.UserService;
+import cn.overseachem.erp.service.*;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,6 +31,8 @@ public class GodownEntryController {
     private ProductOrderService productOrderService;
     @Autowired
     private ColorService colorService;
+    @Autowired
+    private WorkgroupService workgroupService;
 
     @RequestMapping("/2lst")
     public String listPage() {
@@ -39,37 +40,62 @@ public class GodownEntryController {
     }
 
     @RequestMapping("2dtl")
-    public String detailPage(String inventoryNum,Model model) {
+    public String detailPage(String inventoryNum, Model model) {
         GodownEntry godownEntry = godownEntryService.getByInventory(inventoryNum);
-        GodownEntryDtlGrid grid = new GodownEntryDtlGrid(new SimpleDateFormat("yyyy-MM-dd").format(godownEntry.getGenerateTime()),godownEntry.getMachineId().toString(),godownEntry.getWorkgroupId().toString(),
-                godownEntry.getInventoryNum().toString(),userService.getNameById(godownEntry.getMonitorId()),userService.getNameById(godownEntry.getCommanderId()),userService.getNameById(godownEntry.getInspectorId()),
+        GodownEntryDtlGrid grid = new GodownEntryDtlGrid(new SimpleDateFormat("yyyy-MM-dd").format(godownEntry.getGenerateTime()), godownEntry.getMachineId().toString(), godownEntry.getWorkgroupId().toString(),
+                godownEntry.getInventoryNum().toString(), userService.getNameById(godownEntry.getMonitorId()), userService.getNameById(godownEntry.getCommanderId()), userService.getNameById(godownEntry.getInspectorId()),
                 userService.getNameById(godownEntry.getRecorderId()));
         ArrayList<GodownEntrySpecDtlGrid> specDtlGrids = new ArrayList<GodownEntrySpecDtlGrid>();
         List<GodownEntrySpec> specs = godownEntryService.getSpecsByInventoryNum(inventoryNum);
-        for (GodownEntrySpec s:specs
-             ) {
+        for (GodownEntrySpec s : specs
+                ) {
             PurchaseOrderSpec purchaseOrderSpec = productOrderService.getPurchaseOrderSpecByBatchNum(s.getFkBatchNum());
-            specDtlGrids.add(new GodownEntrySpecDtlGrid(purchaseOrderSpec.getFkPurchaseNum(),purchaseOrderSpec.getColorId() + colorService.getNameById(purchaseOrderSpec.getColorId()),s.getFkBatchNum(),
-                    purchaseOrderSpec.getLength() +"*"+purchaseOrderSpec.getWidth()+"*"+purchaseOrderSpec.getThickness(),s.getFinishedQuantity().toString(),s.getFinishedWeight().toString(),
-                    s.getInventoryQuantity().toString(),s.getInventoryWeight().toString(),s.getWasteWeight().toString()));
+            specDtlGrids.add(new GodownEntrySpecDtlGrid(purchaseOrderSpec.getFkPurchaseNum(), purchaseOrderSpec.getColorId() + colorService.getNameById(purchaseOrderSpec.getColorId()), s.getFkBatchNum(),
+                    purchaseOrderSpec.getLength() + "*" + purchaseOrderSpec.getWidth() + "*" + purchaseOrderSpec.getThickness(), s.getFinishedQuantity().toString(), s.getFinishedWeight().toString(),
+                    s.getInventoryQuantity().toString(), s.getInventoryWeight().toString(), s.getWasteWeight().toString()));
         }
-        model.addAttribute("godownEntryDtlGrid",grid);
-        model.addAttribute("godownEntrySpecDtlGrid",specDtlGrids);
+        model.addAttribute("godownEntryDtlGrid", grid);
+        model.addAttribute("godownEntrySpecDtlGrid", specDtlGrids);
         return "/product/plate/godown_entry/dtl";
     }
 
     @RequestMapping("/get_by_criteria")
     @ResponseBody
-    public List<GodownEntryLstGrid> getByCriteria(String startTime,String endTime,Integer machineId,
-                                                 Integer workgroupId,String commanderName,String material,String inventoryNum){
-        if(machineId >= 2 && machineId <= 6 && material.equals("F")||machineId >= 7 && machineId <= 8 && material.equals("X")){
-            try {
-                return godownEntryService.getByCriteria(new SimpleDateFormat("yyyy-MM-dd").parse(startTime),
-                        new SimpleDateFormat("yyyy-MM-dd").parse(endTime),machineId,workgroupId,userService.getIdByRealName(commanderName),
-                        inventoryNum);
-            } catch (ParseException e) {
-                e.printStackTrace();
+    public List<GodownEntryLstGrid> getByCriteria(String startTime, String endTime, Integer machineId,
+                                                  String workgroupName, String commanderName, String material, String inventoryNum) {
+        if (machineId >= 2 && machineId <= 6 && material.equals("F") || machineId >= 7 && machineId <= 8 && material.equals("X")) {
+            if (!commanderName.equals(""))
+                commanderName = userService.getIdByRealName(commanderName).toString();
+            if(!workgroupName.equals(""))
+                workgroupName = workgroupService.getIdByName(workgroupName).toString();
+            List<HashMap<String,Object>> maps = godownEntryService.getByCriteria(startTime, endTime, machineId.toString(), workgroupName, commanderName, inventoryNum);
+            JSONArray jsonArray = (JSONArray) JSONArray.toJSON(maps);
+            ArrayList<GodownEntryLstGrid> grids = new ArrayList<GodownEntryLstGrid>();
+            for (int i = 0; i < jsonArray.size(); i++) {
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                GodownEntryLstGrid grid = new GodownEntryLstGrid();
+                grid.setCommanderName(userService.getNameById(jsonObject.getInteger("commander_id")));
+                grid.setInspectorName(userService.getNameById(jsonObject.getInteger("inspector_id")));
+                grid.setMonitorName(userService.getNameById(jsonObject.getInteger("monitor_id")));
+                grid.setRecorderName(userService.getNameById(jsonObject.getInteger("recorder_id")));
+                grid.setFinishedQty(jsonObject.getString("finished_quantity"));
+                grid.setFinishedWgt(jsonObject.getString("finished_weight"));
+                grid.setGenerateTime(jsonObject.getString("generate_time"));
+                grid.setInventoryNum(jsonObject.getString("a"));
+                grid.setMachinId(jsonObject.getString("machine_id"));
+                grid.setWasteWgt(jsonObject.getString("waste_weight"));
+                grid.setWorkgroup(workgroupService.getNameById(jsonObject.getInteger("workgroup_id")));
+                grid.setMaterial(material);
+                System.out.println(grid.toString());
+//                Integer machineId = productOrderService.getMachineIdByBatchNum(jsonObject.getString("batch_num"));
+//                PackingFormLstGrid grid = new PackingFormLstGrid(jsonObject.getString("fk_purchase_num"),
+//                        colorService.getNameById(jsonObject.getString("color_id")), jsonObject.getString("batch_num"),
+//                        machineId + "", jsonObject.getInteger("length").toString() + " * " + jsonObject.getInteger("width").toString() + " * " +
+//                        jsonObject.getFloat("thickness").toString(), jsonObject.getInteger("completed_amount").toString() + "/" + jsonObject.getInteger("required_amount").toString(),
+//                        packingFormService.getCompletedWeightByPackingNum(jsonObject.getString("packing_num")).toString(), jsonObject.getString("packing_num"));
+//                grids.add(grid);
             }
+            return grids;
         }
         return null;
     }
