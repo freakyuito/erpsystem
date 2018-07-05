@@ -1,5 +1,6 @@
 $(function () {
     summation();
+    estimate();
 })
 
 function summation() {
@@ -53,7 +54,15 @@ $("#sign-confirm").on('click', function () {
     var userName = $("#user-name").val();
     var purchaseNum = $("#purchase-num").text();
     $.post('/market/purchase_order/sign', {userName: userName, purchaseNum: purchaseNum}, function (res) {
-        location.href='/market/purchase_order/2lst';
+        location.href = '/market/purchase_order/2lst';
     })
 })
+
+function estimate() {
+    $('.estimate-weight').each(function (index, obj) {
+        alert(obj);
+    })
+    // $.each($('.estimate-weight'), function (index, obj) {
+    // })
+}
 

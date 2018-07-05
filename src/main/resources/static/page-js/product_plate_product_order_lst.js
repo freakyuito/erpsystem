@@ -14,7 +14,7 @@ function search() {
         if (res != null) {
             $("#table-body").empty();
             $.each(res, function (index, obj) {
-                var link = obj.productNum.replace(/#/,'%23')
+                var link = obj.productNum.replace(/#/, '%23')
                 $("#table-body").append(
                     '<tr>' +
                     '<td style="text-align: center">' + (index + 1) + '</td>' +
@@ -24,6 +24,7 @@ function search() {
                     '<td style="text-align: center">' + obj.machineNum + '</td>' +
                     '<td style="text-align: center">' + obj.completedAmount + '/' + obj.totalAmount + '</td>' +
                     '<td style="text-align: center">' + obj.estimateWeight + '</td>' +
+                    '<td ></td>' +
                     '<td style="text-align: center">' + obj.scheduleBeginTime + '</td>' +
                     '<td style="text-align: center">' + obj.scheduleFinishTime + '</td>' +
                     '</tr>');

@@ -1,7 +1,7 @@
 $(function () {
-    getUserList('BCP',$('#select_monitor'));
-    getUserList('BP',$('#select_commander'));
-    getUserList('BCJ',$('#select_inspector'));
+    getUserList('BC',$('#select_monitor'));
+    getUserList('BC',$('#select_commander'));
+    getUserList('BCP',$('#select_inspector'));
     getUserList('BCP',$('#select_recorder'));
     getWeighingList($('#packing-num').text());
     getWasteList($('#packing-num').text());

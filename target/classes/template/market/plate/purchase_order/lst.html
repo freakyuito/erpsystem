@@ -89,6 +89,17 @@
                                     </div>
                                     <input type="hidden" id="dtp_input1" value=""/><br/>
                                 </td>
+                                <td style="text-align: center">
+                                    <div class="input-group date form_date" data-date=""
+                                         data-date-format="yyyy-MM-dd" data-link-field="dtp_input2"
+                                         data-link-format="yyyy-mm-dd">
+                                        <input class="form-control" size="16" type="text" value=""
+                                               readonly="readonly"/>
+                                        <span class="input-group-addon"><span
+                                                class="glyphicon glyphicon-remove"></span></span>
+                                    </div>
+                                    <input type="hidden" id="dtp_input2" value=""/><br/>
+                                </td>
                                 <td>
                                     <btn class="btn btn-sm btn-info pull-right" id="search" style="width: 60px" onclick="search()">
                                         查询
@@ -107,7 +118,7 @@
                 <div class="panel-body">
                     <div class="table-responsive">
                         <table id="table" class="table table-condensed table-bordered">
-                            <thead style="display:block;overflow-y: scroll;">
+                            <thead style="display:block;">
                             <tr>
                                 <th style="text-align: center;width: 150px">序号</th>
                                 <th style="text-align: center;width: 250px">客户名</th>

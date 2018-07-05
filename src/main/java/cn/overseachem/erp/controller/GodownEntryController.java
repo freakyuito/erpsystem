@@ -79,7 +79,7 @@ public class GodownEntryController {
                 grid.setMonitorName(userService.getNameById(jsonObject.getInteger("monitor_id")));
                 grid.setRecorderName(userService.getNameById(jsonObject.getInteger("recorder_id")));
                 grid.setFinishedQty(jsonObject.getString("finished_quantity"));
-                grid.setFinishedWgt(jsonObject.getString("finished_weight"));
+                grid.setFinishedWgt(new DecimalFormat("#.0").format(Float.parseFloat(jsonObject.getString("finished_weight"))).toString());
                 grid.setGenerateTime(jsonObject.getString("generate_time"));
                 grid.setInventoryNum(jsonObject.getString("a"));
                 grid.setMachinId(jsonObject.getString("machine_id"));
@@ -87,13 +87,7 @@ public class GodownEntryController {
                 grid.setWorkgroup(workgroupService.getNameById(jsonObject.getInteger("workgroup_id")));
                 grid.setMaterial(material);
                 System.out.println(grid.toString());
-//                Integer machineId = productOrderService.getMachineIdByBatchNum(jsonObject.getString("batch_num"));
-//                PackingFormLstGrid grid = new PackingFormLstGrid(jsonObject.getString("fk_purchase_num"),
-//                        colorService.getNameById(jsonObject.getString("color_id")), jsonObject.getString("batch_num"),
-//                        machineId + "", jsonObject.getInteger("length").toString() + " * " + jsonObject.getInteger("width").toString() + " * " +
-//                        jsonObject.getFloat("thickness").toString(), jsonObject.getInteger("completed_amount").toString() + "/" + jsonObject.getInteger("required_amount").toString(),
-//                        packingFormService.getCompletedWeightByPackingNum(jsonObject.getString("packing_num")).toString(), jsonObject.getString("packing_num"));
-//                grids.add(grid);
+                grids.add(grid);
             }
             return grids;
         }

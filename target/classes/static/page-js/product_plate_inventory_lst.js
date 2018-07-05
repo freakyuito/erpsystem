@@ -47,18 +47,25 @@ function getCategory(category, btn) {
 function generateLst(res) {
     if (res != null) {
         var i = 0;
-        $("#table-body").empty();
+        $("#tbody").empty();
         $.each(res, function (index, obj) {
 
-            $("#table-body").append(
+            $("#tbody").append(
                 '<tr>' +
                 '<td style="text-align: center;width: 150px">' + (index + 1) + '</td>' +
-                '<td style="text-align: center;width: 250px">' + obj.customerName + '</td>' +
-                '<td style="text-align: center;width: 250px"><a href="/market/purchase_order/2dtl?purchaseNum=' + obj.purchaseNum + '">' + obj.purchaseNum + '</a></td>' +
-                '<td style="text-align: center;width: 250px">' + obj.completedAmout + '/' + obj.totalAmout + '</td>' +
-                '<td style="text-align: center;width: 250px">' + obj.purchaseTime + '</td>' +
-                '<td style="text-align: center;width: 250px">' + obj.deliverTime + '</td>' +
-                '<td style="text-align: center;width: 250px">' + obj.remark + '</td>' +
+                '<td style="text-align: center;width: 250px">' + obj.generateTime + '</td>' +
+                '<td style="text-align: center;width: 250px"><a href="/product/plate/godown_entry/2dtl?inventoryNum=' + obj.inventoryNum + '">' + obj.inventoryNum + '</a></td>' +
+                '<td style="text-align: center;width: 250px">' + obj.machinId + '</td>' +
+                '<td style="text-align: center;width: 250px">' + obj.workgroup + '</td>' +
+                '<td style="text-align: center;width: 250px">' + obj.monitorName + '</td>' +
+                '<td style="text-align: center;width: 250px">' + obj.commanderName + '</td>' +
+                '<td style="text-align: center;width: 250px">' + obj.inspectorName + '</td>' +
+                '<td style="text-align: center;width: 250px">' + obj.recorderName + '</td>' +
+                '<td style="text-align: center;width: 250px">' + obj.material + '</td>' +
+                '<td style="text-align: center;width: 250px">' + obj.finishedRate + '</td>' +
+                '<td style="text-align: center;width: 250px">' + obj.finishedQty + '</td>' +
+                '<td style="text-align: center;width: 250px">' + obj.finishedWgt + '</td>' +
+                '<td style="text-align: center;width: 250px">' + obj.wasteWgt + '</td>' +
                 '</tr>');
         })
     }
