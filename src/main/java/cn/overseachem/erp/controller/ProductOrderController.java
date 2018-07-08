@@ -110,8 +110,8 @@ public class ProductOrderController {
         String patternId = productOrderService.getPatternId(target.getProductNum());
         Integer totalAmount = productOrderService.getTotalAmount(target.getProductNum());
         Integer completedAmount = productOrderService.getCompletedAmount(target.getProductNum());
-        String scheduleBeginTime = "未排单";
-        String scheduleEndTime = "未排单";
+        String scheduleBeginTime = "";
+        String scheduleEndTime = "";
         String machineNum = "未设定机台号";
         if (target.getScheduleBeginTime() != null)
             scheduleBeginTime = new SimpleDateFormat("yyyy-MM-dd").format(target.getScheduleBeginTime());
