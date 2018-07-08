@@ -48,7 +48,7 @@
                         <th style="text-align: center">客户名称</th>
                         <th style="text-align: center">订货日期</th>
                         <th style="text-align: center">交货日期</th>
-                        <th style="text-align: center">合同号</th>
+                        <!--<th style="text-align: center">合同号</th>-->
                     </tr>
                     </thead>
                     <tbody>
@@ -57,7 +57,7 @@
                         <td th:text="${purchaseOrderGrid.customerName}" style="text-align: center"></td>
                         <td th:text="${purchaseOrderGrid.purchaseTime}" style="text-align: center"></td>
                         <td th:text="${purchaseOrderGrid.deliverTime}" style="text-align: center"></td>
-                        <td th:text="${purchaseOrderGrid.contractId}" style="text-align: center"></td>
+                        <!--<td th:text="${purchaseOrderGrid.contractId}" style="text-align: center"></td>-->
                     </tr>
                     </tbody>
                 </table>
@@ -78,11 +78,6 @@
                             <th style="text-align: center">宽（mm）</th>
                             <th style="text-align: center">厚（mm）</th>
                             <th style="text-align: center">数量（张）</th>
-                            <th style="text-align: center">进度</th>
-                            <th style="text-align: center">估重（kg）</th>
-                            <th style="text-align: center">重量（kg）</th>
-                            <th style="text-align: center">单价（元/kg)</th>
-                            <th style="text-align: center">金额（元）</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -90,34 +85,28 @@
                             <td th:text="${iterStat.index+1}" style="text-align: center"></td>
                             <td th:text="${spec.patternName}" style="text-align: center">Onions</td>
                             <td th:text="${spec.colorName}" style="text-align: center">2.41</td>
-                            <td th:text="${spec.length}" style="text-align: center">2.41</td>
-                            <td th:text="${spec.width}" style="text-align: center">2.41</td>
-                            <td th:text="${spec.thickness}" style="text-align: center">2.41</td>
                             <td style="text-align: center">
-                                <label data-type="text" data-title="Enter username" class="amount" th:text="${spec.amount}" onchange="summation()">
-                                    2.41
+                                <label data-type="text" data-title="Enter username" class="length" th:text="${spec.length}" oninput="summation()">
                                 </label>
                             </td>
-                            <td id="process" th:text="${spec.process}" style="text-align: center">2.41</td>
-                            <td id="estimate-weight" th:text="${spec.estimateWeight}" style="text-align: center">2.41</td>
-                            <td id="weight" th:text="${spec.weight}" style="text-align: center">2.41</td>
                             <td style="text-align: center">
-                                <label data-type="text" data-title="Enter username" class="price" th:text="${spec.price}" onchange="summation()">
-                                    2.41
+                                <label data-type="text" data-title="Enter username" class="width" th:text="${spec.width}" oninput="summation()">
                                 </label>
                             </td>
-                            <td id="total-price" th:text="${spec.totalPrice}" style="text-align: center">2.41</td>
+                            <td style="text-align: center">
+                                <label data-type="text" data-title="Enter username" class="thickness" th:text="${spec.thickness}" oninput="summation()">
+                                </label>
+                            </td>
+                            <td style="text-align: center">
+                                <label data-type="text" data-title="Enter username" class="amount" th:text="${spec.amount}" oninput="summation()">
+                                </label>
+                            </td>
                         </tr>
                         </tbody>
                         <tfoot>
                         <tr>
                             <th style="text-align: center" colspan="6">合计</th>
                             <th id="total-amount" style="text-align: center"></th>
-                            <th id="total-process" style="text-align: center"></th>
-                            <th id="total-estimate" style="text-align: center"></th>
-                            <th id="total-weight" style="text-align: center"></th>
-                            <th style="text-align: center"></th>
-                            <th id="sum-price" style="text-align: center"></th>
                         </tr>
                         </tfoot>
                     </table>
@@ -154,7 +143,9 @@
                         </div><!-- /.modal-content -->
                     </div><!-- /.modal -->
                 </div>
-                <label th:text="|备注:${purchaseOrderGrid.remark}|">备注：xxxxxxxxxxxx</label>
+                <label>备注:</label>
+                <label data-type="text" data-title="Enter username" class="amount" th:text="${purchaseOrderGrid.remark}" oninput="summation()">
+                </label>
             </div>
         </div>
 

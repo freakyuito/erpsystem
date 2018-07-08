@@ -60,7 +60,6 @@ $("#sign-confirm").on('click', function () {
 
 function estimate() {
     $('.estimate-weight').each(function (index, obj) {
-        alert(obj);
     })
     // $.each($('.estimate-weight'), function (index, obj) {
     // })
