@@ -110,9 +110,10 @@ public class ProductOrderController {
         String patternId = productOrderService.getPatternId(target.getProductNum());
         Integer totalAmount = productOrderService.getTotalAmount(target.getProductNum());
         Integer completedAmount = productOrderService.getCompletedAmount(target.getProductNum());
+        String deliverTime = new SimpleDateFormat("yyyy-MM-dd").format(getDeliverTimeByProductNum(target.getProductNum()));
         String scheduleBeginTime = "";
         String scheduleEndTime = "";
-        String machineNum = "未设定机台号";
+        String machineNum = "无";
         if (target.getScheduleBeginTime() != null)
             scheduleBeginTime = new SimpleDateFormat("yyyy-MM-dd").format(target.getScheduleBeginTime());
         if (target.getScheduleFinishTime() != null)
@@ -120,8 +121,7 @@ public class ProductOrderController {
         if(target.getMachineNum() != null)
             machineNum = target.getMachineNum().toString();
         return new ProductOrderLstGrid(target.getFkPurchaseNum(), patternService.getNameById(patternId), target.getProductNum(),
-                machineNum, completedAmount, totalAmount, 0f,
-                scheduleBeginTime, scheduleEndTime);
+                machineNum, completedAmount, totalAmount, 0f,deliverTime, scheduleBeginTime, scheduleEndTime);
     }
 
     @RequestMapping("/set_state_code")
@@ -166,5 +166,10 @@ public class ProductOrderController {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+    }
+
+    Date getDeliverTimeByProductNum(String productNum){
+        return purchaseOrderService.getOrderByPurchaseNum(
+                productOrderService.getOrderByNum(productNum).getFkPurchaseNum()).getDeliverTime();
     }
 }

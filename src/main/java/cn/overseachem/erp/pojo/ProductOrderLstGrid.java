@@ -8,8 +8,30 @@ public class ProductOrderLstGrid {
     private Integer completedAmount;
     private Integer totalAmount;
     private Float estimateWeight;
+    private String deliverTime;
     private String scheduleBeginTime;
     private String scheduleFinishTime;
+
+    public ProductOrderLstGrid(String purchaseNum, String patternName, String productNum, String machineNum, Integer completedAmount, Integer totalAmount, Float estimateWeight, String deliverTime, String scheduleBeginTime, String scheduleFinishTime) {
+        this.purchaseNum = purchaseNum;
+        this.patternName = patternName;
+        this.productNum = productNum;
+        this.machineNum = machineNum;
+        this.completedAmount = completedAmount;
+        this.totalAmount = totalAmount;
+        this.estimateWeight = estimateWeight;
+        this.deliverTime = deliverTime;
+        this.scheduleBeginTime = scheduleBeginTime;
+        this.scheduleFinishTime = scheduleFinishTime;
+    }
+
+    public String getDeliverTime() {
+        return deliverTime;
+    }
+
+    public void setDeliverTime(String deliverTime) {
+        this.deliverTime = deliverTime;
+    }
 
     public String getPurchaseNum() {
         return purchaseNum;
@@ -28,18 +50,6 @@ public class ProductOrderLstGrid {
                 ", scheduleBeginTime='" + scheduleBeginTime + '\'' +
                 ", scheduleFinishTime='" + scheduleFinishTime + '\'' +
                 '}';
-    }
-
-    public ProductOrderLstGrid(String purchaseNum, String patternName, String productNum, String machineNum, Integer completedAmount, Integer totalAmount, Float estimateWeight, String scheduleBeginTime, String scheduleFinishTime) {
-        this.purchaseNum = purchaseNum;
-        this.patternName = patternName;
-        this.productNum = productNum;
-        this.machineNum = machineNum;
-        this.completedAmount = completedAmount;
-        this.totalAmount = totalAmount;
-        this.estimateWeight = estimateWeight;
-        this.scheduleBeginTime = scheduleBeginTime;
-        this.scheduleFinishTime = scheduleFinishTime;
     }
 
     public void setPurchaseNum(String purchaseNum) {
