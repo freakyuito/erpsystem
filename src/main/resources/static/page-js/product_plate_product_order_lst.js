@@ -56,8 +56,8 @@ function search() {
 }
 
 function setScheduleBeginTime(productNum, time) {
-    alert(productNum + time);
+    $.post('/product/product_order/set_schedule_begin_time',{productNum:productNum,time:time});
 }
 function setScheduleEndTime(productNum, time) {
-    alert(time);
+    $.post('/product/product_order/set_schedule_finish_time',{productNum:productNum,time:time});
 }

@@ -31,17 +31,29 @@ function generateLst(res) {
         var i = 0;
         $("#table-body").empty();
         $.each(res, function (index, obj) {
-
-            $("#table-body").append(
-                '<tr>' +
-                '<td style="text-align: center;width: 150px">' + (index + 1) + '</td>' +
-                '<td style="text-align: center;width: 250px">' + obj.customerName + '</td>' +
-                '<td style="text-align: center;width: 250px"><a href="/market/purchase_order/2dtl?purchaseNum=' + obj.purchaseNum + '">' + obj.purchaseNum + '</a></td>' +
-                '<td style="text-align: center;width: 250px">' + obj.completedAmout + '/' + obj.totalAmout + '</td>' +
-                '<td style="text-align: center;width: 250px">' + obj.purchaseTime + '</td>' +
-                '<td style="text-align: center;width: 250px">' + obj.deliverTime + '</td>' +
-                '<td style="text-align: center;width: 250px">' + obj.remark + '</td>' +
-                '</tr>');
+            if(obj.validity){
+                $("#table-body").append(
+                    '<tr>' +
+                    '<td style="text-align: center;width: 150px">' + (index + 1) + '</td>' +
+                    '<td style="text-align: center;width: 250px">' + obj.customerName + '</td>' +
+                    '<td style="text-align: center;width: 250px"><a href="/market/purchase_order/2dtl?purchaseNum=' + obj.purchaseNum + '">' + obj.purchaseNum + '</a></td>' +
+                    '<td style="text-align: center;width: 250px">' + obj.completedAmout + '/' + obj.totalAmout + '</td>' +
+                    '<td style="text-align: center;width: 250px">' + obj.purchaseTime + '</td>' +
+                    '<td style="text-align: center;width: 250px">' + obj.deliverTime + '</td>' +
+                    '<td style="text-align: center;width: 250px">' + obj.remark + '</td>' +
+                    '</tr>');
+            }else {
+                $("#table-body").append(
+                    '<tr>' +
+                    '<td style="TEXT-DECORATION: line-through;text-align: center;width: 150px;color: red">' + (index + 1) + '</td>' +
+                    '<td style="TEXT-DECORATION: line-through;text-align: center;width: 250px;color: red">' + obj.customerName + '</td>' +
+                    '<td style="TEXT-DECORATION: line-through;text-align: center;width: 250px;color: red"><a href="/market/purchase_order/2dtl?purchaseNum=' + obj.purchaseNum + '">' + obj.purchaseNum + '</a></td>' +
+                    '<td style="TEXT-DECORATION: line-through;text-align: center;width: 250px;color: red">' + obj.completedAmout + '/' + obj.totalAmout + '</td>' +
+                    '<td style="TEXT-DECORATION: line-through;text-align: center;width: 250px;color: red">' + obj.purchaseTime + '</td>' +
+                    '<td style="TEXT-DECORATION: line-through;text-align: center;width: 250px;color: red">' + obj.deliverTime + '</td>' +
+                    '<td style="TEXT-DECORATION: line-through;text-align: center;width: 250px;color: red">' + obj.remark + '</td>' +
+                    '</tr>');
+            }
         })
     }
 }

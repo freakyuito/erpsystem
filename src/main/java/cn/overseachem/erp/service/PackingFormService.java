@@ -185,7 +185,7 @@ public class PackingFormService {
         PackingFormExample e = new PackingFormExample();
         e.createCriteria().andFkBatchNumEqualTo(batchNum);
         List<PackingForm> packingFormList = mapper.selectByExample(e);
-        if (packingFormList != null)
+        if (packingFormList != null && packingFormList.size() > 0)
             return packingFormList.get(0).getPackingNum();
         return null;
     }
@@ -284,5 +284,25 @@ public class PackingFormService {
 
     public PackingFormWithBLOBs getByPackingNum(String packingNum) {
         return mapper.selectByPrimaryKey(packingNum);
+    }
+
+    public Float getWeightByBatchNum(String batchNum){
+        PackingFormWithBLOBs bloBs = getByPackingNum(getPackingNumByBatchNum(batchNum));
+        if(bloBs !=null){
+            if (bloBs.getExchangeRecords() != null) {
+                Float totalWeight = 0f;
+                List<PackingFormDataItem> items = getWeighingList(getPackingNumByBatchNum(batchNum));
+                for (PackingFormDataItem i : items
+                        ) {
+                    if(!i.getKey().equals("0"))
+                        totalWeight += Float.parseFloat(i.getValue());
+                }
+                return totalWeight;
+            } else {
+                return 0f;
+            }
+        }else{
+            return 0f;
+        }
     }
 }

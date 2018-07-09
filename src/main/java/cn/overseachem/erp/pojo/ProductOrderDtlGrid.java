@@ -4,19 +4,13 @@ package cn.overseachem.erp.pojo;
  * Created by Zhihui_Shen on 2018/6/19.
  */
 public class ProductOrderDtlGrid {
-    private String purchaseNum;
-    private String patternName;
-    private Integer machineNum;
-    private String productNum;
-    private Boolean checked;
-    private String approvorName;
-    private String receiverName;
-    private Boolean begin;
+    private Boolean validity;
 
     @Override
     public String toString() {
         return "ProductOrderDtlGrid{" +
-                "purchaseNum='" + purchaseNum + '\'' +
+                "validity=" + validity +
+                ", purchaseNum='" + purchaseNum + '\'' +
                 ", patternName='" + patternName + '\'' +
                 ", machineNum=" + machineNum +
                 ", productNum='" + productNum + '\'' +
@@ -27,7 +21,17 @@ public class ProductOrderDtlGrid {
                 '}';
     }
 
-    public ProductOrderDtlGrid(String purchaseNum, String patternName, Integer machineNum, String productNum, Boolean checked, String approvorName, String receiverName, Boolean begin) {
+    public Boolean getValidity() {
+        return validity;
+    }
+
+    public void setValidity(Boolean validity) {
+        this.validity = validity;
+    }
+
+    public ProductOrderDtlGrid(Boolean validity, String purchaseNum, String patternName, Integer machineNum, String productNum, Boolean checked, String approvorName, String receiverName, Boolean begin) {
+
+        this.validity = validity;
         this.purchaseNum = purchaseNum;
         this.patternName = patternName;
         this.machineNum = machineNum;
@@ -37,6 +41,15 @@ public class ProductOrderDtlGrid {
         this.receiverName = receiverName;
         this.begin = begin;
     }
+
+    private String purchaseNum;
+    private String patternName;
+    private Integer machineNum;
+    private String productNum;
+    private Boolean checked;
+    private String approvorName;
+    private String receiverName;
+    private Boolean begin;
 
     public String getPurchaseNum() {
         return purchaseNum;

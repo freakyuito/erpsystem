@@ -67,7 +67,7 @@ public class ProductOrderController {
                     s.getStateCode()
             ));
         }
-        ProductOrderDtlGrid productOrderDtlGrid = new ProductOrderDtlGrid(order.getFkPurchaseNum(),
+        ProductOrderDtlGrid productOrderDtlGrid = new ProductOrderDtlGrid(productOrderService.getValidityByProductNum(order.getProductNum()),order.getFkPurchaseNum(),
                 patternService.getNameById(productOrderService.getPatternId(order.getProductNum())),
                 order.getMachineNum(), order.getProductNum(), isChecked, userService.getNameById(order.getApproverId()),
                 userService.getNameById(order.getReceiverId()), isBegin);
@@ -118,10 +118,10 @@ public class ProductOrderController {
             scheduleBeginTime = new SimpleDateFormat("yyyy-MM-dd").format(target.getScheduleBeginTime());
         if (target.getScheduleFinishTime() != null)
             scheduleEndTime = new SimpleDateFormat("yyyy-MM-dd").format(target.getScheduleFinishTime());
-        if(target.getMachineNum() != null)
+        if (target.getMachineNum() != null)
             machineNum = target.getMachineNum().toString();
         return new ProductOrderLstGrid(target.getFkPurchaseNum(), patternService.getNameById(patternId), target.getProductNum(),
-                machineNum, completedAmount, totalAmount, 0f,deliverTime, scheduleBeginTime, scheduleEndTime);
+                machineNum, completedAmount, totalAmount, 0f, deliverTime, scheduleBeginTime, scheduleEndTime);
     }
 
     @RequestMapping("/set_state_code")
@@ -148,27 +148,35 @@ public class ProductOrderController {
         productOrderService.sign(userService.getIdByRealName(approverName), userService.getIdByRealName(receiverName), Integer.parseInt(machineNum), productNum);
     }
 
-    @RequestMapping("set_schedule_begin_time")
+    @RequestMapping("/set_schedule_begin_time")
     @ResponseBody
-    public void setScheduleBeginTime(String productNum,String time){
-        try {
-            productOrderService.setScheduleBeginTime(productNum,new SimpleDateFormat("yyyy-MM-dd").parse(time));
-        } catch (ParseException e) {
-            e.printStackTrace();
+    public void setScheduleBeginTime(String productNum, String time) {
+        if (time.equals(""))
+            productOrderService.setScheduleBeginTime(productNum, null);
+        else {
+            try {
+                productOrderService.setScheduleBeginTime(productNum, new SimpleDateFormat("yyyy-MM-dd").parse(time));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         }
     }
 
-    @RequestMapping("set_schedule_finish_time")
+    @RequestMapping("/set_schedule_finish_time")
     @ResponseBody
-    public void setScheduleFinishTime(String productNum,String time){
-        try {
-            productOrderService.setScheduleFinishTime(productNum,new SimpleDateFormat("yyyy-MM-dd").parse(time));
-        } catch (ParseException e) {
-            e.printStackTrace();
+    public void setScheduleFinishTime(String productNum, String time) {
+        if (time.equals(""))
+            productOrderService.setScheduleBeginTime(productNum, null);
+        else {
+            try {
+                productOrderService.setScheduleFinishTime(productNum, new SimpleDateFormat("yyyy-MM-dd").parse(time));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         }
     }
 
-    Date getDeliverTimeByProductNum(String productNum){
+    Date getDeliverTimeByProductNum(String productNum) {
         return purchaseOrderService.getOrderByPurchaseNum(
                 productOrderService.getOrderByNum(productNum).getFkPurchaseNum()).getDeliverTime();
     }

@@ -10,24 +10,29 @@ public class PurchaseOrderSpecGrid {
     private Integer width;
     private Float thickness;
     private Integer amount;
-    private String process;
+    private String completedAmount;
+    private String requiredAmount;
     private Float estimateWeight;
     private Float weight;
     private Float price;
     private Float totalPrice;
 
-    public PurchaseOrderSpecGrid(String patternName, String colorName, Integer length, Integer width, Float thickness, Integer amount, String process, Float estimateWeight, Float weight, Float price, Float totalPrice) {
-        this.patternName = patternName;
-        this.colorName = colorName;
-        this.length = length;
-        this.width = width;
-        this.thickness = thickness;
-        this.amount = amount;
-        this.process = process;
-        this.estimateWeight = estimateWeight;
-        this.weight = weight;
-        this.price = price;
-        this.totalPrice = totalPrice;
+    @Override
+    public String toString() {
+        return "PurchaseOrderSpecGrid{" +
+                "patternName='" + patternName + '\'' +
+                ", colorName='" + colorName + '\'' +
+                ", length=" + length +
+                ", width=" + width +
+                ", thickness=" + thickness +
+                ", amount=" + amount +
+                ", completedAmount='" + completedAmount + '\'' +
+                ", requiredAmount='" + requiredAmount + '\'' +
+                ", estimateWeight=" + estimateWeight +
+                ", weight=" + weight +
+                ", price=" + price +
+                ", totalPrice=" + totalPrice +
+                '}';
     }
 
     public String getPatternName() {
@@ -78,12 +83,20 @@ public class PurchaseOrderSpecGrid {
         this.amount = amount;
     }
 
-    public String getProcess() {
-        return process;
+    public String getCompletedAmount() {
+        return completedAmount;
     }
 
-    public void setProcess(String process) {
-        this.process = process;
+    public void setCompletedAmount(String completedAmount) {
+        this.completedAmount = completedAmount;
+    }
+
+    public String getRequiredAmount() {
+        return requiredAmount;
+    }
+
+    public void setRequiredAmount(String requiredAmount) {
+        this.requiredAmount = requiredAmount;
     }
 
     public Float getEstimateWeight() {
@@ -115,6 +128,22 @@ public class PurchaseOrderSpecGrid {
     }
 
     public void setTotalPrice(Float totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public PurchaseOrderSpecGrid(String patternName, String colorName, Integer length, Integer width, Float thickness, Integer amount, String completedAmount, String requiredAmount, Float estimateWeight, Float weight, Float price, Float totalPrice) {
+
+        this.patternName = patternName;
+        this.colorName = colorName;
+        this.length = length;
+        this.width = width;
+        this.thickness = thickness;
+        this.amount = amount;
+        this.completedAmount = completedAmount;
+        this.requiredAmount = requiredAmount;
+        this.estimateWeight = estimateWeight;
+        this.weight = weight;
+        this.price = price;
         this.totalPrice = totalPrice;
     }
 }

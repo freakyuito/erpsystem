@@ -97,8 +97,8 @@
                                     <th style="text-align: center">估重/kg</th>
                                     <th style="text-align: center">批号</th>
                                     <!--<th style="text-align: center" th:if="${productOrderDtlGrid.checked}" style="background-color: green">操作</th>-->
-                                    <th style="text-align: center" th:if="${productOrderDtlGrid.checked}">操作</th>
-                                    <th style="text-align: center" th:if="${productOrderDtlGrid.checked}">附属单</th>
+                                    <th style="text-align: center"  th:if="${productOrderDtlGrid.checked}" >操作</th>
+                                    <th style="text-align: center" th:if="${productOrderDtlGrid.checked}" th:if="${productOrderDtlGrid.validity}">附属单</th>
                                 </tr>
                                 </thead>
                                 <tbody id="table-body">
@@ -114,7 +114,7 @@
                                     </td>
                                     <td th:text="${spec.estimateWeight}" style="text-align: center">2.41</td>
                                     <td id="batch-num" th:text="${spec.batchNum}" style="text-align: center">2.41</td>
-                                    <td style="text-align: center" th:if="${productOrderDtlGrid.checked}">
+                                    <td style="text-align: center" th:if="${productOrderDtlGrid.checked}" th:if="${productOrderDtlGrid.validity}">
                                         <btn class="btn btn-info" th:if="${spec.stateCode}==-1" onclick="occupyMachine(-1,$(this).parent().parent().find('#batch-num').eq(0).text());
                                         insertPackingForm($(this).parent().parent().find('#batch-num').eq(0).text());">开始
                                         </btn>
@@ -127,7 +127,7 @@
                                             暂停
                                         </btn>
                                     </td>
-                                    <td id="extension" style="text-align: center" th:if="${spec.stateCode}==1">
+                                    <td id="extension" style="text-align: center" th:if="${spec.stateCode}==1" th:if="${productOrderDtlGrid.validity}">
                                         <a th:href="@{/product/packing_form/2dtl(batchNum=${spec.batchNum})}">装箱单</a>
                                         <a>质检单</a>
                                     </td>

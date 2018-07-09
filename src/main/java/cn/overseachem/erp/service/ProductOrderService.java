@@ -26,6 +26,8 @@ public class ProductOrderService {
     private ProductOrderSpecMapper specMapper;
     @Autowired
     private PurchaseOrderSpecMapper purchaseOrderSpecMapper;
+    @Autowired
+    private PurchaseOrderMapper purchaseOrderMapper;
 
     public List<ProductOrder> getByCriteria(String purchaseNum, String productNum, String scheduleTime) throws ParseException {
         ProductOrderExample e = new ProductOrderExample();
@@ -195,16 +197,29 @@ public class ProductOrderService {
         return orderMapper.selectByPrimaryKey(specMapper.selectByPrimaryKey(batchNum).getFkProductNum());
     }
 
-    public void setScheduleBeginTime(String productNum, Date time){
-       ProductOrder o = orderMapper.selectByPrimaryKey(productNum);
-       o.setScheduleBeginTime(time);
-       orderMapper.updateByPrimaryKey(o);
+    public void setScheduleBeginTime(String productNum, Date time) {
+        ProductOrder o = orderMapper.selectByPrimaryKey(productNum);
+        o.setScheduleBeginTime(time);
+        orderMapper.updateByPrimaryKey(o);
     }
 
-    public void setScheduleFinishTime(String productNum, Date time){
+    public void setScheduleFinishTime(String productNum, Date time) {
         ProductOrder o = orderMapper.selectByPrimaryKey(productNum);
         o.setScheduleFinishTime(time);
         orderMapper.updateByPrimaryKey(o);
+    }
+
+    public ProductOrderSpec getProductSpecByPurchaseOrderSpecId(Integer id) {
+        ProductOrderSpecExample e = new ProductOrderSpecExample();
+        e.createCriteria().andFkPurchaseSpecIdEqualTo(id);
+        List<ProductOrderSpec> specs = specMapper.selectByExample(e);
+        if (specs != null && specs.size() > 0)
+            return specs.get(0);
+        return null;
+    }
+
+    public Boolean getValidityByProductNum(String productNum) {
+        return purchaseOrderMapper.selectByPrimaryKey(orderMapper.selectByPrimaryKey(productNum).getFkPurchaseNum()).getValidityCode();
     }
 
 }

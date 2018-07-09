@@ -4,6 +4,28 @@ package cn.overseachem.erp.pojo;
  * Created by Zhihui_Shen on 2018/6/11.
  */
 public class PurchaseOrderListGrid {
+    private Boolean validity;
+
+    public Boolean getValidity() {
+        return validity;
+    }
+
+    public void setValidity(Boolean validity) {
+        this.validity = validity;
+    }
+
+    public PurchaseOrderListGrid(Boolean validity, String customerName, String purchaseNum, Integer completedAmout, Integer totalAmout, String purchaseTime, String deliverTime, String remark) {
+
+        this.validity = validity;
+        this.customerName = customerName;
+        this.purchaseNum = purchaseNum;
+        this.completedAmout = completedAmout;
+        this.totalAmout = totalAmout;
+        this.purchaseTime = purchaseTime;
+        this.deliverTime = deliverTime;
+        this.remark = remark;
+    }
+
     private String customerName;
     private String purchaseNum;
     private Integer completedAmout;

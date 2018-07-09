@@ -39,6 +39,8 @@ public class PurchaseOrderController {
     private UserService userService;
     @Autowired
     private ProductOrderService productOrderService;
+    @Autowired
+    private PackingFormService packingFormService;
 
     @RequestMapping("/get_by_criteria")
     @ResponseBody
@@ -81,11 +83,11 @@ public class PurchaseOrderController {
             totalAmount += s.getRequiredAmount();
         }
         if (order.getMakerId() != null && order.getProducerId() != null && order.getSalesmanId() != null && order.getSupervisorId() != null) {
-            return new PurchaseOrderListGrid(c.getAbbreviation(), order.getPurchaseNum(),
+            return new PurchaseOrderListGrid(order.getValidityCode(),c.getAbbreviation(), order.getPurchaseNum(),
                     completedAmount, totalAmount, new SimpleDateFormat("yyyy-MM-dd").format(order.getPurchaseTime()),
                     new SimpleDateFormat("yyyy-MM-dd").format(order.getDeliverTime()), order.getRemark());
         } else {
-            return new PurchaseOrderListGrid(c.getAbbreviation(), order.getPurchaseNum(),
+            return new PurchaseOrderListGrid(order.getValidityCode(),c.getAbbreviation(), order.getPurchaseNum(),
                     completedAmount, totalAmount, new SimpleDateFormat("yyyy-MM-dd").format(order.getPurchaseTime()),
                     new SimpleDateFormat("yyyy-MM-dd").format(order.getDeliverTime()), order.getRemark());
         }
@@ -135,9 +137,10 @@ public class PurchaseOrderController {
         ArrayList<PurchaseOrderSpecGrid> grids = new ArrayList<PurchaseOrderSpecGrid>();
         for (PurchaseOrderSpec s : specs
                 ) {
-            grids.add(new PurchaseOrderSpecGrid(patternService.getNameById(s.getPatternId()) + s.getPatternId(),
-                    colorService.getNameById(s.getColorId()) + s.getColorId(), s.getLength(), s.getWidth(), s.getThickness()
-                    , s.getRequiredAmount(), "0/" + s.getRequiredAmount(), 0f, 0f, s.getPrice(),
+            Integer completedAmount = productOrderService.getCompletedAmount(productOrderService.getProductSpecByPurchaseOrderSpecId(s.getSpecId()).getFkProductNum());
+            grids.add(new PurchaseOrderSpecGrid(patternService.getNameById(s.getPatternId()) + "  " + s.getPatternId(),
+                    colorService.getNameById(s.getColorId()) + "  " + s.getColorId(), s.getLength(), s.getWidth(), s.getThickness()
+                    , s.getRequiredAmount(), completedAmount.toString(),s.getRequiredAmount().toString(), ((float)s.getLength() * (float)s.getWidth() * s.getThickness() *1.24f)/100000f*(float)completedAmount, 0f, s.getPrice(),
                     s.getRequiredAmount() * s.getPrice()));
         }
         PurchaseOrderGrid purchaseOrderGrid = new PurchaseOrderGrid(order.getPurchaseNum(),
@@ -159,9 +162,11 @@ public class PurchaseOrderController {
         ArrayList<PurchaseOrderSpecGrid> grids = new ArrayList<PurchaseOrderSpecGrid>();
         for (PurchaseOrderSpec s : specs
                 ) {
+            ProductOrderSpec i = productOrderService.getProductSpecByPurchaseOrderSpecId(s.getSpecId());
             grids.add(new PurchaseOrderSpecGrid(patternService.getNameById(s.getPatternId()) + "  " + s.getPatternId(),
                     colorService.getNameById(s.getColorId()) + "  " + s.getColorId(), s.getLength(), s.getWidth(), s.getThickness()
-                    , s.getRequiredAmount(), "0/" + s.getRequiredAmount(), 0f, 0f, s.getPrice(),
+                    , s.getRequiredAmount(), i.getCompletedAmount().toString(),s.getRequiredAmount().toString(), ((float)s.getLength() * (float)s.getWidth() * s.getThickness() *1.24f)/100000f*(float)i.getCompletedAmount(),
+                    packingFormService.getWeightByBatchNum(i.getBatchNum()), s.getPrice(),
                     s.getRequiredAmount() * s.getPrice()));
         }
         PurchaseOrderGrid purchaseOrderGrid = new PurchaseOrderGrid(order.getPurchaseNum(),
