@@ -244,73 +244,213 @@ public class PackingFormExample {
             return (Criteria) this;
         }
 
-        public Criteria andExchangeRecordsIsNull() {
-            addCriterion("exchange_records is null");
+        public Criteria andFinishedRecordsIsNull() {
+            addCriterion("finished_records is null");
             return (Criteria) this;
         }
 
-        public Criteria andExchangeRecordsIsNotNull() {
-            addCriterion("exchange_records is not null");
+        public Criteria andFinishedRecordsIsNotNull() {
+            addCriterion("finished_records is not null");
             return (Criteria) this;
         }
 
-        public Criteria andExchangeRecordsEqualTo(String value) {
-            addCriterion("exchange_records =", value, "exchangeRecords");
+        public Criteria andFinishedRecordsEqualTo(String value) {
+            addCriterion("finished_records =", value, "finishedRecords");
             return (Criteria) this;
         }
 
-        public Criteria andExchangeRecordsNotEqualTo(String value) {
-            addCriterion("exchange_records <>", value, "exchangeRecords");
+        public Criteria andFinishedRecordsNotEqualTo(String value) {
+            addCriterion("finished_records <>", value, "finishedRecords");
             return (Criteria) this;
         }
 
-        public Criteria andExchangeRecordsGreaterThan(String value) {
-            addCriterion("exchange_records >", value, "exchangeRecords");
+        public Criteria andFinishedRecordsGreaterThan(String value) {
+            addCriterion("finished_records >", value, "finishedRecords");
             return (Criteria) this;
         }
 
-        public Criteria andExchangeRecordsGreaterThanOrEqualTo(String value) {
-            addCriterion("exchange_records >=", value, "exchangeRecords");
+        public Criteria andFinishedRecordsGreaterThanOrEqualTo(String value) {
+            addCriterion("finished_records >=", value, "finishedRecords");
             return (Criteria) this;
         }
 
-        public Criteria andExchangeRecordsLessThan(String value) {
-            addCriterion("exchange_records <", value, "exchangeRecords");
+        public Criteria andFinishedRecordsLessThan(String value) {
+            addCriterion("finished_records <", value, "finishedRecords");
             return (Criteria) this;
         }
 
-        public Criteria andExchangeRecordsLessThanOrEqualTo(String value) {
-            addCriterion("exchange_records <=", value, "exchangeRecords");
+        public Criteria andFinishedRecordsLessThanOrEqualTo(String value) {
+            addCriterion("finished_records <=", value, "finishedRecords");
             return (Criteria) this;
         }
 
-        public Criteria andExchangeRecordsLike(String value) {
-            addCriterion("exchange_records like", value, "exchangeRecords");
+        public Criteria andFinishedRecordsLike(String value) {
+            addCriterion("finished_records like", value, "finishedRecords");
             return (Criteria) this;
         }
 
-        public Criteria andExchangeRecordsNotLike(String value) {
-            addCriterion("exchange_records not like", value, "exchangeRecords");
+        public Criteria andFinishedRecordsNotLike(String value) {
+            addCriterion("finished_records not like", value, "finishedRecords");
             return (Criteria) this;
         }
 
-        public Criteria andExchangeRecordsIn(List<String> values) {
-            addCriterion("exchange_records in", values, "exchangeRecords");
+        public Criteria andFinishedRecordsIn(List<String> values) {
+            addCriterion("finished_records in", values, "finishedRecords");
             return (Criteria) this;
         }
 
-        public Criteria andExchangeRecordsNotIn(List<String> values) {
-            addCriterion("exchange_records not in", values, "exchangeRecords");
+        public Criteria andFinishedRecordsNotIn(List<String> values) {
+            addCriterion("finished_records not in", values, "finishedRecords");
             return (Criteria) this;
         }
 
-        public Criteria andExchangeRecordsBetween(String value1, String value2) {
-            addCriterion("exchange_records between", value1, value2, "exchangeRecords");
+        public Criteria andFinishedRecordsBetween(String value1, String value2) {
+            addCriterion("finished_records between", value1, value2, "finishedRecords");
             return (Criteria) this;
         }
 
-        public Criteria andExchangeRecordsNotBetween(String value1, String value2) {
-            addCriterion("exchange_records not between", value1, value2, "exchangeRecords");
+        public Criteria andFinishedRecordsNotBetween(String value1, String value2) {
+            addCriterion("finished_records not between", value1, value2, "finishedRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andWasteRecordsIsNull() {
+            addCriterion("waste_records is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWasteRecordsIsNotNull() {
+            addCriterion("waste_records is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWasteRecordsEqualTo(String value) {
+            addCriterion("waste_records =", value, "wasteRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andWasteRecordsNotEqualTo(String value) {
+            addCriterion("waste_records <>", value, "wasteRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andWasteRecordsGreaterThan(String value) {
+            addCriterion("waste_records >", value, "wasteRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andWasteRecordsGreaterThanOrEqualTo(String value) {
+            addCriterion("waste_records >=", value, "wasteRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andWasteRecordsLessThan(String value) {
+            addCriterion("waste_records <", value, "wasteRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andWasteRecordsLessThanOrEqualTo(String value) {
+            addCriterion("waste_records <=", value, "wasteRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andWasteRecordsLike(String value) {
+            addCriterion("waste_records like", value, "wasteRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andWasteRecordsNotLike(String value) {
+            addCriterion("waste_records not like", value, "wasteRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andWasteRecordsIn(List<String> values) {
+            addCriterion("waste_records in", values, "wasteRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andWasteRecordsNotIn(List<String> values) {
+            addCriterion("waste_records not in", values, "wasteRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andWasteRecordsBetween(String value1, String value2) {
+            addCriterion("waste_records between", value1, value2, "wasteRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andWasteRecordsNotBetween(String value1, String value2) {
+            addCriterion("waste_records not between", value1, value2, "wasteRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andInventoryRecordsIsNull() {
+            addCriterion("inventory_records is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andInventoryRecordsIsNotNull() {
+            addCriterion("inventory_records is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andInventoryRecordsEqualTo(String value) {
+            addCriterion("inventory_records =", value, "inventoryRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andInventoryRecordsNotEqualTo(String value) {
+            addCriterion("inventory_records <>", value, "inventoryRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andInventoryRecordsGreaterThan(String value) {
+            addCriterion("inventory_records >", value, "inventoryRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andInventoryRecordsGreaterThanOrEqualTo(String value) {
+            addCriterion("inventory_records >=", value, "inventoryRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andInventoryRecordsLessThan(String value) {
+            addCriterion("inventory_records <", value, "inventoryRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andInventoryRecordsLessThanOrEqualTo(String value) {
+            addCriterion("inventory_records <=", value, "inventoryRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andInventoryRecordsLike(String value) {
+            addCriterion("inventory_records like", value, "inventoryRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andInventoryRecordsNotLike(String value) {
+            addCriterion("inventory_records not like", value, "inventoryRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andInventoryRecordsIn(List<String> values) {
+            addCriterion("inventory_records in", values, "inventoryRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andInventoryRecordsNotIn(List<String> values) {
+            addCriterion("inventory_records not in", values, "inventoryRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andInventoryRecordsBetween(String value1, String value2) {
+            addCriterion("inventory_records between", value1, value2, "inventoryRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andInventoryRecordsNotBetween(String value1, String value2) {
+            addCriterion("inventory_records not between", value1, value2, "inventoryRecords");
             return (Criteria) this;
         }
 
@@ -381,6 +521,76 @@ public class PackingFormExample {
 
         public Criteria andPrintRecordsNotBetween(String value1, String value2) {
             addCriterion("print_records not between", value1, value2, "printRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andFkOperationRecordsIdIsNull() {
+            addCriterion("fk_operation_records_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFkOperationRecordsIdIsNotNull() {
+            addCriterion("fk_operation_records_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFkOperationRecordsIdEqualTo(String value) {
+            addCriterion("fk_operation_records_id =", value, "fkOperationRecordsId");
+            return (Criteria) this;
+        }
+
+        public Criteria andFkOperationRecordsIdNotEqualTo(String value) {
+            addCriterion("fk_operation_records_id <>", value, "fkOperationRecordsId");
+            return (Criteria) this;
+        }
+
+        public Criteria andFkOperationRecordsIdGreaterThan(String value) {
+            addCriterion("fk_operation_records_id >", value, "fkOperationRecordsId");
+            return (Criteria) this;
+        }
+
+        public Criteria andFkOperationRecordsIdGreaterThanOrEqualTo(String value) {
+            addCriterion("fk_operation_records_id >=", value, "fkOperationRecordsId");
+            return (Criteria) this;
+        }
+
+        public Criteria andFkOperationRecordsIdLessThan(String value) {
+            addCriterion("fk_operation_records_id <", value, "fkOperationRecordsId");
+            return (Criteria) this;
+        }
+
+        public Criteria andFkOperationRecordsIdLessThanOrEqualTo(String value) {
+            addCriterion("fk_operation_records_id <=", value, "fkOperationRecordsId");
+            return (Criteria) this;
+        }
+
+        public Criteria andFkOperationRecordsIdLike(String value) {
+            addCriterion("fk_operation_records_id like", value, "fkOperationRecordsId");
+            return (Criteria) this;
+        }
+
+        public Criteria andFkOperationRecordsIdNotLike(String value) {
+            addCriterion("fk_operation_records_id not like", value, "fkOperationRecordsId");
+            return (Criteria) this;
+        }
+
+        public Criteria andFkOperationRecordsIdIn(List<String> values) {
+            addCriterion("fk_operation_records_id in", values, "fkOperationRecordsId");
+            return (Criteria) this;
+        }
+
+        public Criteria andFkOperationRecordsIdNotIn(List<String> values) {
+            addCriterion("fk_operation_records_id not in", values, "fkOperationRecordsId");
+            return (Criteria) this;
+        }
+
+        public Criteria andFkOperationRecordsIdBetween(String value1, String value2) {
+            addCriterion("fk_operation_records_id between", value1, value2, "fkOperationRecordsId");
+            return (Criteria) this;
+        }
+
+        public Criteria andFkOperationRecordsIdNotBetween(String value1, String value2) {
+            addCriterion("fk_operation_records_id not between", value1, value2, "fkOperationRecordsId");
             return (Criteria) this;
         }
     }

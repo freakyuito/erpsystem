@@ -46,7 +46,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         基础信息
-                        <small style="color: red;" th:if="${productOrderDtlGrid.validity}"></small>
+                        <small style="color: red;" th:if="!${productOrderDtlGrid.validity}">该订单已作废</small>
                     </div>
                     <div class="panel-body">
                         <table class="table table-condensed">
@@ -121,9 +121,7 @@
                                     <td th:text="${spec.length}" th:style="(${productOrderDtlGrid.validity})?'text-align: center':'text-align: center;color:red;TEXT-DECORATION: line-through'">2.41</td>
                                     <td th:text="${spec.width}" th:style="(${productOrderDtlGrid.validity})?'text-align: center':'text-align: center;color:red;TEXT-DECORATION: line-through'">2.41</td>
                                     <td th:text="${spec.thickness}" th:style="(${productOrderDtlGrid.validity})?'text-align: center':'text-align: center;color:red;TEXT-DECORATION: line-through'">2.41</td>
-                                    <td th:text="|${spec.completedAmount}/${spec.requiredAmount}"
-                                        style="text-align: center">2.41
-                                    </td>
+                                    <td th:text="|${spec.completedAmount}/${spec.requiredAmount}" th:style="(${productOrderDtlGrid.validity})?'text-align: center':'text-align: center;color:red;TEXT-DECORATION: line-through'"></td>
                                     <td th:text="${spec.estimateWeight}" th:style="(${productOrderDtlGrid.validity})?'text-align: center':'text-align: center;color:red;TEXT-DECORATION: line-through'">2.41</td>
                                     <td id="batch-num" th:text="${spec.batchNum}" th:style="(${productOrderDtlGrid.validity})?'text-align: center':'text-align: center;color:red;TEXT-DECORATION: line-through'">2.41</td>
                                     <td style="text-align: center"
@@ -143,7 +141,7 @@
                                     </td>
                                     <td id="extension" style="text-align: center"
                                         th:if="${spec.stateCode ==1 and productOrderDtlGrid.validity == true}">
-                                        <a th:href="@{/product/packing_form/2dtl(batchNum=${spec.batchNum})}">装箱单</a>
+                                        <a th:href="@{/product/plate/packing_form/2dtl(batchNum=${spec.batchNum})}">装箱单</a>
                                         <a>质检单</a>
                                     </td>
                                     <td id="total-price" style="text-align: center"

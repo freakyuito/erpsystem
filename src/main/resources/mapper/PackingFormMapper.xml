@@ -4,11 +4,14 @@
   <resultMap id="BaseResultMap" type="cn.overseachem.erp.pojo.PackingForm" >
     <id column="packing_num" property="packingNum" jdbcType="VARCHAR" />
     <result column="fk_batch_num" property="fkBatchNum" jdbcType="VARCHAR" />
-    <result column="exchange_records" property="exchangeRecords" jdbcType="VARCHAR" />
+    <result column="finished_records" property="finishedRecords" jdbcType="VARCHAR" />
+    <result column="waste_records" property="wasteRecords" jdbcType="VARCHAR" />
+    <result column="inventory_records" property="inventoryRecords" jdbcType="VARCHAR" />
     <result column="print_records" property="printRecords" jdbcType="VARCHAR" />
+    <result column="fk_operation_records_id" property="fkOperationRecordsId" jdbcType="VARCHAR" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="cn.overseachem.erp.pojo.PackingFormWithBLOBs" extends="BaseResultMap" >
-    <result column="weighing_list" property="weighingList" jdbcType="LONGVARCHAR" />
+    <result column="finished_list" property="finishedList" jdbcType="LONGVARCHAR" />
     <result column="waste_list" property="wasteList" jdbcType="LONGVARCHAR" />
     <result column="inventory_list" property="inventoryList" jdbcType="LONGVARCHAR" />
   </resultMap>
@@ -71,10 +74,11 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    packing_num, fk_batch_num, exchange_records, print_records
+    packing_num, fk_batch_num, finished_records, waste_records, inventory_records, print_records, 
+    fk_operation_records_id
   </sql>
   <sql id="Blob_Column_List" >
-    weighing_list, waste_list, inventory_list
+    finished_list, waste_list, inventory_list
   </sql>
   <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="cn.overseachem.erp.pojo.PackingFormExample" >
     select
@@ -125,12 +129,14 @@
     </if>
   </delete>
   <insert id="insert" parameterType="cn.overseachem.erp.pojo.PackingFormWithBLOBs" >
-    insert into packing_form (packing_num, fk_batch_num, exchange_records, 
-      print_records, weighing_list, waste_list, 
-      inventory_list)
-    values (#{packingNum,jdbcType=VARCHAR}, #{fkBatchNum,jdbcType=VARCHAR}, #{exchangeRecords,jdbcType=VARCHAR}, 
-      #{printRecords,jdbcType=VARCHAR}, #{weighingList,jdbcType=LONGVARCHAR}, #{wasteList,jdbcType=LONGVARCHAR}, 
-      #{inventoryList,jdbcType=LONGVARCHAR})
+    insert into packing_form (packing_num, fk_batch_num, finished_records, 
+      waste_records, inventory_records, print_records, 
+      fk_operation_records_id, finished_list, 
+      waste_list, inventory_list)
+    values (#{packingNum,jdbcType=VARCHAR}, #{fkBatchNum,jdbcType=VARCHAR}, #{finishedRecords,jdbcType=VARCHAR}, 
+      #{wasteRecords,jdbcType=VARCHAR}, #{inventoryRecords,jdbcType=VARCHAR}, #{printRecords,jdbcType=VARCHAR}, 
+      #{fkOperationRecordsId,jdbcType=VARCHAR}, #{finishedList,jdbcType=LONGVARCHAR}, 
+      #{wasteList,jdbcType=LONGVARCHAR}, #{inventoryList,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="cn.overseachem.erp.pojo.PackingFormWithBLOBs" >
     insert into packing_form
@@ -141,14 +147,23 @@
       <if test="fkBatchNum != null" >
         fk_batch_num,
       </if>
-      <if test="exchangeRecords != null" >
-        exchange_records,
+      <if test="finishedRecords != null" >
+        finished_records,
+      </if>
+      <if test="wasteRecords != null" >
+        waste_records,
+      </if>
+      <if test="inventoryRecords != null" >
+        inventory_records,
       </if>
       <if test="printRecords != null" >
         print_records,
       </if>
-      <if test="weighingList != null" >
-        weighing_list,
+      <if test="fkOperationRecordsId != null" >
+        fk_operation_records_id,
+      </if>
+      <if test="finishedList != null" >
+        finished_list,
       </if>
       <if test="wasteList != null" >
         waste_list,
@@ -164,14 +179,23 @@
       <if test="fkBatchNum != null" >
         #{fkBatchNum,jdbcType=VARCHAR},
       </if>
-      <if test="exchangeRecords != null" >
-        #{exchangeRecords,jdbcType=VARCHAR},
+      <if test="finishedRecords != null" >
+        #{finishedRecords,jdbcType=VARCHAR},
+      </if>
+      <if test="wasteRecords != null" >
+        #{wasteRecords,jdbcType=VARCHAR},
+      </if>
+      <if test="inventoryRecords != null" >
+        #{inventoryRecords,jdbcType=VARCHAR},
       </if>
       <if test="printRecords != null" >
         #{printRecords,jdbcType=VARCHAR},
       </if>
-      <if test="weighingList != null" >
-        #{weighingList,jdbcType=LONGVARCHAR},
+      <if test="fkOperationRecordsId != null" >
+        #{fkOperationRecordsId,jdbcType=VARCHAR},
+      </if>
+      <if test="finishedList != null" >
+        #{finishedList,jdbcType=LONGVARCHAR},
       </if>
       <if test="wasteList != null" >
         #{wasteList,jdbcType=LONGVARCHAR},
@@ -196,14 +220,23 @@
       <if test="record.fkBatchNum != null" >
         fk_batch_num = #{record.fkBatchNum,jdbcType=VARCHAR},
       </if>
-      <if test="record.exchangeRecords != null" >
-        exchange_records = #{record.exchangeRecords,jdbcType=VARCHAR},
+      <if test="record.finishedRecords != null" >
+        finished_records = #{record.finishedRecords,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wasteRecords != null" >
+        waste_records = #{record.wasteRecords,jdbcType=VARCHAR},
+      </if>
+      <if test="record.inventoryRecords != null" >
+        inventory_records = #{record.inventoryRecords,jdbcType=VARCHAR},
       </if>
       <if test="record.printRecords != null" >
         print_records = #{record.printRecords,jdbcType=VARCHAR},
       </if>
-      <if test="record.weighingList != null" >
-        weighing_list = #{record.weighingList,jdbcType=LONGVARCHAR},
+      <if test="record.fkOperationRecordsId != null" >
+        fk_operation_records_id = #{record.fkOperationRecordsId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.finishedList != null" >
+        finished_list = #{record.finishedList,jdbcType=LONGVARCHAR},
       </if>
       <if test="record.wasteList != null" >
         waste_list = #{record.wasteList,jdbcType=LONGVARCHAR},
@@ -220,9 +253,12 @@
     update packing_form
     set packing_num = #{record.packingNum,jdbcType=VARCHAR},
       fk_batch_num = #{record.fkBatchNum,jdbcType=VARCHAR},
-      exchange_records = #{record.exchangeRecords,jdbcType=VARCHAR},
+      finished_records = #{record.finishedRecords,jdbcType=VARCHAR},
+      waste_records = #{record.wasteRecords,jdbcType=VARCHAR},
+      inventory_records = #{record.inventoryRecords,jdbcType=VARCHAR},
       print_records = #{record.printRecords,jdbcType=VARCHAR},
-      weighing_list = #{record.weighingList,jdbcType=LONGVARCHAR},
+      fk_operation_records_id = #{record.fkOperationRecordsId,jdbcType=VARCHAR},
+      finished_list = #{record.finishedList,jdbcType=LONGVARCHAR},
       waste_list = #{record.wasteList,jdbcType=LONGVARCHAR},
       inventory_list = #{record.inventoryList,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
@@ -233,8 +269,11 @@
     update packing_form
     set packing_num = #{record.packingNum,jdbcType=VARCHAR},
       fk_batch_num = #{record.fkBatchNum,jdbcType=VARCHAR},
-      exchange_records = #{record.exchangeRecords,jdbcType=VARCHAR},
-      print_records = #{record.printRecords,jdbcType=VARCHAR}
+      finished_records = #{record.finishedRecords,jdbcType=VARCHAR},
+      waste_records = #{record.wasteRecords,jdbcType=VARCHAR},
+      inventory_records = #{record.inventoryRecords,jdbcType=VARCHAR},
+      print_records = #{record.printRecords,jdbcType=VARCHAR},
+      fk_operation_records_id = #{record.fkOperationRecordsId,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -245,14 +284,23 @@
       <if test="fkBatchNum != null" >
         fk_batch_num = #{fkBatchNum,jdbcType=VARCHAR},
       </if>
-      <if test="exchangeRecords != null" >
-        exchange_records = #{exchangeRecords,jdbcType=VARCHAR},
+      <if test="finishedRecords != null" >
+        finished_records = #{finishedRecords,jdbcType=VARCHAR},
+      </if>
+      <if test="wasteRecords != null" >
+        waste_records = #{wasteRecords,jdbcType=VARCHAR},
+      </if>
+      <if test="inventoryRecords != null" >
+        inventory_records = #{inventoryRecords,jdbcType=VARCHAR},
       </if>
       <if test="printRecords != null" >
         print_records = #{printRecords,jdbcType=VARCHAR},
       </if>
-      <if test="weighingList != null" >
-        weighing_list = #{weighingList,jdbcType=LONGVARCHAR},
+      <if test="fkOperationRecordsId != null" >
+        fk_operation_records_id = #{fkOperationRecordsId,jdbcType=VARCHAR},
+      </if>
+      <if test="finishedList != null" >
+        finished_list = #{finishedList,jdbcType=LONGVARCHAR},
       </if>
       <if test="wasteList != null" >
         waste_list = #{wasteList,jdbcType=LONGVARCHAR},
@@ -266,9 +314,12 @@
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.overseachem.erp.pojo.PackingFormWithBLOBs" >
     update packing_form
     set fk_batch_num = #{fkBatchNum,jdbcType=VARCHAR},
-      exchange_records = #{exchangeRecords,jdbcType=VARCHAR},
+      finished_records = #{finishedRecords,jdbcType=VARCHAR},
+      waste_records = #{wasteRecords,jdbcType=VARCHAR},
+      inventory_records = #{inventoryRecords,jdbcType=VARCHAR},
       print_records = #{printRecords,jdbcType=VARCHAR},
-      weighing_list = #{weighingList,jdbcType=LONGVARCHAR},
+      fk_operation_records_id = #{fkOperationRecordsId,jdbcType=VARCHAR},
+      finished_list = #{finishedList,jdbcType=LONGVARCHAR},
       waste_list = #{wasteList,jdbcType=LONGVARCHAR},
       inventory_list = #{inventoryList,jdbcType=LONGVARCHAR}
     where packing_num = #{packingNum,jdbcType=VARCHAR}
@@ -276,12 +327,15 @@
   <update id="updateByPrimaryKey" parameterType="cn.overseachem.erp.pojo.PackingForm" >
     update packing_form
     set fk_batch_num = #{fkBatchNum,jdbcType=VARCHAR},
-      exchange_records = #{exchangeRecords,jdbcType=VARCHAR},
-      print_records = #{printRecords,jdbcType=VARCHAR}
+      finished_records = #{finishedRecords,jdbcType=VARCHAR},
+      waste_records = #{wasteRecords,jdbcType=VARCHAR},
+      inventory_records = #{inventoryRecords,jdbcType=VARCHAR},
+      print_records = #{printRecords,jdbcType=VARCHAR},
+      fk_operation_records_id = #{fkOperationRecordsId,jdbcType=VARCHAR}
     where packing_num = #{packingNum,jdbcType=VARCHAR}
   </update>
   <select id="getByCriteria" resultType="hashmap">
     SELECT purchase_order_spec.fk_purchase_num,purchase_order_spec.color_id,product_order_spec.batch_num,purchase_order_spec.length,purchase_order_spec.width,purchase_order_spec.thickness,purchase_order_spec.required_amount,product_order_spec.completed_amount,packing_form.packing_num FROM purchase_order_spec INNER JOIN product_order_spec ON
-product_order_spec.fk_purchase_spec_id = purchase_order_spec.spec_id INNER JOIN packing_form ON product_order_spec.batch_num = packing_form.fk_batch_num WHERE purchase_order_spec.fk_purchase_num LIKE '%${purchaseNum}%' AND purchase_order_spec.color_id LIKE '%${colorId}%' AND product_order_spec.batch_num LIKE '%${batchNum}%' AND packing_form.packing_num LIKE '%${packingNum}%'
+    product_order_spec.fk_purchase_spec_id = purchase_order_spec.spec_id INNER JOIN packing_form ON product_order_spec.batch_num = packing_form.fk_batch_num WHERE purchase_order_spec.fk_purchase_num LIKE '%${purchaseNum}%' AND purchase_order_spec.color_id LIKE '%${colorId}%' AND product_order_spec.batch_num LIKE '%${batchNum}%' AND packing_form.packing_num LIKE '%${packingNum}%'
   </select>
 </mapper>

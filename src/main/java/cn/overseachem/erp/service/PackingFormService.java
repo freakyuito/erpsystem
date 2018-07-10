@@ -37,12 +37,12 @@ public class PackingFormService {
         }
         String result = JSON.toJSONString(arrayList);
         PackingFormWithBLOBs packingFormWithBLOBs = mapper.selectByPrimaryKey(packingNum);
-        packingFormWithBLOBs.setWeighingList(result);
+        packingFormWithBLOBs.setFinishedList(result);
         mapper.updateByPrimaryKeyWithBLOBs(packingFormWithBLOBs);
     }
 
-    public List<PackingFormDataItem> getWeighingList(String packingNum) {
-        return str2List(mapper.selectByPrimaryKey(packingNum).getWeighingList());
+    public List<PackingFormDataItem> getFinishedList(String packingNum) {
+        return str2List(mapper.selectByPrimaryKey(packingNum).getFinishedList());
     }
 
     public List<PackingFormDataItem> getWasteList(String packingNum) {
@@ -70,7 +70,7 @@ public class PackingFormService {
 
     public void setWeighingData(String packingNum, String index, String quantity, String weight) {
 
-        List<PackingFormDataItem> arrayList = str2List(mapper.selectByPrimaryKey(packingNum).getWeighingList());
+        List<PackingFormDataItem> arrayList = str2List(mapper.selectByPrimaryKey(packingNum).getFinishedList());
 
         for (PackingFormDataItem s : arrayList
                 ) {
@@ -82,7 +82,7 @@ public class PackingFormService {
         }
         String result = JSON.toJSONString(arrayList);
         PackingFormWithBLOBs packingFormWithBLOBs = mapper.selectByPrimaryKey(packingNum);
-        packingFormWithBLOBs.setWeighingList(result);
+        packingFormWithBLOBs.setFinishedList(result);
 
         mapper.updateByPrimaryKeyWithBLOBs(packingFormWithBLOBs);
     }
@@ -161,7 +161,7 @@ public class PackingFormService {
     public void setWeighingList(String packingNum, List<PackingFormDataItem> items) {
         String result = JSON.toJSONString(items);
         PackingFormWithBLOBs packingFormWithBLOBs = mapper.selectByPrimaryKey(packingNum);
-        packingFormWithBLOBs.setWeighingList(result);
+        packingFormWithBLOBs.setFinishedList(result);
         mapper.updateByPrimaryKeyWithBLOBs(packingFormWithBLOBs);
         System.out.println("set weighing list:" + result);
     }
@@ -216,7 +216,7 @@ public class PackingFormService {
     }
 
     public Boolean isWeighingListEmpty(String packingNum) {
-        if (mapper.selectByPrimaryKey(packingNum).getWeighingList() == null)
+        if (mapper.selectByPrimaryKey(packingNum).getFinishedList() == null)
             return true;
         else
             return false;
@@ -234,7 +234,7 @@ public class PackingFormService {
 
     public Integer getCompletedAmountByPackingNum(String packingNum) {
         PackingFormWithBLOBs p = mapper.selectByPrimaryKey(packingNum);
-        List<PackingFormDataItem> arrayList = str2List(p.getWeighingList());
+        List<PackingFormDataItem> arrayList = str2List(p.getFinishedList());
         Integer totalAmount = 0;
         for (PackingFormDataItem i : arrayList
                 ) {
@@ -250,7 +250,7 @@ public class PackingFormService {
     public Float getCompletedWeightByPackingNum(String packingNum) {
         System.out.println(packingNum);
         PackingFormWithBLOBs p = mapper.selectByPrimaryKey(packingNum);
-        List<PackingFormDataItem> arrayList = str2List(p.getWeighingList());
+        List<PackingFormDataItem> arrayList = str2List(p.getFinishedList());
         Float totalWeight = 0f;
         if (arrayList == null)
             return 0f;
@@ -271,14 +271,26 @@ public class PackingFormService {
         return mapper.selectByPrimaryKey(packingNum).getFkBatchNum();
     }
 
-    public void shift(String shiftRecord, String packingNum) {
+    public void shift(String finishedRecord,String wasteRecord,String inventoryRecord, String packingNum) {
         PackingFormWithBLOBs form = mapper.selectByPrimaryKey(packingNum);
         String newRecord = null;
-        if (form.getExchangeRecords() != null)
-            newRecord = form.getExchangeRecords() + "," + shiftRecord;
+        if (form.getFinishedRecords() != null)
+            newRecord = form.getFinishedRecords() + "," + finishedRecord;
         else
-            newRecord = "," + shiftRecord;
-        form.setExchangeRecords(newRecord);
+            newRecord = "," + finishedRecord;
+        form.setFinishedRecords(newRecord);
+        newRecord = null;
+        if (form.getWasteRecords() != null)
+            newRecord = form.getWasteRecords() + "," + wasteRecord;
+        else
+            newRecord = "," + wasteRecord;
+        form.setWasteRecords(newRecord);
+        newRecord = null;
+        if (form.getInventoryRecords() != null)
+            newRecord = form.getInventoryRecords() + "," + inventoryRecord;
+        else
+            newRecord = "," + inventoryRecord;
+        form.setInventoryRecords(newRecord);
         mapper.updateByPrimaryKeyWithBLOBs(form);
     }
 
@@ -289,9 +301,9 @@ public class PackingFormService {
     public Float getWeightByBatchNum(String batchNum){
         PackingFormWithBLOBs bloBs = getByPackingNum(getPackingNumByBatchNum(batchNum));
         if(bloBs !=null){
-            if (bloBs.getExchangeRecords() != null) {
+            if (bloBs.getFinishedRecords() != null) {
                 Float totalWeight = 0f;
-                List<PackingFormDataItem> items = getWeighingList(getPackingNumByBatchNum(batchNum));
+                List<PackingFormDataItem> items = getFinishedList(getPackingNumByBatchNum(batchNum));
                 for (PackingFormDataItem i : items
                         ) {
                     if(!i.getKey().equals("0"))

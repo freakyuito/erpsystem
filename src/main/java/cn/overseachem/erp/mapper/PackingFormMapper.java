@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.List;
-
 @Component
 public interface PackingFormMapper {
     int countByExample(PackingFormExample example);
@@ -39,5 +38,5 @@ public interface PackingFormMapper {
 
     int updateByPrimaryKey(PackingForm record);
 
-    List<List<HashMap<String,Object>>> getByCriteria(@Param("purchaseNum") String purchaseNum,@Param("colorId") String colorId,@Param("batchNum") String batchNum,@Param("packingNum") String packingNum);
+    List<List<HashMap<String, Object>>> getByCriteria(@Param("purchaseNum") String purchaseNum, @Param("colorId")String colorId, @Param("batchNum")String batchNum, @Param("packingNum")String packingNum);
 }

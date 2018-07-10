@@ -2,13 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="96182eff-537a-4ff4-8ca8-5a64cb69b766" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/controller/ProductOrderController.java" afterPath="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/controller/ProductOrderController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/ProductOrderLstGrid.java" afterPath="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/ProductOrderLstGrid.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/page-js/product_plate_product_order_lst.js" afterPath="$PROJECT_DIR$/src/main/resources/static/page-js/product_plate_product_order_lst.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/template/market/plate/purchase_order/dtl.html" afterPath="$PROJECT_DIR$/src/main/resources/template/market/plate/purchase_order/dtl.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/template/product/plate/product_order/dtl.html" afterPath="$PROJECT_DIR$/src/main/resources/template/product/plate/product_order/dtl.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/template/product/plate/product_order/dtl.html" afterPath="$PROJECT_DIR$/target/classes/template/product/plate/product_order/dtl.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/sqlquery/PackingFormMapper.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/controller/PackingFormController.java" afterPath="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/controller/PackingFormController.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/mapper/PackingFormMapper.java" afterPath="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/mapper/PackingFormMapper.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/PackingForm.java" afterPath="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/PackingForm.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/PackingFormExample.java" afterPath="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/PackingFormExample.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/PackingFormWithBLOBs.java" afterPath="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/PackingFormWithBLOBs.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/service/PackingFormService.java" afterPath="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/service/PackingFormService.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/PackingFormMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/PackingFormMapper.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/page-js/product_plate_packing_form_dtl.js" afterPath="$PROJECT_DIR$/src/main/resources/static/page-js/product_plate_packing_form_dtl.js" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/page-js/product_plate_packing_form_lst.js" afterPath="$PROJECT_DIR$/src/main/resources/static/page-js/product_plate_packing_form_lst.js" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/template/market/plate/purchase_order/dtl.html" afterPath="$PROJECT_DIR$/src/main/resources/template/market/plate/purchase_order/dtl.html" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/template/nav_bar.html" afterPath="$PROJECT_DIR$/src/main/resources/template/nav_bar.html" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/template/product/plate/packing_form/dtl.html" afterPath="$PROJECT_DIR$/src/main/resources/template/product/plate/packing_form/dtl.html" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/template/product/plate/product_order/dtl.html" afterPath="$PROJECT_DIR$/src/main/resources/template/product/plate/product_order/dtl.html" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/overseachem/erp/controller/PackingFormController.class" afterPath="$PROJECT_DIR$/target/classes/cn/overseachem/erp/controller/PackingFormController.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/overseachem/erp/pojo/PackingForm.class" afterPath="$PROJECT_DIR$/target/classes/cn/overseachem/erp/pojo/PackingForm.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/overseachem/erp/pojo/PackingFormExample$Criteria.class" afterPath="$PROJECT_DIR$/target/classes/cn/overseachem/erp/pojo/PackingFormExample$Criteria.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/overseachem/erp/pojo/PackingFormExample$Criterion.class" afterPath="$PROJECT_DIR$/target/classes/cn/overseachem/erp/pojo/PackingFormExample$Criterion.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/overseachem/erp/pojo/PackingFormExample$GeneratedCriteria.class" afterPath="$PROJECT_DIR$/target/classes/cn/overseachem/erp/pojo/PackingFormExample$GeneratedCriteria.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/overseachem/erp/pojo/PackingFormWithBLOBs.class" afterPath="$PROJECT_DIR$/target/classes/cn/overseachem/erp/pojo/PackingFormWithBLOBs.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/overseachem/erp/service/PackingFormService.class" afterPath="$PROJECT_DIR$/target/classes/cn/overseachem/erp/service/PackingFormService.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapper/PackingFormMapper.xml" afterPath="$PROJECT_DIR$/target/classes/mapper/PackingFormMapper.xml" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/page-js/product_plate_packing_form_dtl.js" afterPath="$PROJECT_DIR$/target/classes/static/page-js/product_plate_packing_form_dtl.js" />
+      <change beforePath="$PROJECT_DIR$/target/classes/template/product/plate/packing_form/dtl.html" afterPath="$PROJECT_DIR$/target/classes/template/product/plate/packing_form/dtl.html" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -36,167 +54,155 @@
     <option name="SHOW_EMPTY_GROUPS" value="false" />
     <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="PurchaseOrderController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/controller/PurchaseOrderController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3510">
-              <caret line="259" column="63" lean-forward="false" selection-start-line="259" selection-start-column="63" selection-end-line="259" selection-end-column="63" />
-              <folding>
-                <marker date="1531183737452" expanded="true" signature="8374:9225" ph="{...}" />
-                <marker date="1531183737452" expanded="true" signature="9231:9281" ph="@{...}" />
-                <marker date="1531183737452" expanded="true" signature="9344:11923" ph="{...}" />
-                <marker date="1531183737452" expanded="true" signature="11929:11975" ph="@{...}" />
-                <marker date="1531183737452" expanded="true" signature="12026:12131" ph="{...}" />
-                <marker date="1531183737452" expanded="true" signature="12137:12179" ph="@{...}" />
-                <marker date="1531183737452" expanded="true" signature="12238:14863" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProductOrderService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/service/ProductOrderService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2640">
-              <caret line="187" column="5" lean-forward="false" selection-start-line="187" selection-start-column="5" selection-end-line="187" selection-end-column="5" />
-              <folding>
-                <marker date="1531183737458" expanded="true" signature="8913:8921" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PackingFormController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PackingFormController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/controller/PackingFormController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2592">
-              <caret line="289" column="0" lean-forward="false" selection-start-line="289" selection-start-column="0" selection-end-line="289" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProductOrderController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/controller/ProductOrderController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="116">
-              <caret line="118" column="72" lean-forward="true" selection-start-line="118" selection-start-column="72" selection-end-line="118" selection-end-column="72" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="lst.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/template/product/plate/product_order/lst.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="528">
-              <caret line="133" column="80" lean-forward="false" selection-start-line="133" selection-start-column="80" selection-end-line="133" selection-end-column="80" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="product_plate_product_order_lst.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/static/page-js/product_plate_product_order_lst.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="62" column="95" lean-forward="false" selection-start-line="62" selection-start-column="95" selection-end-line="62" selection-end-column="95" />
+            <state relative-caret-position="540">
+              <caret line="198" column="9" lean-forward="false" selection-start-line="198" selection-start-column="9" selection-end-line="198" selection-end-column="9" />
               <folding>
-                <marker date="1531192146144" expanded="true" signature="697:715" ph="..." />
-                <marker date="1531192146144" expanded="true" signature="781:799" ph="..." />
-                <marker date="1531192146144" expanded="true" signature="947:965" ph="..." />
-                <marker date="1531192146144" expanded="true" signature="1035:1053" ph="..." />
-                <marker date="1531192146144" expanded="true" signature="1208:1226" ph="..." />
-                <marker date="1531192146144" expanded="true" signature="1295:1313" ph="..." />
-                <marker date="1531192146144" expanded="true" signature="1411:1429" ph="..." />
-                <marker date="1531192146144" expanded="true" signature="1502:1520" ph="..." />
-                <marker date="1531192146144" expanded="true" signature="1590:1608" ph="..." />
-                <marker date="1531192146144" expanded="true" signature="2460:2478" ph="..." />
-                <marker date="1531192146144" expanded="true" signature="3722:3740" ph="..." />
-                <marker date="1531192146144" expanded="true" signature="3722:3781" ph="..." />
-                <marker date="1531192146144" expanded="true" signature="3847:3865" ph="..." />
-                <marker date="1531192146144" expanded="true" signature="3847:3906" ph="..." />
-                <marker date="1531192146144" expanded="true" signature="4054:4072" ph="..." />
-                <marker date="1531192146144" expanded="true" signature="4054:4113" ph="..." />
-                <marker date="1531192146144" expanded="true" signature="4183:4201" ph="..." />
-                <marker date="1531192146144" expanded="true" signature="4183:4242" ph="..." />
-                <marker date="1531192146144" expanded="true" signature="4397:4415" ph="..." />
-                <marker date="1531192146144" expanded="true" signature="4397:4456" ph="..." />
-                <marker date="1531192146144" expanded="true" signature="4525:4543" ph="..." />
-                <marker date="1531192146144" expanded="true" signature="4525:4584" ph="..." />
-                <marker date="1531192146144" expanded="true" signature="4682:4700" ph="..." />
-                <marker date="1531192146144" expanded="true" signature="4682:4741" ph="..." />
-                <marker date="1531192146144" expanded="true" signature="4814:4832" ph="..." />
-                <marker date="1531192146144" expanded="true" signature="4814:4873" ph="..." />
-                <marker date="1531192146144" expanded="true" signature="4943:4961" ph="..." />
-                <marker date="1531192146144" expanded="true" signature="4943:5002" ph="..." />
-                <marker date="1531192146144" expanded="true" signature="5078:5096" ph="..." />
-                <marker date="1531192146144" expanded="true" signature="5078:5137" ph="..." />
+                <element signature="e#2017#2037#0" expanded="true" />
+                <element signature="e#3326#3346#0" expanded="true" />
+                <element signature="e#6612#6633#0" expanded="true" />
+                <element signature="e#7787#7808#0" expanded="true" />
+                <element signature="e#8873#8894#0" expanded="true" />
+                <element signature="e#11711#11712#0" expanded="true" />
+                <element signature="e#11780#11781#0" expanded="true" />
+                <element signature="e#12029#12050#0" expanded="true" />
+                <element signature="e#13139#13160#0" expanded="true" />
+                <element signature="e#14084#14105#0" expanded="true" />
+                <element signature="e#15324#15341#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProductOrderLstGrid.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/ProductOrderLstGrid.java">
+      <file leaf-file-name="product_plate_packing_form_lst.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/static/page-js/product_plate_packing_form_lst.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="30" column="34" lean-forward="false" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="34" />
+            <state relative-caret-position="435">
+              <caret line="41" column="169" lean-forward="true" selection-start-line="41" selection-start-column="169" selection-end-line="41" selection-end-column="169" />
               <folding>
-                <element signature="e#1251#1252#0" expanded="true" />
-                <element signature="e#1300#1301#0" expanded="true" />
-                <element signature="e#1340#1341#0" expanded="true" />
+                <marker date="1531227039463" expanded="true" signature="1496:1514" ph="..." />
+                <marker date="1531227039463" expanded="true" signature="1584:1602" ph="..." />
+                <marker date="1531227039463" expanded="true" signature="1754:1772" ph="..." />
+                <marker date="1531227039463" expanded="true" signature="1844:1862" ph="..." />
+                <marker date="1531227039463" expanded="true" signature="1937:1955" ph="..." />
+                <marker date="1531227039463" expanded="true" signature="2027:2045" ph="..." />
+                <marker date="1531227039463" expanded="true" signature="2112:2130" ph="..." />
+                <marker date="1531227039463" expanded="true" signature="2207:2225" ph="..." />
+                <marker date="1531227039463" expanded="true" signature="2303:2321" ph="..." />
+                <marker date="1531227039463" expanded="true" signature="2874:2892" ph="..." />
+                <marker date="1531227039463" expanded="true" signature="2954:2972" ph="..." />
+                <marker date="1531227039463" expanded="true" signature="3042:3060" ph="..." />
+                <marker date="1531227039463" expanded="true" signature="3124:3142" ph="..." />
+                <marker date="1531227039463" expanded="true" signature="3209:3227" ph="..." />
+                <marker date="1531227039463" expanded="true" signature="3291:3309" ph="..." />
+                <marker date="1531227039463" expanded="true" signature="3368:3386" ph="..." />
+                <marker date="1531227039463" expanded="true" signature="3455:3473" ph="..." />
+                <marker date="1531227039463" expanded="true" signature="3543:3561" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProductOrderDtlGrid.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/ProductOrderDtlGrid.java">
+      <file leaf-file-name="nav_bar.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/template/nav_bar.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="705">
-              <caret line="66" column="0" lean-forward="false" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
-              <folding>
-                <marker date="1531183737453" expanded="false" signature="1700:1711" ph=" { " />
-                <marker date="1531183737453" expanded="false" signature="1730:1736" ph=" }" />
-                <marker date="1531183737453" expanded="false" signature="1788:1799" ph=" { " />
-                <marker date="1531183737453" expanded="false" signature="1830:1836" ph=" }" />
-                <marker date="1531183737453" expanded="false" signature="1872:1883" ph=" { " />
-                <marker date="1531183737453" expanded="false" signature="1902:1908" ph=" }" />
-                <marker date="1531183737453" expanded="true" signature="1960:1971" ph=" { " />
-                <marker date="1531183737453" expanded="true" signature="2002:2008" ph=" }" />
-                <marker date="1531183737453" expanded="false" signature="2044:2055" ph=" { " />
-                <marker date="1531183737453" expanded="false" signature="2073:2079" ph=" }" />
-                <marker date="1531183737453" expanded="false" signature="2130:2141" ph=" { " />
-                <marker date="1531183737453" expanded="false" signature="2170:2176" ph=" }" />
-                <marker date="1531183737453" expanded="false" signature="2211:2222" ph=" { " />
-                <marker date="1531183737453" expanded="false" signature="2240:2246" ph=" }" />
-                <marker date="1531183737453" expanded="false" signature="2296:2307" ph=" { " />
-                <marker date="1531183737453" expanded="false" signature="2336:2342" ph=" }" />
-                <marker date="1531183737453" expanded="false" signature="2375:2386" ph=" { " />
-                <marker date="1531183737453" expanded="false" signature="2401:2407" ph=" }" />
-                <marker date="1531183737453" expanded="false" signature="2452:2463" ph=" { " />
-                <marker date="1531183737453" expanded="false" signature="2486:2492" ph=" }" />
-                <marker date="1531183737453" expanded="false" signature="2529:2540" ph=" { " />
-                <marker date="1531183737453" expanded="false" signature="2560:2566" ph=" }" />
-                <marker date="1531183737453" expanded="false" signature="2620:2631" ph=" { " />
-                <marker date="1531183737453" expanded="false" signature="2664:2670" ph=" }" />
-              </folding>
+            <state relative-caret-position="387">
+              <caret line="292" column="60" lean-forward="false" selection-start-line="292" selection-start-column="60" selection-end-line="292" selection-end-column="60" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="dtl.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/template/product/plate/product_order/dtl.html">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/template/product/plate/packing_form/dtl.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="94">
-              <caret line="220" column="106" lean-forward="false" selection-start-line="220" selection-start-column="106" selection-end-line="220" selection-end-column="106" />
+            <state relative-caret-position="702">
+              <caret line="433" column="152" lean-forward="false" selection-start-line="433" selection-start-column="152" selection-end-line="433" selection-end-column="152" />
               <folding>
-                <element signature="n#style#0;n#small#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#small#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#2;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#2;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#3;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#2;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#3;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="product_plate_packing_form_dtl.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/static/page-js/product_plate_packing_form_dtl.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="656">
+              <caret line="319" column="12" lean-forward="false" selection-start-line="319" selection-start-column="12" selection-end-line="319" selection-end-column="88" />
+              <folding>
+                <marker date="1531228311296" expanded="true" signature="876:894" ph="..." />
+                <marker date="1531228311296" expanded="true" signature="990:1008" ph="..." />
+                <marker date="1531228311296" expanded="true" signature="1552:1570" ph="..." />
+                <marker date="1531228311296" expanded="true" signature="2114:2132" ph="..." />
+                <marker date="1531228311296" expanded="true" signature="3250:3268" ph="..." />
+                <marker date="1531228311296" expanded="true" signature="3364:3382" ph="..." />
+                <marker date="1531228311296" expanded="true" signature="3936:3954" ph="..." />
+                <marker date="1531228311296" expanded="true" signature="4508:4526" ph="..." />
+                <marker date="1531228311296" expanded="true" signature="6714:6743" ph="..." />
+                <marker date="1531228311296" expanded="true" signature="6863:6894" ph="..." />
+                <marker date="1531228311296" expanded="true" signature="7004:7035" ph="..." />
+                <marker date="1531228311296" expanded="true" signature="8516:8534" ph="..." />
+                <marker date="1531228311296" expanded="true" signature="8659:8677" ph="..." />
+                <marker date="1531228311296" expanded="true" signature="9295:9313" ph="..." />
+                <marker date="1531228311296" expanded="true" signature="9933:9951" ph="..." />
+                <marker date="1531228311296" expanded="true" signature="10883:10901" ph="..." />
+                <marker date="1531228311296" expanded="true" signature="11026:11044" ph="..." />
+                <marker date="1531228311296" expanded="true" signature="11672:11690" ph="..." />
+                <marker date="1531228311296" expanded="true" signature="12320:12338" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PackingFormService.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/service/PackingFormService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="750">
+              <caret line="318" column="5" lean-forward="true" selection-start-line="318" selection-start-column="5" selection-end-line="318" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PackingFormMapper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/mapper/PackingFormMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="495">
+              <caret line="40" column="182" lean-forward="false" selection-start-line="40" selection-start-column="182" selection-end-line="40" selection-end-column="182" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PackingFormMapper.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/PackingFormMapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="812">
+              <caret line="339" column="11" lean-forward="false" selection-start-line="339" selection-start-column="11" selection-end-line="339" selection-end-column="11" />
+              <folding>
+                <marker date="1531223604557" expanded="true" signature="4872:5044" ph="select , fro... " />
+                <marker date="1531223604557" expanded="true" signature="5130:5209" ph="delete from packing_form... " />
+                <marker date="1531223604557" expanded="true" signature="5318:5342" ph="delete from packing_form... " />
+                <marker date="1531223604557" expanded="true" signature="5537:6139" ph="insert into packing_form... " />
+                <marker date="1531223604557" expanded="true" signature="8293:8326" ph="select count... packing_form" />
+                <marker date="1531223604557" expanded="true" signature="10003:10686" ph="update packing_form... " />
+                <marker date="1531223604557" expanded="true" signature="10859:11345" ph="update packing_form... " />
+                <marker date="1531223604557" expanded="true" signature="11571:12705" ph="update packing_form... " />
+                <marker date="1531223604557" expanded="true" signature="12828:13444" ph="update packing_form... " />
+                <marker date="1531223604557" expanded="true" signature="13549:13989" ph="update packing_form... " />
+                <marker date="1531223604557" expanded="true" signature="14057:14777" ph="SELECT purch... purchase_order_spec" />
               </folding>
             </state>
           </provider>
@@ -205,8 +211,18 @@
       <file leaf-file-name="dtl.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/template/market/plate/purchase_order/dtl.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="158" column="83" lean-forward="false" selection-start-line="158" selection-start-column="83" selection-end-line="158" selection-end-column="83" />
+            <state relative-caret-position="309">
+              <caret line="58" column="197" lean-forward="false" selection-start-line="58" selection-start-column="197" selection-end-line="58" selection-end-column="197" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dtl.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/template/product/plate/product_order/dtl.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="364">
+              <caret line="123" column="225" lean-forward="false" selection-start-line="123" selection-start-column="225" selection-end-line="123" selection-end-column="225" />
               <folding />
             </state>
           </provider>
@@ -256,9 +272,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/resources/template/product/plate/inventory_form/dtl.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/template/product/plate/inventory_form/lst.html" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/controller/InventoryController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/page-js/product_plate_inventory_dtl.js" />
         <option value="$PROJECT_DIR$/src/main/resources/template/product/plate/inventory/dtl.html" />
         <option value="$PROJECT_DIR$/src/main/resources/template/product/plate/inventory/lst.html" />
@@ -268,11 +281,9 @@
         <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/mapper/MachineMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/service/MachineService.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/page-js/product_plate_product_order_dtl.js" />
-        <option value="$PROJECT_DIR$/src/main/resources/template/nav_bar.html" />
         <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/mapper/GodownEntrySpecMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/controller/UserController.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/GodownEntry.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/template/product/plate/packing_form/dtl.html" />
         <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/GodownEntryDtlGrid.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/GodownEntrySpecDtlGrid.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/controller/MachineController.java" />
@@ -287,7 +298,6 @@
         <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/controller/GodownEntryController.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/service/UserService.java" />
         <option value="$PROJECT_DIR$/src/main/resources/template/product/plate/godown_entry/dtl.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/page-js/product_plate_packing_form_dtl.js" />
         <option value="$PROJECT_DIR$/src/main/resources/static/page-js/market_plate_purchase_order_dtl.js" />
         <option value="$PROJECT_DIR$/src/main/resources/static/page-js/market_plate_purchase_order_mdf.js" />
         <option value="$PROJECT_DIR$/src/main/resources/template/market/plate/purchase_order/mdf.html" />
@@ -296,17 +306,23 @@
         <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/PurchaseOrderListGrid.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/page-js/market_plate_purchase_order_lst.js" />
         <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/PurchaseOrderSpecGrid.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/controller/PackingFormController.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/controller/PurchaseOrderController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/service/PackingFormService.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/ProductOrder.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/ProductOrderDtlGrid.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/service/ProductOrderService.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/ProductOrderLstGrid.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/controller/ProductOrderController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/page-js/product_plate_product_order_lst.js" />
-        <option value="$PROJECT_DIR$/src/main/resources/template/market/plate/purchase_order/dtl.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/PackingFormMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/mapper/PackingFormMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/service/PackingFormService.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/page-js/product_plate_packing_form_lst.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/template/nav_bar.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/page-js/product_plate_packing_form_dtl.js" />
         <option value="$PROJECT_DIR$/src/main/resources/template/product/plate/product_order/dtl.html" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/overseachem/erp/controller/PackingFormController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/template/market/plate/purchase_order/dtl.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/template/product/plate/packing_form/dtl.html" />
       </list>
     </option>
   </component>
@@ -339,9 +355,8 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="259" />
     <option name="width" value="1382" />
     <option name="height" value="744" />
   </component>
@@ -388,300 +403,151 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="erpsystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="erpsystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="erpsystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="erpsystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="erpsystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="erpsystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="template" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="erpsystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="erpsystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="template" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="plate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="product_order" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="erpsystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="erpsystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="template" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="plate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="erpsystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="erpsystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="template" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="purchase_order" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="erpsystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="erpsystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="page-js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="erpsystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="erpsystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="erpsystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="erpsystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="erpsystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="erpsystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="erp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="erpsystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="erpsystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="erp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
+          <expand>
+            <path>
+              <item name="erpsystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="erpsystem" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="erpsystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="erpsystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="erpsystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="erpsystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="erpsystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="erpsystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="erpsystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="erpsystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="erp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="erpsystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="erpsystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="erp" type="462c0819:PsiDirectoryNode" />
+              <item name="mapper" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="erpsystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="erpsystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="erp" type="462c0819:PsiDirectoryNode" />
+              <item name="pojo" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="erpsystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="erpsystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="erpsystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="erpsystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="mapper" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="erpsystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="erpsystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="sqlquery" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="erpsystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="erpsystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="erpsystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="erpsystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="page-js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="erpsystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="erpsystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="template" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="erpsystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="erpsystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="template" type="462c0819:PsiDirectoryNode" />
+              <item name="purchase_order" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="erpsystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="erpsystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="template" type="462c0819:PsiDirectoryNode" />
+              <item name="plate" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="erpsystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="erpsystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="template" type="462c0819:PsiDirectoryNode" />
+              <item name="plate" type="462c0819:PsiDirectoryNode" />
+              <item name="packing_form" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="erpsystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="erpsystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="template" type="462c0819:PsiDirectoryNode" />
+              <item name="plate" type="462c0819:PsiDirectoryNode" />
+              <item name="product_order" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -707,26 +573,26 @@
     <property name="RequestMappingsPanelOrder2" value="2" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\software-dev\workspace\erpsystem\src\main\resources\mapper" />
-      <recent name="C:\software-dev\workspace\erpsystem\src\main\java\cn\overseachem\erp\pojo" />
-      <recent name="C:\software-dev\workspace\erpsystem\src\main\resources\static\page-js" />
-      <recent name="C:\software-dev\workspace\erpsystem\src\main\resources\template\product\plate\packing_form" />
-      <recent name="C:\software-dev\java-ee\erpsystem\src\main\java\cn\overseachem\erp\pojo" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="cn.overseachem.erp.service" />
-      <recent name="cn.overseachem.erp.controller" />
-      <recent name="cn.overseachem.erp.pojo" />
-      <recent name="cn.overseachem.erp.mapper" />
-      <recent name="cn.overseachem.service" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\software-dev\workspace\erpsystem\src\main\resources\sqlquery" />
       <recent name="C:\software-dev\workspace\erpsystem\src\main\resources\template\product\plate\packing_form" />
       <recent name="C:\Users\uito\Documents\GitHub\erp-system\src\main\resources\template\market\plate\purchase_order\product_order" />
       <recent name="C:\software-dev\erpsystem\src\main\resources\static\bootstrap-datepicker\css\css" />
       <recent name="C:\software-dev\erpsystem\src\main\resources\static\bootstrap-datepicker\css\js" />
-      <recent name="C:\software-dev\erpsystem\src\main\resources\static\bootstrap-datepicker\css" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="cn.overseachem.erp.mapper" />
+      <recent name="cn.overseachem.erp.service" />
+      <recent name="cn.overseachem.erp.controller" />
+      <recent name="cn.overseachem.erp.pojo" />
+      <recent name="cn.overseachem.service" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\software-dev\workspace\erpsystem\src\main\java\cn\overseachem\erp\pojo" />
+      <recent name="C:\software-dev\workspace\erpsystem\src\main\resources\mapper" />
+      <recent name="C:\software-dev\workspace\erpsystem\src\main\resources\static\page-js" />
+      <recent name="C:\software-dev\workspace\erpsystem\src\main\resources\template\product\plate\packing_form" />
+      <recent name="C:\software-dev\java-ee\erpsystem\src\main\java\cn\overseachem\erp\pojo" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -742,7 +608,14 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.Start">
-    <configuration default="false" name="Start" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <module />
+    </configuration>
+    <configuration name="Start" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="main.*" />
@@ -760,14 +633,94 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="erpsystem" />
       <envs />
-      <method />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+    </configuration>
+    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
+      <setting name="vmparams" value="" />
+      <setting name="cmdLine" value="run-app" />
+      <setting name="passParentEnv" value="true" />
+      <setting name="launchBrowser" value="true" />
+      <setting name="launchBrowserUrl" value="" />
+      <setting name="depsClasspath" value="false" />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+    </configuration>
+    <configuration name="Start" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="main.Start" />
+      <module name="erpsystem" />
+      <envs />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
     </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
       <option name="PROGRAM_PARAMETERS" />
       <predefined_log_file id="idea.log" enabled="true" />
-      <method />
     </configuration>
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
       <module name="" />
@@ -822,29 +775,6 @@
         <option name="SUPPORT_LIB_ENABLED" value="true" />
         <option name="INSTRUMENTATION_ENABLED" value="true" />
       </Profilers>
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <module />
-      <method />
-    </configuration>
-    <configuration default="true" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
       <method />
     </configuration>
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
@@ -993,36 +923,6 @@
       </ExternalSystemSettings>
       <method />
     </configuration>
-    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
-      <setting name="vmparams" value="" />
-      <setting name="cmdLine" value="run-app" />
-      <setting name="passParentEnv" value="true" />
-      <setting name="launchBrowser" value="true" />
-      <setting name="launchBrowserUrl" value="" />
-      <setting name="depsClasspath" value="false" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JUnit" factoryName="JUnit">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
     <configuration default="true" type="JarApplication" factoryName="JAR Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <envs />
@@ -1085,54 +985,9 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="true" type="Remote" factoryName="Remote">
-      <option name="USE_SOCKET_TRANSPORT" value="true" />
-      <option name="SERVER_MODE" value="false" />
-      <option name="SHMEM_ADDRESS" value="javadebug" />
-      <option name="HOST" value="localhost" />
-      <option name="PORT" value="5005" />
-      <method />
-    </configuration>
     <configuration default="true" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="TestNG" factoryName="TestNG">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="ANNOTATION_TYPE" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
-      <envs />
-      <properties />
-      <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <gulpfile />
-      <tasks />
-      <arguments />
       <envs />
       <method />
     </configuration>
@@ -1149,12 +1004,13 @@
     <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
       <method />
     </configuration>
-    <configuration default="false" name="Start" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="main.Start" />
-      <module name="erpsystem" />
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
       <envs />
-      <method />
     </configuration>
     <list size="2">
       <item index="0" class="java.lang.String" itemvalue="Spring Boot.Start" />
@@ -1265,11 +1121,12 @@
       <workItem from="1531134142355" duration="2976000" />
       <workItem from="1531137455484" duration="5009000" />
       <workItem from="1531183780691" duration="5871000" />
+      <workItem from="1531222830802" duration="11806000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="592380000" />
+    <option name="totallyTimeSpent" value="604186000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1281,14 +1138,12 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20327869" sideWeight="0.515885" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -1306,15 +1161,17 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2" sideWeight="0.48411497" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32786885" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16565809" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32786885" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.118336886" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942432" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
@@ -1359,23 +1216,13 @@
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="processedProjectFiles" value="true" />
+    <option name="version" value="1" />
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/mapper/PackingFormMapper.java</url>
-          <line>41</line>
-          <properties class="cn.overseachem.erp.mapper.PackingFormMapper" method="getByCriteria">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="27" />
     </breakpoint-manager>
     <watches-manager />
@@ -1385,69 +1232,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/GodownEntrySpec.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/GodownEntrySpecExample.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/mapper/GodownEntrySpecMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="9" column="10" lean-forward="false" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/page-js/product_plate_inventory_dtl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/PackingFormDataItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/PackingFormWithBLOBs.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="18" lean-forward="false" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/GodownEntryExample.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/GodownEntry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="915">
-          <caret line="92" column="18" lean-forward="false" selection-start-line="92" selection-start-column="18" selection-end-line="92" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/GodownEntryDtlGrid.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="31" lean-forward="false" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/GodownEntrySpecDtlGrid.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -1539,20 +1323,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/template/product/plate/packing_form/dtl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="954">
-          <caret line="343" column="58" lean-forward="false" selection-start-line="343" selection-start-column="58" selection-end-line="343" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/page-js/product_plate_packing_form_dtl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2377">
-          <caret line="341" column="77" lean-forward="false" selection-start-line="341" selection-start-column="77" selection-end-line="341" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/template/product/plate/packing_form/lst.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1606,12 +1376,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="12" column="31" lean-forward="false" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
-          <folding>
-            <element signature="e#183#184#0" expanded="false" />
-            <element signature="e#214#215#0" expanded="false" />
-            <element signature="e#263#264#0" expanded="false" />
-            <element signature="e#303#304#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1633,56 +1397,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="20" column="18" lean-forward="false" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
-          <folding>
-            <element signature="e#1204#1205#0" expanded="false" />
-            <element signature="e#1238#1239#0" expanded="false" />
-            <element signature="e#1292#1293#0" expanded="false" />
-            <element signature="e#1338#1339#0" expanded="false" />
-            <element signature="e#1374#1375#0" expanded="false" />
-            <element signature="e#1406#1407#0" expanded="false" />
-            <element signature="e#1456#1457#0" expanded="false" />
-            <element signature="e#1498#1499#0" expanded="false" />
-            <element signature="e#1532#1533#0" expanded="false" />
-            <element signature="e#1561#1562#0" expanded="false" />
-            <element signature="e#1606#1607#0" expanded="false" />
-            <element signature="e#1642#1643#0" expanded="false" />
-            <element signature="e#1675#1676#0" expanded="false" />
-            <element signature="e#1703#1704#0" expanded="false" />
-            <element signature="e#1746#1747#0" expanded="false" />
-            <element signature="e#1780#1781#0" expanded="false" />
-            <element signature="e#1815#1816#0" expanded="false" />
-            <element signature="e#1847#1848#0" expanded="false" />
-            <element signature="e#1896#1897#0" expanded="false" />
-            <element signature="e#1938#1939#0" expanded="false" />
-            <element signature="e#1972#1973#0" expanded="false" />
-            <element signature="e#2001#2002#0" expanded="false" />
-            <element signature="e#2046#2047#0" expanded="false" />
-            <element signature="e#2082#2083#0" expanded="false" />
-            <element signature="e#2124#2125#0" expanded="false" />
-            <element signature="e#2162#2163#0" expanded="false" />
-            <element signature="e#2224#2225#0" expanded="false" />
-            <element signature="e#2278#2279#0" expanded="false" />
-            <element signature="e#2319#2320#0" expanded="false" />
-            <element signature="e#2356#2357#0" expanded="false" />
-            <element signature="e#2416#2417#0" expanded="false" />
-            <element signature="e#2468#2469#0" expanded="false" />
-            <element signature="e#2508#2509#0" expanded="false" />
-            <element signature="e#2545#2546#0" expanded="false" />
-            <element signature="e#2604#2605#0" expanded="false" />
-            <element signature="e#2656#2657#0" expanded="false" />
-            <element signature="e#2688#2689#0" expanded="false" />
-            <element signature="e#2717#2718#0" expanded="false" />
-            <element signature="e#2760#2761#0" expanded="false" />
-            <element signature="e#2796#2797#0" expanded="false" />
-            <element signature="e#2827#2828#0" expanded="false" />
-            <element signature="e#2855#2856#0" expanded="false" />
-            <element signature="e#2896#2897#0" expanded="false" />
-            <element signature="e#2930#2931#0" expanded="false" />
-            <element signature="e#2966#2967#0" expanded="false" />
-            <element signature="e#2999#3000#0" expanded="false" />
-            <element signature="e#3050#3051#0" expanded="false" />
-            <element signature="e#3094#3095#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1705,20 +1419,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="34" column="34" lean-forward="false" selection-start-line="34" selection-start-column="34" selection-end-line="34" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/service/PackingFormService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4080">
-          <caret line="308" column="0" lean-forward="false" selection-start-line="308" selection-start-column="0" selection-end-line="308" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#12364#12365#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1726,98 +1426,31 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="27" lean-forward="false" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
-          <folding>
-            <element signature="e#435#436#0" expanded="false" />
-            <element signature="e#468#469#0" expanded="false" />
-            <element signature="e#520#521#0" expanded="false" />
-            <element signature="e#599#600#0" expanded="false" />
-            <element signature="e#639#640#0" expanded="false" />
-            <element signature="e#675#676#0" expanded="false" />
-            <element signature="e#859#860#0" expanded="false" />
-            <element signature="e#892#893#0" expanded="false" />
-            <element signature="e#945#946#0" expanded="false" />
-            <element signature="e#989#990#0" expanded="false" />
-            <element signature="e#1027#1028#0" expanded="false" />
-            <element signature="e#1060#1061#0" expanded="false" />
-            <element signature="e#1113#1114#0" expanded="false" />
-            <element signature="e#1157#1158#0" expanded="false" />
-            <element signature="e#1194#1195#0" expanded="false" />
-            <element signature="e#1229#1230#0" expanded="false" />
-            <element signature="e#1283#1284#0" expanded="false" />
-            <element signature="e#1331#1332#0" expanded="false" />
-            <element signature="e#1373#1374#0" expanded="false" />
-            <element signature="e#1413#1414#0" expanded="false" />
-            <element signature="e#1477#1478#0" expanded="false" />
-            <element signature="e#1535#1536#0" expanded="false" />
-            <element signature="e#1578#1579#0" expanded="false" />
-            <element signature="e#1619#1620#0" expanded="false" />
-            <element signature="e#1685#1686#0" expanded="false" />
-            <element signature="e#1745#1746#0" expanded="false" />
-            <element signature="e#1783#1784#0" expanded="false" />
-            <element signature="e#1816#1817#0" expanded="false" />
-            <element signature="e#1869#1870#0" expanded="false" />
-            <element signature="e#1913#1914#0" expanded="false" />
-            <element signature="e#2571#2572#0" expanded="false" />
-            <element signature="e#2614#2615#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/service/ProductOrderService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2640">
+        <state relative-caret-position="2430">
           <caret line="187" column="5" lean-forward="false" selection-start-line="187" selection-start-column="5" selection-end-line="187" selection-end-column="5" />
-          <folding>
-            <marker date="1531183737458" expanded="true" signature="8913:8921" ph="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/controller/PurchaseOrderController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3510">
+        <state relative-caret-position="3585">
           <caret line="259" column="63" lean-forward="false" selection-start-line="259" selection-start-column="63" selection-end-line="259" selection-end-column="63" />
-          <folding>
-            <marker date="1531183737452" expanded="true" signature="8374:9225" ph="{...}" />
-            <marker date="1531183737452" expanded="true" signature="9231:9281" ph="@{...}" />
-            <marker date="1531183737452" expanded="true" signature="9344:11923" ph="{...}" />
-            <marker date="1531183737452" expanded="true" signature="11929:11975" ph="@{...}" />
-            <marker date="1531183737452" expanded="true" signature="12026:12131" ph="{...}" />
-            <marker date="1531183737452" expanded="true" signature="12137:12179" ph="@{...}" />
-            <marker date="1531183737452" expanded="true" signature="12238:14863" ph="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/ProductOrderDtlGrid.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="705">
+        <state relative-caret-position="840">
           <caret line="66" column="0" lean-forward="false" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
           <folding>
-            <marker date="1531183737453" expanded="false" signature="1700:1711" ph=" { " />
-            <marker date="1531183737453" expanded="false" signature="1730:1736" ph=" }" />
-            <marker date="1531183737453" expanded="false" signature="1788:1799" ph=" { " />
-            <marker date="1531183737453" expanded="false" signature="1830:1836" ph=" }" />
-            <marker date="1531183737453" expanded="false" signature="1872:1883" ph=" { " />
-            <marker date="1531183737453" expanded="false" signature="1902:1908" ph=" }" />
-            <marker date="1531183737453" expanded="true" signature="1960:1971" ph=" { " />
-            <marker date="1531183737453" expanded="true" signature="2002:2008" ph=" }" />
-            <marker date="1531183737453" expanded="false" signature="2044:2055" ph=" { " />
-            <marker date="1531183737453" expanded="false" signature="2073:2079" ph=" }" />
-            <marker date="1531183737453" expanded="false" signature="2130:2141" ph=" { " />
-            <marker date="1531183737453" expanded="false" signature="2170:2176" ph=" }" />
-            <marker date="1531183737453" expanded="false" signature="2211:2222" ph=" { " />
-            <marker date="1531183737453" expanded="false" signature="2240:2246" ph=" }" />
-            <marker date="1531183737453" expanded="false" signature="2296:2307" ph=" { " />
-            <marker date="1531183737453" expanded="false" signature="2336:2342" ph=" }" />
-            <marker date="1531183737453" expanded="false" signature="2375:2386" ph=" { " />
-            <marker date="1531183737453" expanded="false" signature="2401:2407" ph=" }" />
-            <marker date="1531183737453" expanded="false" signature="2452:2463" ph=" { " />
-            <marker date="1531183737453" expanded="false" signature="2486:2492" ph=" }" />
-            <marker date="1531183737453" expanded="false" signature="2529:2540" ph=" { " />
-            <marker date="1531183737453" expanded="false" signature="2560:2566" ph=" }" />
-            <marker date="1531183737453" expanded="false" signature="2620:2631" ph=" { " />
-            <marker date="1531183737453" expanded="false" signature="2664:2670" ph=" }" />
+            <element signature="e#2007#2008#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1825,27 +1458,25 @@
     <entry file="jar://C:/dev-classpath/java/jdk1.8.0_73/src.zip!/com/sun/org/apache/xerces/internal/util/ErrorHandlerWrapper.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/ProductOrderLstGrid.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="34" lean-forward="false" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="34" />
+        <state relative-caret-position="420">
+          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
           <folding>
-            <element signature="e#1251#1252#0" expanded="true" />
-            <element signature="e#1300#1301#0" expanded="true" />
-            <element signature="e#1340#1341#0" expanded="true" />
+            <marker date="1531220303018" expanded="true" signature="1334:1341" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/controller/ProductOrderController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="118" column="72" lean-forward="true" selection-start-line="118" selection-start-column="72" selection-end-line="118" selection-end-column="72" />
+        <state relative-caret-position="1530">
+          <caret line="119" column="51" lean-forward="false" selection-start-line="119" selection-start-column="51" selection-end-line="119" selection-end-column="51" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/template/product/plate/product_order/lst.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
+        <state relative-caret-position="1995">
           <caret line="133" column="80" lean-forward="false" selection-start-line="133" selection-start-column="80" selection-end-line="133" selection-end-column="80" />
           <folding />
         </state>
@@ -1853,66 +1484,212 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/page-js/product_plate_product_order_lst.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="62" column="95" lean-forward="false" selection-start-line="62" selection-start-column="95" selection-end-line="62" selection-end-column="95" />
+        <state relative-caret-position="930">
+          <caret line="79" column="1" lean-forward="false" selection-start-line="79" selection-start-column="1" selection-end-line="79" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/PackingFormWithBLOBs.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="18" lean-forward="false" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/PackingForm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/sqlquery/PackingFormMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="751">
+          <caret line="285" column="11" lean-forward="true" selection-start-line="282" selection-start-column="2" selection-end-line="285" selection-end-column="11" />
           <folding>
-            <marker date="1531192146144" expanded="true" signature="697:715" ph="..." />
-            <marker date="1531192146144" expanded="true" signature="781:799" ph="..." />
-            <marker date="1531192146144" expanded="true" signature="947:965" ph="..." />
-            <marker date="1531192146144" expanded="true" signature="1035:1053" ph="..." />
-            <marker date="1531192146144" expanded="true" signature="1208:1226" ph="..." />
-            <marker date="1531192146144" expanded="true" signature="1295:1313" ph="..." />
-            <marker date="1531192146144" expanded="true" signature="1411:1429" ph="..." />
-            <marker date="1531192146144" expanded="true" signature="1502:1520" ph="..." />
-            <marker date="1531192146144" expanded="true" signature="1590:1608" ph="..." />
-            <marker date="1531192146144" expanded="true" signature="2460:2478" ph="..." />
-            <marker date="1531192146144" expanded="true" signature="3722:3740" ph="..." />
-            <marker date="1531192146144" expanded="true" signature="3722:3781" ph="..." />
-            <marker date="1531192146144" expanded="true" signature="3847:3865" ph="..." />
-            <marker date="1531192146144" expanded="true" signature="3847:3906" ph="..." />
-            <marker date="1531192146144" expanded="true" signature="4054:4072" ph="..." />
-            <marker date="1531192146144" expanded="true" signature="4054:4113" ph="..." />
-            <marker date="1531192146144" expanded="true" signature="4183:4201" ph="..." />
-            <marker date="1531192146144" expanded="true" signature="4183:4242" ph="..." />
-            <marker date="1531192146144" expanded="true" signature="4397:4415" ph="..." />
-            <marker date="1531192146144" expanded="true" signature="4397:4456" ph="..." />
-            <marker date="1531192146144" expanded="true" signature="4525:4543" ph="..." />
-            <marker date="1531192146144" expanded="true" signature="4525:4584" ph="..." />
-            <marker date="1531192146144" expanded="true" signature="4682:4700" ph="..." />
-            <marker date="1531192146144" expanded="true" signature="4682:4741" ph="..." />
-            <marker date="1531192146144" expanded="true" signature="4814:4832" ph="..." />
-            <marker date="1531192146144" expanded="true" signature="4814:4873" ph="..." />
-            <marker date="1531192146144" expanded="true" signature="4943:4961" ph="..." />
-            <marker date="1531192146144" expanded="true" signature="4943:5002" ph="..." />
-            <marker date="1531192146144" expanded="true" signature="5078:5096" ph="..." />
-            <marker date="1531192146144" expanded="true" signature="5078:5137" ph="..." />
+            <marker date="1530109672538" expanded="true" signature="4539:4711" ph="select , fro... " />
+            <marker date="1530109672538" expanded="true" signature="4797:4876" ph="delete from packing_form... " />
+            <marker date="1530109672538" expanded="true" signature="4985:5009" ph="delete from packing_form... " />
+            <marker date="1530109672538" expanded="true" signature="5204:5619" ph="insert into packing_form... " />
+            <marker date="1530109672538" expanded="true" signature="7216:7249" ph="select count... packing_form" />
+            <marker date="1530109672538" expanded="true" signature="8516:8984" ph="update packing_form... " />
+            <marker date="1530109672538" expanded="true" signature="9157:9428" ph="update packing_form... " />
+            <marker date="1530109672538" expanded="true" signature="9654:10420" ph="update packing_form... " />
+            <marker date="1530109672538" expanded="true" signature="10543:10965" ph="update packing_form... " />
+            <marker date="1530109672538" expanded="true" signature="11070:11316" ph="update packing_form... " />
+            <marker date="1530109672538" expanded="true" signature="11384:12100" ph="SELECT purch... purchase_order_spec" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/template/market/plate/purchase_order/dtl.html">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/PackingFormExample.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="158" column="83" lean-forward="false" selection-start-line="158" selection-start-column="83" selection-end-line="158" selection-end-column="83" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/PackingFormMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="812">
+          <caret line="339" column="11" lean-forward="false" selection-start-line="339" selection-start-column="11" selection-end-line="339" selection-end-column="11" />
+          <folding>
+            <marker date="1531223604557" expanded="true" signature="4872:5044" ph="select , fro... " />
+            <marker date="1531223604557" expanded="true" signature="5130:5209" ph="delete from packing_form... " />
+            <marker date="1531223604557" expanded="true" signature="5318:5342" ph="delete from packing_form... " />
+            <marker date="1531223604557" expanded="true" signature="5537:6139" ph="insert into packing_form... " />
+            <marker date="1531223604557" expanded="true" signature="8293:8326" ph="select count... packing_form" />
+            <marker date="1531223604557" expanded="true" signature="10003:10686" ph="update packing_form... " />
+            <marker date="1531223604557" expanded="true" signature="10859:11345" ph="update packing_form... " />
+            <marker date="1531223604557" expanded="true" signature="11571:12705" ph="update packing_form... " />
+            <marker date="1531223604557" expanded="true" signature="12828:13444" ph="update packing_form... " />
+            <marker date="1531223604557" expanded="true" signature="13549:13989" ph="update packing_form... " />
+            <marker date="1531223604557" expanded="true" signature="14057:14777" ph="SELECT purch... purchase_order_spec" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/mapper/PackingFormMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="40" column="182" lean-forward="false" selection-start-line="40" selection-start-column="182" selection-end-line="40" selection-end-column="182" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/pojo/PackingFormDataItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/template/nav_bar.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="387">
+          <caret line="292" column="60" lean-forward="false" selection-start-line="292" selection-start-column="60" selection-end-line="292" selection-end-column="60" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/template/product/plate/product_order/dtl.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="94">
-          <caret line="220" column="106" lean-forward="false" selection-start-line="220" selection-start-column="106" selection-end-line="220" selection-end-column="106" />
+        <state relative-caret-position="364">
+          <caret line="123" column="225" lean-forward="false" selection-start-line="123" selection-start-column="225" selection-end-line="123" selection-end-column="225" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/page-js/product_plate_packing_form_lst.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="41" column="169" lean-forward="true" selection-start-line="41" selection-start-column="169" selection-end-line="41" selection-end-column="169" />
           <folding>
-            <element signature="n#style#0;n#small#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1531227039463" expanded="true" signature="1496:1514" ph="..." />
+            <marker date="1531227039463" expanded="true" signature="1584:1602" ph="..." />
+            <marker date="1531227039463" expanded="true" signature="1754:1772" ph="..." />
+            <marker date="1531227039463" expanded="true" signature="1844:1862" ph="..." />
+            <marker date="1531227039463" expanded="true" signature="1937:1955" ph="..." />
+            <marker date="1531227039463" expanded="true" signature="2027:2045" ph="..." />
+            <marker date="1531227039463" expanded="true" signature="2112:2130" ph="..." />
+            <marker date="1531227039463" expanded="true" signature="2207:2225" ph="..." />
+            <marker date="1531227039463" expanded="true" signature="2303:2321" ph="..." />
+            <marker date="1531227039463" expanded="true" signature="2874:2892" ph="..." />
+            <marker date="1531227039463" expanded="true" signature="2954:2972" ph="..." />
+            <marker date="1531227039463" expanded="true" signature="3042:3060" ph="..." />
+            <marker date="1531227039463" expanded="true" signature="3124:3142" ph="..." />
+            <marker date="1531227039463" expanded="true" signature="3209:3227" ph="..." />
+            <marker date="1531227039463" expanded="true" signature="3291:3309" ph="..." />
+            <marker date="1531227039463" expanded="true" signature="3368:3386" ph="..." />
+            <marker date="1531227039463" expanded="true" signature="3455:3473" ph="..." />
+            <marker date="1531227039463" expanded="true" signature="3543:3561" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/controller/PackingFormController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2592">
-          <caret line="289" column="0" lean-forward="false" selection-start-line="289" selection-start-column="0" selection-end-line="289" selection-end-column="0" />
+        <state relative-caret-position="540">
+          <caret line="198" column="9" lean-forward="false" selection-start-line="198" selection-start-column="9" selection-end-line="198" selection-end-column="9" />
+          <folding>
+            <element signature="e#2017#2037#0" expanded="true" />
+            <element signature="e#3326#3346#0" expanded="true" />
+            <element signature="e#6612#6633#0" expanded="true" />
+            <element signature="e#7787#7808#0" expanded="true" />
+            <element signature="e#8873#8894#0" expanded="true" />
+            <element signature="e#11711#11712#0" expanded="true" />
+            <element signature="e#11780#11781#0" expanded="true" />
+            <element signature="e#12029#12050#0" expanded="true" />
+            <element signature="e#13139#13160#0" expanded="true" />
+            <element signature="e#14084#14105#0" expanded="true" />
+            <element signature="e#15324#15341#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/page-js/product_plate_packing_form_dtl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="656">
+          <caret line="319" column="12" lean-forward="false" selection-start-line="319" selection-start-column="12" selection-end-line="319" selection-end-column="88" />
+          <folding>
+            <marker date="1531228311296" expanded="true" signature="876:894" ph="..." />
+            <marker date="1531228311296" expanded="true" signature="990:1008" ph="..." />
+            <marker date="1531228311296" expanded="true" signature="1552:1570" ph="..." />
+            <marker date="1531228311296" expanded="true" signature="2114:2132" ph="..." />
+            <marker date="1531228311296" expanded="true" signature="3250:3268" ph="..." />
+            <marker date="1531228311296" expanded="true" signature="3364:3382" ph="..." />
+            <marker date="1531228311296" expanded="true" signature="3936:3954" ph="..." />
+            <marker date="1531228311296" expanded="true" signature="4508:4526" ph="..." />
+            <marker date="1531228311296" expanded="true" signature="6714:6743" ph="..." />
+            <marker date="1531228311296" expanded="true" signature="6863:6894" ph="..." />
+            <marker date="1531228311296" expanded="true" signature="7004:7035" ph="..." />
+            <marker date="1531228311296" expanded="true" signature="8516:8534" ph="..." />
+            <marker date="1531228311296" expanded="true" signature="8659:8677" ph="..." />
+            <marker date="1531228311296" expanded="true" signature="9295:9313" ph="..." />
+            <marker date="1531228311296" expanded="true" signature="9933:9951" ph="..." />
+            <marker date="1531228311296" expanded="true" signature="10883:10901" ph="..." />
+            <marker date="1531228311296" expanded="true" signature="11026:11044" ph="..." />
+            <marker date="1531228311296" expanded="true" signature="11672:11690" ph="..." />
+            <marker date="1531228311296" expanded="true" signature="12320:12338" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/template/market/plate/purchase_order/dtl.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="309">
+          <caret line="58" column="197" lean-forward="false" selection-start-line="58" selection-start-column="197" selection-end-line="58" selection-end-column="197" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/template/product/plate/packing_form/dtl.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="702">
+          <caret line="433" column="152" lean-forward="false" selection-start-line="433" selection-start-column="152" selection-end-line="433" selection-end-column="152" />
+          <folding>
+            <element signature="n#style#0;n#small#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#2;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#2;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#3;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#2;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#3;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/overseachem/erp/service/PackingFormService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="750">
+          <caret line="318" column="5" lean-forward="true" selection-start-line="318" selection-start-column="5" selection-end-line="318" selection-end-column="5" />
           <folding />
         </state>
       </provider>

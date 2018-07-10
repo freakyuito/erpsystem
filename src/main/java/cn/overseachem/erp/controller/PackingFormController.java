@@ -27,7 +27,7 @@ import java.util.List;
  */
 
 @Controller
-@RequestMapping("/product/packing_form")
+@RequestMapping("/product/plate/packing_form")
 public class PackingFormController {
 
     @Autowired
@@ -99,7 +99,19 @@ public class PackingFormController {
         grid.setPurchaseNum(purchaseNum);
         grid.setSize(size);
         grid.setWeighingListEmpty(packingFormService.isWeighingListEmpty(packingNum));
+        model.addAttribute("validity", purchaseOrderService.getOrderByPurchaseNum(purchaseNum).getValidityCode());
         model.addAttribute("packingFormDtlGrid", grid);
+        if (purchaseOrderService.getOrderByPurchaseNum(purchaseNum).getValidityCode()) {
+            System.out.println(purchaseOrderService.getOrderByPurchaseNum(purchaseNum).getValidityCode());
+            model.addAttribute("finishedDtlGrids", getFinishedList(packingNum));
+            model.addAttribute("wasteDtlGrids", getWasteList(packingNum));
+            model.addAttribute("inventoryDtlGrids", getInventoryList(packingNum));
+        } else {
+            System.out.println(purchaseOrderService.getOrderByPurchaseNum(purchaseNum).getValidityCode());
+            model.addAttribute("finishedDtlGrids", getFullFinishedList(packingNum));
+            model.addAttribute("wasteDtlGrids", getFullWasteList(packingNum));
+            model.addAttribute("inventoryDtlGrids", getFullInventoryList(packingNum));
+        }
         return "/product/plate/packing_form/dtl";
     }
 
@@ -108,18 +120,21 @@ public class PackingFormController {
         PackingFormDtlGrid grid = new PackingFormDtlGrid();
         grid.setPackingNum(packingNum);
         model.addAttribute("packingFormDtlGrid", grid);
+        model.addAttribute("finishedDtlGrids", getFinishedList(packingNum));
+        model.addAttribute("wasteDtlGrids", getWasteList(packingNum));
+        model.addAttribute("inventoryDtlGrids", getInventoryList(packingNum));
         return "/product/plate/packing_form/dtl_free";
     }
 
-    @RequestMapping("/get_weighing_list")
+    @RequestMapping("/get_finished_list")
     @ResponseBody
-    public List<PackingFormDataItem> getWeighingList(String packingNum) {
+    public List<PackingFormDataItem> getFinishedList(String packingNum) {
         PackingFormWithBLOBs bloBs = packingFormService.getByPackingNum(packingNum);
-        if (bloBs.getExchangeRecords() != null) {
-            Integer begin = decodeShiftRecord(bloBs.getExchangeRecords()).get("begin");
-            Integer end = decodeShiftRecord(bloBs.getExchangeRecords()).get("end");
+        if (bloBs.getFinishedRecords() != null) {
+            Integer end = decodeShiftRecord(bloBs.getFinishedRecords()).get("end");
             ArrayList<PackingFormDataItem> results = new ArrayList<PackingFormDataItem>();
-            List<PackingFormDataItem> items = packingFormService.getWeighingList(packingNum);
+            System.out.println("half" + packingFormService.getFinishedList(packingNum));
+            List<PackingFormDataItem> items = packingFormService.getFinishedList(packingNum);
             for (PackingFormDataItem i : items
                     ) {
                 if (items.indexOf(i) >= 0 && items.indexOf(i) <= end - 1) ;
@@ -127,19 +142,60 @@ public class PackingFormController {
             }
             return results;
         } else {
-            return packingFormService.getWeighingList(packingNum);
+            return packingFormService.getFinishedList(packingNum);
         }
+    }
+
+    public List<PackingFormDataItem> getFullFinishedList(String packingNum) {
+        PackingFormWithBLOBs bloBs = packingFormService.getByPackingNum(packingNum);
+        return packingFormService.getFinishedList(packingNum);
     }
 
     @RequestMapping("/get_waste_list")
     @ResponseBody
     public List<PackingFormDataItem> getWasteList(String packingNum) {
+        PackingFormWithBLOBs bloBs = packingFormService.getByPackingNum(packingNum);
+        if (bloBs.getWasteRecords() != null) {
+            Integer end = decodeShiftRecord(bloBs.getWasteRecords()).get("end");
+            ArrayList<PackingFormDataItem> results = new ArrayList<PackingFormDataItem>();
+            List<PackingFormDataItem> items = packingFormService.getWasteList(packingNum);
+            for (PackingFormDataItem i : items
+                    ) {
+                if (items.indexOf(i) >= 0 && items.indexOf(i) <= end - 1) ;
+                else results.add(i);
+            }
+            return results;
+        } else {
+            return packingFormService.getWasteList(packingNum);
+        }
+    }
+
+    public List<PackingFormDataItem> getFullWasteList(String packingNum) {
+        PackingFormWithBLOBs bloBs = packingFormService.getByPackingNum(packingNum);
         return packingFormService.getWasteList(packingNum);
     }
 
     @RequestMapping("/get_inventory_list")
     @ResponseBody
     public List<PackingFormDataItem> getInventoryList(String packingNum) {
+        PackingFormWithBLOBs bloBs = packingFormService.getByPackingNum(packingNum);
+        if (bloBs.getWasteRecords() != null) {
+            Integer end = decodeShiftRecord(bloBs.getInventoryRecords()).get("end");
+            ArrayList<PackingFormDataItem> results = new ArrayList<PackingFormDataItem>();
+            List<PackingFormDataItem> items = packingFormService.getInventoryList(packingNum);
+            for (PackingFormDataItem i : items
+                    ) {
+                if (items.indexOf(i) >= 0 && items.indexOf(i) <= end - 1) ;
+                else results.add(i);
+            }
+            return results;
+        } else {
+            return packingFormService.getInventoryList(packingNum);
+        }
+    }
+
+    public List<PackingFormDataItem> getFullInventoryList(String packingNum) {
+        PackingFormWithBLOBs bloBs = packingFormService.getByPackingNum(packingNum);
         return packingFormService.getInventoryList(packingNum);
     }
 
@@ -271,8 +327,8 @@ public class PackingFormController {
 
     @RequestMapping("/shift")
     @ResponseBody
-    public void shift(String shiftRecord, String packingNum) {
-        packingFormService.shift(shiftRecord, packingNum);
+    public void shift(String finishedRecord, String wasteRecord, String inventoryRecord, String packingNum) {
+        packingFormService.shift(finishedRecord, wasteRecord, inventoryRecord, packingNum);
     }
 
     public HashMap<String, Integer> decodeShiftRecord(String record) {
@@ -286,7 +342,6 @@ public class PackingFormController {
         }
         return null;
     }
-
 
 
 }

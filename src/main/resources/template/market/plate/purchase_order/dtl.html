@@ -53,10 +53,10 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td id="purchase-num" th:text="${purchaseOrderGrid.purchaseNum}" th:style="(${purchaseOrderGrid.validityCode})?'text-align: center':'text-align: center;color:red'"></td>
-                        <td th:text="${purchaseOrderGrid.customerName}" th:style="(${purchaseOrderGrid.validityCode})?'text-align: center':'text-align: center;color:red'"></td>
-                        <td th:text="${purchaseOrderGrid.purchaseTime}" th:style="(${purchaseOrderGrid.validityCode})?'text-align: center':'text-align: center;color:red'"></td>
-                        <td th:text="${purchaseOrderGrid.deliverTime}" th:style="(${purchaseOrderGrid.validityCode})?'text-align: center':'text-align: center;color:red'"></td>
+                        <td id="purchase-num" th:text="${purchaseOrderGrid.purchaseNum}" th:style="(${purchaseOrderGrid.validityCode})?'text-align: center':'text-align: center;color:red;TEXT-DECORATION: line-through'"></td>
+                        <td th:text="${purchaseOrderGrid.customerName}" th:style="(${purchaseOrderGrid.validityCode})?'text-align: center':'text-align: center;color:red;TEXT-DECORATION: line-through'"></td>
+                        <td th:text="${purchaseOrderGrid.purchaseTime}" th:style="(${purchaseOrderGrid.validityCode})?'text-align: center':'text-align: center;color:red;TEXT-DECORATION: line-through'"></td>
+                        <td th:text="${purchaseOrderGrid.deliverTime}" th:style="(${purchaseOrderGrid.validityCode})?'text-align: center':'text-align: center;color:red;TEXT-DECORATION: line-through'"></td>
                         <!--<td th:text="${purchaseOrderGrid.contractId}" style="text-align: center"></td>-->
                     </tr>
                     </tbody>

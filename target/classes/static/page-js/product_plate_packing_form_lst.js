@@ -28,7 +28,7 @@ function search() {
         colorIdList.push('');
     }
     $.each(colorIdList, function (index, colorId) {
-        $.post('/product/packing_form/get_by_criteria', {
+        $.post('/product/plate/packing_form/get_by_criteria', {
             purchaseNum: purchaseNum,
             colorId: colorId,
             batchNum: batchNum,
@@ -46,7 +46,7 @@ function search() {
                             '<td style="text-align: center">' + obj.size + '</td>' +
                             '<td style="text-align: center">' + obj.requiredAmount + '</td>' +
                             '<td style="text-align: center">' + obj.completedWeight + '</td>' +
-                            '<td style="text-align: center"><a href="/product/packing_form/2dtl?batchNum=' + obj.batchNum + '">' + obj.packingNum + '</a></td>' +
+                            '<td style="text-align: center"><a href="/product/plate/packing_form/2dtl?batchNum=' + obj.batchNum + '">' + obj.packingNum + '</a></td>' +
                             '</tr>');
                 })
             } else {
@@ -55,7 +55,7 @@ function search() {
         })
 
     })
-    $.post('/product/packing_form/get_free_packing_form', {packingNum:packingNum}, function (res) {
+    $.post('/product/plate/packing_form/get_free_packing_form', {packingNum:packingNum}, function (res) {
         if (res != null) {
             $.each(res, function (index, obj) {
                 $("#tbody-list").append(

@@ -1,18 +1,18 @@
 package cn.overseachem.erp.pojo;
 
 public class PackingFormWithBLOBs extends PackingForm {
-    private String weighingList;
+    private String finishedList;
 
     private String wasteList;
 
     private String inventoryList;
 
-    public String getWeighingList() {
-        return weighingList;
+    public String getFinishedList() {
+        return finishedList;
     }
 
-    public void setWeighingList(String weighingList) {
-        this.weighingList = weighingList == null ? null : weighingList.trim();
+    public void setFinishedList(String finishedList) {
+        this.finishedList = finishedList == null ? null : finishedList.trim();
     }
 
     public String getWasteList() {

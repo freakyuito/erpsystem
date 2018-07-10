@@ -5,9 +5,15 @@ public class PackingForm {
 
     private String fkBatchNum;
 
-    private String exchangeRecords;
+    private String finishedRecords;
+
+    private String wasteRecords;
+
+    private String inventoryRecords;
 
     private String printRecords;
+
+    private String fkOperationRecordsId;
 
     public String getPackingNum() {
         return packingNum;
@@ -25,12 +31,28 @@ public class PackingForm {
         this.fkBatchNum = fkBatchNum == null ? null : fkBatchNum.trim();
     }
 
-    public String getExchangeRecords() {
-        return exchangeRecords;
+    public String getFinishedRecords() {
+        return finishedRecords;
     }
 
-    public void setExchangeRecords(String exchangeRecords) {
-        this.exchangeRecords = exchangeRecords == null ? null : exchangeRecords.trim();
+    public void setFinishedRecords(String finishedRecords) {
+        this.finishedRecords = finishedRecords == null ? null : finishedRecords.trim();
+    }
+
+    public String getWasteRecords() {
+        return wasteRecords;
+    }
+
+    public void setWasteRecords(String wasteRecords) {
+        this.wasteRecords = wasteRecords == null ? null : wasteRecords.trim();
+    }
+
+    public String getInventoryRecords() {
+        return inventoryRecords;
+    }
+
+    public void setInventoryRecords(String inventoryRecords) {
+        this.inventoryRecords = inventoryRecords == null ? null : inventoryRecords.trim();
     }
 
     public String getPrintRecords() {
@@ -39,5 +61,13 @@ public class PackingForm {
 
     public void setPrintRecords(String printRecords) {
         this.printRecords = printRecords == null ? null : printRecords.trim();
+    }
+
+    public String getFkOperationRecordsId() {
+        return fkOperationRecordsId;
+    }
+
+    public void setFkOperationRecordsId(String fkOperationRecordsId) {
+        this.fkOperationRecordsId = fkOperationRecordsId == null ? null : fkOperationRecordsId.trim();
     }
 }

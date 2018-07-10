@@ -46,6 +46,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             基础信息
+                            <small style="color: red;" th:if="!${validity}">该订单已作废</small>
                         </div>
                         <div class="panel-body">
                             <table class="table table-condensed">
@@ -60,14 +61,21 @@
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td style="text-align: center" th:text="${packingFormDtlGrid.purchaseNum}">JY18008
+                                    <td th:style="(${validity})?'text-align: center':'text-align: center;color:red;TEXT-DECORATION: line-through'"
+                                        th:text="${packingFormDtlGrid.purchaseNum}">JY18008
                                     </td>
-                                    <td style="text-align: center" th:text="${packingFormDtlGrid.colorName}">大飞欧</td>
-                                    <td style="text-align: center" id="batch-num"
+                                    <td th:style="(${validity})?'text-align: center':'text-align: center;color:red;TEXT-DECORATION: line-through'"
+                                        th:text="${packingFormDtlGrid.colorName}">大飞欧
+                                    </td>
+                                    <td th:style="(${validity})?'text-align: center':'text-align: center;color:red;TEXT-DECORATION: line-through'"
+                                        id="batch-num"
                                         th:text="${packingFormDtlGrid.batchNum}">2018-04-22
                                     </td>
-                                    <td style="text-align: center" th:text="${packingFormDtlGrid.size}">2018-05-05</td>
-                                    <td style="text-align: center" id="packing-num"
+                                    <td th:style="(${validity})?'text-align: center':'text-align: center;color:red;TEXT-DECORATION: line-through'"
+                                        th:text="${packingFormDtlGrid.size}">2018-05-05
+                                    </td>
+                                    <td th:style="(${validity})?'text-align: center':'text-align: center;color:red;TEXT-DECORATION: line-through'"
+                                        id="packing-num"
                                         th:text="${packingFormDtlGrid.packingNum}">Z000001
                                     </td>
                                 </tr>
@@ -141,7 +149,19 @@
                                         <th style="width: 110px;text-align:center">重量/kg</th>
                                     </tr>
                                     </thead>
-                                    <tbody id="tbody-weighing">
+                                    <tbody id="tbody-finished">
+                                    <tr th:each="spec,iterStat : ${finishedDtlGrids}">
+                                        <td class="index" th:style="(${validity})?'text-align: center;width:50px':'width:50px;text-align: center;color:red;TEXT-DECORATION: line-through'"
+                                            th:text="${spec.index}"></td>
+                                        <td class="quantity" th:style="(${validity})?'text-align: center;width:110px':'width:110px;text-align: center;color:red;TEXT-DECORATION: line-through'"
+                                            th:text="${spec.key}"></td>
+                                        <td class="" style="width: 110px;text-align: center">
+                                            <label th:if="!${validity}" th:style="(${validity})?'text-align: center':'text-align: center;color:red;TEXT-DECORATION: line-through'" th:text="${spec.value}"></label>
+                                            <input th:if="${validity}" th:value="${spec.value}" class="form-control input-sm weight"
+                                                   onchange="if(checkInputable($(this))){setWeighingData($('#packing-num').text(),$(this).parent().prev().prev().text(),$(this).parent().prev().text(),$(this).val());setWeighingListColor();totalWeighingAmount();}
+                                                            else {alert('无法跨行输入有效数值');$(this).val(0);}"/>
+                                        </td>
+                                    </tr>
                                     </tbody>
                                     <tfoot>
                                     <tr>
@@ -159,7 +179,7 @@
                 <div class="col-lg-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <button class="btn btn-primary btn-sm" id="add-waste" onclick="addWaste()">
+                            <button class="btn btn-primary btn-sm" id="add-waste" onclick="addWaste()" th:if="${validity}">
                                 <i class="fa fa-plus ">添加条目</i>
                             </button>
                             废品记录
@@ -177,7 +197,24 @@
                                         </tr>
                                         </thead>
                                         <tbody id="tbody-waste">
-
+                                        <tr th:each="spec,iterStat : ${wasteDtlGrids}">
+                                            <td th:style="(${validity})?'text-align: center;width:50px':'width:50px;text-align: center;color:red;TEXT-DECORATION: line-through'" class="index"
+                                                th:text="${spec.index}"></td>
+                                            <td style="text-align: center">
+                                                <label th:if="!${validity}" th:style="(${validity})?'text-align: center':'text-align: center;color:red;TEXT-DECORATION: line-through'" th:text="${spec.key}"></label>
+                                                <input th:if="${validity}" class="form-control input-sm quantity" th:value="${spec.key}"
+                                                       onchange="setWasteData($('#packing-num').text(),$(this).parent().parent().find('.index').eq(0).text(),$(this).val(),$(this).parent().parent().find('.weight').eq(0).val());setWasteListColor();totalWasteAmount()"/>
+                                            </td>
+                                            <td style="text-align: center">
+                                                <label th:if="!${validity}" th:style="(${validity})?'text-align: center':'text-align: center;color:red;TEXT-DECORATION: line-through'" th:text="${spec.value}"></label>
+                                                <input th:if="${validity}" class="form-control input-sm weight" th:value="${spec.value}"
+                                                       onchange="setWasteData($('#packing-num').text(),$(this).parent().parent().find('.index').eq(0).text(),$(this).parent().parent().find('.quantity').eq(0).val(),$(this).val());setWasteListColor();totalWasteAmount()"/>
+                                            </td>
+                                            <td style="text-align: center">
+                                                <button class="btn btn-danger btn-sm" onclick="removeWaste($(this))" th:if="${validity}">删除
+                                                </button>
+                                            </td>
+                                        </tr>
                                         </tbody>
                                         <tfoot>
                                         <tr>
@@ -193,7 +230,7 @@
 
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <button class="btn btn-primary btn-sm" onclick="addInventory()">
+                            <button class="btn btn-primary btn-sm" onclick="addInventory()" th:if="${validity}">
                                 <i class="fa fa-plus ">添加条目</i>
                             </button>
                             库存记录
@@ -211,21 +248,24 @@
                                         </tr>
                                         </thead>
                                         <tbody id="tbody-inventory">
-                                        <!--<tr>-->
-                                            <!--<td style="text-align: center" class="index">1</td>-->
-                                            <!--<td style="text-align: center">-->
-                                                <!--<input class="form-control input-sm quantity"-->
-                                                       <!--onblur="setInventoryData($('#packing-num').text(),$(this).parent().parent().find('.index').eq(0).text(),$(this).val(),$(this).parent().parent().find('.weight').eq(0).val())"/>-->
-                                            <!--</td>-->
-                                            <!--<td style="text-align: center">-->
-                                                <!--<input class="form-control input-sm weight"-->
-                                                       <!--onblur="setInventoryData($('#packing-num').text(),$(this).parent().parent().find('.index').eq(0).text(),$(this).parent().parent().find('.quantity').eq(0).val(),$(this).val())"/>-->
-                                            <!--</td>-->
-                                            <!--<td style="text-align: center">-->
-                                                <!--<button class="btn btn-danger btn-sm" onclick="removeWaste($(this))">删除-->
-                                                <!--</button>-->
-                                            <!--</td>-->
-                                        <!--</tr>-->
+                                        <tr th:each="spec,iterStat : ${inventoryDtlGrids}">
+                                            <td th:style="(${validity})?'text-align: center;width:50px':'width:50px;text-align: center;color:red;TEXT-DECORATION: line-through'" class="index" th:text="${spec.index}"></td>
+                                            <td style="text-align: center">
+                                                <label th:if="!${validity}" th:style="(${validity})?'text-align: center':'text-align: center;color:red;TEXT-DECORATION: line-through'" th:text="${spec.key}"></label>
+                                                <input th:if="${validity}" class="form-control input-sm quantity" th:value="${spec.key}"
+                                                       onblur="setInventoryData($('#packing-num').text(),$(this).parent().parent().find('.index').eq(0).text(),$(this).val(),$(this).parent().parent().find('.weight').eq(0).val())"/>
+                                            </td>
+                                            <td style="text-align: center">
+                                                <label th:if="!${validity}" th:style="(${validity})?'text-align: center':'text-align: center;color:red;TEXT-DECORATION: line-through'" th:text="${spec.value}"></label>
+                                                <input th:if="${validity}" class="form-control input-sm weight" th:value="${spec.value}"
+                                                       onblur="setInventoryData($('#packing-num').text(),$(this).parent().parent().find('.index').eq(0).text(),$(this).parent().parent().find('.quantity').eq(0).val(),$(this).val())"/>
+                                            </td>
+                                            <td style="text-align: center">
+                                                <button class="btn btn-danger btn-sm"
+                                                        onclick="removeInventory($(this))" th:if="${validity}">删除
+                                                </button>
+                                            </td>
+                                        </tr>
                                         </tbody>
                                         <tfoot>
                                         <tr>
@@ -259,7 +299,7 @@
                                 <tr>
                                     <td style="text-align: center">
 
-                                        <button class="btn btn-primary btn-sm" data-toggle="modal"
+                                        <button th:if="${validity}" class="btn btn-primary btn-sm" data-toggle="modal"
                                                 data-target="#myModal_shift"><i
                                                 class="glyphicon glyphicon-transfer"></i>交接班
                                         </button>
@@ -293,7 +333,7 @@
                                                                 <select id="select_inspector" class="form-control">
                                                                 </select>
                                                             </div>
-                                                            <div class="form-group-sm col-sm-4" >
+                                                            <div class="form-group-sm col-sm-4">
                                                                 记录
                                                                 <select id="select_recorder" class="form-control">
                                                                 </select>
@@ -304,6 +344,9 @@
                                                                     <option value="1">甲一</option>
                                                                     <option value="2">甲二</option>
                                                                     <option value="3">乙一</option>
+                                                                    <option value="3">乙二</option>
+                                                                    <option value="3">丙一</option>
+                                                                    <option value="3">丙二</option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -312,7 +355,9 @@
                                                         <button type="button" class="btn btn-default"
                                                                 data-dismiss="modal">关闭
                                                         </button>
-                                                        <button type="button" id="shift-confirm" class="btn btn-primary" onclick="shift()">确认</button>
+                                                        <button type="button" id="shift-confirm" class="btn btn-primary"
+                                                                onclick="shift()">确认
+                                                        </button>
                                                     </div>
                                                 </div>
                                                 <!-- /.modal-content -->
@@ -352,7 +397,7 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td style="text-align: center">
+                                    <td th:if="${validity}" style="text-align: center">
                                         <btn class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-check "></i>提交
                                         </btn>
                                     </td>
@@ -382,11 +427,11 @@
                                     </thead>
                                     <tbody>
                                     <tr>
-                                        <td style="text-align: center">2018-04-20 12:35:00</td>
-                                        <td style="text-align: center">xxx</td>
-                                        <td style="text-align: center">开始生产</td>
-                                        <td style="text-align: center">无</td>
-                                        <td style="text-align: center">JY180004批次开始生产</td>
+                                        <td th:style="(${validityCode})?'text-align: center':'text-align: center;color:red;TEXT-DECORATION: line-through'">2018-04-20 12:35:00</td>
+                                        <td th:style="(${validityCode})?'text-align: center':'text-align: center;color:red;TEXT-DECORATION: line-through'">xxx</td>
+                                        <td th:style="(${validityCode})?'text-align: center':'text-align: center;color:red;TEXT-DECORATION: line-through'">开始生产</td>
+                                        <td th:style="(${validityCode})?'text-align: center':'text-align: center;color:red;TEXT-DECORATION: line-through'">无</td>
+                                        <td th:style="(${validityCode})?'text-align: center':'text-align: center;color:red;TEXT-DECORATION: line-through'">JY180004批次开始生产</td>
                                     </tr>
                                     </tbody>
                                 </table>
