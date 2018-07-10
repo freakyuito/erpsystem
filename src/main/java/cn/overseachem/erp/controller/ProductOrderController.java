@@ -114,13 +114,14 @@ public class ProductOrderController {
         String scheduleBeginTime = "";
         String scheduleEndTime = "";
         String machineNum = "无";
+        Boolean validity = productOrderService.getValidityByProductNum(target.getProductNum());
         if (target.getScheduleBeginTime() != null)
             scheduleBeginTime = new SimpleDateFormat("yyyy-MM-dd").format(target.getScheduleBeginTime());
         if (target.getScheduleFinishTime() != null)
             scheduleEndTime = new SimpleDateFormat("yyyy-MM-dd").format(target.getScheduleFinishTime());
         if (target.getMachineNum() != null)
             machineNum = target.getMachineNum().toString();
-        return new ProductOrderLstGrid(target.getFkPurchaseNum(), patternService.getNameById(patternId), target.getProductNum(),
+        return new ProductOrderLstGrid(validity,target.getFkPurchaseNum(), patternService.getNameById(patternId), target.getProductNum(),
                 machineNum, completedAmount, totalAmount, 0f, deliverTime, scheduleBeginTime, scheduleEndTime);
     }
 

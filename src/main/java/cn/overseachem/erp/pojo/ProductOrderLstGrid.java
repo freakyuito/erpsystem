@@ -1,6 +1,22 @@
 package cn.overseachem.erp.pojo;
 
 public class ProductOrderLstGrid {
+    private Boolean validity;
+
+    public ProductOrderLstGrid(Boolean validity, String purchaseNum, String patternName, String productNum, String machineNum, Integer completedAmount, Integer totalAmount, Float estimateWeight, String deliverTime, String scheduleBeginTime, String scheduleFinishTime) {
+        this.validity = validity;
+        this.purchaseNum = purchaseNum;
+        this.patternName = patternName;
+        this.productNum = productNum;
+        this.machineNum = machineNum;
+        this.completedAmount = completedAmount;
+        this.totalAmount = totalAmount;
+        this.estimateWeight = estimateWeight;
+        this.deliverTime = deliverTime;
+        this.scheduleBeginTime = scheduleBeginTime;
+        this.scheduleFinishTime = scheduleFinishTime;
+    }
+
     private String purchaseNum;
     private String patternName;
     private String productNum;
@@ -12,17 +28,12 @@ public class ProductOrderLstGrid {
     private String scheduleBeginTime;
     private String scheduleFinishTime;
 
-    public ProductOrderLstGrid(String purchaseNum, String patternName, String productNum, String machineNum, Integer completedAmount, Integer totalAmount, Float estimateWeight, String deliverTime, String scheduleBeginTime, String scheduleFinishTime) {
-        this.purchaseNum = purchaseNum;
-        this.patternName = patternName;
-        this.productNum = productNum;
-        this.machineNum = machineNum;
-        this.completedAmount = completedAmount;
-        this.totalAmount = totalAmount;
-        this.estimateWeight = estimateWeight;
-        this.deliverTime = deliverTime;
-        this.scheduleBeginTime = scheduleBeginTime;
-        this.scheduleFinishTime = scheduleFinishTime;
+    public Boolean getValidity() {
+        return validity;
+    }
+
+    public void setValidity(Boolean validity) {
+        this.validity = validity;
     }
 
     public String getDeliverTime() {
