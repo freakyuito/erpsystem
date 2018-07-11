@@ -104,7 +104,6 @@ public class PackingFormController {
         PurchaseOrderSpec spec = packingFormService.getPurchaseOrderSpecByPackingForm(packingFormService.getByPackingNum(packingNum));
         grid.setWeighingListEmpty(packingFormService.isWeighingListEmpty(packingNum));
         model.addAttribute("validity", purchaseOrderService.getOrderByPurchaseNum(purchaseNum).getValidityCode());
-        model.addAttribute("minWeight",spec)
         model.addAttribute("packingFormDtlGrid", grid);
         if (purchaseOrderService.getOrderByPurchaseNum(purchaseNum).getValidityCode()) {
             model.addAttribute("finishedDtlGrids", getFinishedList(packingNum));
@@ -226,12 +225,9 @@ public class PackingFormController {
     public void generateWeighingList(String batchNum, String bundleNum) {
         String packingNum = packingFormService.getPackingNumByBatchNum(batchNum);
         if (packingFormService.isWeighingListEmpty(packingNum)) {
-            System.out.println("generating weighing list");
             Integer purchaseSpecId = productOrderService.getPurchaseSpecRequiredAmountByBatchNum(batchNum);
             Integer requiredAmount = purchaseOrderService.getSpecById(purchaseSpecId).getRequiredAmount();
             packingFormService.generateWeighingList(packingNum, requiredAmount, Integer.parseInt(bundleNum));
-        } else {
-            System.out.println("no need to generate weighing list");
         }
     }
 
@@ -270,7 +266,6 @@ public class PackingFormController {
                 items.add(item);
                 count++;
             }
-            System.out.println("controller-set weighing list:" + item.toString());
         }
         packingFormService.setWeighingList(packingNum, items);
         productOrderService.setCompletedAmount(packingFormService.getBatchNumByPackingNum(packingNum), packingFormService.getCompletedAmountByPackingNum(packingNum));

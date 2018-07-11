@@ -80,13 +80,16 @@ public class GodownEntryController {
                 grid.setRecorderName(userService.getNameById(jsonObject.getInteger("recorder_id")));
                 grid.setFinishedQty(jsonObject.getString("finished_quantity"));
                 grid.setFinishedWgt(new DecimalFormat("#.0").format(Float.parseFloat(jsonObject.getString("finished_weight"))).toString());
-                grid.setGenerateTime(jsonObject.getString("generate_time"));
+                try {
+                    grid.setGenerateTime(new SimpleDateFormat("yyyy-MM-dd").format(new SimpleDateFormat("yyyy-MM-dd").parse(jsonObject.getString("generate_time"))));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
                 grid.setInventoryNum(jsonObject.getString("a"));
                 grid.setMachinId(jsonObject.getString("machine_id"));
-                grid.setWasteWgt(jsonObject.getString("waste_weight"));
+                grid.setWasteWgt(new DecimalFormat("###0.0").format(Float.parseFloat(jsonObject.getString("waste_weight"))));
                 grid.setWorkgroup(workgroupService.getNameById(jsonObject.getInteger("workgroup_id")));
                 grid.setMaterial(material);
-                System.out.println(grid.toString());
                 grids.add(grid);
             }
             return grids;

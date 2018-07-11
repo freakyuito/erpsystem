@@ -174,4 +174,12 @@ public class PurchaseOrderService {
         e.createCriteria().andFkPurchaseNumEqualTo(purchaseNum);
         return specMapper.selectByExample(e);
     }
+
+    public List<PurchaseOrder> getUnStartPurchaseOrder(){
+        for (PurchaseOrder s:orderMapper.getUnStartPurchaseOrder()
+             ) {
+            System.out.println(s.getPurchaseNum());
+        }
+        return orderMapper.getUnStartPurchaseOrder();
+    }
 }

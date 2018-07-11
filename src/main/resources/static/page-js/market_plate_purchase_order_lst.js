@@ -26,12 +26,18 @@ function getCategory(category, btn) {
     })
 }
 
+function getUnStartOrder() {
+    $.post('/market/purchase_order/get_unstart_order', {}, function (res) {
+        generateLst(res);
+    })
+}
+
 function generateLst(res) {
     if (res != null) {
         var i = 0;
         $("#table-body").empty();
         $.each(res, function (index, obj) {
-            if(obj.validity){
+            if (obj.validity) {
                 $("#table-body").append(
                     '<tr>' +
                     '<td style="text-align: center;width: 150px">' + (index + 1) + '</td>' +
@@ -42,7 +48,7 @@ function generateLst(res) {
                     '<td style="text-align: center;width: 250px">' + obj.deliverTime + '</td>' +
                     '<td style="text-align: center;width: 250px">' + obj.remark + '</td>' +
                     '</tr>');
-            }else {
+            } else {
                 $("#table-body").append(
                     '<tr>' +
                     '<td style="TEXT-DECORATION: line-through;text-align: center;width: 150px;color: red">' + (index + 1) + '</td>' +

@@ -78,16 +78,16 @@ public class PurchaseOrderController {
                 ) {
             completedAmount += s.getCompletedAmount();
         }
-        for (PurchaseOrderSpec s:purchaseOrderSpecs
-             ) {
+        for (PurchaseOrderSpec s : purchaseOrderSpecs
+                ) {
             totalAmount += s.getRequiredAmount();
         }
         if (order.getMakerId() != null && order.getProducerId() != null && order.getSalesmanId() != null && order.getSupervisorId() != null) {
-            return new PurchaseOrderListGrid(order.getValidityCode(),c.getAbbreviation(), order.getPurchaseNum(),
+            return new PurchaseOrderListGrid(order.getValidityCode(), c.getAbbreviation(), order.getPurchaseNum(),
                     completedAmount, totalAmount, new SimpleDateFormat("yyyy-MM-dd").format(order.getPurchaseTime()),
                     new SimpleDateFormat("yyyy-MM-dd").format(order.getDeliverTime()), order.getRemark());
         } else {
-            return new PurchaseOrderListGrid(order.getValidityCode(),c.getAbbreviation(), order.getPurchaseNum(),
+            return new PurchaseOrderListGrid(order.getValidityCode(), c.getAbbreviation(), order.getPurchaseNum(),
                     completedAmount, totalAmount, new SimpleDateFormat("yyyy-MM-dd").format(order.getPurchaseTime()),
                     new SimpleDateFormat("yyyy-MM-dd").format(order.getDeliverTime()), order.getRemark());
         }
@@ -140,7 +140,7 @@ public class PurchaseOrderController {
             Integer completedAmount = productOrderService.getCompletedAmount(productOrderService.getProductSpecByPurchaseOrderSpecId(s.getSpecId()).getFkProductNum());
             grids.add(new PurchaseOrderSpecGrid(patternService.getNameById(s.getPatternId()) + "  " + s.getPatternId(),
                     colorService.getNameById(s.getColorId()) + "  " + s.getColorId(), s.getLength(), s.getWidth(), s.getThickness()
-                    , s.getRequiredAmount(), completedAmount.toString(),s.getRequiredAmount().toString(), ((float)s.getLength() * (float)s.getWidth() * s.getThickness() *1.24f)/100000f*(float)completedAmount, 0f, s.getPrice(),
+                    , s.getRequiredAmount(), completedAmount.toString(), s.getRequiredAmount().toString(), ((float) s.getLength() * (float) s.getWidth() * s.getThickness() * 1.24f) / 100000f * (float) completedAmount, 0f, s.getPrice(),
                     s.getRequiredAmount() * s.getPrice()));
         }
         PurchaseOrderGrid purchaseOrderGrid = new PurchaseOrderGrid(order.getPurchaseNum(),
@@ -165,7 +165,7 @@ public class PurchaseOrderController {
             ProductOrderSpec i = productOrderService.getProductSpecByPurchaseOrderSpecId(s.getSpecId());
             grids.add(new PurchaseOrderSpecGrid(patternService.getNameById(s.getPatternId()) + "  " + s.getPatternId(),
                     colorService.getNameById(s.getColorId()) + "  " + s.getColorId(), s.getLength(), s.getWidth(), s.getThickness()
-                    , s.getRequiredAmount(), i.getCompletedAmount().toString(),s.getRequiredAmount().toString(), ((float)s.getLength() * (float)s.getWidth() * s.getThickness() *1.24f)/100000f*(float)i.getCompletedAmount(),
+                    , s.getRequiredAmount(), i.getCompletedAmount().toString(), s.getRequiredAmount().toString(), ((float) s.getLength() * (float) s.getWidth() * s.getThickness() * 1.24f) / 100000f * (float) i.getCompletedAmount(),
                     packingFormService.getWeightByBatchNum(i.getBatchNum()), s.getPrice(),
                     s.getRequiredAmount() * s.getPrice()));
         }
@@ -300,5 +300,17 @@ public class PurchaseOrderController {
         } else {
 
         }
+    }
+
+    @RequestMapping("/get_unstart_order")
+    @ResponseBody
+    public List<PurchaseOrderListGrid> getUnStartPurchaseOrder() {
+        ArrayList<PurchaseOrderListGrid> listGrids = new ArrayList<>();
+        List<PurchaseOrder> purchaseOrderList = purchaseOrderService.getUnStartPurchaseOrder();
+        for (PurchaseOrder s:purchaseOrderList
+             ) {
+            listGrids.add(generateGrid(s));
+        }
+        return listGrids;
     }
 }

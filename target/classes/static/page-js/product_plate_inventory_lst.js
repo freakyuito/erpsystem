@@ -1,5 +1,5 @@
 $(function () {
-    $.post('/common/user/get_by_auth', {auth:'BC'}, function (res) {
+    $.post('/common/user/get_by_auth', {auth:'BG'}, function (res) {
         var s = $("#select-commander");
         $.each(res, function (index, obj) {
             s.append('<option value="' + obj + '">' + obj + '</option>');
