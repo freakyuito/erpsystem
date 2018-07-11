@@ -1,6 +1,27 @@
 package cn.overseachem.erp.pojo;
 
 public class PackingFormLstGrid {
+    public PackingFormLstGrid(Boolean validity, String purchaseNum, String colorName, String batchNum, String machineId, String size, String requiredAmount, String completedWeight, String packingNum) {
+        this.validity = validity;
+        this.purchaseNum = purchaseNum;
+        this.colorName = colorName;
+        this.batchNum = batchNum;
+        this.machineId = machineId;
+        this.size = size;
+        this.requiredAmount = requiredAmount;
+        this.completedWeight = completedWeight;
+        this.packingNum = packingNum;
+    }
+
+    public Boolean getValidity() {
+        return validity;
+    }
+
+    public void setValidity(Boolean validity) {
+        this.validity = validity;
+    }
+
+    private Boolean validity;
     private String purchaseNum;
     private String colorName;
     private String batchNum;
@@ -25,17 +46,6 @@ public class PackingFormLstGrid {
     }
 
     public PackingFormLstGrid() {
-    }
-
-    public PackingFormLstGrid(String purchaseNum, String colorName, String batchNum, String machineId, String size, String requiredAmount, String completedWeight, String packingNum) {
-        this.purchaseNum = purchaseNum;
-        this.colorName = colorName;
-        this.batchNum = batchNum;
-        this.machineId = machineId;
-        this.size = size;
-        this.requiredAmount = requiredAmount;
-        this.completedWeight = completedWeight;
-        this.packingNum = packingNum;
     }
 
     public String getPurchaseNum() {

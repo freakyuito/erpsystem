@@ -36,6 +36,7 @@ function search() {
         }, function (res) {
             if (res != null) {
                 $.each(res, function (index, obj) {
+                    if(obj.validity){
                         $("#tbody-list").append(
                             '<tr>' +
                             '<td style="text-align: center">' + (index + 1) + '</td>' +
@@ -48,6 +49,20 @@ function search() {
                             '<td style="text-align: center">' + obj.completedWeight + '</td>' +
                             '<td style="text-align: center"><a href="/product/plate/packing_form/2dtl?batchNum=' + obj.batchNum + '">' + obj.packingNum + '</a></td>' +
                             '</tr>');
+                    }else{
+                        $("#tbody-list").append(
+                            '<tr>' +
+                            '<td style="text-align: center;color:red;TEXT-DECORATION: line-through;">' + (index + 1) + '</td>' +
+                            '<td style="text-align: center;color:red;TEXT-DECORATION: line-through;"><a href="/market/purchase_order/2dtl?purchaseNum=' + obj.purchaseNum + '">' + obj.purchaseNum + '</a></td>' +
+                            '<td style="text-align: center;color:red;TEXT-DECORATION: line-through;">' + obj.colorName + '</td>' +
+                            '<td style="text-align: center;color:red;TEXT-DECORATION: line-through;">' + obj.batchNum + '</a></td>' +
+                            '<td style="text-align: center;color:red;TEXT-DECORATION: line-through;">' + obj.machineId + '</td>' +
+                            '<td style="text-align: center;color:red;TEXT-DECORATION: line-through;">' + obj.size + '</td>' +
+                            '<td style="text-align: center;color:red;TEXT-DECORATION: line-through;">' + obj.requiredAmount + '</td>' +
+                            '<td style="text-align: center;color:red;TEXT-DECORATION: line-through;">' + obj.completedWeight + '</td>' +
+                            '<td style="text-align: center;color:red;TEXT-DECORATION: line-through;"><a href="/product/plate/packing_form/2dtl?batchNum=' + obj.batchNum + '">' + obj.packingNum + '</a></td>' +
+                            '</tr>');
+                    }
                 })
             } else {
                 $("#tbody-list").append('null');

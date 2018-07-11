@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -121,8 +122,15 @@ public class ProductOrderController {
             scheduleEndTime = new SimpleDateFormat("yyyy-MM-dd").format(target.getScheduleFinishTime());
         if (target.getMachineNum() != null)
             machineNum = target.getMachineNum().toString();
+
+        Float estimateWeight = 0f;
+        for (PurchaseOrderSpec s:productOrderService.getPurchaseOrderSpecsByProductOrder(target)
+             ) {
+            ProductOrderSpec p = productOrderService.getProductSpecByPurchaseOrderSpecId(s.getSpecId());
+            estimateWeight += ((float)s.getLength()*(float)s.getWidth()*s.getThickness()*1.24f)/100000*p.getCompletedAmount();
+        }
         return new ProductOrderLstGrid(validity,target.getFkPurchaseNum(), patternService.getNameById(patternId), target.getProductNum(),
-                machineNum, completedAmount, totalAmount, 0f, deliverTime, scheduleBeginTime, scheduleEndTime);
+                machineNum, completedAmount, totalAmount, new DecimalFormat("###0.0").format(estimateWeight), deliverTime, scheduleBeginTime, scheduleEndTime);
     }
 
     @RequestMapping("/set_state_code")

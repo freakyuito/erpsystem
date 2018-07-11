@@ -222,4 +222,10 @@ public class ProductOrderService {
         return purchaseOrderMapper.selectByPrimaryKey(orderMapper.selectByPrimaryKey(productNum).getFkPurchaseNum()).getValidityCode();
     }
 
+    public List<PurchaseOrderSpec> getPurchaseOrderSpecsByProductOrder(ProductOrder target) {
+        PurchaseOrderSpecExample e = new PurchaseOrderSpecExample();
+        e.createCriteria().andFkPurchaseNumEqualTo(target.getFkPurchaseNum());
+        return purchaseOrderSpecMapper.selectByExample(e);
+    }
+
 }

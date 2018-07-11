@@ -3,7 +3,7 @@ package cn.overseachem.erp.pojo;
 public class ProductOrderLstGrid {
     private Boolean validity;
 
-    public ProductOrderLstGrid(Boolean validity, String purchaseNum, String patternName, String productNum, String machineNum, Integer completedAmount, Integer totalAmount, Float estimateWeight, String deliverTime, String scheduleBeginTime, String scheduleFinishTime) {
+    public ProductOrderLstGrid(Boolean validity, String purchaseNum, String patternName, String productNum, String machineNum, Integer completedAmount, Integer totalAmount, String estimateWeight, String deliverTime, String scheduleBeginTime, String scheduleFinishTime) {
         this.validity = validity;
         this.purchaseNum = purchaseNum;
         this.patternName = patternName;
@@ -23,7 +23,7 @@ public class ProductOrderLstGrid {
     private String machineNum;
     private Integer completedAmount;
     private Integer totalAmount;
-    private Float estimateWeight;
+    private String estimateWeight;
     private String deliverTime;
     private String scheduleBeginTime;
     private String scheduleFinishTime;
@@ -107,11 +107,11 @@ public class ProductOrderLstGrid {
         this.totalAmount = totalAmount;
     }
 
-    public Float getEstimateWeight() {
+    public String getEstimateWeight() {
         return estimateWeight;
     }
 
-    public void setEstimateWeight(Float estimateWeight) {
+    public void setEstimateWeight(String estimateWeight) {
         this.estimateWeight = estimateWeight;
     }
 

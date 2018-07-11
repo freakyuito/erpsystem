@@ -2,6 +2,9 @@ package cn.overseachem.erp.service;
 
 
 import cn.overseachem.erp.mapper.PackingFormMapper;
+import cn.overseachem.erp.mapper.ProductOrderSpecMapper;
+import cn.overseachem.erp.mapper.PurchaseOrderMapper;
+import cn.overseachem.erp.mapper.PurchaseOrderSpecMapper;
 import cn.overseachem.erp.pojo.*;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
@@ -25,6 +28,12 @@ public class PackingFormService {
 
     @Autowired
     private PackingFormMapper mapper;
+    @Autowired
+    private ProductOrderSpecMapper productOrderSpecMapper;
+    @Autowired
+    private PurchaseOrderSpecMapper purchaseOrderSpecMapper;
+    @Autowired
+    private PurchaseOrderMapper purchaseOrderMapper;
 
     public void generateWeighingList(String packingNum, Integer requiredAmount, Integer bundleNum) {
         ArrayList<PackingFormDataItem> arrayList = new ArrayList<PackingFormDataItem>();
@@ -271,7 +280,7 @@ public class PackingFormService {
         return mapper.selectByPrimaryKey(packingNum).getFkBatchNum();
     }
 
-    public void shift(String finishedRecord,String wasteRecord,String inventoryRecord, String packingNum) {
+    public void shift(String finishedRecord, String wasteRecord, String inventoryRecord, String packingNum) {
         PackingFormWithBLOBs form = mapper.selectByPrimaryKey(packingNum);
         String newRecord = null;
         if (form.getFinishedRecords() != null)
@@ -298,23 +307,35 @@ public class PackingFormService {
         return mapper.selectByPrimaryKey(packingNum);
     }
 
-    public Float getWeightByBatchNum(String batchNum){
+    public Float getWeightByBatchNum(String batchNum) {
         PackingFormWithBLOBs bloBs = getByPackingNum(getPackingNumByBatchNum(batchNum));
-        if(bloBs !=null){
+        if (bloBs != null) {
             if (bloBs.getFinishedRecords() != null) {
                 Float totalWeight = 0f;
                 List<PackingFormDataItem> items = getFinishedList(getPackingNumByBatchNum(batchNum));
                 for (PackingFormDataItem i : items
                         ) {
-                    if(!i.getKey().equals("0"))
+                    if (!i.getKey().equals("0"))
                         totalWeight += Float.parseFloat(i.getValue());
                 }
                 return totalWeight;
             } else {
                 return 0f;
             }
-        }else{
+        } else {
             return 0f;
         }
+    }
+
+    public PurchaseOrder getPurchaseOrderByPackingForm(PackingForm target) {
+        if (target.getFkBatchNum() != null)
+            return purchaseOrderMapper.selectByPrimaryKey(purchaseOrderSpecMapper.selectByPrimaryKey(productOrderSpecMapper.selectByPrimaryKey(target.getFkBatchNum()).getFkPurchaseSpecId()).getFkPurchaseNum());
+        return null;
+    }
+
+    public PurchaseOrderSpec getPurchaseOrderSpecByPackingForm(PackingForm target){
+        if(target.getFkBatchNum()!=null)
+            return purchaseOrderSpecMapper.selectByPrimaryKey(productOrderSpecMapper.selectByPrimaryKey(target.getFkBatchNum()).getFkPurchaseSpecId());
+        return null;
     }
 }

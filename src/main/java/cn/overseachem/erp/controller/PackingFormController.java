@@ -58,12 +58,15 @@ public class PackingFormController {
         for (int i = 0; i < jsonArray.size(); i++) {
             JSONObject jsonObject = jsonArray.getJSONObject(i);
             Integer machineId = productOrderService.getMachineIdByBatchNum(jsonObject.getString("batch_num"));
-            PackingFormLstGrid grid = new PackingFormLstGrid(jsonObject.getString("fk_purchase_num"),
-                    colorService.getNameById(jsonObject.getString("color_id")), jsonObject.getString("batch_num"),
-                    machineId + "", jsonObject.getInteger("length").toString() + " * " + jsonObject.getInteger("width").toString() + " * " +
-                    jsonObject.getFloat("thickness").toString(), jsonObject.getInteger("completed_amount").toString() + "/" + jsonObject.getInteger("required_amount").toString(),
-                    packingFormService.getCompletedWeightByPackingNum(jsonObject.getString("packing_num")).toString(), jsonObject.getString("packing_num"));
-            grids.add(grid);
+            PackingFormWithBLOBs packingFormWithBLOBs = packingFormService.getByPackingNum(jsonObject.getString("packing_num"));
+            if (packingFormWithBLOBs.getFkBatchNum() != null) {
+                PackingFormLstGrid grid = new PackingFormLstGrid(packingFormService.getPurchaseOrderByPackingForm(packingFormWithBLOBs).getValidityCode(), jsonObject.getString("fk_purchase_num"),
+                        colorService.getNameById(jsonObject.getString("color_id")), jsonObject.getString("batch_num"),
+                        machineId + "", jsonObject.getInteger("length").toString() + " * " + jsonObject.getInteger("width").toString() + " * " +
+                        jsonObject.getFloat("thickness").toString(), jsonObject.getInteger("completed_amount").toString() + "/" + jsonObject.getInteger("required_amount").toString(),
+                        packingFormService.getCompletedWeightByPackingNum(jsonObject.getString("packing_num")).toString(), jsonObject.getString("packing_num"));
+                grids.add(grid);
+            }
         }
         return grids;
     }
@@ -98,16 +101,16 @@ public class PackingFormController {
         grid.setPackingNum(packingNum);
         grid.setPurchaseNum(purchaseNum);
         grid.setSize(size);
+        PurchaseOrderSpec spec = packingFormService.getPurchaseOrderSpecByPackingForm(packingFormService.getByPackingNum(packingNum));
         grid.setWeighingListEmpty(packingFormService.isWeighingListEmpty(packingNum));
         model.addAttribute("validity", purchaseOrderService.getOrderByPurchaseNum(purchaseNum).getValidityCode());
+        model.addAttribute("minWeight",spec)
         model.addAttribute("packingFormDtlGrid", grid);
         if (purchaseOrderService.getOrderByPurchaseNum(purchaseNum).getValidityCode()) {
-            System.out.println(purchaseOrderService.getOrderByPurchaseNum(purchaseNum).getValidityCode());
             model.addAttribute("finishedDtlGrids", getFinishedList(packingNum));
             model.addAttribute("wasteDtlGrids", getWasteList(packingNum));
             model.addAttribute("inventoryDtlGrids", getInventoryList(packingNum));
         } else {
-            System.out.println(purchaseOrderService.getOrderByPurchaseNum(purchaseNum).getValidityCode());
             model.addAttribute("finishedDtlGrids", getFullFinishedList(packingNum));
             model.addAttribute("wasteDtlGrids", getFullWasteList(packingNum));
             model.addAttribute("inventoryDtlGrids", getFullInventoryList(packingNum));

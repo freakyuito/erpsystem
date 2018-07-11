@@ -1,5 +1,5 @@
 $(function () {
-    getAllCaptain();
+    getUserList('BG',$('#receiver-name'));
 })
 
 function setStateCode(curState, batchNum) {
@@ -9,12 +9,11 @@ function setStateCode(curState, batchNum) {
     })
 }
 
-function getAllCaptain() {
-    var capatinSelector = $('#receiver-name');
-    capatinSelector.empty();
-    $.post('/common/user/get_captain', {}, function (res) {
+function getUserList(auth,select) {
+    $.post('/common/user/get_by_auth', {auth: auth}, function (res) {
+        select.empty();
         $.each(res, function (index, obj) {
-            capatinSelector.append('<option value="' + obj + '">' + obj + '</option>')
+            select.append('<option value="' + obj + '">' + obj + '</option>');
         })
     })
 }
