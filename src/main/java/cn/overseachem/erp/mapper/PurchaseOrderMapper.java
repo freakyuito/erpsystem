@@ -33,4 +33,6 @@ public interface PurchaseOrderMapper {
     int updateByPrimaryKey(PurchaseOrder record);
 
     List<PurchaseOrder> getUnStartPurchaseOrder();
+
+    List<PurchaseOrder> getProcessingPurchaseOrder();
 }

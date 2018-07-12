@@ -315,4 +315,13 @@ JOIN product_order_spec pos2 ON pos2.fk_purchase_spec_id = pos.spec_id
 GROUP BY po.purchase_num) as a
 where -1 = a.maxStateCode AND -1 = a.minStateCode
   </select>
+    <select id="getProcessingPurchaseOrder" resultMap="BaseResultMap">
+      SELECT a.purchase_num,a.customer_id,a.purchase_time,a.deliver_time,a.supervisor_id,a.salesman_id,a.producer_id,a.maker_id,a.remark,a.validity_code,a.fk_operation_records_id from(
+select po.*, MAX(pos2.state_code) maxStateCode, MIN(pos2.state_code) minStateCode
+from purchase_order po
+JOIN purchase_order_spec pos ON po.purchase_num = pos.fk_purchase_num
+JOIN product_order_spec pos2 ON pos2.fk_purchase_spec_id = pos.spec_id
+GROUP BY po.purchase_num) as a
+where 1 = a.maxStateCode AND 1 = a.minStateCode
+    </select>
 </mapper>

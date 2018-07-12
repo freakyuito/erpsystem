@@ -31,6 +31,11 @@ function getUnStartOrder() {
         generateLst(res);
     })
 }
+function getProcessingOrder() {
+    $.post('/market/purchase_order/get_processing_order', {}, function (res) {
+        generateLst(res);
+    })
+}
 
 function generateLst(res) {
     if (res != null) {

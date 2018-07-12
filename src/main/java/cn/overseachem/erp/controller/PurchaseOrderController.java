@@ -313,4 +313,16 @@ public class PurchaseOrderController {
         }
         return listGrids;
     }
+
+    @RequestMapping("/get_processing_order")
+    @ResponseBody
+    public List<PurchaseOrderListGrid> getProcessingPurchaseOrder() {
+        ArrayList<PurchaseOrderListGrid> listGrids = new ArrayList<>();
+        List<PurchaseOrder> purchaseOrderList = purchaseOrderService.getProcessingPurchaseOrder();
+        for (PurchaseOrder s:purchaseOrderList
+                ) {
+            listGrids.add(generateGrid(s));
+        }
+        return listGrids;
+    }
 }

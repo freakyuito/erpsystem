@@ -35,8 +35,14 @@ public class UserController {
 
     @RequestMapping("/get_all")
     @ResponseBody
-    public List<User> getAll(){
-        return userService.getAll();
+    public List<String> getAll(){
+        ArrayList<String> all = new ArrayList<String>();
+        List<User> users = userService.getAll();
+        for (User u:users
+                ) {
+            all.add(u.getRealName());
+        }
+        return all;
     }
 
     @RequestMapping("/get_by_auth")

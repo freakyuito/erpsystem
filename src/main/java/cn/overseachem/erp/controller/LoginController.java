@@ -39,7 +39,7 @@ public class LoginController {
             if (user != null) {
                 req.getSession().setAttribute("userName", user.getUserName());
                 req.getSession().setAttribute("userId", user.getUserId());
-                req.getSession().setAttribute("userAuthorities", user.getFkAuthoritiesId());
+                req.getSession().setAttribute("userAuth", user.getFkAuthoritiesId());
                 return new AjaxReturn(true,"success");
             } else {
                 return new AjaxReturn(false, "密码错误");

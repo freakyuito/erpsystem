@@ -176,10 +176,10 @@ public class PurchaseOrderService {
     }
 
     public List<PurchaseOrder> getUnStartPurchaseOrder(){
-        for (PurchaseOrder s:orderMapper.getUnStartPurchaseOrder()
-             ) {
-            System.out.println(s.getPurchaseNum());
-        }
         return orderMapper.getUnStartPurchaseOrder();
+    }
+
+    public List<PurchaseOrder> getProcessingPurchaseOrder(){
+        return orderMapper.getProcessingPurchaseOrder();
     }
 }
