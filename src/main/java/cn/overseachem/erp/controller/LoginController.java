@@ -40,6 +40,7 @@ public class LoginController {
                 req.getSession().setAttribute("userName", user.getUserName());
                 req.getSession().setAttribute("userId", user.getUserId());
                 req.getSession().setAttribute("userAuth", user.getFkAuthoritiesId());
+                req.getSession().setAttribute("userRealname", user.getRealName());
                 return new AjaxReturn(true,"success");
             } else {
                 return new AjaxReturn(false, "密码错误");
